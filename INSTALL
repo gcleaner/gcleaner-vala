@@ -1,0 +1,30 @@
+Dependencies:
+    Ubuntu and derivates:
+        debhelper (>= 7)
+        build-essential
+        cmake
+        automake
+        autoconf
+        pkg-config
+        valac
+        libgtk-3-dev
+        libglib2.0-dev
+        libjson-glib-1.0-0
+        libjson-glib-1.0-0-dev
+        
+    Fedora and derivates:
+        sudo dnf groupinstall "Development Tools"
+        sudo dnf groupinstall "C Development Tools and Libraries"
+        sudo dnf install gcc gcc-c++ gdb cmake automake autoconf pkgconf vala gtk3-devel json-glib-devel beesu
+
+Installation:
+    bzr branch lp:gcleaner
+    cd gcleaner
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
+    sudo make install
+
+Uninstall
+    sudo make uninstall

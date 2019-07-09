@@ -1,0 +1,1265 @@
+{
+    "number_to_scan" : 36,
+    "applications" : {
+        "amsn" : {
+            "name" : "aMSN",
+            "type" : "Chat client",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "amsn-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.amsn/*/displaypic/cache/*.dat",
+                        "~/.amsn/*/displaypic/cache/*.png"
+                    ]
+                },
+                {
+                    "option-id" : "chat-logs",
+                    "option-name" : "Chat logs",
+                    "key-xml" : "amsn-chat-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.amsn/*/logs/date",
+                        "~/.amsn/*/logs/*.log"
+                    ]
+                }
+            ]
+        },
+        "amule" : {
+            "name" : "aMule",
+            "type" : "File transfer client",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "logs",
+                    "option-name" : "Logs files",
+                    "key-xml" : "amule-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.aMule/logfile*"
+                    ]
+                },
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "amule-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.amsn/*/logs/date",
+                        "~/.amsn/*/logs/*.log"
+                    ]
+                }
+            ]
+        },
+        "audacious" : {
+            "name" : "Audacious",
+            "type" : "Audio player",
+            "number-options" : 3,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "audacious-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/audacious/thumbs/*"
+                    ]
+                },
+                {
+                    "option-id" : "logs",
+                    "option-name" : "Logs files",
+                    "key-xml" : "audacious-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/audacious/log"
+                    ]
+                },
+                {
+                    "option-id" : "used",
+                    "option-name" : "Most recently used files",
+                    "key-xml" : "audacious-used",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/audacious/playlist.xspf"
+                    ]
+                }
+            ]
+        },
+        "chromium-browser" : {
+            "name" : "Chromium Browser",
+            "type" : "Web browser",
+            "number-options" : 7,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "chromium-browser-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/chromium/Default/Cache",
+                        "~/.config/chromium/Local State",
+                        "~/.config/chromium/Default/Preferences",
+                        "~/.config/chromium/Default/Application Cache",
+                        "~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/Cache"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "chromium-browser-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/chromium/Default/Cookie*",
+                        "~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/Cookies"
+                    ]
+                },
+                {
+                    "option-id" : "dom",
+                    "option-name" : "DOM storage",
+                    "key-xml" : "chromium-browser-dom",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/chromium/Default/databases/http*/",
+                        "~/.config/chromium/Default/databases/Databases.db",
+                        "~/.config/chromium/Default/Local Storage/http*localstorage-journal"
+                    ]
+                },
+                {
+                    "option-id" : "internet-history",
+                    "option-name" : "Internet history",
+                    "key-xml" : "chromium-browser-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/chromium/Default/Histor*",
+                        "~/.config/chromium/Default/Favicons",
+                        "~/.config/chromium/Default/Archived Histor*",
+                        "~/.config/chromium/Default/Network Action Pred*",
+                        "~/.config/chromium/Default/Origin Bound Certs-journal",
+                        "~/.config/chromium/Default/Shortcut*",
+                        "~/.config/chromium/Default/Thumbnail*",
+                        "~/.config/chromium/Default/Top Site*",
+                        "~/.config/chromium/Default/Visited Links",
+                        "~/.config/chromium/Default/Session Storage",
+                        "~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/History"
+                    ]
+                },
+                {
+                    "option-id" : "pass",
+                    "option-name" : "Passwords",
+                    "key-xml" : "chromium-browser-pass",
+                    "warning-msgdlg" : true,
+                    "paths" : [
+                        "~/.config/chromium/Default/Login Dat*"
+                    ]
+                },
+                {
+                    "option-id" : "form-history",
+                    "option-name" : "Saved form history",
+                    "key-xml" : "chromium-browser-savformhistory",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/chromium/Default/Web Data"
+                    ]
+                },
+                {
+                    "option-id" : "session",
+                    "option-name" : "Session restoration",
+                    "key-xml" : "chromium-browser-session",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/chromium/Default/Current*",
+                        "~/.config/chromium/Default/Last*",
+                        "~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/Current Session"
+                    ]
+                }
+            ]
+        },
+        "emesene" : {
+            "name" : "emesene",
+            "type" : "Chat client",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "emesene-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/emesene*/*/cache/*"
+                    ]
+                },
+                {
+                    "option-id" : "chat-logs",
+                    "option-name" : "Chat logs",
+                    "key-xml" : "emesene-chat-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/emesene*/*/logs/*",
+                        "~/.config/emesene*/*/log",
+                        "~/.config/emesene*/*/log-journal"
+                    ]
+                }
+            ]
+        },
+        "epiphany" : {
+            "name" : "Epiphany",
+            "type" : "Web browser",
+            "number-options" : 5,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "epiphany-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.gnome2/epiphany/ephy-favicon-cache.xml",
+                        "~/.gnome2/epiphany/favicon_cache",
+                        "~/.gnome2/epiphany/mozilla/epiphany/Cache",
+                        "~/.cache/epiphany-browser"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "epiphany-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.gnome2/epiphany/mozilla/epiphany/cookies*",
+                        "~/.gnome2/epiphany/cookies.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "dom",
+                    "option-name" : "DOM storage",
+                    "key-xml" : "epiphany-dom",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.local/share/webkitgtk/localstorage"
+                    ]
+                },
+                {
+                    "option-id" : "pass",
+                    "option-name" : "Passwords",
+                    "key-xml" : "epiphany-pass",
+                    "warning-msgdlg" : true,
+                    "paths" : [
+                        "~/.gnome2/epiphany/mozilla/epiphany/signons3.txt"
+                    ]
+                },
+                {
+                    "option-id" : "places",
+                    "option-name" : "Places",
+                    "key-xml" : "epiphany-places",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/epiphany/bookmarks.rdf",
+                        "~/.config/epiphany/ephy-bookmarks.xml",
+                        "~/.config/epiphany/ephy-history.db",
+                        "~/.config/epiphany/session_state.xml*",
+                        "~/.gnome2/epiphany/mozilla/epiphany/places.sqlite*",
+                        "~/.gnome2/epiphany/ephy-history.xml"
+                    ]
+                }
+            ]
+        },
+        "evolution" : {
+            "name" : "Evolution",
+            "type" : "Email client",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "evolution-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.evolution/cache",
+                        "~/.cache/evolution"
+                    ]
+                }
+            ]
+        },
+        "exaile" : {
+            "name" : "Exaile",
+            "type" : "Audio player",
+            "number-options" : 3,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "exaile-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.exaile/cache",
+                        "~/.exaile/covers"
+                    ]
+                },
+                {
+                    "option-id" : "download",
+                    "option-name" : "Podcasts downloaded",
+                    "key-xml" : "exaile-download",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.exaile/podcasts/*"
+                    ]
+                },
+                {
+                    "option-id" : "logs",
+                    "option-name" : "Logs files",
+                    "key-xml" : "exaile-download",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.exaile/exaile.log"
+                    ]
+                }
+            ]
+        },
+        "firefox" : {
+            "name" : "Mozilla Firefox",
+            "type" : "Web browser",
+            "number-options" : 9,
+            "all-options" : [
+                {
+                    "option-id" : "backup",
+                    "option-name" : "Backup files",
+                    "key-xml" : "firefox-backup",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/bookmarkbackups/bookmarks-*.jsonlz4"
+                    ]
+                },
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "firefox-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/mozilla/firefox/*/Cache",
+                        "~/.cache/mozilla/firefox/*/cache2",
+                        "~/.cache/mozilla/firefox/*/startupCache",
+                        "~/.cache/mozilla/firefox/*/OfflineCache",
+                        "~/.cache/mozilla/firefox/*/safebrowsing",
+                        "~/.cache/mozilla/firefox/*/thumbnails"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "firefox-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/cookies.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "crash",
+                    "option-name" : "Bug reports",
+                    "key-xml" : "firefox-crash",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/Crash Reports/InstallTime"
+                    ]
+                },
+                {
+                    "option-id" : "dom",
+                    "option-name" : "DOM storage",
+                    "key-xml" : "firefox-dom",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/webappsstore.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "download",
+                    "option-name" : "Download history",
+                    "key-xml" : "firefox-download",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/downloads*"
+                    ]
+                },
+                {
+                    "option-id" : "prefs",
+                    "option-name" : "Site preferences",
+                    "key-xml" : "firefox-prefs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/content-prefs.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "form-history",
+                    "option-name" : "Saved form history",
+                    "key-xml" : "firefox-savformhistory",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/formhistory.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "session",
+                    "option-name" : "Session restoration",
+                    "key-xml" : "firefox-session",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/firefox/*/sessionstore-backupssqlite",
+                        "~/.mozilla/firefox/*/sessionstore.js"
+                    ]
+                }
+            ]
+        },
+        "flash" : {
+            "name" : "Flash Player",
+            "type" : "Multimedia viewer",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "flash-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.adobe/Flash_Player/AssetCache",
+                        "~/.adobe/Flash_Player/NativeCache"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "flash-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.macromedia/Flash_Player/#SharedObjects/*",
+                        "~/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys/*"
+                    ]
+                }
+            ]
+        },
+        "gftp" : {
+            "name" : "gFTP",
+            "type" : "File transfer client",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "gftp-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.gftp/cache"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "gftp-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.gftp/gftp.log"
+                    ]
+                }
+            ]
+        },
+        "gimp" : {
+            "name" : "Gimp",
+            "type" : "Graphics editor",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "gimp-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.gimp-*/tmp"
+                    ]
+                }
+            ]
+        },
+        "google-chrome" : {
+            "name" : "Google Chrome",
+            "type" : "Web browser",
+            "number-options" : 7,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "google-chrome-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/google-chrome/Default/Cache"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "google-chrome-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/google-chrome/Default/Cookie*"
+                    ]
+                },
+                {
+                    "option-id" : "dom",
+                    "option-name" : "DOM storage",
+                    "key-xml" : "google-chrome-dom",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/google-chrome/Default/databases/Databases.db"
+                    ]
+                },
+                {
+                    "option-id" : "internet-history",
+                    "option-name" : "Internet history",
+                    "key-xml" : "google-chrome-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/google-chrome/Default/Histor*",
+                        "~/.config/google-chrome/Default/Favicons",
+                        "~/.config/google-chrome/Default/Safe Browsing Cookies-journal",
+                        "~/.config/google-chrome/Default/Network Action Pred*",
+                        "~/.config/google-chrome/Default/Origin Bound Certs-journal",
+                        "~/.config/google-chrome/Default/Shortcut*",
+                        "~/.config/google-chrome/Default/Thumbnails",
+                        "~/.config/google-chrome/Default/Top Site*",
+                        "~/.config/google-chrome/Default/Visited Links",
+                        "~/.config/google-chrome/Default/Session Storage"
+                    ]
+                },
+                {
+                    "option-id" : "pass",
+                    "option-name" : "Passwords",
+                    "key-xml" : "google-chrome-pass",
+                    "warning-msgdlg" : true,
+                    "paths" : [
+                        "~/.config/google-chrome/Default/Login Dat*"
+                    ]
+                },
+                {
+                    "option-id" : "form-history",
+                    "option-name" : "Saved form history",
+                    "key-xml" : "google-chrome-savformhistory",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/google-chrome/Default/Web Data"
+                    ]
+                },
+                {
+                    "option-id" : "session",
+                    "option-name" : "Session restoration",
+                    "key-xml" : "google-chrome-session",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/google-chrome/Default/Current*",
+                        "~/.config/google-chrome/Default/Last*"
+                    ]
+                }
+            ]
+        },
+        "google-earth-pro" : {
+            "name" : "Google Earth",
+            "type" : "3D map rendering program",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "google-earth-pro-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.googleearth/Cache/dbCache.dat*",
+                        "~/.googleearth/Temp"
+                    ]
+                }
+            ]
+        },
+        "gpodder" : {
+            "name" : "gPodder",
+            "type" : "Podcast manager",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "gpodder-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/gpodder/cache/*xml"
+                    ]
+                }
+            ]
+        },
+        "java" : {
+            "name" : "Java",
+            "type" : "Programming language",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "java-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.java/deployment/cache",
+                        "~/.icedteaplugin/cache",
+                        "~/.icedtea/cache"
+                    ]
+                }
+            ]
+        },
+        "kde" : {
+            "name" : "KDE",
+            "type" : "Desktop environment",
+            "number-options" : 3,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "kde-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "/var/tmp/kdecache-$USER/*"
+                    ]
+                },
+                {
+                    "option-id" : "docs",
+                    "option-name" : "Recent documents",
+                    "key-xml" : "kde-docs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.kde*/share/apps/RecentDocuments/*.desktop"
+                    ]
+                },
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "kde-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "/tmp/kde-$USER/*"
+                    ]
+                }
+            ]
+        },
+        "konqueror" : {
+            "name" : "Konqueror",
+            "type" : "Web browser",
+            "number-options" : 4,
+            "all-options" : [
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "konqueror-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.kde*/share/apps/kcookiejar/cookies"
+                    ]
+                },
+                {
+                    "option-id" : "internet-history",
+                    "option-name" : "Internet history",
+                    "key-xml" : "konqueror-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.kde*/share/apps/konqueror/closeditems_saved",
+                        "~/.kde*/share/apps/konqueror/konq_history",
+                        "~/.kde*/share/config/konq_history"
+                    ]
+                },
+                {
+                    "option-id" : "session",
+                    "option-name" : "Session restoration",
+                    "key-xml" : "konqueror-session",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.kde*/share/apps/konqueror/autosave"
+                    ]
+                },
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "konqueror-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "/var/tmp/kdecache-$USER/http"
+                    ]
+                }
+            ]
+        },
+        "libreoffice" : {
+            "name" : "LibreOffice",
+            "type" : "Office suite",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "libreoffice-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/libreoffice/*/user/uno_packages/cache",
+                        "~/.libreoffice/*/user/uno_packages/cache"
+                    ]
+                },
+                {
+                    "option-id" : "history",
+                    "option-name" : "History",
+                    "key-xml" : "libreoffice-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/libreoffice/*/user/registrymodifications.xcu",
+                        "~/.libreoffice/*/user/registrymodifications.xcu"
+                    ]
+                }
+            ]
+        },
+        "liferea" : {
+            "name" : "Liferea",
+            "type" : "News reader",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "liferea-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/liferea/*"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "liferea-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/liferea/cookies.txt"
+                    ]
+                }
+            ]
+        },
+        "midori" : {
+            "name" : "Midori",
+            "type" : "Web browser",
+            "number-options" : 3,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "midori-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/midori/*"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "midori-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/midori/cookies.db"
+                    ]
+                },
+                {
+                    "option-id" : "internet-history",
+                    "option-name" : "Internet history",
+                    "key-xml" : "midori-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/midori/history.db"
+                    ]
+                }
+            ]
+        },
+        "miro" : {
+            "name" : "Miro",
+            "type" : "Multimedia viewer",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "miro-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.miro/icon-cache/*",
+                        "~/.miro/mozilla/Cache/*"
+                    ]
+                },
+                {
+                    "option-id" : "logs",
+                    "option-name" : "Logs files",
+                    "key-xml" : "miro-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.miro/miro-downloader-log",
+                        "~/.miro/miro-log",
+                        "~/.miro/miro-log.1"
+                    ]
+                }
+            ]
+        },
+        "nexuiz" : {
+            "name" : "Nexuiz",
+            "type" : "Game",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "nexuiz-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.nexuiz/data/dlcache"
+                    ]
+                }
+            ]
+        },
+        "opera" : {
+            "name" : "Opera",
+            "type" : "Web browser",
+            "number-options" : 6,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "opera-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.cache/opera/Cache"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "opera-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/opera/Cookies*"
+                    ]
+                },
+                {
+                    "option-id" : "dom",
+                    "option-name" : "DOM storage",
+                    "key-xml" : "opera-dom",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/opera/Local Storage/http*localstorage"
+                    ]
+                },
+                {
+                    "option-id" : "internet-history",
+                    "option-name" : "Internet history",
+                    "key-xml" : "opera-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/opera/Histor*",
+                        "~/.config/opera/Favicons",
+                        "~/.config/opera/Network Action Pred*",
+                        "~/.config/opera/Shortcut*",
+                        "~/.config/opera/Top Site*",
+                        "~/.config/opera/Visited Links"
+                    ]
+                },
+                {
+                    "option-id" : "pass",
+                    "option-name" : "Passwords",
+                    "key-xml" : "opera-pass",
+                    "warning-msgdlg" : true,
+                    "paths" : [
+                        "~/.config/opera/Login Data"
+                    ]
+                },
+                {
+                    "option-id" : "session",
+                    "option-name" : "Session restoration",
+                    "key-xml" : "opera-session",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.config/opera/* Session"
+                    ]
+                }
+            ]
+        },
+        "pidgin" : {
+            "name" : "Pidgin",
+            "type" : "Chat client",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "pidgin-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.purple/icons/*"
+                    ]
+                },
+                {
+                    "option-id" : "chat-logs",
+                    "option-name" : "Chat logs",
+                    "key-xml" : "pidgin-chat-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.purple/logs/*"
+                    ]
+                }
+            ]
+        },
+        "rhythmbox" : {
+            "name" : "Rhythmbox",
+            "type" : "Audio player",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "rhythmbox-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.gnome2/rhythmbox/jamendo",
+                        "~/.gnome2/rhythmbox/magnatune"
+                    ]
+                },
+                {
+                    "option-id" : "history",
+                    "option-name" : "History",
+                    "key-xml" : "rhythmbox-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.local/share/rhythmbox/rhythmdb.xml"
+                    ]
+                }
+            ]
+        },
+        "seamonkey" : {
+            "name" : "SeaMonkey",
+            "type" : "Web browser and chat client",
+            "number-options" : 5,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "seamonkey-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/default/Cache",
+                        "~/.mozilla/seamonkey/*/Cache"
+                    ]
+                },
+                {
+                    "option-id" : "chat-logs",
+                    "option-name" : "Chat logs",
+                    "key-xml" : "seamonkey-chat-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/*/????????.slt/chatzilla/logs/*log"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "seamonkey-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/*/????????.slt/cookies.txt",
+                        "~/.mozilla/seamonkey/*.default/cookies.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "download",
+                    "option-name" : "Download history",
+                    "key-xml" : "seamonkey-download",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/seamonkey/*.default/downloads.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "internet-history",
+                    "option-name" : "Internet history",
+                    "key-xml" : "seamonkey-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.mozilla/*/????????.slt/history.dat",
+                        "~/.mozilla/seamonkey/*.default/urlbarhistory.sqlite"
+                    ]
+                }
+            ]
+        },
+        "skype" : {
+            "name" : "Skype",
+            "type" : "Chat client",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "chat-logs",
+                    "option-name" : "Chat logs",
+                    "key-xml" : "skype-chat-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.Skype/*/chatmsg*.dbb",
+                        "~/.Skype/*/chatsync/*/*.dat"
+                    ]
+                }
+            ]
+        },
+        "thunderbird" : {
+            "name" : "Thunderbird",
+            "type" : "Email client",
+            "number-options" : 3,
+            "all-options" : [
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "thunderbird-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.thunderbird/????????.default/Cache/*",
+                        "~/.thunderbird/default/????????.slt/Cache",
+                        "~/.thunderbird/Profiles/????????.default/Cache/*"
+                    ]
+                },
+                {
+                    "option-id" : "cookies",
+                    "option-name" : "Cookies",
+                    "key-xml" : "thunderbird-cookies",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.thunderbird/????????.default/cookies.sqlite",
+                        "~/.thunderbird/default/????????.slt/cookies.sqlite",
+                        "~/.thunderbird/Profiles/????????.default/cookies.sqlite"
+                    ]
+                },
+                {
+                    "option-id" : "pass",
+                    "option-name" : "Passwords",
+                    "key-xml" : "thunderbird-pass",
+                    "warning-msgdlg" : true,
+                    "paths" : [
+                        "~/.thunderbird/default/????????.slt/signons.sqlite",
+                        "~/.thunderbird/default/????????.slt/signons.txt",
+                        "~/.thunderbird/default/????????.slt/signons3.txt",
+                        "~/.mozilla-thunderbird/????????.default/signons.txt",
+                        "~/.thunderbird/????????.default/signons.sqlite",
+                        "~/.thunderbird/Profiles/????????.default/signons.sqlite"
+                    ]
+                }
+            ]
+        },
+        "tremulous" : {
+            "name" : "Tremulous",
+            "type" : "Game",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "tremulous-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.tremulous/servercache.dat"
+                    ]
+                }
+            ]
+        },
+        "vuze" : {
+            "name" : "Vuze",
+            "type" : "File transfer client",
+            "number-options" : 4,
+            "all-options" : [
+                {
+                    "option-id" : "backup",
+                    "option-name" : "Backup files",
+                    "key-xml" : "vuze-backup",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.azureus/active/*.bak"
+                    ]
+                },
+                {
+                    "option-id" : "internet-cache",
+                    "option-name" : "Internet cache",
+                    "key-xml" : "vuze-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.azureus/ipfilter.cache"
+                    ]
+                },
+                {
+                    "option-id" : "logs",
+                    "option-name" : "Logs files",
+                    "key-xml" : "vuze-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.azureus/logs/*",
+                        "~/.azureus/update.log",
+                        "~/.azureus/tracker.log"
+                    ]
+                },
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "vuze-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "/azureus/tmp"
+                    ]
+                }
+            ]
+        },
+        "warzone2100" : {
+            "name" : "Warzone2100",
+            "type" : "Game",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "logs",
+                    "option-name" : "Logs files",
+                    "key-xml" : "warzone-logs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.warzone2100*/logs"
+                    ]
+                }
+            ]
+        },
+        "wine" : {
+            "name" : "Wine",
+            "type" : "Compatibility layer for Windows software",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "tmp",
+                    "option-name" : "Temporary files",
+                    "key-xml" : "wine-tmp",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.wine/drive_c/winetrickstmp",
+                        "~/.wine/drive_c/windows/temp",
+                        "~/.winetrickscache"
+                    ]
+                }
+            ]
+        },
+        "xine" : {
+            "name" : "Xine",
+            "type" : "Multimedia viewer",
+            "number-options" : 1,
+            "all-options" : [
+                {
+                    "option-id" : "cache",
+                    "option-name" : "Cache",
+                    "key-xml" : "xine-cache",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.xine/catalog.cache"
+                    ]
+                }
+            ]
+        }
+    },
+    "system" : {
+        "apt" : {
+            "name" : "APT",
+            "type" : "Package manager",
+            "icon" : "package-x-generic",
+            "number-options" : 2,
+            "all-options" : [
+                {
+                    "option-id" : "cache-pkg",
+                    "option-name" : "Cache",
+                    "option-icon" : "package-x-generic",
+                    "key-xml" : "apt-cache",
+                    "warning-msgdlg" : true,
+                    "commands" : [
+                        {
+                            "get-size" : "du -sb /var/cache/apt/archives/ | grep '^[1-9]' | awk '{print $1}'",
+                            "get-quantity" : "ls -A /var/cache/apt/archives/ | wc -l",
+                            "clean" : "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY bash -c 'rm -rf /var/cache/apt/archives/*; apt-get autoclean'"
+                        }
+                    ]
+                },
+                {
+                    "option-id" : "configuration-pkg",
+                    "option-name" : "Orphan packages",
+                    "option-icon" : "package-x-generic",
+                    "key-xml" : "apt-configuration",
+                    "warning-msgdlg" : true,
+                    "commands" : [
+                        {
+                            "get-quantity" : "dpkg -l | grep -v 'linux-image' | grep '^rc  ' | awk '{print $2}' | wc -l",
+                            "clean" : "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY apt purge -y $(dpkg -l | grep -v 'linux-image' | grep '^rc  ' | awk '{print $2}');"
+                        }
+                    ]
+                }
+            ]
+        },
+        "system" : {
+            "name" : "System",
+            "type" : "The system in general",
+            "icon" : "applications-system",
+            "number-options" : 5,
+            "all-options" : [
+                {
+                    "option-id" : "old-kernels",
+                    "option-name" : "Old kernels",
+                    "option-icon" : "applications-system",
+                    "key-xml" : "system-old-kernels",
+                    "warning-msgdlg" : true,
+                    "commands" : [
+                        {
+                            "get-quantity" : "dpkg -l | grep -i 'linux-image' | grep '^rc  ' | awk '{print $2}' | wc -l",
+                            "clean" : "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY apt purge -y $(dpkg -l | grep -i 'linux-image' | grep '^rc  ' | awk '{print $2}');"
+                        }
+                    ]
+                },
+                {
+                    "option-id" : "recent-docs",
+                    "option-name" : "Recent documents",
+                    "option-icon" : "recent-documents",
+                    "key-xml" : "system-recent-docs",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.local/share/recently-used.xbel*"
+                    ]
+                },
+                {
+                    "option-id" : "terminal-history",
+                    "option-name" : "Terminal history",
+                    "option-icon" : "utilities-terminal",
+                    "key-xml" : "system-terminal-history",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.bash_history"
+                    ]
+                },
+                {
+                    "option-id" : "thumbnails",
+                    "option-name" : "Thumbnails",
+                    "option-icon" : "image-x-generic",
+                    "key-xml" : "system-thumbnails",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.thumbnails/*",
+                        "~/.cache/thumbnails/*"
+                    ]
+                },
+                {
+                    "option-id" : "trash",
+                    "option-name" : "Trash",
+                    "option-icon" : "user-trash",
+                    "key-xml" : "system-trash",
+                    "warning-msgdlg" : false,
+                    "paths" : [
+                        "~/.local/share/Trash"
+                    ]
+                }
+            ]
+        }
+    }
+}
