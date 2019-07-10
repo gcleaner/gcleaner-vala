@@ -141,7 +141,7 @@ public string getProcessor () {
 			processor = processor.replace ("(TM)", "™");
 		}
 	} catch (Error e) {
-		stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: No se encontro el procesador: [ %s ]]\n", e.message);
+		stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: No processor found: [ %s ]]\n", e.message);
 		processor = "Unknown Processor";
 	}
 

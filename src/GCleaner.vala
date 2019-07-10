@@ -24,11 +24,6 @@ using Json;
 namespace GCleaner {
     public class App : Gtk.Application {
         public int n_installed_apps;
-        public int64 total_options_to_scan;
-        public double fraction_per_apps;
-        public double fraction_value;
-        public double progress_number;
-        public double total_progress_fraction;
         public Gtk.Label lbl_progress;
         public Gtk.ProgressBar progress_bar;
         public Gtk.ListStore result_list;
@@ -112,7 +107,6 @@ namespace GCleaner {
             var actions = new GCleaner.Tools.Actions ();
             GCleaner.Tools.Cleaner[] list_cleaners = sidebar.get_list_cleaners ();
             var info_clean = new GCleaner.Tools.InfoClean ();
-            var jload = new GCleaner.Tools.JsonLoader ();
             // PACKAGING
             /*
              * TOOLBAR and HEADERBAR
@@ -190,9 +184,9 @@ namespace GCleaner {
             infoAction_box.pack_start (buttons_box, false, true, 8);
             
             /*Content Box*/
-            content_box.pack_start (eventSidebar, false, true, 0); // Empaqueta la sidebar al contendor de contenidos de la APP
-            content_box.pack_start (separatorVertContenido, false, true, 0); // Separador visible entre la Sidebar y los Resultados
-            content_box.pack_start (infoAction_box, true, true, 8);     // Empaqueta la caja con el contenido de informacion, resultado y acciones
+            content_box.pack_start (eventSidebar, false, true, 0); // Pack the sidebar to the content container of the APP
+            content_box.pack_start (separatorVertContenido, false, true, 0); // Visible separator between Sidebar and Results
+            content_box.pack_start (infoAction_box, true, true, 8);     // Pack the box with the content of information, result and actions
             
             /*Final assembly*/
             main_window_box.pack_start (content_box, true, true, 0);
@@ -200,15 +194,7 @@ namespace GCleaner {
             /************* TEMPORARY, then erase *******************/
             string home_user = GLib.Environment.get_variable ("HOME");
             stdout.printf ("COM.GCLEANER.APP: [USER: %s]\n", home_user);
-            
-            
-            //this.total_options_to_scan = parser.get_root ().get_object ().get_int_member ("number_to_scan");
-            this.n_installed_apps = sidebar.count_apps;//number of programs to be cleaned
-            fraction_per_apps = 100 / this.n_installed_apps;
-            fraction_value = fraction_per_apps / 100;
-            
-            total_progress_fraction = 0;
-            progress_number = 0;
+            n_installed_apps = sidebar.count_apps; // Number of programs to be cleaned
             
             /*
              * Scan button actions and Logic
@@ -217,30 +203,14 @@ namespace GCleaner {
             scan_button.clicked.connect(()=> {
                 sidebar.apps_box.set_sensitive (false);
                 sidebar.system_box.set_sensitive (false);
-                scan_button.get_style_context ().remove_class ("suggested-action");//remove the color blue of the button
-                scan_button.set_sensitive (false);//Disable the scan button
-                clean_button.get_style_context ().remove_class ("destructive-action");//remove the color blue of the button
-                clean_button.set_sensitive (false);//Disable Clean Button
-                
-                // We emptied the data collections and we restore the values
-                
-                // inventory.clear ();
-                info_clean.setting_values ();// Setting values to 0
-                
-                progress_bar.set_fraction (0);// -> 0%
-                total_progress_fraction = 0;
-                progress_number = 0;
-                
-                results_area.sort_fields_before_print ();
+                disable_scan_button ();
+                disable_clean_button ();
+                progress_bar.set_fraction (0);
+                results_area.move_pix_cell_to_left ();
                 results_area.clear_results (); // Clean the results grid
-                
-                /* Set to 0 before scanning */
-                info_clean.set_total_counter (0);
-                info_clean.set_total_accumulator (0);
-                
-                // Scan each programs
-                // ******************************
-                actions.run_scan_operation (this, sidebar, list_cleaners, info_clean, results_area, n_installed_apps);
+                info_clean.reset_values ();// Resetting count values
+                bool really_delete = false;
+                actions.run_scan_operation (this, sidebar, list_cleaners, info_clean, results_area, n_installed_apps, really_delete);
             });
             
             /*
@@ -251,21 +221,18 @@ namespace GCleaner {
                 Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
                 msg.response.connect ((response_id) => {
                     if (response_id == Gtk.ResponseType.OK) {
-                        
-                        actions.run_clean_operation (this, list_cleaners, info_clean, results_area);
-                        
-                                    
-                        /*Set to 0 once cleaned*/
-                        info_clean.set_total_counter (0);
-                        info_clean.set_total_accumulator (0);
+                        /* Set to 0 before cleaning */
+                        results_area.move_pix_cell_to_left ();
+                        info_clean.reset_values ();
+                        bool really_delete = true;
+                        actions.run_clean_operation (this, sidebar, list_cleaners, info_clean, results_area, n_installed_apps, really_delete);
                     }
                     msg.destroy ();
                 });
                 msg.show ();
                 sidebar.apps_box.set_sensitive (true);
                 sidebar.system_box.set_sensitive (true);
-                scan_button.set_sensitive (true); // Enable the scan button
-                scan_button.get_style_context ().add_class ("suggested-action");//Paint the button of blue
+                enable_scan_button ();
             });
 
             this.main_window.delete_event.connect (() => {
@@ -289,25 +256,42 @@ namespace GCleaner {
             this.main_window.show_all ();
         }
 
-        public void update_progress (string current_app = "", string current_option = "") {
-            total_progress_fraction += fraction_value;
-            progress_number += fraction_per_apps;
-            set_progress_fraction_value (total_progress_fraction);
-
-            results_area.clear_results ();
-            TreeIter iter;
-            result_list.append (out iter);
-            result_list.set (iter, 0, true, 1, 1, 3, current_app + "\n" + current_option);
+        public void update_progress (string? current_app = "", string? current_option = "", int n_scanned_apps) {
+            double percent_value_per_app = 100 / n_installed_apps;
+            double fraction_progress = (percent_value_per_app * n_scanned_apps) / 100; // value assigned to the progress bar depending on the apps already scanned.
+            set_progress_fraction_value (fraction_progress);
+            // Cleaning the results area and update the info
+            //results_area.clear_results ();
+            //results_area.append_data_to_list_store (null, current_app + "\n" + current_option, null, null, true);
         }
         
         public void set_progress_fraction_value (double fraction) {
             progress_bar.set_fraction (fraction);
-            lbl_progress.set_markup ("<b>" + Math.round (fraction).to_string() + "%</b>");
+            lbl_progress.set_markup ("<b>" + Math.round (fraction * 100).to_string() + "%</b>");
+        }
+
+        public void enable_scan_button () {
+            this.scan_button.set_sensitive (true);
+            this.scan_button.get_style_context ().add_class ("suggested-action"); // Paint the button of blue
+        }
+
+        public void disable_scan_button () {
+            this.scan_button.set_sensitive (false);
+            this.scan_button.get_style_context ().remove_class ("suggested-action"); // Remove the blue color of button
+        }
+
+        public void enable_clean_button () {
+            this.clean_button.set_sensitive (true);
+            this.clean_button.get_style_context ().add_class ("destructive-action"); // Paint the button of red
+        }
+
+        public void disable_clean_button () {
+            this.clean_button.set_sensitive (false);
+            this.clean_button.get_style_context ().remove_class ("destructive-action"); // Remove the red color of button
         }
 
         public static int main (string[] args) {
             Gtk.init (ref args); // Starts GTK+
-            
             string css_file = "/usr/share/gcleaner/gtk-widgets-gcleaner.css"; // Path where takes the CSS file
             var css_provider = new Gtk.CssProvider (); // Create a new CSS provider
             

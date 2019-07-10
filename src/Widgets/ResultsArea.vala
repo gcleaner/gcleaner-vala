@@ -92,12 +92,14 @@ namespace GCleaner.Widgets {
             list_store.clear ();
         }
 
-        public void append_data_to_list_store (Gdk.Pixbuf? pix = null, string row_concept, string? row_file_size = null, string? row_file_number = null) {
+        public void append_data_to_list_store (Gdk.Pixbuf? pix = null, string row_concept, string? row_file_size = null, string? row_file_number = null, bool? update_progress = false) {
             TreeIter iter;
             list_store.append (out iter);
             if (pix != null) {
                 if (row_file_size == null) {
                     list_store.set (iter, 2, pix, 3, row_concept);
+                } else if (update_progress) {
+                    list_store.set (iter, 0, true, 1, 1, 3, row_concept);
                 } else {
                     list_store.set (iter, 2, pix, 3, row_concept, 4, row_file_size, 5, row_file_number);
                 }
@@ -106,12 +108,12 @@ namespace GCleaner.Widgets {
             }
         }
 
-        public void sort_fields_before_print () {
+        public void move_pix_cell_to_left () {
             tree_view.move_column_after (column_spinner, column_pix);
             tree_view.move_column_after (column_pix, column_number);
         }
 
-        public void sort_fields_after_print () {
+        public void move_pix_cell_to_right () {
             tree_view.move_column_after (column_pix, column_spinner);
             tree_view.move_column_after (column_spinner, column_number);
         }

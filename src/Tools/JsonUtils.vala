@@ -20,18 +20,19 @@ using GLib;
 using Json;
 
 namespace GCleaner.Tools {
-    public class JsonLoader {
+    public class JsonUtils {
         private Parser parser;
         private string[] categories = { "applications", "system" };
 
-        public JsonLoader () {
-            load_json ();
+        public JsonUtils () {
+            string path = Constants.PKGDATADIR + "/resources-gcleaner.json";
+            load_parser (path);
         }
-
-        private void load_json () {
+        
+        private void load_parser (string path) {
             parser = new Json.Parser ();
             try {
-                parser.load_from_file (Constants.PKGDATADIR + "/resources-gcleaner.json");
+                parser.load_from_file (path);
             } catch (Error e) {
                 stderr.printf ("Unable to parse: %s\n", e.message);
             }
@@ -46,7 +47,6 @@ namespace GCleaner.Tools {
         // Returns the type, icon name or application name.
         public string? get_item_from_app (string app_id, string item) {
             string result = null;
-
             foreach (string category in categories) {
                 Json.Object obj_category = get_node_per_category (category).get_object ();
                 foreach (unowned string current_app_id in obj_category.get_members ()) {
@@ -57,8 +57,22 @@ namespace GCleaner.Tools {
                     }
                 }
             }
-
             return result;
+        }
+
+        // Returns the icon name for a system app
+        public string? get_icon_name_from_system_app (string app_id, string option_id) {
+            string icon_name = null;
+            var all_options = get_all_options_of (app_id);
+            foreach (var option in all_options.get_array ().get_elements ()) {
+                var object_option = option.get_object ();
+                string current_option_id = object_option.get_string_member ("option-id");
+                if (current_option_id == option_id) {
+                    icon_name = option.get_object ().get_string_member ("option-icon");
+                    return icon_name;
+                }
+            }
+            return icon_name;
         }
 
         public int64 get_n_options_from (string app_id) {
@@ -100,11 +114,50 @@ namespace GCleaner.Tools {
                 if (option_id == object_option.get_string_member ("option-id")) {
                     // This is because it contains only one object
                     commands = object_option.get_array_member ("commands").get_element (0);
-                    
                     return commands;
                 }
             }
             return commands;
+        }
+        
+        public static Json.Node get_instance_node () {
+            var tmp_parser = new Json.Parser ();
+            tmp_parser.load_from_data ("{}");
+            Json.Node node = tmp_parser.get_root ();
+            return node;
+        }
+        
+        public static int64 get_info_from_field (string app_id, string option_id, Json.Node node, string field) {
+            int64 total = 0;
+            Json.Node result = Json.Path.query ("$." + app_id + "-" + option_id + "[*]." + field, node);
+            foreach (Json.Node item in result.get_array ().get_elements ()) { // It's supposed to be a single element
+                total = int64.parse(Json.to_string (item, true));
+            }
+            return total;
+        }
+
+        public static int64 get_file_size_of (string app_id, string option_id, Json.Node node) {
+            string field = "size";
+            int64 total_size = get_info_from_field (app_id, option_id, node, field);
+            return total_size;
+        }
+
+        public static int64 get_file_number_of (string app_id, string option_id, Json.Node node) {
+            string field = "file-number";
+            int64 total_files = get_info_from_field (app_id, option_id, node, field);
+            return total_files;
+        }
+
+        public static Json.Node insert_info_data (string app_id, string option_id, int64[] information, Json.Node node) {
+            var array = new Json.Array ();
+            var object = new Json.Object ();
+            var current_obj = node.get_object ();
+            object.set_int_member ("file-number", information[0]);
+            object.set_int_member ("size", information[1]);
+            array.add_object_element (object);
+            current_obj.set_array_member (app_id + "-" + option_id, array);
+            node.take_object (current_obj);
+            return node;
         }
     }
 }

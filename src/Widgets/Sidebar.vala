@@ -23,12 +23,7 @@ using GLib;
 namespace GCleaner.Widgets {
     public class Sidebar : Box {
         public GCleaner.App app;
-        // public const int N_MAX_TO_SCAN = 36;
-        
-        public GCleaner.Tools.Cleaner[] list_cleaners = {};
-        
-        
-        //public CleanerButtons[] group_of_checks_per_app = new CleanerButtons[N_MAX_TO_SCAN];
+        private GCleaner.Tools.Cleaner[] list_cleaners = {};
         public Box apps_box;
         public Box system_box;
         public int count_apps = 0;
@@ -67,7 +62,7 @@ namespace GCleaner.Widgets {
             // ALL CHECKBOXS - CHECK IF EXIST THEN ADD IT
             // **********************************************************************************
             string[] categories = { "applications", "system" };
-            var parser = new GCleaner.Tools.JsonLoader ();
+            var parser = new GCleaner.Tools.JsonUtils ();
 
             foreach (string category in categories) {
                 Json.Object obj_category = parser.get_node_per_category (category).get_object ();
@@ -96,9 +91,7 @@ namespace GCleaner.Widgets {
                         
                         // We create the group of check buttons
                         // ************************************
-                        list_cleaners[count_apps] = new GCleaner.Tools.Cleaner (this.app, app_id);
-                        
-                        // group_of_checks_per_app[count_apps] = new CleanerButtons (this.app, app_id);
+                        list_cleaners += new GCleaner.Tools.Cleaner (this.app, app_id);
                         
                         // We package in the corresponding BOX
                         main_box.pack_start (program_icon, false, false, 2);
