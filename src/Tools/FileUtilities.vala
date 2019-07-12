@@ -19,9 +19,6 @@
 using GLib;
 
 public class FileUtilities {
-    public int64 fileCounter = 0;
-    public int64 fileSize = 0;
-
     public static string to_readable_format_size (int64 bytes) {
         float size;
         string format = "";
@@ -47,64 +44,30 @@ public class FileUtilities {
         
         return format;
     }
-    
     /*
-     * Function to search for files and folder size
+     * For performance reasons the previous version used a method that used the "File" class, 
+     * which performed exaggerated disk readings. Exceeding, even, more than 200MB
+     * This is a new version that does not affect the performance of the System.
      */
-    public static int64[] list_content (File file, Cancellable? cancellable = null) throws Error {
+    public static int64[] list_content (string path) {
         int64[] values = new int64[2];
-        int64 fileCounter = 0;
-        int64 fileSize = 0;
-
-        FileEnumerator enumerator;
-        
-        //First we ask if the current 'file' is a file, not a folder or directory
-        if (FileUtils.test (file.get_path (), FileTest.IS_REGULAR)) {
-            int64 file_size = 0;
-            try {
-                file_size = file.query_info ("*", FileQueryInfoFlags.NONE).get_size ();
-            } catch (Error e) {
-                stdout.printf("Error: %s", e.message);
-            }
-            
-            if (file_size != 0) {
-                fileCounter = fileCounter + 1;
-                fileSize = fileSize + file_size;
-            }
-            values[0] = fileCounter;
-            values[1] = fileSize;
-        } else { //'file' is a directory
-            try {
-                enumerator = file.enumerate_children ("standard::*", FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
-            } catch (IOError e) {
-                stderr.printf ("COM.GCLEANER.FILEUTLITIES: [WARNING: Unable to access the path '%s': %s\n", file.get_path (), e.message);
-                values[0] = 0;
-                values[1] = 0;
-                return values;
-            }
-            
-            FileInfo info = null;
-            while (cancellable.is_cancelled () == false && ((info = enumerator.next_file (cancellable)) != null)) {
-                if (info.get_file_type () == FileType.DIRECTORY) {
-                    File sub_dir = file.resolve_relative_path (info.get_name ());
-                    values = list_content (sub_dir, cancellable);
-                    fileCounter = fileCounter + values[0];
-                    fileSize = fileSize + values[1];
-                } else {
-                    fileCounter = fileCounter + 1;
-                    fileSize = fileSize + info.get_size ();
-                }
-            }
-            if (cancellable.is_cancelled ())
-                throw new IOError.CANCELLED ("Operation was cancelled");
-            
-            values[0] = fileCounter;
-            values[1] = fileSize;
-        }
-        
+        int64 file_counter = 0;
+        int64 file_size = 0;
+        string info_stdout;
+        string[] options = {"-a", "--du", "-n1"};
+        try {
+            Process.spawn_command_line_sync ("bash -c \"tree %s %s %s | tail %s\"".printf(options[0], options[1], path, options[2]), out info_stdout, null, null);
+            string[] parts = info_stdout.strip ().split (" ");
+            file_size = int64.parse (parts[0]);
+            file_counter = int64.parse (parts[6]);
+        } catch (SpawnError e) {
+            stderr.printf ("Error: %s\n", e.message);
+        }        
+        values[0] = file_counter;
+        values[1] = file_size;
         return values;
     }
-    
+
     public static int64[] generate_info_paths (string app_id, string option_id, string[] paths) {
         int64[] information = new int64[2];
         int64[] tmp_data = new int64[2];
@@ -115,7 +78,7 @@ public class FileUtilities {
             foreach (string dir in paths) {
                 File file = File.new_for_path (dir);
                 try {
-                    tmp_data = list_content (file, new Cancellable ());
+                    tmp_data = list_content (dir);
                 } catch (Error e) {
                     stdout.printf ("COM.GCLEANER.FILEUTLITIES [Error: %s]\n", e.message);
                     stdout.printf (">>> Comprobe path: %s", dir);
@@ -146,7 +109,7 @@ public class FileUtilities {
             try {
                 File file = File.new_for_path (current_path);
                 if (file.query_exists ()) {
-                    int64[] values = list_content (file, new Cancellable ());
+                    int64[] values = list_content (file.get_path ());
                     n_deleted_files += values[0];
                     size_deleted_files += values[1];
                     // We finally eliminated it

@@ -55,8 +55,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Tools/Cleaner.vala
     src/Tools/FileUtilities.vala
     src/Tools/InfoClean.vala
-    src/Tools/JsonLoader.vala
-    src/Tools/SqliteUtils.vala
+    src/Tools/JsonUtils.vala
     src/Tools/Tasks.vala
     src/Widgets/About.vala
     src/Widgets/CleanerButtons.vala
@@ -73,7 +72,6 @@ PACKAGES
     glib-2.0
     json-glib-1.0
     posix
-    sqlite3
 #Compiler options
 OPTIONS
     --target-glib=2.36
