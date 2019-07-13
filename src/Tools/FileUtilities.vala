@@ -153,6 +153,7 @@ public class FileUtilities {
         string[] special_chars = {"~", "$USER", "?", "*"};
         string[] options = {"-q", "-e"};
         foreach (string current_path in paths) {
+            current_path = current_path.replace (" ", "\\ ");
             if (item_array_in_string (special_chars, current_path) == false) {
                 list_paths += current_path;
             } else {

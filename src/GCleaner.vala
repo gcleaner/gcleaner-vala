@@ -211,7 +211,6 @@ namespace GCleaner {
                 info_clean.reset_values ();// Resetting count values
                 bool really_delete = false;
                 actions.run_scan_operation (this, sidebar, info_clean, results_area, really_delete);
-                stdout.printf("\033[31mTERMINADO SCAN\n\033[0m");
             });
             
             /*
@@ -227,7 +226,6 @@ namespace GCleaner {
                         info_clean.reset_values ();
                         bool really_delete = true;
                         actions.run_clean_operation (this, sidebar, info_clean, results_area, really_delete);
-                        stdout.printf("\033[31mTERMINADO CLEAN\n\033[0m");
                     }
                     msg.destroy ();
                 });
