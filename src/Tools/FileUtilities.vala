@@ -21,27 +21,20 @@ using GLib;
 public class FileUtilities {
     public static string to_readable_format_size (int64 bytes) {
         float size;
-        string format = "";
         int base_size = 1024;
+        string format = "";
+        string[] sufix = {"kB", "MB", "GB"};
         
         size = bytes / base_size;
-        if (size < base_size) {
-            size = Math.roundf (size * 100) / 100;
-            format = size.to_string () + " KB";
-        } else {
-            size = size / base_size;
-            if (size < base_size) {
-                size = Math.roundf (size * 100) / 100;
-                format = size.to_string () + " MB";
+        for (int i = 0; i < sufix.length; i++) {
+            if (size <= base_size) {
+                size = Math.roundf (size * base_size) / base_size;
+                format = "%.2f %s".printf (size, sufix[i]);
+                break;
             } else {
                 size = size / base_size;
-                if (size < base_size) {
-                    size = Math.roundf (size * 100) / 100;
-                    format = size.to_string () + " GB";
-                }
             }
         }
-        
         return format;
     }
     /*
@@ -62,7 +55,7 @@ public class FileUtilities {
             file_counter = int64.parse (parts[6]);
         } catch (SpawnError e) {
             stderr.printf ("Error: %s\n", e.message);
-        }        
+        }
         values[0] = file_counter;
         values[1] = file_size;
         return values;
