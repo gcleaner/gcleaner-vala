@@ -16,7 +16,7 @@ __Python 3 Version:__ [https://github.com/gcleaner/gcleaner-python](https://gith
 
 ### Screenshot
 
-![alt text](https://raw.githubusercontent.com/gcleaner/gcleaner-vala/master/screenshots/gcleaner_stable_vala_1.png "Vala stable_1 version of GCleaner")
+![alt text](https://raw.githubusercontent.com/gcleaner/gcleaner-vala/master/screenshots/gcleaner_stable_vala_2.png "Vala stable_2 version of GCleaner")
 
 You are a developer? did you like the project? [Get Involved](https://gcleaner.github.io/get_involved)!
 
