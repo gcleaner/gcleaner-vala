@@ -128,5 +128,9 @@ namespace GCleaner.Widgets {
         public GCleaner.Tools.Cleaner[] get_list_cleaners () {
             return list_cleaners;
         }
+
+        public int get_number_installed_apps () {
+            return list_cleaners.length;
+        }
     }
 }

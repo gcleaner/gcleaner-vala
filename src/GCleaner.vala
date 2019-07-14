@@ -105,8 +105,9 @@ namespace GCleaner {
             eventSidebar.override_background_color(Gtk.StateFlags.NORMAL, colour);
             
             var actions = new GCleaner.Tools.Actions ();
-            GCleaner.Tools.Cleaner[] list_cleaners = sidebar.get_list_cleaners ();
             var info_clean = new GCleaner.Tools.InfoClean ();
+            n_installed_apps = sidebar.get_number_installed_apps (); // Number of programs to be cleaned
+
             // PACKAGING
             /*
              * TOOLBAR and HEADERBAR
@@ -194,7 +195,6 @@ namespace GCleaner {
             /************* TEMPORARY, then erase *******************/
             string home_user = GLib.Environment.get_variable ("HOME");
             stdout.printf ("COM.GCLEANER.APP: [USER: %s]\n", home_user);
-            n_installed_apps = sidebar.count_apps; // Number of programs to be cleaned
             
             /*
              * Scan button actions and Logic
@@ -210,7 +210,7 @@ namespace GCleaner {
                 results_area.clear_results (); // Clean the results grid
                 info_clean.reset_values ();// Resetting count values
                 bool really_delete = false;
-                actions.run_scan_operation (this, sidebar, list_cleaners, info_clean, results_area, n_installed_apps, really_delete);
+                actions.run_scan_operation (this, sidebar, info_clean, results_area, really_delete);
             });
             
             /*
@@ -225,7 +225,7 @@ namespace GCleaner {
                         results_area.move_pix_cell_to_left ();
                         info_clean.reset_values ();
                         bool really_delete = true;
-                        actions.run_clean_operation (this, sidebar, list_cleaners, info_clean, results_area, n_installed_apps, really_delete);
+                        actions.run_clean_operation (this, sidebar, info_clean, results_area, really_delete);
                     }
                     msg.destroy ();
                 });

@@ -151,14 +151,15 @@ public class FileUtilities {
     public static string[]? reinterpret_paths (string[] paths) {
         string[] list_paths = {};
         string[] special_chars = {"~", "$USER", "?", "*"};
-
+        string[] options = {"-q", "-e"};
         foreach (string current_path in paths) {
+            current_path = current_path.replace (" ", "\\ ");
             if (item_array_in_string (special_chars, current_path) == false) {
                 list_paths += current_path;
             } else {
                 string paths_stdout;
                 try {
-                    Process.spawn_command_line_sync ("bash -c \"realpath " + current_path + "\"", out paths_stdout, null, null);
+                    Process.spawn_command_line_sync ("bash -c \"realpath %s %s %s\"".printf(options[0], options[1], current_path), out paths_stdout, null, null);
                     string[] parts = paths_stdout.split ("\n");
                     foreach (string dir in parts) {
                         if (dir.length > 0) list_paths += dir;
