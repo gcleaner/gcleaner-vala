@@ -35,9 +35,12 @@ namespace GCleaner.Tools {
         return 1;
     }
 
-    public async int analyze_all_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area) throws ThreadError {
+    // This function does both the analysis and the cleaning
+    // ********************************************************
+    public async int analyze_all_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area, bool? really_delete = false) throws ThreadError {
         SourceFunc analyze_callback = analyze_all_process.callback;
         ThreadFunc<void*> run = () => {
+            bool status = false;
             Timeout.add (50, () => {
                 var list_store = results_area.get_list_store ();
                 list_store.foreach ((model, path, iter) => {
@@ -50,35 +53,35 @@ namespace GCleaner.Tools {
                 return true;
             });
             
-            var jload = new GCleaner.Tools.JsonLoader ();
+            var jload = new GCleaner.Tools.JsonUtils ();
             foreach (var cleaner in list_cleaners) {
                 if (cleaner.is_active ()) {
                     string app_id = cleaner.app_id;
                     string app_name = cleaner.get_app_name ();
-                    int count = 0;
-                    
+                    int count = 0; // It is used for the indexes of the options
                     Json.Node all_options = jload.get_all_options_of (app_id);
                     foreach (var option in all_options.get_array ().get_elements ()) {
                         var object_option = option.get_object ();
-                        
                         string option_id = object_option.get_string_member ("option-id");
                         string option_name = object_option.get_string_member ("option-name");
-                        
+                        /* Update the progress bar
+                         * ++++++-----------------------------
+                         */
+                        app.update_progress (app_name, option_name, info_clean.get_n_scanned_apps ());
                         if (cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count)) {
                             string[] advanced_options = {"cache-pkg", "configuration-pkg", "old-kernels"};
-                            /* Update the progress bar
-                             * ++++++-----------------------------
-                             */
-                            app.update_progress (app_name, option_name);
-                            
                             if (option_id in advanced_options) { // The option contains commands
                                 Json.Node node_cmd = jload.get_all_commands_of (app_id, option_id);
                                 var object_cmd = node_cmd.get_object ();
-
                                 string cmd_size = (object_cmd.has_member ("get-size")) ? object_cmd.get_string_member ("get-size") : null;
                                 string cmd_quantity = object_cmd.get_string_member ("get-quantity");
+                                string cmd_clean = object_cmd.get_string_member ("clean");
 
-                                info_clean.advanced_scan (app_id, option_id, cmd_quantity, cmd_size);
+                                if (really_delete) {
+                                    status = info_clean.clean_operation (app_id, option_id, null, cmd_clean, cmd_quantity, cmd_size);
+                                } else {
+                                    info_clean.advanced_scan (app_id, option_id, cmd_quantity, cmd_size);
+                                }
                             } else { // Option only contains paths
                                 string[] paths_to_scan = {}; // It will contain the reinterpreted paths
                                 string[] current_option_paths = {};
@@ -86,16 +89,23 @@ namespace GCleaner.Tools {
                                 foreach (var dir in object_option.get_array_member ("paths").get_elements ()) {
                                     current_option_paths += dir.get_string ();
                                 }
-                                // We save in an array the paths that have been reinterpreted.
+                                // We save in an array the paths that were reinterpreted.
                                 paths_to_scan = FileUtilities.reinterpret_paths (current_option_paths);
-                                if (paths_to_scan[0] != "null")
-                                    info_clean.simple_scan (app_id, option_id, paths_to_scan);
+                                if (paths_to_scan[0] != null) {
+                                    if (really_delete) {
+                                        status = info_clean.clean_operation (app_id, option_id, paths_to_scan, null);
+                                    } else {
+                                        info_clean.simple_scan (app_id, option_id, paths_to_scan);
+                                    }
+                                }
                             }
                         }
                         count++;
                     }
                 }
+                info_clean.count_scanned_apps (1);
             }
+
             Idle.add((owned) analyze_callback);
             Thread.exit (1.to_pointer ());
             return null;
@@ -103,61 +113,5 @@ namespace GCleaner.Tools {
         Thread<void*> analyze_all_thread = new Thread<void*> ("analyze_all_thread", run);
         yield;
         return 1;
-    }
-
-    public async bool clean_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean) throws ThreadError {
-        SourceFunc clean_callback = clean_process.callback;
-        // Used to manage the way final results are displayed
-        bool no_errors = true;
-        ThreadFunc<void*> run = () => {
-            var jload = new GCleaner.Tools.JsonLoader ();
-            
-            foreach (var cleaner in list_cleaners) {
-                if (cleaner.is_active ()) {
-                    string app_id = cleaner.app_id;
-                    string app_name = cleaner.get_app_name ();
-                    string[] system_apps = {"apt", "system"};
-                    string category = (app_id in system_apps) ? "system" : "applications";
-                    int count = 0;
-                    
-                    Json.Node all_options = jload.get_all_options_of (app_id);
-                    foreach (var option in all_options.get_array ().get_elements ()) {
-                        var object_option = option.get_object ();
-                        
-                        string option_id = object_option.get_string_member ("option-id");
-                        string option_name = object_option.get_string_member ("option-name");
-                        
-                        if (cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count)) {
-                            string[] advanced_options = {"cache-pkg", "configuration-pkg", "old-kernels"};
-                            /* Update the progress bar
-                             * ++++++-----------------------------
-                             */
-                            app.update_progress (app_name, option_name);
-                            string cmd_clean = null;
-
-                            if (option_id in advanced_options) { // The option contains commands
-                                Json.Node node_cmd = jload.get_all_commands_of (app_id, option_id);
-                                var object_cmd = node_cmd.get_object ();
-                                cmd_clean = object_cmd.get_string_member ("clean");
-                            }
-
-                            no_errors = info_clean.clean_operation (app_id, option_id, cmd_clean);
-                        }
-                        count++;
-                    }
-                }
-            }
-
-            // We update the values
-            //info_clean.set_total_counter (clean_files);
-            //info_clean.set_total_accumulator (clean_size);
-            
-            Idle.add((owned) clean_callback);
-            Thread.exit (1.to_pointer ());
-            return null;
-        };
-        Thread<void*> clean_thread = new Thread<void*> ("clean_thread", run);
-        yield;
-        return no_errors;
     }
 }

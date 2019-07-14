@@ -19,10 +19,27 @@
 using Gtk;
 using Gdk;
 using GLib;
+using Json;
 
 public Pixbuf load_pixbuf (string rsc_icon, int size = 16) {
     var pix = new Gdk.Pixbuf.from_file_at_scale (rsc_icon, size, size, false);
+    return pix;
+}
 
+public Pixbuf load_pixbuf_from_name (string app_name, string option_id, int size = 16) {
+    Pixbuf pix;
+    string[] system_apps = {"apt", "system"};
+    string category = (app_name in system_apps) ? "system" : "applications";
+    string type_icon = (category == "applications") ? "apps" : "info-system";
+    string ext = ".png";
+    string name_icon = app_name;
+    if (category == "system") {
+        var jload = new GCleaner.Tools.JsonUtils ();
+        ext = (option_id == "old-kernels") ? ".png" : ".svg";
+        name_icon = jload.get_icon_name_from_system_app (app_name, option_id);
+    }
+    string path_icon = Constants.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ext;
+    pix = load_pixbuf (path_icon, size);
     return pix;
 }
 
@@ -109,4 +126,24 @@ public bool comprobe_if_exists_app (string app_name) {
         else 
             return false;
     }
+}
+
+public string run_basic_command (string cmd) {
+    string result = null;
+    string error;
+    int status;
+    try {
+        Process.spawn_command_line_sync ("bash -c \"" + cmd + "\"", out result, out error, out status);
+        return result;
+    } catch (GLib.SpawnError e) {
+        stdout.printf ("COM.GCLEANER: %s", e.message);
+        return result;
+    }
+}
+
+public bool item_array_in_string (string[] array, string text) {
+    foreach (string item in array) {
+        if (item in text) return true;
+    }
+    return false;
 }

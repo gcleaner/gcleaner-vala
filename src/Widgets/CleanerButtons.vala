@@ -25,32 +25,27 @@ namespace GCleaner.Widgets {
         public GCleaner.App app;
         private string app_id;
         private string app_name;
-        
         private int64 n_options;
-        private bool check_root_is_clicked = false;
+        public bool check_root_is_clicked = false;
         
-        public Gtk.CheckButton check_root;
-        public Gtk.CheckButton[] check_options = {};
+        private Gtk.CheckButton check_root;
+        private Gtk.CheckButton[] check_options = {};
         
         public CleanerButtons (GCleaner.App app, string app_id) {
             this.app = app;
             this.app_id = app_id;
-
             this.load_init ();
         }
         
         private void load_init () {
-            var jload = new GCleaner.Tools.JsonLoader ();
-
+            var jload = new GCleaner.Tools.JsonUtils ();
             app_name = jload.get_item_from_app (app_id, "name");
             n_options = jload.get_n_options_from (app_id);
             string key_xml = app_id + "-main";
-            
             // Setting the main check
             check_root = new Gtk.CheckButton.with_label (app_name);
             configure_check_root (key_xml);
             check_root.set_active (app.settings.get_boolean (key_xml));
-
             // Setting option checks
             configure_checks_options ();
         }
@@ -91,8 +86,8 @@ namespace GCleaner.Widgets {
             set_tooltip_root ();
         }
         
-        public void configure_checks_options () {
-            var jload = new GCleaner.Tools.JsonLoader ();
+        private void configure_checks_options () {
+            var jload = new GCleaner.Tools.JsonUtils ();
             
             int count = 0;
             Json.Node all_options = jload.get_all_options_of (app_id);
@@ -106,15 +101,14 @@ namespace GCleaner.Widgets {
 
                 string option_info = determine_tooltip_text (option_id, warning_value);
                 string icon_warning_name = determine_warning_icon (warning_value);
-                
-                check_options[count] = new Gtk.CheckButton.with_label (option_label);
+                check_options += new Gtk.CheckButton.with_label (option_label);
                 check_options[count].set_active (app.settings.get_boolean (key_xml));
                 assign_check_pressed (check_options[count], key_xml);
                 set_tooltip_options (check_options[count], icon_warning_name, option_info);
 
                 //We're checking to see if there's any option to display a warning message
                 if (warning_value == true) {
-                    string question = build_question_for_msgdlg (option_id, option_label);
+                    string question = build_question_for_msgdlg (option_id);
                     set_msgdlg_warning (check_options[count], key_xml, question);
                 }
 
@@ -143,10 +137,10 @@ namespace GCleaner.Widgets {
             });
         }
         
-        private string build_question_for_msgdlg (string option_id, string program_name = "") {
+        private string build_question_for_msgdlg (string option_id) {
             string question = "";
             if (option_id == "pass") {
-                question = "Are you sure you want to delete the saved passwords from " + program_name + "?";
+                question = "Are you sure you want to delete the saved passwords from " + app_name + "?";
             } else if (option_id == "cache-pkg") {
                 question = "Are you sure you want to delete the cache and obsolete files from Package System?";
             } else if (option_id == "configuration-pkg") {
@@ -177,7 +171,7 @@ namespace GCleaner.Widgets {
         }
 
         private void set_tooltip_root () {
-            var jload = new GCleaner.Tools.JsonLoader ();
+            var jload = new GCleaner.Tools.JsonUtils ();
             string text_icon = determine_app_icon ();
             string program_type = jload.get_item_from_app (app_id, "type");
             
@@ -196,7 +190,7 @@ namespace GCleaner.Widgets {
         }
 
         private string determine_app_icon () {
-            var jload = new GCleaner.Tools.JsonLoader ();
+            var jload = new GCleaner.Tools.JsonUtils ();
             string text_icon = "";
             
             if (app_id == "apt" || app_id == "system") {

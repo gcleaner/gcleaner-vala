@@ -53,10 +53,10 @@ namespace GCleaner.Widgets {
 			Label os_information = new Label ("");
 			os_information.set_markup ("<span font_size='small'>" + getOS () + "</span>");//Returns the distribution, codename and architecture
 
-			complete_system_specs = getProcessor () + "  •  " + getMemory () + " RAM  •  " + getGraphics ();//•▪ Arma la cadena de las especificaciones del Sistema
+			complete_system_specs = getProcessor () + "  •  " + getMemory () + " RAM  •  " + getGraphics ();//Assemble chain of System Specifications
 
 			Label system_specs = new Label ("");
-			system_specs.set_markup ("<span font_size='small'>" + complete_system_specs + "</span>");//Usa las especificaciones en el formato markup establecido
+			system_specs.set_markup ("<span font_size='small'>" + complete_system_specs + "</span>");//Use the specifications in the established markup format
 			
 			/*Fillings*/
 			Label helpFill_1 		= new Label ("");
@@ -98,19 +98,19 @@ namespace GCleaner.Widgets {
 			//BOXES
 			/*Icon*/
 			Box icon_box 	= new Box (Orientation.VERTICAL, 0);
-			Box subIcon_box = new Box (Orientation.HORIZONTAL, 0);//Engloba para separar con pixels los ToolItem
+			Box subIcon_box = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
 			/*Name and Version*/
 			Box nameApp_box 	= new Box (Orientation.VERTICAL, 0);
 			Box title_box 		= new Box (Orientation.HORIZONTAL, 0);
 			Box version_box 	= new Box (Orientation.HORIZONTAL, 0);
-			Box subNameApp_box	= new Box (Orientation.HORIZONTAL, 0);//Engloba para separar con pixels los ToolItem
+			Box subNameApp_box	= new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
 			/*Operating System and System specs*/
 			Box os_box 			  = new Box (Orientation.HORIZONTAL, 0);
 			Box sysProperties_box = new Box (Orientation.HORIZONTAL, 0);
 			Box specs_box 		  = new Box (Orientation.VERTICAL, 0);
-			Box subSpecs_box	  = new Box (Orientation.HORIZONTAL, 0);//Engloba para separar con pixels los ToolItem
+			Box subSpecs_box	  = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
 			/*Help*/
 			Box help_box = new Box (Orientation.VERTICAL, 0);
@@ -131,16 +131,14 @@ namespace GCleaner.Widgets {
 			//GCleaner icon for Toolbar
 			Image icon = new Image ();
 			try {
-				var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale ("/usr/share/pixmaps/gcleanertb.svg", 56, 56, false);//Crea una imagen pixbuf
+				var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale ("/usr/share/pixmaps/gcleanertb.svg", 56, 56, false);
 				icon.set_from_pixbuf (icon_pixbuf);
 			} catch (GLib.Error e) {
 				stderr.printf ("COM.GCLEANER.APP.TOOLBAR: [GLIB::ERROR CREANDO ICONO PIXBUF]\n");
 				stderr.printf (">>> Comprobar ruta: /usr/share/pixmaps/gcleanertb.svg\n");
 			}
 
-			/
 			//PACKAGING
-			/*boxName.pack_start (widget, expand, fill, padding);*/
 			/*Icon*/
 			icon_box.pack_start (iconFill, false, true, 0);
 			icon_box.pack_start (icon, false, true, 2);

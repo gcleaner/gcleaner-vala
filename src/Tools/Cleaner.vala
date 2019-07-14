@@ -22,8 +22,8 @@ using Json;
 
 namespace GCleaner.Tools {
     public class Cleaner {
-        private GCleaner.App app;
-        private string _app_id;
+        public GCleaner.App app;
+        public string _app_id;
         private GCleaner.Widgets.CleanerButtons list_buttons;
 
         public Cleaner (GCleaner.App app, string app_id) {
@@ -52,7 +52,7 @@ namespace GCleaner.Tools {
         }
 
         public string get_app_name () {
-            string app_name = get_check_root ().get_name ();
+            string app_name = list_buttons.get_name ();
             return app_name;
         }
 
