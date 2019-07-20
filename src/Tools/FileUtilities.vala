@@ -49,10 +49,11 @@ public class FileUtilities {
         string path = src_path.replace (" ", "\\ "); // Process.spawn_command_lyne_sync does not interpret blank spaces
         try {
             string size_stdout, counter_stdout;
+            string redirect_error = "2>/dev/null";
             string[] options = {"-sb", "-f1", "-l", "-type f"};
-            Process.spawn_command_line_sync ("bash -c \"du %s %s | cut %s\"".printf(options[0], path, options[1]), out size_stdout, null, null);
-            Process.spawn_command_line_sync ("bash -c \"find %s %s | wc %s\"".printf(path, options[3], options[2]), out counter_stdout, null, null);
-            file_size = int64.parse (size_stdout);
+            Process.spawn_command_line_sync ("bash -c \"du %s %s %s | cut %s\"".printf(options[0], path, redirect_error, options[1]), out size_stdout, null, null);
+            Process.spawn_command_line_sync ("bash -c \"find %s %s %s | wc %s\"".printf(path, options[3], redirect_error, options[2]), out counter_stdout, null, null);
+            file_size = (size_stdout.length != 0) ? int64.parse (size_stdout) : 0;
             file_counter = int64.parse (counter_stdout);
         } catch (SpawnError e) {
             stderr.printf ("Error: %s\n", e.message);
@@ -159,7 +160,7 @@ public class FileUtilities {
             } else {
                 string paths_stdout;
                 try {
-                    Process.spawn_command_line_sync ("bash -c \"realpath " + current_path + "\"", out paths_stdout, null, null);
+                    Process.spawn_command_line_sync ("bash -c \"realpath -q " + current_path + "\"", out paths_stdout, null, null);
                     string[] parts = paths_stdout.split ("\n");
                     foreach (string dir in parts) {
                         if (dir.length > 0) list_paths += dir;
