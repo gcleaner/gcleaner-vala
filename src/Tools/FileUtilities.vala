@@ -42,17 +42,19 @@ public class FileUtilities {
      * which performed exaggerated disk readings. Exceeding, even, more than 200MB
      * This is a new version that does not affect the performance of the System.
      */
-    public static int64[] list_content (string path) {
+    public static int64[] list_content (string src_path) {
         int64[] values = new int64[2];
         int64 file_counter = 0;
         int64 file_size = 0;
-        string info_stdout;
-        string[] options = {"-a", "--du", "-n1"};
+        string path = src_path.replace (" ", "\\ "); // Process.spawn_command_lyne_sync does not interpret blank spaces
         try {
-            Process.spawn_command_line_sync ("bash -c \"tree %s %s %s | tail %s\"".printf(options[0], options[1], path, options[2]), out info_stdout, null, null);
-            string[] parts = info_stdout.strip ().split (" ");
-            file_size = int64.parse (parts[0]);
-            file_counter = int64.parse (parts[6]);
+            string size_stdout, counter_stdout;
+            string redirect_error = "2>/dev/null";
+            string[] options = {"-sb", "-f1", "-l", "-type f"};
+            Process.spawn_command_line_sync ("bash -c \"du %s %s %s | cut %s\"".printf(options[0], path, redirect_error, options[1]), out size_stdout, null, null);
+            Process.spawn_command_line_sync ("bash -c \"find %s %s %s | wc %s\"".printf(path, options[3], redirect_error, options[2]), out counter_stdout, null, null);
+            file_size = (size_stdout.length != 0) ? int64.parse (size_stdout) : 0;
+            file_counter = int64.parse (counter_stdout);
         } catch (SpawnError e) {
             stderr.printf ("Error: %s\n", e.message);
         }
