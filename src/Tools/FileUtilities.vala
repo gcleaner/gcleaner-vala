@@ -48,6 +48,7 @@ public class FileUtilities {
         int64 file_size = 0;
         string info_stdout;
         string[] options = {"-a", "--du", "-n1"};
+        path = current_path.replace (" ", "\\ "); // Process.spawn_command_lyne_sync does not interpret blank spaces
         try {
             Process.spawn_command_line_sync ("bash -c \"tree %s %s %s | tail %s\"".printf(options[0], options[1], path, options[2]), out info_stdout, null, null);
             string[] parts = info_stdout.strip ().split (" ");
