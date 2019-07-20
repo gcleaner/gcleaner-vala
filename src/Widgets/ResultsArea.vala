@@ -37,9 +37,8 @@ namespace GCleaner.Widgets {
         
         public ResultsArea () {
             //LIST STORE - SCAN/CLEANING INFORMATION
-            list_store = new Gtk.ListStore (6, typeof (bool), typeof(int), typeof(Gdk.Pixbuf), typeof(string), typeof(string), typeof(string));
+            list_store = new Gtk.ListStore (6, typeof (bool), typeof (int), typeof (Gdk.Pixbuf), typeof (string), typeof (string), typeof (string));
             tree_view = new TreeView.with_model (list_store);
-            
             create_results_area ();
         }
         

@@ -35,8 +35,9 @@ namespace GCleaner.Tools {
            return Instance;
         }
 
-        public void run_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, Cleaner[] list_cleaners, InfoClean info_clean, 
-                                   GCleaner.Widgets.ResultsArea results_area, int n_installed_apps, bool really_delete = false) {
+        public void run_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, InfoClean info_clean, 
+                                   GCleaner.Widgets.ResultsArea results_area, bool really_delete = false) {
+            Cleaner[] list_cleaners = sidebar.get_list_cleaners ();
             analyze_all_process.begin (app, list_cleaners, info_clean, results_area, really_delete, (obj, res) => {
                 try {
                     int result = analyze_all_process.end(res);
@@ -47,7 +48,7 @@ namespace GCleaner.Tools {
                 }
             });
 
-            print_results.begin (info_clean, n_installed_apps, (obj, res) => {
+            print_results.begin (info_clean, sidebar.get_number_installed_apps (), (obj, res) => {
                 try {
                     int result = print_results.end(res);
                     var jload = new GCleaner.Tools.JsonUtils ();
@@ -117,14 +118,14 @@ namespace GCleaner.Tools {
             });
         }
 
-        public void run_scan_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, Cleaner[] list_cleaners, InfoClean info_clean, 
-                                        GCleaner.Widgets.ResultsArea results_area, int n_installed_apps, bool really_delete = false) {
-            run_operation (app, sidebar, list_cleaners, info_clean, results_area, n_installed_apps, really_delete);
+        public void run_scan_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area, 
+                                        bool really_delete = false) {
+            run_operation (app, sidebar, info_clean, results_area, really_delete);
         }
 
-        public void run_clean_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, Cleaner[] list_cleaners, InfoClean info_clean, 
-                                         GCleaner.Widgets.ResultsArea results_area, int n_installed_apps, bool really_delete = true) {
-            run_operation (app, sidebar, list_cleaners, info_clean, results_area, n_installed_apps, really_delete);
+        public void run_clean_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area, 
+                                         bool really_delete = true) {
+            run_operation (app, sidebar, info_clean, results_area, really_delete);
         }
     }
 }
