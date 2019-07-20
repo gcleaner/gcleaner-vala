@@ -42,11 +42,11 @@ public class FileUtilities {
      * which performed exaggerated disk readings. Exceeding, even, more than 200MB
      * This is a new version that does not affect the performance of the System.
      */
-    public static int64[] list_content (string path) {
+    public static int64[] list_content (string src_path) {
         int64[] values = new int64[2];
         int64 file_counter = 0;
         int64 file_size = 0;
-        path = current_path.replace (" ", "\\ "); // Process.spawn_command_lyne_sync does not interpret blank spaces
+        string path = src_path.replace (" ", "\\ "); // Process.spawn_command_lyne_sync does not interpret blank spaces
         try {
             string size_stdout, counter_stdout;
             string[] options = {"-sb", "-f1", "-l", "-type f"};
