@@ -46,14 +46,14 @@ public class FileUtilities {
         int64[] values = new int64[2];
         int64 file_counter = 0;
         int64 file_size = 0;
-        string info_stdout;
-        string[] options = {"-a", "--du", "-n1"};
         path = current_path.replace (" ", "\\ "); // Process.spawn_command_lyne_sync does not interpret blank spaces
         try {
-            Process.spawn_command_line_sync ("bash -c \"tree %s %s %s | tail %s\"".printf(options[0], options[1], path, options[2]), out info_stdout, null, null);
-            string[] parts = info_stdout.strip ().split (" ");
-            file_size = int64.parse (parts[0]);
-            file_counter = int64.parse (parts[6]);
+            string size_stdout, counter_stdout;
+            string[] options = {"-sb", "-f1", "-l", "-type f"};
+            Process.spawn_command_line_sync ("bash -c \"du %s %s | cut %s\"".printf(options[0], path, options[1]), out size_stdout, null, null);
+            Process.spawn_command_line_sync ("bash -c \"find %s %s | wc %s\"".printf(path, options[3], options[2]), out counter_stdout, null, null);
+            file_size = int64.parse (size_stdout);
+            file_counter = int64.parse (counter_stdout);
         } catch (SpawnError e) {
             stderr.printf ("Error: %s\n", e.message);
         }
