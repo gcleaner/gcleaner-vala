@@ -39,7 +39,7 @@ namespace GCleaner.Tools {
             Cleaner[] list_cleaners = app.sidebar.get_list_cleaners ();
             var info_clean = new InfoClean ();
             info_clean.reset_values ();
-            analyze_all_process.begin (app, list_cleaners, info_clean, app.results_area, really_delete, (obj, res) => {
+            analyze_all_process.begin (app, list_cleaners, info_clean, really_delete, (obj, res) => {
                 try {
                     int result = analyze_all_process.end(res);
                     app.set_progress_fraction_value (1.0);
