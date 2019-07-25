@@ -53,7 +53,7 @@ namespace GCleaner.Tools {
                 return true;
             });
             
-            var jload = new GCleaner.Tools.JsonUtils ();
+            var jload = new JsonUtils ();
             foreach (var cleaner in list_cleaners) {
                 if (cleaner.is_active ()) {
                     string app_id = cleaner.app_id;
@@ -91,7 +91,7 @@ namespace GCleaner.Tools {
                                 }
                                 // We save in an array the paths that were reinterpreted.
                                 paths_to_scan = FileUtilities.reinterpret_paths (current_option_paths);
-                                if (paths_to_scan[0] != null) {
+                                if (paths_to_scan.length > 0) {
                                     if (really_delete) {
                                         status = info_clean.clean_operation (app_id, option_id, paths_to_scan, null);
                                     } else {

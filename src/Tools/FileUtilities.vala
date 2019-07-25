@@ -150,7 +150,7 @@ public class FileUtilities {
             throw new IOError.CANCELLED ("Operation was cancelled");
     }
 
-    public static string[]? reinterpret_paths (string[] paths) {
+    public static string[] reinterpret_paths (string[] paths) {
         string[] list_paths = {};
         string[] special_chars = {"~", "$USER", "?", "*"};
         string[] options = {"-q", "-e"};
@@ -171,7 +171,6 @@ public class FileUtilities {
                 }
             }
         }
-        if (list_paths.length == 0) list_paths += null;
         return list_paths;
     }
 }

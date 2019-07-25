@@ -35,10 +35,11 @@ namespace GCleaner.Tools {
            return Instance;
         }
 
-        public void run_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, InfoClean info_clean, 
-                                   GCleaner.Widgets.ResultsArea results_area, bool really_delete = false) {
-            Cleaner[] list_cleaners = sidebar.get_list_cleaners ();
-            analyze_all_process.begin (app, list_cleaners, info_clean, results_area, really_delete, (obj, res) => {
+        public void run_operation (GCleaner.App app, bool really_delete = false) {
+            Cleaner[] list_cleaners = app.sidebar.get_list_cleaners ();
+            var info_clean = new InfoClean ();
+            info_clean.reset_values ();
+            analyze_all_process.begin (app, list_cleaners, info_clean, app.results_area, really_delete, (obj, res) => {
                 try {
                     int result = analyze_all_process.end(res);
                     app.set_progress_fraction_value (1.0);
@@ -48,16 +49,15 @@ namespace GCleaner.Tools {
                 }
             });
 
-            print_results.begin (info_clean, sidebar.get_number_installed_apps (), (obj, res) => {
+            print_results.begin (info_clean, app.sidebar.get_number_installed_apps (), (obj, res) => {
                 try {
                     int result = print_results.end(res);
                     var jload = new GCleaner.Tools.JsonUtils ();
                     Gdk.Pixbuf pix;
-                    sidebar.apps_box.set_sensitive (true);
-                    sidebar.system_box.set_sensitive (true);
-                    results_area.move_pix_cell_to_right ();
-                    results_area.clear_results ();
-
+                    app.sidebar.apps_box.set_sensitive (true);
+                    app.sidebar.system_box.set_sensitive (true);
+                    app.results_area.move_pix_cell_to_right ();
+                    app.results_area.clear_results ();
                     if (info_clean.get_total_counter () > 0) {
                         string total_file_size = FileUtilities.to_readable_format_size (info_clean.get_total_accumulator ());
                         string total_file_number = info_clean.get_total_counter ().to_string ();
@@ -72,8 +72,8 @@ namespace GCleaner.Tools {
                             text_result = "Analysis complete\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)\n";
                             text_detail = "Details of files to be deleted (Note: No file have been deleted yet)\n";
                         }
-                        results_area.append_data_to_list_store (pix, text_result);
-                        results_area.append_data_to_list_store (null, text_detail);
+                        app.results_area.append_data_to_list_store (pix, text_result);
+                        app.results_area.append_data_to_list_store (null, text_detail);
                         foreach (var cleaner in list_cleaners) {
                             if (cleaner.is_active ()) {
                                 string app_id = cleaner.app_id;
@@ -96,7 +96,7 @@ namespace GCleaner.Tools {
                                                 int64 size_option = info_clean.get_file_size_of (app_id, option_id);
                                                 size_formated = FileUtilities.to_readable_format_size (size_option);
                                             }
-                                            results_area.append_data_to_list_store (pix, "• " + app_name + " - " + option_name, size_formated, n_files_option.to_string () + " files");
+                                            app.results_area.append_data_to_list_store (pix, "• " + app_name + " - " + option_name, size_formated, n_files_option.to_string () + " files");
                                         }
                                     }
                                     count++;
@@ -107,7 +107,7 @@ namespace GCleaner.Tools {
                         app.enable_clean_button ();
                     } else {
                         pix = load_pixbuf (Constants.PKGDATADIR + "/media/info-system/dialog-ok.png", 16);
-                        results_area.append_data_to_list_store (pix, "Congratulations! The System is clean!");
+                        app.results_area.append_data_to_list_store (pix, "Congratulations! The System is clean!");
                         app.disable_clean_button ();
                     }
                     
@@ -118,14 +118,14 @@ namespace GCleaner.Tools {
             });
         }
 
-        public void run_scan_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area, 
-                                        bool really_delete = false) {
-            run_operation (app, sidebar, info_clean, results_area, really_delete);
+        public void run_scan_operation (GCleaner.App app) {
+            bool really_delete = false;
+            run_operation (app, really_delete);
         }
 
-        public void run_clean_operation (GCleaner.App app, GCleaner.Widgets.Sidebar sidebar, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area, 
-                                         bool really_delete = true) {
-            run_operation (app, sidebar, info_clean, results_area, really_delete);
+        public void run_clean_operation (GCleaner.App app) {
+            bool really_delete = true;
+            run_operation (app, really_delete);
         }
     }
 }
