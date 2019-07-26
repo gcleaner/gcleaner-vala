@@ -221,6 +221,7 @@ namespace GCleaner {
                     if (response_id == Gtk.ResponseType.OK) {
                         /* Set to 0 before cleaning */
                         results_area.move_pix_cell_to_left ();
+                        results_area.clear_results (); // Clean the results grid
                         actions.run_clean_operation (this);
                     }
                     msg.destroy ();
