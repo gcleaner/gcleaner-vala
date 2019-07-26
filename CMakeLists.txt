@@ -74,6 +74,7 @@ PACKAGES
     posix
 #Compiler options
 OPTIONS
+    -g --save-temps
     --target-glib=2.36
     --thread
 )

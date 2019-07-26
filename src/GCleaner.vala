@@ -24,14 +24,15 @@ using Json;
 namespace GCleaner {
     public class App : Gtk.Application {
         public int n_installed_apps;
+        public Gtk.ApplicationWindow main_window; // Main window
         public Gtk.Label lbl_progress;
         public Gtk.ProgressBar progress_bar;
         public Gtk.ListStore result_list;
         public Gtk.Button scan_button;
         public Gtk.Button clean_button;
-        public GCleaner.Widgets.ResultsArea results_area; 
-        public Gtk.ApplicationWindow main_window; // Main window
         public GLib.Settings settings;
+        public GCleaner.Widgets.Sidebar sidebar;
+        public GCleaner.Widgets.ResultsArea results_area;
 
         public App () {
             GLib.Object(application_id: "org.gcleaner",
@@ -85,10 +86,9 @@ namespace GCleaner {
             progress_bar = new ProgressBar ();
             
             // OWN WIDGETS
-            var sidebar = new GCleaner.Widgets.Sidebar (this);
+            sidebar = new GCleaner.Widgets.Sidebar (this);
             sidebar.get_style_context ().add_class("Sidebar");
             results_area = new GCleaner.Widgets.ResultsArea ();
-            TreeView results_view = results_area.get_tree_view ();
             
             /*
              * This EventBox is created to color the
@@ -105,7 +105,6 @@ namespace GCleaner {
             eventSidebar.override_background_color(Gtk.StateFlags.NORMAL, colour);
             
             var actions = new GCleaner.Tools.Actions ();
-            var info_clean = new GCleaner.Tools.InfoClean ();
             n_installed_apps = sidebar.get_number_installed_apps (); // Number of programs to be cleaned
 
             // PACKAGING
@@ -166,6 +165,7 @@ namespace GCleaner {
             progress_box.pack_start (lbl_progress, false, true, 8);
             
             /* Scrolled window area */
+            TreeView results_view = results_area.get_tree_view ();
             ScrolledWindow results_scroll_area = new ScrolledWindow (null, null);
             results_scroll_area.add (results_view);
             
@@ -208,9 +208,7 @@ namespace GCleaner {
                 progress_bar.set_fraction (0);
                 results_area.move_pix_cell_to_left ();
                 results_area.clear_results (); // Clean the results grid
-                info_clean.reset_values ();// Resetting count values
-                bool really_delete = false;
-                actions.run_scan_operation (this, sidebar, info_clean, results_area, really_delete);
+                actions.run_scan_operation (this);
             });
             
             /*
@@ -223,9 +221,7 @@ namespace GCleaner {
                     if (response_id == Gtk.ResponseType.OK) {
                         /* Set to 0 before cleaning */
                         results_area.move_pix_cell_to_left ();
-                        info_clean.reset_values ();
-                        bool really_delete = true;
-                        actions.run_clean_operation (this, sidebar, info_clean, results_area, really_delete);
+                        actions.run_clean_operation (this);
                     }
                     msg.destroy ();
                 });

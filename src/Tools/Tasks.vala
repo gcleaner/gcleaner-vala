@@ -37,12 +37,12 @@ namespace GCleaner.Tools {
 
     // This function does both the analysis and the cleaning
     // ********************************************************
-    public async int analyze_all_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean, GCleaner.Widgets.ResultsArea results_area, bool? really_delete = false) throws ThreadError {
+    public async int analyze_all_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean, bool? really_delete = false) throws ThreadError {
         SourceFunc analyze_callback = analyze_all_process.callback;
         ThreadFunc<void*> run = () => {
             bool status = false;
             Timeout.add (50, () => {
-                var list_store = results_area.get_list_store ();
+                var list_store = app.results_area.get_list_store ();
                 list_store.foreach ((model, path, iter) => {
                     Value val;
                     list_store.get_value (iter, 1, out val);
@@ -53,7 +53,7 @@ namespace GCleaner.Tools {
                 return true;
             });
             
-            var jload = new GCleaner.Tools.JsonUtils ();
+            var jload = new JsonUtils ();
             foreach (var cleaner in list_cleaners) {
                 if (cleaner.is_active ()) {
                     string app_id = cleaner.app_id;
@@ -91,7 +91,7 @@ namespace GCleaner.Tools {
                                 }
                                 // We save in an array the paths that were reinterpreted.
                                 paths_to_scan = FileUtilities.reinterpret_paths (current_option_paths);
-                                if (paths_to_scan[0] != null) {
+                                if (paths_to_scan.length > 0) {
                                     if (really_delete) {
                                         status = info_clean.clean_operation (app_id, option_id, paths_to_scan, null);
                                     } else {
