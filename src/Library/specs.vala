@@ -24,7 +24,7 @@ private string codename;
 private string os_full_description;
 private string memory;
 private string architecture;
-private	string arch;
+private string arch;
 private string processor;
 private string graphics;
 
@@ -56,26 +56,26 @@ public string getOS () {
         var dis = new DataInputStream (file.read ());//Dump the contents of 'file' to 'dis' to process information
         string line;
 
-		while ((line = dis.read_line (null)) != null) {//Read line by line
-			if ("DISTRIB_ID=" in line) {//If find the Distributor ID clean in a variable the value of the same
-				os = line.replace ("DISTRIB_ID=", "");
-				if ("\"" in os) {
-					os = os.replace ("\"", "");
-				}
-			} else if ("DISTRIB_RELEASE=" in line) {
-				version = line.replace ("DISTRIB_RELEASE=", "");
-			} else if ("DISTRIB_CODENAME=" in line) {
-				codename = line.replace ("DISTRIB_CODENAME=", "");
-				codename = capitalize (codename);
-			}
-		}
-	} catch (Error e) {
-	    file = File.new_for_path ("/etc/fedora-release");//Save in 'file' the contents of '/etc/fedora-release'
-		try {
+        while ((line = dis.read_line (null)) != null) {//Read line by line
+            if ("DISTRIB_ID=" in line) {//If find the Distributor ID clean in a variable the value of the same
+                os = line.replace ("DISTRIB_ID=", "");
+                if ("\"" in os) {
+                    os = os.replace ("\"", "");
+                }
+            } else if ("DISTRIB_RELEASE=" in line) {
+                version = line.replace ("DISTRIB_RELEASE=", "");
+            } else if ("DISTRIB_CODENAME=" in line) {
+                codename = line.replace ("DISTRIB_CODENAME=", "");
+                codename = capitalize (codename);
+            }
+        }
+    } catch (Error e) {
+        file = File.new_for_path ("/etc/fedora-release");//Save in 'file' the contents of '/etc/fedora-release'
+        try {
             var dis = new DataInputStream (file.read ());//Dump the contents of 'file' to 'dis' to process information
-		    string line;
+            string line;
 
-		    while ((line = dis.read_line (null)) != null) {//Read line by line
+            while ((line = dis.read_line (null)) != null) {//Read line by line
                 string val = "";
                 int pos = 0;
                 string tmp = line;   
@@ -101,74 +101,74 @@ public string getOS () {
                         }
                     }
                 }
-		    }
+            }
 
         } catch (Error e) {
             stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::OS] could not read the '/etc/lsb-release' file: [ %s ]\n", e.message);
-		    os = "Unknown";
-		    version = "X";
-		    codename = "Not found";
+            os = "Unknown";
+            version = "X";
+            codename = "Not found";
         }
-	}
+    }
 
-	architecture = getArchitecture (); //The architecture is obtained to build the entire chain of the operating system
-	os_full_description = os + " " + version + " (" + codename + ") " + architecture;
+    architecture = getArchitecture (); //The architecture is obtained to build the entire chain of the operating system
+    os_full_description = os + " " + version + " (" + codename + ") " + architecture;
 
-	return os_full_description;
+    return os_full_description;
 }
 
 //MEMORY RAM ********************************************************************************
 public string getMemory () {
-	memory = GLib.format_size (get_mem_info_for("MemTotal:") * 1024, FormatSizeFlags.IEC_UNITS);
-	return memory;
+    memory = GLib.format_size (get_mem_info_for("MemTotal:") * 1024, FormatSizeFlags.IEC_UNITS);
+    return memory;
 }
 
 //PC Processor ************************************************************************
 public string getProcessor () {
-	try {
-		Process.spawn_command_line_sync ("sed -n 's/^model name[ \t]*: *//p' /proc/cpuinfo", out processor);
-		int cores = 0;
-		foreach (string core in processor.split ("\n")) {
-			if (core != "") {
-				cores++;
-			}
-		}
-		if ("\n" in processor) {//It is checking to establish more legible according trademark or group
-			processor = processor.split ("\n")[0];
-		} if ("(R)" in processor) {
-			processor = processor.replace ("(R)", "®");
-		} if ("(TM)" in processor) {
-			processor = processor.replace ("(TM)", "™");
-		}
-	} catch (Error e) {
-		stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: No processor found: [ %s ]]\n", e.message);
-		processor = "Unknown Processor";
-	}
+    try {
+        Process.spawn_command_line_sync ("sed -n 's/^model name[ \t]*: *//p' /proc/cpuinfo", out processor);
+        int cores = 0;
+        foreach (string core in processor.split ("\n")) {
+            if (core != "") {
+                cores++;
+            }
+        }
+        if ("\n" in processor) {//It is checking to establish more legible according trademark or group
+            processor = processor.split ("\n")[0];
+        } if ("(R)" in processor) {
+            processor = processor.replace ("(R)", "®");
+        } if ("(TM)" in processor) {
+            processor = processor.replace ("(TM)", "™");
+        }
+    } catch (Error e) {
+        stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: No processor found: [ %s ]]\n", e.message);
+        processor = "Unknown Processor";
+    }
 
-	return processor;
+    return processor;
 }
 
 // GRAPHICS (VIDEO CARD) *********************************************************
 public string getGraphics () {
-	try {
-		Process.spawn_command_line_sync ("lspci", out graphics);
-		if ("VGA" in graphics) { // VGA-keyword indicates graphics-line
-			string[] lines = graphics.split("\n");
-			graphics="";
-			foreach (var s in lines) {
-				if ("VGA" in s || "3D" in s) {
-					string model = get_graphics_from_string(s);//Proper function that deals the models of video cards
-					if(graphics=="")
-						graphics = model;
-					else
-						graphics += "\n" + model;
-				}
-			}
-		}
-	} catch (Error e) {
-		stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::Video card [ %s ]]\n", e.message);
-		graphics = "Unknown Video card";
-	}
+    try {
+        Process.spawn_command_line_sync ("lspci", out graphics);
+        if ("VGA" in graphics) { // VGA-keyword indicates graphics-line
+            string[] lines = graphics.split("\n");
+            graphics="";
+            foreach (var s in lines) {
+                if ("VGA" in s || "3D" in s) {
+                    string model = get_graphics_from_string(s);//Proper function that deals the models of video cards
+                    if(graphics=="")
+                        graphics = model;
+                    else
+                        graphics += "\n" + model;
+                }
+            }
+        }
+    } catch (Error e) {
+        stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::Video card [ %s ]]\n", e.message);
+        graphics = "Unknown Video card";
+    }
 
-	return graphics;
+    return graphics;
 }

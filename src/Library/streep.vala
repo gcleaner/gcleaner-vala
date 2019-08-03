@@ -22,22 +22,22 @@ using GLib;
 //Fork of the Function String Strip (a.k.a. 'streep') ******************************************
 //Rarely vala for Ubuntu wrong calls the 'strip' function, therefore one fork is crafted *******
 public string streep (string str) {
-	var result_builder = new StringBuilder ("");
+    var result_builder = new StringBuilder ("");
 
-	weak string i = str;
+    weak string i = str;
 
-	while (i.length > 0) {
-		unichar c = i.get_char ();
-		
-		if ((c == ' ') || (c =='\t')) {
-			i = i.next_char ();
-		} else {
-			result_builder.append_unichar (c);
-			i = i.next_char ();
-		}
-	}
+    while (i.length > 0) {
+        unichar c = i.get_char ();
+        
+        if ((c == ' ') || (c =='\t')) {
+            i = i.next_char ();
+        } else {
+            result_builder.append_unichar (c);
+            i = i.next_char ();
+        }
+    }
 
-	return result_builder.str;
+    return result_builder.str;
 }
 
 //Calculate RAM Memory **********************************************************************
@@ -63,21 +63,21 @@ public uint64 get_mem_info_for (string name) { //This is the value obtained from
 }
 
 public string capitalize (string str) { //Function that CAPITALIZED (put in MAYUS) all letters of a string
-	var result_builder = new StringBuilder ("");
+    var result_builder = new StringBuilder ("");
 
-	weak string i = str;
+    weak string i = str;
 
-	bool first = true;
-	while (i.length > 0) {
-		unichar c = i.get_char ();
-		if (first) {
-			result_builder.append_unichar (c.toupper ());
-			first = false;
-		} else {
-				result_builder.append_unichar (c);
-		}
-		i = i.next_char ();
-	}
+    bool first = true;
+    while (i.length > 0) {
+        unichar c = i.get_char ();
+        if (first) {
+            result_builder.append_unichar (c.toupper ());
+            first = false;
+        } else {
+                result_builder.append_unichar (c);
+        }
+        i = i.next_char ();
+    }
 
-	return result_builder.str;
+    return result_builder.str;
 }
