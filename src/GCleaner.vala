@@ -206,8 +206,8 @@ namespace GCleaner {
                 disable_scan_button ();
                 disable_clean_button ();
                 progress_bar.set_fraction (0);
-                results_area.move_pix_cell_to_left ();
                 results_area.clear_results (); // Clean the results grid
+                results_area.move_pix_cell_to_left ();
                 actions.run_scan_operation (this);
             });
             
@@ -220,8 +220,8 @@ namespace GCleaner {
                 msg.response.connect ((response_id) => {
                     if (response_id == Gtk.ResponseType.OK) {
                         /* Set to 0 before cleaning */
-                        results_area.move_pix_cell_to_left ();
                         results_area.clear_results (); // Clean the results grid
+                        results_area.move_pix_cell_to_left ();
                         actions.run_clean_operation (this);
                     }
                     msg.destroy ();
@@ -258,7 +258,7 @@ namespace GCleaner {
             double fraction_progress = (percent_value_per_app * n_scanned_apps) / 100; // value assigned to the progress bar depending on the apps already scanned.
             set_progress_fraction_value (fraction_progress);
             // Cleaning the results area and update the info
-            //results_area.clear_results ();
+            //rsesults_area.clear_results ();
             //results_area.append_data_to_list_store (null, current_app + "\n" + current_option, null, null, true);
         }
         
