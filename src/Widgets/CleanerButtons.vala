@@ -84,6 +84,7 @@ namespace GCleaner.Widgets {
             
             // We establish a tooltip
             set_tooltip_root ();
+            set_context_menu (check_root);
         }
         
         private void configure_checks_options () {
@@ -105,6 +106,7 @@ namespace GCleaner.Widgets {
                 check_options[count].set_active (app.settings.get_boolean (key_xml));
                 assign_check_pressed (check_options[count], key_xml);
                 set_tooltip_options (check_options[count], icon_warning_name, option_info);
+                set_context_menu (check_options[count]);
 
                 //We're checking to see if there's any option to display a warning message
                 if (warning_value == true) {
@@ -201,6 +203,27 @@ namespace GCleaner.Widgets {
 
             return text_icon;
         }
+
+        private void set_context_menu (Gtk.CheckButton check) {
+            check.button_press_event.connect ((event) => {
+                if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
+                    string[] items = {"Scan", "Clean"};
+                    Gtk.Menu menu = new Gtk.Menu ();
+                    menu.attach_to_widget (check, null);
+                    foreach (string item in items) {
+                        Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, check.label.down ()));
+                        menu.add (menu_item);
+                        menu_item.activate.connect ((event) => {
+                            // ACTIONS
+                        });
+                    }
+                    menu.show_all ();
+                    menu.popup (null, null, null, event.button, event.time);
+                }
+                return false;
+            });
+        }
+
 
         private void set_tooltip_options (Gtk.CheckButton check, string icon, string info) {
             check.has_tooltip = true;
