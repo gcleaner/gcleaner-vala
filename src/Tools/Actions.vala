@@ -118,6 +118,10 @@ namespace GCleaner.Tools {
             });
         }
 
+        public void run_selected_option (GCleaner.App app, string app_id, string? option_id = null, bool really_delete = false) {
+            return;
+        }
+
         public void run_scan_operation (GCleaner.App app) {
             bool really_delete = false;
             run_operation (app, really_delete);
