@@ -217,7 +217,18 @@ namespace GCleaner.Widgets {
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
                             bool really_delete = (item == "Clean")? true : false;
-                            actions.run_selected_option (this.app, app_id, option_id, really_delete);
+                            if (really_delete) {
+                                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
+                                msg.response.connect ((response_id) => {
+                                    if (response_id == Gtk.ResponseType.OK) {
+                                        actions.run_selected_option (this.app, app_id, option_id, really_delete);
+                                    }
+                                    msg.destroy ();
+                                });
+                                msg.show ();
+                            } else {
+                                actions.run_selected_option (this.app, app_id, option_id, false);
+                            }
                         });
                     }
                     menu.show_all ();
