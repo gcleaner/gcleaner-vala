@@ -129,6 +129,18 @@ namespace GCleaner.Widgets {
             return list_cleaners;
         }
 
+        public GCleaner.Tools.Cleaner get_cleaner_by_id (string app_id) {
+            GCleaner.Tools.Cleaner cleaner = null;
+            int i = 0;
+            while (cleaner == null && i < list_cleaners.length) {
+                if (list_cleaners[i].app_id == app_id) {
+                    cleaner = list_cleaners[i];
+                }
+                i++;
+            }
+            return cleaner;
+        }
+
         public int get_number_installed_apps () {
             return list_cleaners.length;
         }

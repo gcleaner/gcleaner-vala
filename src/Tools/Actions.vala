@@ -35,11 +35,21 @@ namespace GCleaner.Tools {
            return Instance;
         }
 
-        public void run_operation (GCleaner.App app, bool really_delete = false) {
-            Cleaner[] list_cleaners = app.sidebar.get_list_cleaners ();
+        public void run_operation (GCleaner.App app, bool really_delete = false, string? item_app_id = null, string? item_option_id = null) {
+            Cleaner[] list_cleaners = null;
             var info_clean = new InfoClean ();
             info_clean.reset_values ();
-            analyze_all_process.begin (app, list_cleaners, info_clean, really_delete, (obj, res) => {
+            int max_to_scan = 1;
+
+            // We're asking if it's to scan a particular app or all the applications.
+            if (item_app_id != null) {
+                list_cleaners += app.sidebar.get_cleaner_by_id (item_app_id);
+            } else {
+                list_cleaners = app.sidebar.get_list_cleaners ();
+                max_to_scan = app.sidebar.get_number_installed_apps ();
+            }
+
+            analyze_all_process.begin (app, list_cleaners, info_clean, really_delete, item_option_id, (obj, res) => {
                 try {
                     int result = analyze_all_process.end(res);
                     app.set_progress_fraction_value (1.0);
@@ -49,7 +59,7 @@ namespace GCleaner.Tools {
                 }
             });
 
-            print_results.begin (info_clean, app.sidebar.get_number_installed_apps (), (obj, res) => {
+            print_results.begin (info_clean, max_to_scan, (obj, res) => {
                 try {
                     int result = print_results.end(res);
                     var jload = new GCleaner.Tools.JsonUtils ();
@@ -119,7 +129,7 @@ namespace GCleaner.Tools {
         }
 
         public void run_selected_option (GCleaner.App app, string app_id, string? option_id = null, bool really_delete = false) {
-            return;
+            run_operation (app, really_delete, app_id, option_id);
         }
 
         public void run_scan_operation (GCleaner.App app) {

@@ -211,11 +211,13 @@ namespace GCleaner.Widgets {
                     string text_name = (option_id == null)? app_name : check.label.down ();
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (check, null);
+                    var actions = new GCleaner.Tools.Actions ();
                     foreach (string item in items) {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, text_name));
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
-                            // ACTIONS
+                            bool really_delete = (item == "Clean")? true : false;
+                            actions.run_selected_option (this.app, app_id, option_id, really_delete);
                         });
                     }
                     menu.show_all ();
@@ -224,7 +226,6 @@ namespace GCleaner.Widgets {
                 return false;
             });
         }
-
 
         private void set_tooltip_options (Gtk.CheckButton check, string icon, string info) {
             check.has_tooltip = true;
