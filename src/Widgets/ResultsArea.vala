@@ -107,12 +107,14 @@ namespace GCleaner.Widgets {
             }
         }
 
-        public void move_pix_cell_to_left () {
+        // This arranges the fields so that the icons are located first.
+        public void prepare_to_list_content () {
             tree_view.move_column_after (column_spinner, column_pix);
             tree_view.move_column_after (column_pix, column_number);
         }
 
-        public void move_pix_cell_to_right () {
+        // This arranges the fields to show a description of the completed task.
+        public void prepare_to_empty_results () {
             tree_view.move_column_after (column_pix, column_spinner);
             tree_view.move_column_after (column_spinner, column_number);
         }
