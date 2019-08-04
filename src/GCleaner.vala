@@ -206,8 +206,6 @@ namespace GCleaner {
                 disable_scan_button ();
                 disable_clean_button ();
                 progress_bar.set_fraction (0);
-                results_area.clear_results (); // Clean the results grid
-                results_area.move_pix_cell_to_left ();
                 actions.run_scan_operation (this);
             });
             
@@ -219,9 +217,6 @@ namespace GCleaner {
                 Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
                 msg.response.connect ((response_id) => {
                     if (response_id == Gtk.ResponseType.OK) {
-                        /* Set to 0 before cleaning */
-                        results_area.clear_results (); // Clean the results grid
-                        results_area.move_pix_cell_to_left ();
                         actions.run_clean_operation (this);
                     }
                     msg.destroy ();

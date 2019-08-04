@@ -35,11 +35,22 @@ namespace GCleaner.Tools {
            return Instance;
         }
 
-        public void run_operation (GCleaner.App app, bool really_delete = false) {
-            Cleaner[] list_cleaners = app.sidebar.get_list_cleaners ();
+        public void run_operation (GCleaner.App app, bool really_delete = false, string? item_app_id = null, string? item_option_id = null) {
+            Cleaner[] list_cleaners = null;
             var info_clean = new InfoClean ();
             info_clean.reset_values ();
-            analyze_all_process.begin (app, list_cleaners, info_clean, really_delete, (obj, res) => {
+            int max_to_scan = 1;
+            // We're asking if it's to scan a particular app or all the applications.
+            if (item_app_id != null) {
+                list_cleaners += app.sidebar.get_cleaner_by_id (item_app_id);
+            } else {
+                list_cleaners = app.sidebar.get_list_cleaners ();
+                max_to_scan = app.sidebar.get_number_installed_apps ();
+            }
+            app.results_area.clear_results (); // Clean the results grid
+            app.results_area.prepare_to_list_content ();
+            
+            analyze_all_process.begin (app, list_cleaners, info_clean, really_delete, item_option_id, (obj, res) => {
                 try {
                     int result = analyze_all_process.end(res);
                     app.set_progress_fraction_value (1.0);
@@ -49,15 +60,15 @@ namespace GCleaner.Tools {
                 }
             });
 
-            print_results.begin (info_clean, app.sidebar.get_number_installed_apps (), (obj, res) => {
+            print_results.begin (info_clean, max_to_scan, (obj, res) => {
                 try {
                     int result = print_results.end(res);
                     var jload = new GCleaner.Tools.JsonUtils ();
                     Gdk.Pixbuf pix;
                     app.sidebar.apps_box.set_sensitive (true);
                     app.sidebar.system_box.set_sensitive (true);
-                    app.results_area.move_pix_cell_to_right ();
-                    app.results_area.clear_results ();
+                    app.results_area.clear_results (); // Clean the results grid
+                    app.results_area.prepare_to_empty_results ();
                     if (info_clean.get_total_counter () > 0) {
                         string total_file_size = FileUtilities.to_readable_format_size (info_clean.get_total_accumulator ());
                         string total_file_number = info_clean.get_total_counter ().to_string ();
@@ -116,6 +127,10 @@ namespace GCleaner.Tools {
                     stderr.printf("Print-Thread error: %s\n", e.message);
                 }
             });
+        }
+
+        public void run_selected_option (GCleaner.App app, string app_id, string? option_id = null, bool really_delete = false) {
+            run_operation (app, really_delete, app_id, option_id);
         }
 
         public void run_scan_operation (GCleaner.App app) {

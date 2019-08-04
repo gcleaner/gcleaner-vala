@@ -19,12 +19,12 @@
 using GLib;
 
 namespace GCleaner.Tools {
-    public async int print_results (InfoClean info_clean, int n_installed_apps) throws ThreadError {
+    public async int print_results (InfoClean info_clean, int max_to_scan) throws ThreadError {
         SourceFunc print_callback = print_results.callback;
         
         ThreadFunc<void*> run = () => {
             
-            while (info_clean.get_n_scanned_apps () < n_installed_apps) {}
+            while (info_clean.get_n_scanned_apps () < max_to_scan) {}
             
             Idle.add((owned) print_callback);
             Thread.exit (1.to_pointer ());
@@ -37,7 +37,7 @@ namespace GCleaner.Tools {
 
     // This function does both the analysis and the cleaning
     // ********************************************************
-    public async int analyze_all_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean, bool? really_delete = false) throws ThreadError {
+    public async int analyze_all_process (GCleaner.App app, Cleaner[] list_cleaners, InfoClean info_clean, bool really_delete, string? item_option_id = null) throws ThreadError {
         SourceFunc analyze_callback = analyze_all_process.callback;
         ThreadFunc<void*> run = () => {
             bool status = false;
@@ -55,12 +55,19 @@ namespace GCleaner.Tools {
             
             var jload = new JsonUtils ();
             foreach (var cleaner in list_cleaners) {
-                if (cleaner.is_active ()) {
+                if (cleaner.is_active () || item_option_id != null) {
                     string app_id = cleaner.app_id;
                     string app_name = cleaner.get_app_name ();
                     int count = 0; // It is used for the indexes of the options
-                    Json.Node all_options = jload.get_all_options_of (app_id);
-                    foreach (var option in all_options.get_array ().get_elements ()) {
+                    
+                    // This can be all options or, in the case of a selected item, only one option.
+                    Json.Node node_options = null;
+                    if (item_option_id != null) {
+                        node_options = jload.get_single_option_of (app_id, item_option_id);
+                    } else {
+                        node_options = jload.get_all_options_of (app_id);
+                    }
+                    foreach (var option in node_options.get_array ().get_elements ()) {
                         var object_option = option.get_object ();
                         string option_id = object_option.get_string_member ("option-id");
                         string option_name = object_option.get_string_member ("option-name");
@@ -68,7 +75,8 @@ namespace GCleaner.Tools {
                          * ++++++-----------------------------
                          */
                         app.update_progress (app_name, option_name, info_clean.get_n_scanned_apps ());
-                        if (cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count)) {
+                        bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
+                        if (option_is_active || item_option_id != null) {
                             string[] advanced_options = {"cache-pkg", "configuration-pkg", "old-kernels"};
                             if (option_id in advanced_options) { // The option contains commands
                                 Json.Node node_cmd = jload.get_all_commands_of (app_id, option_id);

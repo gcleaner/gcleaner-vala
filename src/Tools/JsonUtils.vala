@@ -98,7 +98,7 @@ namespace GCleaner.Tools {
                     if (app_id == current_app_id) {
                         var obj_app = obj_category.get_member (current_app_id).get_object ();
                         all_options = obj_app.get_member ("all-options");
-                        
+
                         return all_options;
                     }
                 }
@@ -106,6 +106,20 @@ namespace GCleaner.Tools {
             return all_options;
         }
         
+        public Json.Node get_single_option_of (string app_id, string option_id) {
+            Json.Node node_option = new Json.Node (Json.NodeType.ARRAY);
+            Json.Array array_option = new Json.Array ();
+            var all_options = get_all_options_of (app_id);
+            foreach (var option in all_options.get_array ().get_elements ()) {
+                if (option.get_object ().get_string_member ("option-id") == option_id) {
+                    array_option.add_object_element (option.get_object ());
+                    node_option.take_array (array_option);
+                    return node_option;
+                }
+            }
+            return node_option;
+        }
+
         public Json.Node get_all_commands_of (string app_id, string option_id) {
             Json.Node commands = null;
             Json.Array all_options = get_all_options_of (app_id).get_array ();
