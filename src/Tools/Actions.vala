@@ -47,6 +47,10 @@ namespace GCleaner.Tools {
                 list_cleaners = app.sidebar.get_list_cleaners ();
                 max_to_scan = app.sidebar.get_number_installed_apps ();
             }
+            app.sidebar.apps_box.set_sensitive (false);
+            app.sidebar.system_box.set_sensitive (false);
+            app.disable_scan_button ();
+            app.disable_clean_button ();
             app.results_area.clear_results (); // Clean the results grid
             app.results_area.prepare_to_list_content ();
             
@@ -86,17 +90,24 @@ namespace GCleaner.Tools {
                         app.results_area.append_data_to_list_store (pix, text_result);
                         app.results_area.append_data_to_list_store (null, text_detail);
                         foreach (var cleaner in list_cleaners) {
-                            if (cleaner.is_active ()) {
+                            if (cleaner.is_active () || item_option_id != null) {
                                 string app_id = cleaner.app_id;
                                 string app_name = cleaner.get_app_name ();
                                 int count = 0;
                                 
-                                Json.Node all_options = jload.get_all_options_of (app_id);
-                                foreach (var option in all_options.get_array ().get_elements ()) {
+                                // This can be all options or, in the case of a selected item, only one option.
+                                Json.Node node_options = null;
+                                if (item_option_id != null) {
+                                    node_options = jload.get_single_option_of (app_id, item_option_id);
+                                } else {
+                                    node_options = jload.get_all_options_of (app_id);
+                                }
+                                foreach (var option in node_options.get_array ().get_elements ()) {
                                     var object_option = option.get_object ();
                                     string option_id = object_option.get_string_member ("option-id");
                                     string option_name = object_option.get_string_member ("option-name");
-                                    if (cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count)) {
+                                    bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
+                                    if (option_is_active || item_option_id != null) {
                                         int64 n_files_option = info_clean.get_file_number_of (app_id, option_id);
                                         if (n_files_option != 0) {
                                             pix = load_pixbuf_from_name (app_id, option_id);
@@ -121,7 +132,9 @@ namespace GCleaner.Tools {
                         app.results_area.append_data_to_list_store (pix, "Congratulations! The System is clean!");
                         app.disable_clean_button ();
                     }
-                    
+                    app.sidebar.apps_box.set_sensitive (true);
+                    app.sidebar.system_box.set_sensitive (true);
+                    app.enable_scan_button ();
                     app.enable_scan_button ();
                 } catch (ThreadError e) {
                     stderr.printf("Print-Thread error: %s\n", e.message);

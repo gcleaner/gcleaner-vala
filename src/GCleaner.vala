@@ -200,11 +200,13 @@ namespace GCleaner {
              * Scan button actions and Logic
              * *************************************************************
              */
+            scan_button.has_tooltip = true;
+            scan_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
+                tooltip.set_icon_from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR); 
+                tooltip.set_markup ("This option will scan <b>all selected options.</b>");
+                return true;
+            });
             scan_button.clicked.connect(()=> {
-                sidebar.apps_box.set_sensitive (false);
-                sidebar.system_box.set_sensitive (false);
-                disable_scan_button ();
-                disable_clean_button ();
                 progress_bar.set_fraction (0);
                 actions.run_scan_operation (this);
             });
@@ -213,6 +215,12 @@ namespace GCleaner {
              * Clean button actions and Logic
              * *************************************************************
              */
+            clean_button.has_tooltip = true;
+            clean_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
+                tooltip.set_icon_from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR); 
+                tooltip.set_markup ("This option will remove the files from <b>all the selected options.</b>");
+                return true;
+            });
             clean_button.clicked.connect(()=> {
                 Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
                 msg.response.connect ((response_id) => {
@@ -222,9 +230,6 @@ namespace GCleaner {
                     msg.destroy ();
                 });
                 msg.show ();
-                sidebar.apps_box.set_sensitive (true);
-                sidebar.system_box.set_sensitive (true);
-                enable_scan_button ();
             });
 
             this.main_window.delete_event.connect (() => {
