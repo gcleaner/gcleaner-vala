@@ -41,12 +41,13 @@ namespace GCleaner.Widgets {
             PIXBUF,
             CONCEPT,
             SIZE,
-            N_FILES
+            N_FILES,
+            N_COLUMNS
         }
 
         public ResultsArea () {
             //LIST STORE - SCAN/CLEANING INFORMATION
-            list_store = new Gtk.ListStore (6, typeof (bool), typeof (int), typeof (Gdk.Pixbuf), typeof (string), typeof (string), typeof (string));
+            list_store = new Gtk.ListStore (Columns.N_COLUMNS, typeof (bool), typeof (int), typeof (Gdk.Pixbuf), typeof (string), typeof (string), typeof (string));
             tree_view = new TreeView.with_model (list_store);
             create_results_area ();
         }
@@ -105,7 +106,7 @@ namespace GCleaner.Widgets {
             list_store.append (out iter);
             if (pix != null) {
                 if (row_file_size == null) {
-                    list_store.set (iter, Columns.STATUS_SPIN, pix, Columns.CONCEPT, row_concept);
+                    list_store.set (iter, Columns.PIXBUF, pix, Columns.CONCEPT, row_concept);
                 } else if (update_progress) {
                     list_store.set (iter, Columns.STATUS_SPIN, true, Columns.VALUE_SPIN, 1, Columns.CONCEPT, row_concept);
                 } else {
