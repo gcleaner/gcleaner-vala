@@ -79,13 +79,13 @@ namespace GCleaner.Tools {
                         string total_file_number = info_clean.get_total_counter ().to_string ();
                         string text_result;
                         string text_detail;
-                        
+
                         if (really_delete) {
-                            text_result = "Cleaning complete\n" + total_file_size + " (" + total_file_number + " files) were removed. (Aproximate size)\n";
-                            text_detail = "Details of files deleted\n";
+                            text_result = "<b>Cleaning complete</b>\n" + total_file_size + " (" + total_file_number + " files) were removed. (Aproximate size)";
+                            text_detail = "<b>Details of files deleted</b>";
                         } else {
-                            text_result = "Analysis complete\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)\n";
-                            text_detail = "Details of files to be deleted (Note: No file have been deleted yet)\n";
+                            text_result = "<b>Analysis complete</b>\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)";
+                            text_detail = "<b>Details of files to be deleted (Note: No file have been deleted yet)</b>";
                         }
                         app.results_area.set_labels_text (text_result, text_detail);
                         foreach (var cleaner in list_cleaners) {
@@ -128,7 +128,7 @@ namespace GCleaner.Tools {
                         app.enable_clean_button ();
                     } else {
                         app.results_area.set_headers_visible (false);
-                        app.results_area.set_labels_text ("Congratulations! The System is clean!");
+                        app.results_area.set_labels_text ("<b>Congratulations! The System is clean!</b>");
                         app.disable_clean_button ();
                     }
                     app.sidebar.apps_box.set_sensitive (true);
