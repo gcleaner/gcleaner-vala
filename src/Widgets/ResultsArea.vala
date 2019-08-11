@@ -97,8 +97,27 @@ namespace GCleaner.Widgets {
                                                                     "text", Columns.N_FILES, null);
             tree_view.append_column (column_number);
             this.set_headers_visible (false);
+            // Monitor list double-clicks.
+            this.tree_view.row_activated.connect ((treeview , path, column) => {
+                Gtk.TreeIter iter;
+                if (tree_view.model.get_iter (out iter, path)) {
+                    string str = "";
+                    tree_view.model.get (iter, Columns.CONCEPT, out str);
+                    // Work in progress
+                }
+            });
+            // Monitor list selection changes.
+            this.tree_view.get_selection().changed.connect ((selection) => {
+                Gtk.TreeModel model;
+                Gtk.TreeIter iter;
+                if (selection.get_selected (out model, out iter)) {
+                    string str = "";
+                    model.get (iter, Columns.CONCEPT, out str);
+                    // Work in progress
+                }
+            });
         }
-        
+
         public void set_headers_visible (bool value) {
             tree_view.set_headers_visible (value);
         }
