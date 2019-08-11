@@ -24,17 +24,12 @@ namespace GCleaner.Widgets {
     public class ResultsArea {
         private Gtk.ListStore list_store;
         private Gtk.TreeView tree_view;
-        private Gtk.CellRendererSpinner spinner_cell;
         private Gtk.TreeViewColumn column_spinner;
-        private CellRendererPixbuf pixbuf_cell;
         private Gtk.TreeViewColumn column_pix;
-        private CellRenderer concept_cell;
         private Gtk.TreeViewColumn column_concept;
-        private CellRenderer size_cell;
         private Gtk.TreeViewColumn column_size;
-        private CellRenderer number_cell;
         private Gtk.TreeViewColumn column_number;
-        
+
         enum Columns {
             STATUS_SPIN,
             VALUE_SPIN,
@@ -62,38 +57,28 @@ namespace GCleaner.Widgets {
 
         public void create_results_area () {
             // Columns -------------------------------------------------------------------
-            spinner_cell = new Gtk.CellRendererSpinner ();
+            var renderer_spinner = new Gtk.CellRendererSpinner ();
             column_spinner = new Gtk.TreeViewColumn ();
-            column_spinner.pack_start (spinner_cell, false);
-            column_spinner.add_attribute (spinner_cell, "active", Columns.STATUS_SPIN);
-            column_spinner.add_attribute (spinner_cell, "pulse", Columns.VALUE_SPIN);
+            column_spinner.pack_start (renderer_spinner, false);
+            column_spinner.add_attribute (renderer_spinner, "active", Columns.STATUS_SPIN);
+            column_spinner.add_attribute (renderer_spinner, "pulse", Columns.VALUE_SPIN);
             tree_view.append_column (column_spinner);
             
-            pixbuf_cell = new CellRendererPixbuf ();
+            var renderer_pixbuf = new CellRendererPixbuf ();
             column_pix = new Gtk.TreeViewColumn ();
-            column_pix.pack_start (pixbuf_cell, false);
-            column_pix.add_attribute (pixbuf_cell, "pixbuf", Columns.PIXBUF);
+            column_pix.pack_start (renderer_pixbuf, false);
+            column_pix.add_attribute (renderer_pixbuf, "pixbuf", Columns.PIXBUF);
             tree_view.append_column (column_pix);
             
-            concept_cell = new CellRendererText ();
-            column_concept = new Gtk.TreeViewColumn ();
-            column_concept.set_title ("Concept");
-            column_concept.pack_start (concept_cell, false);
-            column_concept.add_attribute (concept_cell, "text", Columns.CONCEPT);
+            var renderer_text = new CellRendererText ();
+            column_concept = new Gtk.TreeViewColumn.with_attributes ("Concept", renderer_text, 
+                                                                     "text", Columns.CONCEPT, null);
             tree_view.append_column (column_concept);
-            
-            size_cell = new CellRendererText ();
-            column_size = new Gtk.TreeViewColumn ();
-            column_size.set_title ("Size");
-            column_size.pack_start (size_cell, false);
-            column_size.add_attribute (size_cell, "text", Columns.SIZE);
+            column_size = new Gtk.TreeViewColumn.with_attributes ("Size", renderer_text, 
+                                                                  "text", Columns.SIZE, null);
             tree_view.append_column (column_size);
-            
-            number_cell = new CellRendererText ();
-            column_number = new Gtk.TreeViewColumn ();
-            column_number.set_title ("Number of files");
-            column_number.pack_start (number_cell, false);
-            column_number.add_attribute (number_cell, "text", Columns.N_FILES);
+            column_number = new Gtk.TreeViewColumn.with_attributes ("Number of files", renderer_text, 
+                                                                    "text", Columns.N_FILES, null);
             tree_view.append_column (column_number);
         }
         
