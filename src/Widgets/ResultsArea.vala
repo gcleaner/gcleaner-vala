@@ -80,6 +80,11 @@ namespace GCleaner.Widgets {
             column_number = new Gtk.TreeViewColumn.with_attributes ("Number of files", renderer_text, 
                                                                     "text", Columns.N_FILES, null);
             tree_view.append_column (column_number);
+            this.set_headers_visible (false);
+        }
+        
+        public void set_headers_visible (bool value) {
+            tree_view.set_headers_visible (value);
         }
         
         public void clear_results () {

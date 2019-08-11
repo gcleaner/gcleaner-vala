@@ -74,6 +74,7 @@ namespace GCleaner.Tools {
                     app.results_area.clear_results (); // Clean the results grid
                     app.results_area.prepare_to_empty_results ();
                     if (info_clean.get_total_counter () > 0) {
+                        app.results_area.set_headers_visible (true);
                         string total_file_size = FileUtilities.to_readable_format_size (info_clean.get_total_accumulator ());
                         string total_file_number = info_clean.get_total_counter ().to_string ();
                         string text_result;
@@ -129,6 +130,7 @@ namespace GCleaner.Tools {
                         app.enable_clean_button ();
                     } else {
                         pix = load_pixbuf (Constants.PKGDATADIR + "/media/info-system/dialog-ok.png", 16);
+                        app.results_area.set_headers_visible (false);
                         app.results_area.append_data_to_list_store (pix, "Congratulations! The System is clean!");
                         app.disable_clean_button ();
                     }
