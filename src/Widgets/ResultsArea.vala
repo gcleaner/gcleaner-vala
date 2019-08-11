@@ -29,6 +29,9 @@ namespace GCleaner.Widgets {
         private Gtk.TreeViewColumn column_concept;
         private Gtk.TreeViewColumn column_size;
         private Gtk.TreeViewColumn column_number;
+        private Gtk.Box _box_top_results;
+        private Gtk.Label label_info;
+        private Gtk.Label label_advice;
 
         enum Columns {
             STATUS_SPIN,
@@ -42,6 +45,8 @@ namespace GCleaner.Widgets {
 
         public ResultsArea () {
             //LIST STORE - SCAN/CLEANING INFORMATION
+            _box_top_results = new Box (Orientation.VERTICAL, 4);
+            _box_top_results.border_width = 12;
             list_store = new Gtk.ListStore (Columns.N_COLUMNS, typeof (bool), typeof (int), typeof (Gdk.Pixbuf), typeof (string), typeof (string), typeof (string));
             tree_view = new TreeView.with_model (list_store);
             create_results_area ();
@@ -55,7 +60,18 @@ namespace GCleaner.Widgets {
             return list_store;
         }
 
+        public Gtk.Box box_top_results {
+            get { return _box_top_results; }
+            private set {}
+        }
+
         public void create_results_area () {
+            label_info = new Label (null);
+            label_advice = new Label (null);
+            label_info.set_halign (Align.START);
+            label_advice.set_halign (Align.START);
+            set_labels_text ("", "");
+            
             // Columns -------------------------------------------------------------------
             var renderer_spinner = new Gtk.CellRendererSpinner ();
             column_spinner = new Gtk.TreeViewColumn ();
@@ -86,9 +102,19 @@ namespace GCleaner.Widgets {
         public void set_headers_visible (bool value) {
             tree_view.set_headers_visible (value);
         }
-        
+
         public void clear_results () {
+            box_top_results.foreach ((label) => _box_top_results.remove (label));
             list_store.clear ();
+        }
+
+        public void set_labels_text (string text_info, string? text_advice = null) {
+            label_info.set_markup (text_info);
+            _box_top_results.pack_start (label_info, false, false, 1);
+            if (text_advice != null) {
+                label_advice.set_markup (text_advice);
+                _box_top_results.pack_start (label_advice, false, false, 1);
+            }
         }
 
         public void append_data_to_list_store (Gdk.Pixbuf? pix = null, string concept_field, string? file_size_field = null, string? file_number_field = null, bool? update_progress = false) {

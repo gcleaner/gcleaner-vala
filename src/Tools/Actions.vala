@@ -79,8 +79,7 @@ namespace GCleaner.Tools {
                         string total_file_number = info_clean.get_total_counter ().to_string ();
                         string text_result;
                         string text_detail;
-                        pix = load_pixbuf (Constants.PKGDATADIR + "/media/info-system/dialog-ok.png");
-
+                        
                         if (really_delete) {
                             text_result = "Cleaning complete\n" + total_file_size + " (" + total_file_number + " files) were removed. (Aproximate size)\n";
                             text_detail = "Details of files deleted\n";
@@ -88,8 +87,7 @@ namespace GCleaner.Tools {
                             text_result = "Analysis complete\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)\n";
                             text_detail = "Details of files to be deleted (Note: No file have been deleted yet)\n";
                         }
-                        app.results_area.append_data_to_list_store (pix, text_result);
-                        app.results_area.append_data_to_list_store (null, text_detail);
+                        app.results_area.set_labels_text (text_result, text_detail);
                         foreach (var cleaner in list_cleaners) {
                             if (cleaner.is_active () || item_option_id != null) {
                                 string app_id = cleaner.app_id;
@@ -129,9 +127,8 @@ namespace GCleaner.Tools {
                         
                         app.enable_clean_button ();
                     } else {
-                        pix = load_pixbuf (Constants.PKGDATADIR + "/media/info-system/dialog-ok.png", 16);
                         app.results_area.set_headers_visible (false);
-                        app.results_area.append_data_to_list_store (pix, "Congratulations! The System is clean!");
+                        app.results_area.set_labels_text ("Congratulations! The System is clean!");
                         app.disable_clean_button ();
                     }
                     app.sidebar.apps_box.set_sensitive (true);

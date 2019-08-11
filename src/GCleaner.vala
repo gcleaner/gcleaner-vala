@@ -180,6 +180,7 @@ namespace GCleaner {
             /*Information, Results and Actions*/
             infoAction_box.pack_start (progress_box, false, true, 8);
             infoAction_box.pack_start (separatorResultTop, false, true, 0);
+            infoAction_box.pack_start (results_area.box_top_results, false, false, 0);
             infoAction_box.pack_start (result_box, true, true, 0);
             infoAction_box.pack_start (separatorResultBottom, false, true, 0); // Separator between buttons and results
             infoAction_box.pack_start (buttons_box, false, true, 8);
