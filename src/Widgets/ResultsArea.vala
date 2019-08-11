@@ -101,19 +101,19 @@ namespace GCleaner.Widgets {
             list_store.clear ();
         }
 
-        public void append_data_to_list_store (Gdk.Pixbuf? pix = null, string row_concept, string? row_file_size = null, string? row_file_number = null, bool? update_progress = false) {
+        public void append_data_to_list_store (Gdk.Pixbuf? pix = null, string concept_field, string? file_size_field = null, string? file_number_field = null, bool? update_progress = false) {
             TreeIter iter;
             list_store.append (out iter);
             if (pix != null) {
-                if (row_file_size == null) {
-                    list_store.set (iter, Columns.PIXBUF, pix, Columns.CONCEPT, row_concept);
-                } else if (update_progress) {
-                    list_store.set (iter, Columns.STATUS_SPIN, true, Columns.VALUE_SPIN, 1, Columns.CONCEPT, row_concept);
+                if (file_size_field == null) {
+                    list_store.set (iter, Columns.PIXBUF, pix, Columns.CONCEPT, concept_field);
                 } else {
-                    list_store.set (iter, Columns.PIXBUF, pix, Columns.CONCEPT, row_concept, Columns.SIZE, row_file_size, Columns.N_FILES, row_file_number);
+                    list_store.set (iter, Columns.PIXBUF, pix, Columns.CONCEPT, concept_field, Columns.SIZE, file_size_field, Columns.N_FILES, file_number_field);
                 }
+            } else if (update_progress) {
+                list_store.set (iter, Columns.STATUS_SPIN, true, Columns.VALUE_SPIN, 1, Columns.CONCEPT, concept_field);
             } else {
-                list_store.set (iter, Columns.CONCEPT, row_concept);
+                list_store.set (iter, Columns.CONCEPT, concept_field);
             }
         }
 
