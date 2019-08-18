@@ -22,20 +22,22 @@ using GLib;
 
 namespace GCleaner.Tools {
     public class Actions {
-        private static Actions Instance = null;
+        private static Actions instance = null;
+        private GCleaner.App app;
 
-        private static void CreateInstance () {
-            if (Instance == null) {
-                Instance = new Actions ();
+        private Actions (GCleaner.App app) {
+            this.app = app;
+        }
+        
+        // Public constructor
+        public static Actions get_instance (GCleaner.App? app = null) {
+            if (instance == null) {
+                instance = new Actions (app);
             }
+            return instance;
         }
 
-        public static Actions Get_Instance () {
-           if (Instance == null) CreateInstance ();
-           return Instance;
-        }
-
-        public void run_operation (GCleaner.App app, bool really_delete = false, string? item_app_id = null, string? item_option_id = null) {
+        public void run_operation (bool really_delete = false, string? item_app_id = null, string? item_option_id = null) {
             Cleaner[] list_cleaners = null;
             var info_clean = new InfoClean ();
             info_clean.reset_values ();
@@ -141,18 +143,18 @@ namespace GCleaner.Tools {
             });
         }
 
-        public void run_selected_option (GCleaner.App app, string app_id, string? option_id = null, bool really_delete = false) {
-            run_operation (app, really_delete, app_id, option_id);
+        public void run_selected_option (string app_id, string? option_id = null, bool really_delete = false) {
+            run_operation (really_delete, app_id, option_id);
         }
 
-        public void run_scan_operation (GCleaner.App app) {
+        public void run_scan_operation () {
             bool really_delete = false;
-            run_operation (app, really_delete);
+            run_operation (really_delete);
         }
 
-        public void run_clean_operation (GCleaner.App app) {
+        public void run_clean_operation () {
             bool really_delete = true;
-            run_operation (app, really_delete);
+            run_operation (really_delete);
         }
     }
 }

@@ -104,7 +104,7 @@ namespace GCleaner {
             colour.alpha = 1.0;//transparency
             eventSidebar.override_background_color(Gtk.StateFlags.NORMAL, colour);
             
-            var actions = new GCleaner.Tools.Actions ();
+            var actions = GCleaner.Tools.Actions.get_instance (this);
             n_installed_apps = sidebar.get_number_installed_apps (); // Number of programs to be cleaned
 
             // PACKAGING
@@ -209,7 +209,7 @@ namespace GCleaner {
             });
             scan_button.clicked.connect(()=> {
                 progress_bar.set_fraction (0);
-                actions.run_scan_operation (this);
+                actions.run_scan_operation ();
             });
             
             /*
@@ -226,7 +226,7 @@ namespace GCleaner {
                 Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
                 msg.response.connect ((response_id) => {
                     if (response_id == Gtk.ResponseType.OK) {
-                        actions.run_clean_operation (this);
+                        actions.run_clean_operation ();
                     }
                     msg.destroy ();
                 });

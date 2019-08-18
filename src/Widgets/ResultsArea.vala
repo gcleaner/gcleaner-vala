@@ -32,6 +32,7 @@ namespace GCleaner.Widgets {
         private Gtk.Box _box_top_results;
         private Gtk.Label label_info;
         private Gtk.Label label_advice;
+        private string rsc_content_row; // It's used to temporarily save the contents of the selected row.
 
         enum Columns {
             STATUS_SPIN,
@@ -97,6 +98,7 @@ namespace GCleaner.Widgets {
                                                                     "text", Columns.N_FILES, null);
             tree_view.append_column (column_number);
             this.set_headers_visible (false);
+            
             // Monitor list double-clicks.
             this.tree_view.row_activated.connect ((treeview , path, column) => {
                 Gtk.TreeIter iter;
@@ -106,15 +108,48 @@ namespace GCleaner.Widgets {
                     // Work in progress
                 }
             });
-            // Monitor list selection changes.
+
+             // Monitor list selection changes.
             this.tree_view.get_selection().changed.connect ((selection) => {
                 Gtk.TreeModel model;
                 Gtk.TreeIter iter;
                 if (selection.get_selected (out model, out iter)) {
-                    string str = "";
-                    model.get (iter, Columns.CONCEPT, out str);
-                    // Work in progress
+                    model.get (iter, Columns.CONCEPT, out rsc_content_row);
                 }
+            });
+
+            tree_view.button_press_event.connect ((event) => {
+                string app_id = "";
+                string option_id = "";
+                if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
+                    string[] items = {"Analyze", "Clean"};
+                    Gtk.Menu menu = new Gtk.Menu ();
+                    menu.attach_to_widget (tree_view, null);
+                    var actions = GCleaner.Tools.Actions.get_instance ();
+                    foreach (string item in items) {
+                        Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s selected option".printf(item));
+                        menu.add (menu_item);
+                        menu_item.activate.connect ((event) => {
+                            bool really_delete = (item == "Clean")? true : false;
+                            if (really_delete) {
+                                Gtk.MessageDialog msg = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
+                                msg.response.connect ((response_id) => {
+                                    if (response_id == Gtk.ResponseType.OK) {
+                                        actions.run_selected_option (app_id, option_id, really_delete);
+                                    }
+                                    msg.destroy ();
+                                });
+                                msg.show ();
+                                
+                            } else {
+                                actions.run_selected_option (app_id, option_id, false);
+                            }
+                        });
+                    }
+                    menu.show_all ();
+                    menu.popup (null, null, null, event.button, event.time);
+                }
+                return false;
             });
         }
 
