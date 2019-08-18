@@ -20,6 +20,8 @@ using Gdk;
 using Gtk;
 using GLib;
 using Json;
+using GCleaner.Widgets;
+using GCleaner.Tools;
 
 namespace GCleaner {
     public class App : Gtk.Application {
@@ -31,8 +33,8 @@ namespace GCleaner {
         public Gtk.Button scan_button;
         public Gtk.Button clean_button;
         public GLib.Settings settings;
-        public GCleaner.Widgets.Sidebar sidebar;
-        public GCleaner.Widgets.ResultsArea results_area;
+        public Sidebar sidebar;
+        public ResultsArea results_area;
 
         public App () {
             GLib.Object(application_id: "org.gcleaner",
@@ -86,9 +88,9 @@ namespace GCleaner {
             progress_bar = new ProgressBar ();
             
             // OWN WIDGETS
-            sidebar = new GCleaner.Widgets.Sidebar (this);
+            sidebar = new Sidebar (this);
             sidebar.get_style_context ().add_class("Sidebar");
-            results_area = new GCleaner.Widgets.ResultsArea ();
+            results_area = new ResultsArea ();
             
             /*
              * This EventBox is created to color the
@@ -104,7 +106,7 @@ namespace GCleaner {
             colour.alpha = 1.0;//transparency
             eventSidebar.override_background_color(Gtk.StateFlags.NORMAL, colour);
             
-            var actions = new GCleaner.Tools.Actions ();
+            var actions = new Actions ();
             n_installed_apps = sidebar.get_number_installed_apps (); // Number of programs to be cleaned
 
             // PACKAGING
@@ -143,7 +145,7 @@ namespace GCleaner {
                 * HeaderBar
                 * Create an instance of the HeaderBar (customized)
                 */
-                var header_bar = new GCleaner.Widgets.Header (this);
+                var header_bar = new Header (this);
                 header_bar.get_style_context ().add_class("csd");
                 this.main_window.set_titlebar (header_bar);
                 header_bar.set_name ("header_bar");
@@ -152,7 +154,7 @@ namespace GCleaner {
                 * ToolBar
                 * Creates an instance of the Toolbar (customized)
                 */
-                var toolbar = new GCleaner.Widgets.ToolBar (this);
+                var toolbar = new ToolBar (this);
                 toolbar.get_style_context ().add_class("Toolbar");
                 toolbar.set_name ("Toolbar");
 
@@ -303,7 +305,7 @@ namespace GCleaner {
             var app = new GCleaner.App ();
             
             if ((args[1] == "--version") || (args[1] == "-version")) {
-                var about = new GCleaner.Widgets.About ();
+                var about = new About ();
                 about.run ();
                 about.destroy.connect (Gtk.main_quit);
             }

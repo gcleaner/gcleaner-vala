@@ -19,6 +19,7 @@
 using Gtk;
 using Gdk;
 using GLib;
+using GCleaner.Tools;
 
 namespace GCleaner.Widgets {
     public class CleanerButtons {
@@ -38,7 +39,7 @@ namespace GCleaner.Widgets {
         }
         
         private void load_init () {
-            var jload = new GCleaner.Tools.JsonUtils ();
+            var jload = new JsonUtils ();
             app_name = jload.get_item_from_app (app_id, "name");
             n_options = jload.get_n_options_from (app_id);
             string key_xml = app_id + "-main";
@@ -88,7 +89,7 @@ namespace GCleaner.Widgets {
         }
         
         private void configure_checks_options () {
-            var jload = new GCleaner.Tools.JsonUtils ();
+            var jload = new JsonUtils ();
             
             int count = 0;
             Json.Node all_options = jload.get_all_options_of (app_id);
@@ -173,7 +174,7 @@ namespace GCleaner.Widgets {
         }
 
         private void set_tooltip_root () {
-            var jload = new GCleaner.Tools.JsonUtils ();
+            var jload = new JsonUtils ();
             string text_icon = determine_app_icon ();
             string program_type = jload.get_item_from_app (app_id, "type");
             
@@ -192,7 +193,7 @@ namespace GCleaner.Widgets {
         }
 
         private string determine_app_icon () {
-            var jload = new GCleaner.Tools.JsonUtils ();
+            var jload = new JsonUtils ();
             string text_icon = "";
             
             if (app_id == "apt" || app_id == "system") {
@@ -211,7 +212,7 @@ namespace GCleaner.Widgets {
                     string text_name = (option_id == null)? app_name : check.label.down ();
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (check, null);
-                    var actions = new GCleaner.Tools.Actions ();
+                    var actions = new Actions ();
                     foreach (string item in items) {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, text_name));
                         menu.add (menu_item);

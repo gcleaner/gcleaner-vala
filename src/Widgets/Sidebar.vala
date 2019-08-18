@@ -19,11 +19,12 @@
 using Json;
 using Gtk;
 using GLib;
+using GCleaner.Tools;
 
 namespace GCleaner.Widgets {
     public class Sidebar : Box {
         public GCleaner.App app;
-        private GCleaner.Tools.Cleaner[] list_cleaners = {};
+        private Cleaner[] list_cleaners = {};
         public Box apps_box;
         public Box system_box;
         public int count_apps = 0;
@@ -62,7 +63,7 @@ namespace GCleaner.Widgets {
             // ALL CHECKBOXS - CHECK IF EXIST THEN ADD IT
             // **********************************************************************************
             string[] categories = { "applications", "system" };
-            var parser = new GCleaner.Tools.JsonUtils ();
+            var parser = new JsonUtils ();
 
             foreach (string category in categories) {
                 Json.Object obj_category = parser.get_node_per_category (category).get_object ();
@@ -91,7 +92,7 @@ namespace GCleaner.Widgets {
                         
                         // We create the group of check buttons
                         // ************************************
-                        list_cleaners += new GCleaner.Tools.Cleaner (this.app, app_id);
+                        list_cleaners += new Cleaner (this.app, app_id);
                         
                         // We package in the corresponding BOX
                         main_box.pack_start (program_icon, false, false, 2);
@@ -125,12 +126,12 @@ namespace GCleaner.Widgets {
             sidebar_box.show_all();
         }
 
-        public GCleaner.Tools.Cleaner[] get_list_cleaners () {
+        public Cleaner[] get_list_cleaners () {
             return list_cleaners;
         }
 
-        public GCleaner.Tools.Cleaner get_cleaner_by_id (string app_id) {
-            GCleaner.Tools.Cleaner cleaner = null;
+        public Cleaner get_cleaner_by_id (string app_id) {
+            Cleaner cleaner = null;
             int i = 0;
             while (cleaner == null && i < list_cleaners.length) {
                 if (list_cleaners[i].app_id == app_id) {

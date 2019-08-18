@@ -19,12 +19,13 @@
 using Gtk;
 using GLib;
 using Json;
+using GCleaner.Widgets;
 
 namespace GCleaner.Tools {
     public class Cleaner {
         public GCleaner.App app;
         public string _app_id;
-        private GCleaner.Widgets.CleanerButtons list_buttons;
+        private CleanerButtons list_buttons;
 
         public Cleaner (GCleaner.App app, string app_id) {
             this.app = app;
@@ -38,7 +39,7 @@ namespace GCleaner.Tools {
         }
 
         private void set_check_buttons () {
-            list_buttons = new GCleaner.Widgets.CleanerButtons (app, _app_id);
+            list_buttons = new CleanerButtons (app, _app_id);
         }
 
         public Gtk.CheckButton get_check_root () {

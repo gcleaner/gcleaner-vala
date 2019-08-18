@@ -19,6 +19,7 @@
 using Gtk;
 using Gdk;
 using GLib;
+using GCleaner.Tools;
 
 namespace GCleaner.Tools {
     public class Actions {
@@ -67,7 +68,7 @@ namespace GCleaner.Tools {
             print_results.begin (info_clean, max_to_scan, (obj, res) => {
                 try {
                     int result = print_results.end(res);
-                    var jload = new GCleaner.Tools.JsonUtils ();
+                    var jload = new JsonUtils ();
                     Gdk.Pixbuf pix;
                     app.sidebar.apps_box.set_sensitive (true);
                     app.sidebar.system_box.set_sensitive (true);

@@ -18,6 +18,7 @@
 
 using Gtk;
 using GLib;
+using GCleaner.Widgets;
 
 namespace GCleaner.Widgets {
     public class Header : HeaderBar {
@@ -25,7 +26,7 @@ namespace GCleaner.Widgets {
 
         // ACTIONS CALLBACKS HERE
         void about_cb (SimpleAction simple, Variant? parameter) {
-            var about = new GCleaner.Widgets.About ();
+            var about = new About ();
             about.run ();
         }
 
