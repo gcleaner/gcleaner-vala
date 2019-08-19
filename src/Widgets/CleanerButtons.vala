@@ -212,7 +212,7 @@ namespace GCleaner.Widgets {
                     string text_name = (option_id == null)? app_name : check.label.down ();
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (check, null);
-                    var actions = new Actions ();
+                    var actions = Actions.get_instance ();
                     foreach (string item in items) {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, text_name));
                         menu.add (menu_item);
@@ -222,13 +222,13 @@ namespace GCleaner.Widgets {
                                 Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
                                 msg.response.connect ((response_id) => {
                                     if (response_id == Gtk.ResponseType.OK) {
-                                        actions.run_selected_option (this.app, app_id, option_id, really_delete);
+                                        actions.run_selected_option (app_id, option_id, really_delete);
                                     }
                                     msg.destroy ();
                                 });
                                 msg.show ();
                             } else {
-                                actions.run_selected_option (this.app, app_id, option_id, false);
+                                actions.run_selected_option (app_id, option_id, false);
                             }
                         });
                     }
