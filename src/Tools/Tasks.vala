@@ -59,7 +59,6 @@ namespace GCleaner.Tools {
                     string app_id = cleaner.app_id;
                     string app_name = cleaner.get_app_name ();
                     int count = 0; // It is used for the indexes of the options
-                    
                     // This can be all options or, in the case of a selected item, only one option.
                     Json.Node node_options = null;
                     if (item_option_id != null) {

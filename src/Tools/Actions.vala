@@ -22,20 +22,22 @@ using GLib;
 
 namespace GCleaner.Tools {
     public class Actions {
-        private static Actions Instance = null;
+        private static Actions instance = null;
+        private GCleaner.App app;
 
-        private static void CreateInstance () {
-            if (Instance == null) {
-                Instance = new Actions ();
+        private Actions (GCleaner.App app) {
+            this.app = app;
+        }
+        
+        // Public constructor
+        public static Actions get_instance (GCleaner.App? app = null) {
+            if (instance == null) {
+                instance = new Actions (app);
             }
+            return instance;
         }
 
-        public static Actions Get_Instance () {
-           if (Instance == null) CreateInstance ();
-           return Instance;
-        }
-
-        public void run_operation (GCleaner.App app, bool really_delete = false, string? item_app_id = null, string? item_option_id = null) {
+        public void run_operation (bool really_delete = false, string? item_app_id = null, string? item_option_id = null) {
             Cleaner[] list_cleaners = null;
             var info_clean = new InfoClean ();
             info_clean.reset_values ();
@@ -74,21 +76,20 @@ namespace GCleaner.Tools {
                     app.results_area.clear_results (); // Clean the results grid
                     app.results_area.prepare_to_empty_results ();
                     if (info_clean.get_total_counter () > 0) {
+                        app.results_area.set_headers_visible (true);
                         string total_file_size = FileUtilities.to_readable_format_size (info_clean.get_total_accumulator ());
                         string total_file_number = info_clean.get_total_counter ().to_string ();
                         string text_result;
                         string text_detail;
-                        pix = load_pixbuf (Constants.PKGDATADIR + "/media/info-system/dialog-ok.png");
 
                         if (really_delete) {
-                            text_result = "Cleaning complete\n" + total_file_size + " (" + total_file_number + " files) were removed. (Aproximate size)\n";
-                            text_detail = "Details of files deleted\n";
+                            text_result = "<b>Cleaning complete</b>\n" + total_file_size + " (" + total_file_number + " files) were removed. (Aproximate size)";
+                            text_detail = "<b>Details of files deleted</b>";
                         } else {
-                            text_result = "Analysis complete\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)\n";
-                            text_detail = "Details of files to be deleted (Note: No file have been deleted yet)\n";
+                            text_result = "<b>Analysis complete</b>\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)";
+                            text_detail = "<b>Details of files to be deleted (Note: No file have been deleted yet)</b>";
                         }
-                        app.results_area.append_data_to_list_store (pix, text_result);
-                        app.results_area.append_data_to_list_store (null, text_detail);
+                        app.results_area.set_labels_text (text_result, text_detail);
                         foreach (var cleaner in list_cleaners) {
                             if (cleaner.is_active () || item_option_id != null) {
                                 string app_id = cleaner.app_id;
@@ -128,8 +129,8 @@ namespace GCleaner.Tools {
                         
                         app.enable_clean_button ();
                     } else {
-                        pix = load_pixbuf (Constants.PKGDATADIR + "/media/info-system/dialog-ok.png", 16);
-                        app.results_area.append_data_to_list_store (pix, "Congratulations! The System is clean!");
+                        app.results_area.set_headers_visible (false);
+                        app.results_area.set_labels_text ("<b>Congratulations! The System is clean!</b>");
                         app.disable_clean_button ();
                     }
                     app.sidebar.apps_box.set_sensitive (true);
@@ -142,18 +143,18 @@ namespace GCleaner.Tools {
             });
         }
 
-        public void run_selected_option (GCleaner.App app, string app_id, string? option_id = null, bool really_delete = false) {
-            run_operation (app, really_delete, app_id, option_id);
+        public void run_selected_option (string app_id, string? option_id = null, bool really_delete = false) {
+            run_operation (really_delete, app_id, option_id);
         }
 
-        public void run_scan_operation (GCleaner.App app) {
+        public void run_scan_operation () {
             bool really_delete = false;
-            run_operation (app, really_delete);
+            run_operation (really_delete);
         }
 
-        public void run_clean_operation (GCleaner.App app) {
+        public void run_clean_operation () {
             bool really_delete = true;
-            run_operation (app, really_delete);
+            run_operation (really_delete);
         }
     }
 }
