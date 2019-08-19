@@ -24,7 +24,7 @@ using GCleaner.Tools;
 namespace GCleaner.Widgets {
     public class CleanerButtons {
         public GCleaner.App app;
-        public bool check_root_is_clicked = false;
+        private bool _check_root_is_clicked;
         private string app_id;
         private string app_name;
         private int64 n_options;
@@ -37,6 +37,7 @@ namespace GCleaner.Widgets {
         public CleanerButtons (GCleaner.App app, string app_id) {
             this.app = app;
             this.app_id = app_id;
+            check_root_is_clicked = false;
             settings = new GLib.Settings ("org.gcleaner");
             this.load_init ();
         }
@@ -56,6 +57,10 @@ namespace GCleaner.Widgets {
 
         public string get_name ()       { return app_name; }
         public string get_id ()         { return app_id; }
+        public bool check_root_is_clicked {
+            get { return _check_root_is_clicked; }
+            set { _check_root_is_clicked = value; }
+        }
         
         public Gtk.CheckButton get_check_root () {
             return this.check_root;
