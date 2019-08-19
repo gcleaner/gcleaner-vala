@@ -155,7 +155,7 @@ namespace GCleaner.Tools {
                     foreach (var option in all_options.get_elements ()) {
                         string tmp_opt_name = option.get_object ().get_string_member ("option-name");
                         if (tmp_opt_name == option_name) {
-                            info_app[1] = tmp_opt_name;
+                            info_app[1] = option.get_object ().get_string_member ("option-id");
                             return info_app;
                         }
                     }

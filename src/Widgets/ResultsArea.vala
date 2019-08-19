@@ -145,7 +145,6 @@ namespace GCleaner.Widgets {
                                     msg.destroy ();
                                 });
                                 msg.show ();
-                                
                             } else {
                                 actions.run_selected_option (app_id, option_id, false);
                             }
