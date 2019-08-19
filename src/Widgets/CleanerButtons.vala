@@ -24,10 +24,12 @@ using GCleaner.Tools;
 namespace GCleaner.Widgets {
     public class CleanerButtons {
         public GCleaner.App app;
+        public bool check_root_is_clicked = false;
         private string app_id;
         private string app_name;
         private int64 n_options;
-        public bool check_root_is_clicked = false;
+        private GLib.Settings settings;
+        
         
         private Gtk.CheckButton check_root;
         private Gtk.CheckButton[] check_options = {};
@@ -35,6 +37,7 @@ namespace GCleaner.Widgets {
         public CleanerButtons (GCleaner.App app, string app_id) {
             this.app = app;
             this.app_id = app_id;
+            settings = new GLib.Settings ("org.gcleaner");
             this.load_init ();
         }
         
@@ -46,7 +49,7 @@ namespace GCleaner.Widgets {
             // Setting the main check
             check_root = new Gtk.CheckButton.with_label (app_name);
             configure_check_root (key_xml);
-            check_root.set_active (app.settings.get_boolean (key_xml));
+            check_root.set_active (settings.get_boolean (key_xml));
             // Setting option checks
             configure_checks_options ();
         }
@@ -75,12 +78,12 @@ namespace GCleaner.Widgets {
                 }
                 
                 check_root_is_clicked = false;
-                app.settings.set_boolean (str_xml, check_root.active);
+                settings.set_boolean (str_xml, check_root.active);
             });
             
             // This is to save its status
             check_root.toggled.connect (() => {
-                app.settings.set_boolean (str_xml, check_root.get_active ());
+                settings.set_boolean (str_xml, check_root.get_active ());
             });
             
             // We establish a tooltip
@@ -104,7 +107,7 @@ namespace GCleaner.Widgets {
                 string option_info = determine_tooltip_text (option_id, warning_value);
                 string icon_warning_name = determine_warning_icon (warning_value);
                 check_options += new Gtk.CheckButton.with_label (option_label);
-                check_options[count].set_active (app.settings.get_boolean (key_xml));
+                check_options[count].set_active (settings.get_boolean (key_xml));
                 assign_check_pressed (check_options[count], key_xml);
                 set_tooltip_options (check_options[count], icon_warning_name, option_info);
                 set_context_menu (check_options[count], app_id, option_id);
@@ -136,7 +139,7 @@ namespace GCleaner.Widgets {
                         check_root.set_active (false);
                     }
                 }
-                app.settings.set_boolean (key_xml, check.get_active ());
+                settings.set_boolean (key_xml, check.get_active ());
             });
         }
         
@@ -169,7 +172,7 @@ namespace GCleaner.Widgets {
                     });
                     msg_dialog.show ();
                 }
-                app.settings.set_boolean (key_xml, check.get_active ());
+                settings.set_boolean (key_xml, check.get_active ());
             });
         }
 
