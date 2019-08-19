@@ -119,8 +119,6 @@ namespace GCleaner.Widgets {
             });
 
             tree_view.button_press_event.connect ((event) => {
-                string app_id = "";
-                string option_id = "";
                 if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
                     string[] items = {"Analyze", "Clean"};
                     Gtk.Menu menu = new Gtk.Menu ();
@@ -130,7 +128,14 @@ namespace GCleaner.Widgets {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s selected option".printf(item));
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
+                            var jload = new GCleaner.Tools.JsonUtils ();
                             bool really_delete = (item == "Clean")? true : false;
+                            string[] parts = rsc_content_row.split ("-"); // 1st we divide the app of the option
+                            string app_name = parts[0].delimit ("•", ' ').strip ();; // We make sure of the blank spaces
+                            string option_name = parts[1].strip ();
+                            string[] info_app = jload.get_app_and_option_id_from_info (app_name, option_name);
+                            string app_id = info_app[0];
+                            string option_id = info_app[1];
                             if (really_delete) {
                                 Gtk.MessageDialog msg = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
                                 msg.response.connect ((response_id) => {

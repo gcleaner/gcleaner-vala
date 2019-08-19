@@ -141,6 +141,29 @@ namespace GCleaner.Tools {
             return node;
         }
         
+        // This returns app id and option id from app name and option name
+        public string[] get_app_and_option_id_from_info (string app_name, string option_name) {
+            string[] info_app = new string[2]; // [0]-> app_id   [1]-> option_id
+            string[] system_apps = {"APT", "System"};
+            string category = (app_name in system_apps)? "system" : "applications";
+            Json.Object obj_category = get_node_per_category (category).get_object ();
+            foreach (unowned string current_app_id in obj_category.get_members ()) {
+                var obj_app = obj_category.get_member (current_app_id).get_object ();
+                if (obj_app.get_string_member ("name") == app_name) {
+                    info_app[0] = current_app_id;
+                    Json.Array all_options = get_all_options_of (current_app_id).get_array ();
+                    foreach (var option in all_options.get_elements ()) {
+                        string tmp_opt_name = option.get_object ().get_string_member ("option-name");
+                        if (tmp_opt_name == option_name) {
+                            info_app[1] = tmp_opt_name;
+                            return info_app;
+                        }
+                    }
+                }
+            }
+            return info_app;
+        }
+
         public static int64 get_info_from_field (string app_id, string option_id, Json.Node node, string field) {
             int64 total = 0;
             Json.Node result = Json.Path.query ("$." + app_id + "-" + option_id + "[*]." + field, node);
