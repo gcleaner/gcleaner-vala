@@ -72,17 +72,17 @@
 			<description>Turn on or off if GCleaner analyzes the recently used files of Audacious.</description>
 		</key>
 		<key name="chromium-browser-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Chromium</summary>
 			<description>Turn on or off all Chromium options.</description>
 		</key>
 		<key name="chromium-browser-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Chromium</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Chromium.</description>
 		</key>
 		<key name="chromium-browser-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Chromium</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Chromium.</description>
 		</key>
@@ -127,17 +127,17 @@
 			<description>Turn on or off if GCleaner analyzes the chat logs of emesene.</description>
 		</key>
 		<key name="epiphany-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Epiphany</summary>
 			<description>Turn on or off all Epiphany options.</description>
 		</key>
 		<key name="epiphany-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Epiphany</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Epiphany.</description>
 		</key>
 		<key name="epiphany-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Epiphany</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Epiphany.</description>
 		</key>
@@ -157,22 +157,22 @@
 			<description>Turn on or off if GCleaner analyzes the bookmarks, favicon and visited sitesof of Epiphany.</description>
 		</key>
 		<key name="evolution-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Evolution</summary>
 			<description>Turn on or off all Evolution options.</description>
 		</key>
 		<key name="evolution-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Evolution</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Evolution.</description>
 		</key>
 		<key name="exaile-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Exaile</summary>
 			<description>Turn on or off all Exaile options.</description>
 		</key>
 		<key name="exaile-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Exaile</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Exaile .</description>
 		</key>
@@ -187,27 +187,27 @@
 			<description>Turn on or off if GCleaner analyzes the logs of Exaile.</description>
 		</key>
 		<key name="firefox-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Mozilla Firefox</summary>
 			<description>Turn on or off all Mozilla Firefox options.</description>
 		</key>
 		<key name="firefox-backup" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Mozilla Firefox</summary>
 			<description>Turn on or off if GCleaner analyzes the backup files of Mozilla Firefox.</description>
 		</key>
         <key name="firefox-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Mozilla Firefox</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Mozilla Firefox.</description>
 		</key>
         <key name="firefox-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Mozilla Firefox</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Mozilla Firefox.</description>
 		</key>
         <key name="firefox-crash" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Mozilla Firefox</summary>
 			<description>Turn on or off if GCleaner analyzes the crash report of Mozilla Firefox.</description>
 		</key>
@@ -237,12 +237,12 @@
 			<description>Turn on or off if GCleaner analyzes the session restoration of Mozilla Firefox.</description>
 		</key>
 		<key name="flash-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Flash Player</summary>
 			<description>Turn on or off all Flash Player options.</description>
 		</key>
 		<key name="flash-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Flash Player</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Flash Player.</description>
 		</key>
@@ -267,27 +267,27 @@
 			<description>Turn on or off if GCleaner analyzes the logs of gFTP.</description>
 		</key>
 		<key name="gimp-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Gimp</summary>
 			<description>Turn on or off all Gimp options.</description>
 		</key>
 		<key name="gimp-tmp" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Gimp</summary>
 			<description>Turn on or off if GCleaner analyzes the temporary files of Gimp.</description>
 		</key>
 		<key name="google-chrome-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Google Chrome</summary>
 			<description>Turn on or off all Google Chrome options.</description>
 		</key>
 		<key name="google-chrome-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Google Chrome</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Google Chrome.</description>
 		</key>
 		<key name="google-chrome-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Google Chrome</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Google Chrome.</description>
 		</key>
@@ -318,12 +318,12 @@
 			<description>Turn on or off if GCleaner analyzes the session restoration of Google Chrome.</description>
 		</key>
 		<key name="google-earth-pro-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Google Earth</summary>
 			<description>Turn on or off all Google Earth options.</description>
 		</key>
 		<key name="google-earth-pro-tmp" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Google Earth</summary>
 			<description>Turn on or off if GCleaner analyzes the temporary files of Google Earth.</description>
 		</key>
@@ -338,12 +338,12 @@
 			<description>Turn on or off if GCleaner analyzes the cache of gPodder.</description>
 		</key>
         <key name="java-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Java</summary>
 			<description>Turn on or off all Java options.</description>
 		</key>
 		<key name="java-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Java</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Java.</description>
 		</key>
@@ -368,12 +368,12 @@
 			<description>Turn on or off if GCleaner analyzes the temporary files of KDE.</description>
 		</key>
         <key name="konqueror-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Konqueror</summary>
 			<description>Turn on or off all Konqueror options.</description>
 		</key>
 		<key name="konqueror-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Konqueror</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Konqueror.</description>
 		</key>
@@ -388,17 +388,17 @@
 			<description>Turn on or off if GCleaner analyzes the active sessions of Konqueror.</description>
 		</key>
 		<key name="konqueror-tmp" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Konqueror</summary>
 			<description>Turn on or off if GCleaner analyzes the temporary files of Konqueror.</description>
 		</key>
         <key name="libreoffice-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze LibreOffice</summary>
 			<description>Turn on or off all LibreOffice options.</description>
 		</key>
 		<key name="libreoffice-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze LibreOffice</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of LibreOffice.</description>
 		</key>
@@ -408,12 +408,12 @@
 			<description>Turn on or off if GCleaner analyzes the recently used documents of LibreOffice.</description>
 		</key>
         <key name="liferea-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Liferea</summary>
 			<description>Turn on or off all Liferea options.</description>
 		</key>
 		<key name="liferea-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Liferea</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Liferea.</description>
 		</key>
@@ -423,17 +423,17 @@
 			<description>Turn on or off if GCleaner analyzes the cookies of Liferea.</description>
 		</key>
         <key name="midori-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Midori</summary>
 			<description>Turn on or off all Midori options.</description>
 		</key>
 		<key name="midori-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Midori</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Midori.</description>
 		</key>
 		<key name="midori-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Midori</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Midori.</description>
 		</key>
@@ -443,12 +443,12 @@
 			<description>Turn on or off if GCleaner analyzes the history of Midori.</description>
 		</key>
 		<key name="miro-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Miro</summary>
 			<description>Turn on or off all Miro options.</description>
 		</key>
 		<key name="miro-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Miro</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Miro.</description>
 		</key>
@@ -468,17 +468,17 @@
 			<description>Turn on or off if GCleaner analyzes the cache of Nexuiz.</description>
 		</key>
 		<key name="opera-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Opera</summary>
 			<description>Turn on or off all Opera options.</description>
 		</key>
 		<key name="opera-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Opera</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Opera.</description>
 		</key>
 		<key name="opera-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Opera</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Opera.</description>
 		</key>
@@ -503,12 +503,12 @@
 			<description>Turn on or off if GCleaner analyzes the sessions of Opera.</description>
 		</key>
 		<key name="pidgin-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Pidgin</summary>
 			<description>Turn on or off all Pidgin options.</description>
 		</key>
 		<key name="pidgin-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Pidgin</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Pidgin.</description>
 		</key>
@@ -533,12 +533,12 @@
 			<description>Turn on or off if GCleaner analyzes the history of Rhythmbox.</description>
 		</key>
 		<key name="sea-monkey-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze SeaMonkey</summary>
 			<description>Turn on or off all SeaMonkey options.</description>
 		</key>
 		<key name="sea-monkey-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze SeaMonkey</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of SeaMonkey.</description>
 		</key>
@@ -548,7 +548,7 @@
 			<description>Turn on or off if GCleaner analyzes the logs of SeaMonkey.</description>
 		</key>
 		<key name="sea-monkey-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze SeaMonkey</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of SeaMonkey.</description>
 		</key>
@@ -573,17 +573,17 @@
 			<description>Turn on or off if GCleaner analyzes the logs of Skype.</description>
 		</key>
         <key name="thunderbird-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Thunderbird</summary>
 			<description>Turn on or off all Thunderbird options.</description>
 		</key>
 		<key name="thunderbird-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Thunderbird</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Thunderbird.</description>
 		</key>
 		<key name="thunderbird-cookies" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Thunderbird</summary>
 			<description>Turn on or off if GCleaner analyzes the cookies of Thunderbird.</description>
 		</key>
@@ -603,17 +603,17 @@
 			<description>Turn on or off if GCleaner analyzes the cache of Tremulous.</description>
 		</key>
 		<key name="vuze-main" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Vuze</summary>
 			<description>Turn on or off all Vuze options.</description>
 		</key>
 		<key name="vuze-backup" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Vuze</summary>
 			<description>Turn on or off if GCleaner analyzes the backup files of Vuze.</description>
 		</key>
 		<key name="vuze-cache" type="b">
-			<default>false</default>
+			<default>true</default>
 			<summary>Analyze Vuze</summary>
 			<description>Turn on or off if GCleaner analyzes the cache of Vuze.</description>
 		</key>
