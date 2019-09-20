@@ -23,13 +23,12 @@ using Json;
 namespace GCleaner.Tools {
     public class InfoClean {
         //Variables by search criteria *************************************************************
-        //total_counter and total_accumulator
         private Inventory inventory;
-        private int64 total_counter;
-        private int64 total_accumulator;
+        private int64 _total_counter; // Total number of scanned files.
+        private int64 _total_accumulator; // Total weight of scanned files.
         // This variable is updated every time 
         // a application/system option is counted.
-        private int n_scanned_items;
+        private int _n_scanned_items;
 
         public void InfoClean () {
             reset_values ();
@@ -44,12 +43,18 @@ namespace GCleaner.Tools {
             inventory.reset_values ();
         }
         
-        public int64 get_total_counter ()               { return total_counter; }
-        public void set_total_counter (int64 val)       { total_counter = val; }
-        public int64 get_total_accumulator ()           { return total_accumulator; }
-        public void set_total_accumulator (int64 val)   { total_accumulator = val; }
-        public int get_n_scanned_apps ()               { return n_scanned_items; }
-        public void count_scanned_apps (int val = 1)   { n_scanned_items += val; }
+        public int64 total_counter {
+            get { return _total_counter; }
+            set { _total_counter = value; }
+        }
+        public int64 total_accumulator {
+            get { return _total_accumulator; }
+            set { _total_accumulator = value; }
+        }
+        public int n_scanned_items {
+            get { return _n_scanned_items; }
+            set { _n_scanned_items += value; }
+        }
         
         // SIMPLE SCAN OPTION ************************************************************************
         // Scan any option, either a system option or an application option
