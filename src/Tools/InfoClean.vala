@@ -41,6 +41,7 @@ namespace GCleaner.Tools {
             total_accumulator = 0;
             n_scanned_items = 0;
             inventory = Inventory.get_instance ();
+            inventory.reset_values ();
         }
         
         public int64 get_total_counter ()               { return total_counter; }
