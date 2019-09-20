@@ -24,7 +24,7 @@ namespace GCleaner.Tools {
     public class InfoClean {
         //Variables by search criteria *************************************************************
         //total_counter and total_accumulator
-        private Json.Node info_data;
+        private Inventory inventory;
         private int64 total_counter;
         private int64 total_accumulator;
         // This variable is updated every time 
@@ -40,7 +40,8 @@ namespace GCleaner.Tools {
             total_counter = 0;
             total_accumulator = 0;
             n_scanned_items = 0;
-            info_data = JsonUtils.get_instance_node ();
+            inventory = Inventory.get_instance ();
+            inventory.reset_values ();
         }
         
         public int64 get_total_counter ()               { return total_counter; }
@@ -123,16 +124,16 @@ namespace GCleaner.Tools {
         }
 
         public void insert_info_data (string app_id, string option_id, int64[] information) {
-            info_data = JsonUtils.insert_info_data (app_id, option_id, information, info_data);
+            inventory.update_data (app_id, option_id, information);
         }
 
         public int64 get_file_size_of (string app_id, string option_id) {
-            int64 file_size = JsonUtils.get_file_size_of (app_id, option_id, info_data);
+            int64 file_size = inventory.get_file_size_of (app_id, option_id);
             return file_size;
         }
 
         public int64 get_file_number_of (string app_id, string option_id) {
-            int64 file_number = JsonUtils.get_file_number_of (app_id, option_id, info_data);
+            int64 file_number = inventory.get_file_number_of (app_id, option_id);
             return file_number;
         }
     }

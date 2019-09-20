@@ -134,7 +134,7 @@ namespace GCleaner.Tools {
             return commands;
         }
         
-        public static Json.Node get_instance_node () {
+        public static Json.Node get_empty_node () {
             var tmp_parser = new Json.Parser ();
             tmp_parser.load_from_data ("{}");
             Json.Node node = tmp_parser.get_root ();
@@ -164,36 +164,20 @@ namespace GCleaner.Tools {
             return info_app;
         }
 
-        public static int64 get_info_from_field (string app_id, string option_id, Json.Node node, string field) {
+        public static int64 get_info_size_by_path_query (string query, Json.Node node) {
             int64 total = 0;
-            Json.Node result = Json.Path.query ("$." + app_id + "-" + option_id + "[*]." + field, node);
+            Json.Node result = Json.Path.query (query, node);
             foreach (Json.Node item in result.get_array ().get_elements ()) { // It's supposed to be a single element
                 total = int64.parse(Json.to_string (item, true));
             }
             return total;
         }
 
-        public static int64 get_file_size_of (string app_id, string option_id, Json.Node node) {
-            string field = "size";
-            int64 total_size = get_info_from_field (app_id, option_id, node, field);
-            return total_size;
-        }
-
-        public static int64 get_file_number_of (string app_id, string option_id, Json.Node node) {
-            string field = "file-number";
-            int64 total_files = get_info_from_field (app_id, option_id, node, field);
-            return total_files;
-        }
-
-        public static Json.Node insert_info_data (string app_id, string option_id, int64[] information, Json.Node node) {
-            var array = new Json.Array ();
-            var object = new Json.Object ();
-            var current_obj = node.get_object ();
-            object.set_int_member ("file-number", information[0]);
-            object.set_int_member ("size", information[1]);
+        public static Json.Node insert_object_in_array (Json.Object object) {
+            Json.Array array = new Json.Array ();
+            Json.Node node = new Json.Node (Json.NodeType.ARRAY);
             array.add_object_element (object);
-            current_obj.set_array_member (app_id + "-" + option_id, array);
-            node.take_object (current_obj);
+            node.take_array (array);
             return node;
         }
     }
