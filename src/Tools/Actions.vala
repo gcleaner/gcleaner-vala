@@ -76,10 +76,10 @@ namespace GCleaner.Tools {
                     app.sidebar.system_box.set_sensitive (true);
                     app.results_area.clear_results (); // Clean the results grid
                     app.results_area.prepare_to_empty_results ();
-                    if (info_clean.get_total_counter () > 0) {
+                    if (info_clean.total_counter > 0) {
                         app.results_area.set_headers_visible (true);
-                        string total_file_size = FileUtilities.to_readable_format_size (info_clean.get_total_accumulator ());
-                        string total_file_number = info_clean.get_total_counter ().to_string ();
+                        string total_file_size = FileUtilities.to_readable_format_size (info_clean.total_accumulator);
+                        string total_file_number = info_clean.total_counter.to_string ();
                         string text_result;
                         string text_detail;
 

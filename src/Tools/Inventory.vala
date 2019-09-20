@@ -40,7 +40,7 @@ namespace GCleaner.Tools {
             return instance;
         }
         
-        public void reset_values () {
+        public void empty_data () {
             _length = 0;
             info_data = JsonUtils.get_empty_node ();
         }
