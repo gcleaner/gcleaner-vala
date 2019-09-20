@@ -24,7 +24,7 @@ namespace GCleaner.Tools {
         
         ThreadFunc<void*> run = () => {
             
-            while (info_clean.get_n_scanned_apps () < max_to_scan) {}
+            while (info_clean.n_scanned_items < max_to_scan) {}
             
             Idle.add((owned) print_callback);
             Thread.exit (1.to_pointer ());
@@ -73,7 +73,7 @@ namespace GCleaner.Tools {
                         /* Update the progress bar
                          * ++++++-----------------------------
                          */
-                        app.update_progress (app_name, option_name, info_clean.get_n_scanned_apps ());
+                        app.update_progress (app_name, option_name, info_clean.n_scanned_items);
                         bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
                         if (option_is_active || item_option_id != null) {
                             string[] advanced_options = {"cache-pkg", "configuration-pkg", "old-kernels"};
@@ -110,7 +110,7 @@ namespace GCleaner.Tools {
                         count++;
                     }
                 }
-                info_clean.count_scanned_apps (1);
+                info_clean.n_scanned_items += 1;
             }
 
             Idle.add((owned) analyze_callback);

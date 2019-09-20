@@ -53,9 +53,9 @@ namespace GCleaner.Tools {
         }
         public int n_scanned_items {
             get { return _n_scanned_items; }
-            set { _n_scanned_items += value; }
+            set { _n_scanned_items = value; }
         }
-        
+
         // SIMPLE SCAN OPTION ************************************************************************
         // Scan any option, either a system option or an application option
         public void simple_scan (string app_id, string option_id, string[] paths) {
