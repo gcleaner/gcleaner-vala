@@ -55,6 +55,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Tools/Cleaner.vala
     src/Tools/FileUtilities.vala
     src/Tools/InfoClean.vala
+    src/Tools/Inventory.vala
     src/Tools/JsonUtils.vala
     src/Tools/Tasks.vala
     src/Widgets/About.vala
