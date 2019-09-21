@@ -35,7 +35,7 @@ namespace GCleaner.Widgets {
             content.vexpand = false;
             content.margin_top = 5;
             content.margin_bottom = 20;
-            content.margin_start = 12;
+            content.margin_start = 5;
             content.margin_end = 10;
 
             var general_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);            
