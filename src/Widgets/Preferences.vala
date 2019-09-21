@@ -72,9 +72,12 @@ namespace GCleaner.Widgets {
             combobox.pack_start (cell, false);
             combobox.set_attributes (cell, "text", 0);
             combobox.set_active (0); // Set the first item in the list to be selected (active).
+            combobox.margin_bottom = 5;
             
-            language_box.pack_start (language_label, true, false, 0);
-            language_box.pack_start (combobox, false, true, 5);
+            var combo_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
+            combo_container.pack_start (combobox, false, false, 10);
+            language_box.pack_start (language_label, false, false, 0);
+            language_box.pack_start (combo_container, false, false, 5);
             
             ((Gtk.Box) get_content_area()).add (content);
             ok_button.grab_focus();
