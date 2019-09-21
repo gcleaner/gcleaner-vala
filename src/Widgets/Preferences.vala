@@ -51,6 +51,11 @@ namespace GCleaner.Widgets {
             content.pack_start (stack_switcher, true, true, 0);
             content.pack_start (stack, true, true, 0);
 
+            var autorun_btn = new Gtk.CheckButton.with_label ("Start " + Constants.PROGRAM_NAME + " with the System.");
+            var norm_size_btn = new Gtk.CheckButton.with_label ("USE IEC sizes(1KiB = 1024 bytes) instead of SI(1KB = 1000 bytes)");
+            general_box.pack_start (autorun_btn, false, false, 3);
+            general_box.pack_start (norm_size_btn, false, false, 0);
+            
             var language_label = new Gtk.Label ("");
             language_label.set_markup ("<b>Select your language:</b>");
             language_label.set_margin_bottom (10);
