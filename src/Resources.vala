@@ -55,6 +55,9 @@ namespace Resources {
         "english", "spanish"
     };
 
+    public const string[] SUFIX_SIZE_IEC = {"KiB", "MiB", "GiB"};
+    public const string[] SUFIX_SIZE_SI = {"kB", "MB", "GB"};
+
     /*
      * Constants that contain information about the options of each program
      */ 
