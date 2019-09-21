@@ -59,13 +59,12 @@ namespace GCleaner.Widgets {
             var language_label = new Gtk.Label ("");
             language_label.set_markup ("<b>Select your language:</b>");
             language_label.set_margin_bottom (10);
-
-            string[] supported_langs = {"English", "Spanish"};
+            
             Gtk.ListStore liststore = new Gtk.ListStore (1, typeof (string));
-            foreach (string lang in supported_langs) {
+            foreach (string lang in Resources.LANGUAGES_SUPPORTED) {
                 Gtk.TreeIter iter;
                 liststore.append (out iter);
-                liststore.set (iter, 0, lang);
+                liststore.set (iter, 0, capitalize (lang));
             }
             Gtk.ComboBox combobox = new Gtk.ComboBox.with_model (liststore);
             Gtk.CellRendererText cell = new Gtk.CellRendererText ();
@@ -88,7 +87,7 @@ namespace GCleaner.Widgets {
             });
 
             combobox.changed.connect ((combo) => {
-                print ("You chose " + supported_langs [combo.get_active ()] +"\n");
+                print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
             });
         }
     }

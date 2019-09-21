@@ -51,7 +51,7 @@ namespace Resources {
     public const string[] LANGUAGE_CODES = {
         "en", "es"
     };
-    public const string[] LANGUAGE_NAMES = {
+    public const string[] LANGUAGES_SUPPORTED = {
         "english", "spanish"
     };
 
