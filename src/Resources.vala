@@ -116,6 +116,12 @@ namespace Resources {
     public const string DESCRIPTION_THUMBNAILS_ID = "thumbnails";
     public const string DESCRIPTION_TRASH_ID = "trash";
 
+    public const string QUESTION_PHRASE_CACHE_PKG = "Are you sure you want to delete cache and obsolete Package System files?";
+    public const string QUESTION_PHRASE_CONF_PKG = "Are you sure you want to delete orphan Package System files?";
+    public const string QUESTION_PHRASE_OLDKERNELS = "Are you sure you want to delete the old kernels?";
+    public const string QUESTION_PHRASE_PASS = "Are you sure you want to remove %s passwords?";
+    public const string QUESTION_PHRASE_UNKNOWN = DESCRIPTION_UNKNOWN_LABEL;
+
     public unowned string get_description_info (string id_option_type) {
         switch (id_option_type) {
             case DESCRIPTION_BACKUP_ID:
@@ -172,6 +178,21 @@ namespace Resources {
                 return DESCRIPTION_TRASH_LABEL;
             default:
                 return DESCRIPTION_UNKNOWN_LABEL;
+        }
+    }
+
+    public string get_question_phrase (string option_id_type, string app_name) {
+        switch (option_id_type) {
+            case DESCRIPTION_CACHE_PKG_ID:
+                return QUESTION_PHRASE_CACHE_PKG;
+            case DESCRIPTION_CONF_PKG_ID:
+                return QUESTION_PHRASE_CONF_PKG;
+            case DESCRIPTION_OLDKERNELS_ID:
+                return QUESTION_PHRASE_OLDKERNELS;
+            case DESCRIPTION_PASS_ID:
+                return QUESTION_PHRASE_PASS.printf (app_name);
+            default:
+                return QUESTION_PHRASE_UNKNOWN;
         }
     }
 }

@@ -148,19 +148,8 @@ namespace GCleaner.Widgets {
             });
         }
         
-        private string build_question_for_msgdlg (string option_id) {
-            string question = "";
-            if (option_id == "pass") {
-                question = "Are you sure you want to delete the saved passwords from " + app_name + "?";
-            } else if (option_id == "cache-pkg") {
-                question = "Are you sure you want to delete the cache and obsolete files from Package System?";
-            } else if (option_id == "configuration-pkg") {
-                question = "Are you sure you want to delete the orphan packages from Package System?";
-            } else if (option_id == "old-kernels") {
-                question = "Are you sure you want to delete the old kernels?";
-            }
-            
-            return question;
+        private string build_question_for_msgdlg (string option_id_type) {
+            return Resources.get_question_phrase (option_id_type, app_name);
         }
 
         public void set_msgdlg_warning (CheckButton check, string key_xml, string question) {
