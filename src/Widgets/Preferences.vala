@@ -20,7 +20,10 @@ using Gtk;
 
 namespace GCleaner.Widgets {
     public class Preferences : Gtk.Dialog {
+        GLib.Settings settings;
+
         public Preferences(Gtk.Window owner) {
+            settings = new GLib.Settings ("org.gcleaner");
             set_title ("Preferences");
             set_type_hint (Gdk.WindowTypeHint.DIALOG);
             set_transient_for (owner);
@@ -52,7 +55,11 @@ namespace GCleaner.Widgets {
             content.pack_start (stack, true, true, 0);
 
             var autorun_btn = new Gtk.CheckButton.with_label ("Start " + Resources.PROGRAM_NAME + " with the System.");
-            var norm_size_btn = new Gtk.CheckButton.with_label ("USE IEC sizes(1KiB = 1024 bytes) instead of SI(1KB = 1000 bytes)");
+            autorun_btn.set_active (settings.get_boolean ("start-with-system"));
+            this.assign_check_pressed (autorun_btn, "start-with-system");
+            var norm_size_btn = new Gtk.CheckButton.with_label ("USE IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)");
+            norm_size_btn.set_active (settings.get_boolean ("standard-size-bytes"));
+            this.assign_check_pressed (norm_size_btn, "standard-size-bytes");
             general_box.pack_start (autorun_btn, false, false, 3);
             general_box.pack_start (norm_size_btn, false, false, 0);
             
@@ -88,6 +95,12 @@ namespace GCleaner.Widgets {
 
             combobox.changed.connect ((combo) => {
                 print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
+            });
+        }
+
+        private void assign_check_pressed (Gtk.CheckButton check, string key_xml) {
+            check.toggled.connect (() => {
+                settings.set_boolean (key_xml, check.get_active ());
             });
         }
     }
