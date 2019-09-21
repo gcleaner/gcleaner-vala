@@ -58,32 +58,120 @@ namespace Resources {
     /*
      * Constants that contain information about the options of each program
      */ 
-    public const string BACKUP_INFO = "Backup files.\n";
-    public const string CACHE_NET_INFO = "Temporary files downloaded for later use and reduce the bandwidth.\n";
-    public const string CACHE_PROG_INFO = "Files temporarily created for later use.\n";
-    public const string CHAT_LOGS_INFO = "A chat log is an archive of transcripts from online chat and instant messaging conversations.\n";
-    public const string COOKIES_INFO = "Text file, which contain information such as web site preferences, authentication, and tracking identification.\n";
-    public const string CRASH_INFO = "File with reports of unexpected closures.\n";
-    public const string DOCS_INFO = "A list of recent documents.\n";
-    public const string DOM_INFO = "The DOM storage is designed to store persistent data similar to cookies but with greatly enhanced capacity.\n";
-    public const string DOWNLOAD_INFO = "Contains a list of files downloaded\n";
-    public const string HISTORY_NET_INFO = "List of visited web pages\n";
-    public const string HISTORY_PROG_INFO = "History of modifications\n";
-    public const string LOGS_INFO = "File that records either events that occur in an operating system or other software runs\n";
-    public const string PASS_INFO = "A database of usernames and passwords as well as a list of sites that should not store passwords.\n";
-    public const string PLACES_INFO = "A database of URLs including bookmarks, favicons, and a history of visited web sites.\n";
-    public const string PREFS_INFO = "Settings for individual sites\n";
-    public const string SAVED_FORMHISTORY_INFO = "A history of forms entered in web sites and in the Search bar\n";
-    public const string SESSION_INFO = "Delete the current session\n";
-    public const string TMP_INFO = "File generated in order to contain information transiently.\n";
-    public const string USED_INFO = "List of files most recent used.\n";
+    public const string DESCRIPTION_BACKUP_LABEL = "Backup files.\n";
+    public const string DESCRIPTION_CACHE_NET_LABEL = "Temporary files downloaded for later use and reduce the bandwidth.\n";
+    public const string DESCRIPTION_CACHE_PROG_LABEL = "Files temporarily created for later use.\n";
+    public const string DESCRIPTION_CHAT_LOGS_LABEL = "A chat log is an archive of transcripts from online chat and instant messaging conversations.\n";
+    public const string DESCRIPTION_COOKIES_LABEL = "Text file, which contain information such as web site preferences, authentication, and tracking identification.\n";
+    public const string DESCRIPTION_CRASH_LABEL = "File with reports of unexpected closures.\n";
+    public const string DESCRIPTION_DOCS_LABEL = "A list of recent documents.\n";
+    public const string DESCRIPTION_DOM_LABEL = "The DOM storage is designed to store persistent data similar to cookies but with greatly enhanced capacity.\n";
+    public const string DESCRIPTION_DOWNLOAD_LABEL = "Contains a list of files downloaded\n";
+    public const string DESCRIPTION_HISTORY_NET_LABEL = "List of visited web pages\n";
+    public const string DESCRIPTION_HISTORY_PROG_LABEL = "History of modifications\n";
+    public const string DESCRIPTION_LOGS_LABEL = "File that records either events that occur in an operating system or other software runs\n";
+    public const string DESCRIPTION_PASS_LABEL = "A database of usernames and passwords as well as a list of sites that should not store passwords.\n";
+    public const string DESCRIPTION_PLACES_LABEL = "A database of URLs including bookmarks, favicons, and a history of visited web sites.\n";
+    public const string DESCRIPTION_PREFS_LABEL = "Settings for individual sites\n";
+    public const string DESCRIPTION_SAVED_FORMHISTORY_LABEL = "A history of forms entered in web sites and in the Search bar\n";
+    public const string DESCRIPTION_SESSION_LABEL = "Delete the current session\n";
+    public const string DESCRIPTION_TMP_LABEL = "File generated in order to contain information transiently.\n";
+    public const string DESCRIPTION_USED_LABEL = "List of files most recent used.\n";
     // Special
-    public const string CACHE_PKG_INFO = "List of temporary update and package files.\n";
-    public const string CONF_PKG_INFO = "List of packages that have been deleted, but whose configuration files still remain.\n";
-    public const string OLDKERNELS_INFO = "Purge old kernels. Please, be careful.\n";
-    public const string TERMINAL_INFO = "Clean the Bash history.\n";
-    public const string THUMBNAILS_INFO = "Clean the generated cache by the images.\n";
-    public const string TRASH_INFO = "Files housed in the Trash bin.\n";
-    public const string WARNING_LOW_INFO = "<b>Warning level: </b> Low";
-    public const string WARNING_HIGH_INFO = "<b>Warning level: </b> High";
+    public const string DESCRIPTION_CACHE_PKG_LABEL = "List of temporary update and package files.\n";
+    public const string DESCRIPTION_CONF_PKG_LABEL = "List of packages that have been deleted, but whose configuration files still remain.\n";
+    public const string DESCRIPTION_OLDKERNELS_LABEL = "Purge old kernels. Please, be careful.\n";
+    public const string DESCRIPTION_TERMINAL_LABEL = "Clean the Bash history.\n";
+    public const string DESCRIPTION_THUMBNAILS_LABEL = "Clean the generated cache by the images.\n";
+    public const string DESCRIPTION_TRASH_LABEL = "Files housed in the Trash bin.\n";
+    public const string DESCRIPTION_UNKNOWN_LABEL = "Unknown information.\n";
+    
+    public const string DESCRIPTION_WARNING_LOW_LABEL = "<b>Warning level: </b> Low";
+    public const string DESCRIPTION_WARNING_HIGH_LABEL = "<b>Warning level: </b> High";
+
+    public const string DESCRIPTION_BACKUP_ID = "backup";
+    public const string DESCRIPTION_CACHE_NET_ID = "internet-cache";
+    public const string DESCRIPTION_CACHE_PROG_ID = "cache";
+    public const string DESCRIPTION_CHAT_LOGS_ID = "chat-logs";
+    public const string DESCRIPTION_COOKIES_ID = "cookies";
+    public const string DESCRIPTION_CRASH_ID = "crash";
+    public const string DESCRIPTION_DOCS_ID = "docs";
+    public const string DESCRIPTION_DOM_ID = "dom";
+    public const string DESCRIPTION_DOWNLOAD_ID = "download";
+    public const string DESCRIPTION_HISTORY_NET_ID = "internet-history";
+    public const string DESCRIPTION_HISTORY_PROG_ID = "history";
+    public const string DESCRIPTION_LOGS_ID = "logs";
+    public const string DESCRIPTION_PASS_ID = "pass";
+    public const string DESCRIPTION_PLACES_ID = "places";
+    public const string DESCRIPTION_PREFS_ID = "prefs";
+    public const string DESCRIPTION_RECENT_DOCS_ID = "recent-docs";
+    public const string DESCRIPTION_SAVED_FORMHISTORY_ID = "form-history";
+    public const string DESCRIPTION_SESSION_ID = "session";
+    public const string DESCRIPTION_TMP_ID = "tmp";
+    public const string DESCRIPTION_USED_ID = "used";
+    public const string DESCRIPTION_CACHE_PKG_ID = "cache-pkg";
+    public const string DESCRIPTION_CONF_PKG_ID = "configuration-pkg";
+    public const string DESCRIPTION_OLDKERNELS_ID = "old-kernels";
+    public const string DESCRIPTION_TERMINAL_ID = "terminal-history";
+    public const string DESCRIPTION_THUMBNAILS_ID = "thumbnails";
+    public const string DESCRIPTION_TRASH_ID = "trash";
+
+    public unowned string get_description_info (string id_option_type) {
+        switch (id_option_type) {
+            case DESCRIPTION_BACKUP_ID:
+                return DESCRIPTION_BACKUP_LABEL;
+            case DESCRIPTION_CACHE_NET_ID:
+                return DESCRIPTION_CACHE_NET_LABEL;
+            case DESCRIPTION_CACHE_PROG_ID:
+                return DESCRIPTION_CACHE_PROG_LABEL;
+            case DESCRIPTION_CHAT_LOGS_ID:
+                return DESCRIPTION_CHAT_LOGS_LABEL;
+            case DESCRIPTION_COOKIES_ID:
+                return DESCRIPTION_COOKIES_LABEL;
+            case DESCRIPTION_CRASH_ID:
+                return DESCRIPTION_CRASH_LABEL;
+            case DESCRIPTION_DOCS_ID:
+                return DESCRIPTION_DOCS_LABEL;
+            case DESCRIPTION_DOM_ID:
+                return DESCRIPTION_DOM_LABEL;
+            case DESCRIPTION_DOWNLOAD_ID:
+                return DESCRIPTION_DOWNLOAD_LABEL;
+            case DESCRIPTION_HISTORY_NET_ID:
+                return DESCRIPTION_HISTORY_NET_LABEL;
+            case DESCRIPTION_HISTORY_PROG_ID:
+                return DESCRIPTION_HISTORY_PROG_LABEL;
+            case DESCRIPTION_LOGS_ID:
+                return DESCRIPTION_LOGS_LABEL;
+            case DESCRIPTION_PASS_ID:
+                return DESCRIPTION_PASS_LABEL;
+            case DESCRIPTION_PLACES_ID:
+                return DESCRIPTION_PLACES_LABEL;
+            case DESCRIPTION_PREFS_ID:
+                return DESCRIPTION_PREFS_LABEL;
+            case DESCRIPTION_RECENT_DOCS_ID:
+                return DESCRIPTION_DOCS_LABEL;
+            case DESCRIPTION_SAVED_FORMHISTORY_ID:
+                return DESCRIPTION_SAVED_FORMHISTORY_LABEL;
+            case DESCRIPTION_SESSION_ID:
+                return DESCRIPTION_SESSION_LABEL;
+            case DESCRIPTION_TMP_ID:
+                return DESCRIPTION_TMP_LABEL;
+            case DESCRIPTION_USED_ID:
+                return DESCRIPTION_USED_LABEL;
+            case DESCRIPTION_CACHE_PKG_ID:
+                return DESCRIPTION_CACHE_PKG_LABEL;
+            case DESCRIPTION_CONF_PKG_ID:
+                return DESCRIPTION_CONF_PKG_LABEL;
+            case DESCRIPTION_OLDKERNELS_ID:
+                return DESCRIPTION_OLDKERNELS_LABEL;
+            case DESCRIPTION_TERMINAL_ID:
+                return DESCRIPTION_TERMINAL_LABEL;
+            case DESCRIPTION_THUMBNAILS_ID:
+                return DESCRIPTION_THUMBNAILS_LABEL;
+            case DESCRIPTION_TRASH_ID:
+                return DESCRIPTION_TRASH_LABEL;
+            default:
+                return DESCRIPTION_UNKNOWN_LABEL;
+        }
+    }
 }
