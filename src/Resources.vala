@@ -20,9 +20,11 @@
  * Here are declared constants and others resources
  */
 namespace Resources {
+    public const string CONFIG_AUTOSTART_DIR = "/.config/autostart";
     public const string STORE_CONFIG_DIR = "/.local/share/gcleaner";
     public const string INSTALL_PREFIX = "/usr";
     public const string DATADIR = "/usr/share";
+    public const string APP_SOURCE_DIR = "/usr/share/applications";
     public const string PKGDATADIR = "/usr/share/gcleaner";
     public const string PROGRAM_NAME = "GCleaner";
     public const string RELEASE_NAME = "Bosch Aerotwin";
@@ -30,7 +32,7 @@ namespace Resources {
     public const string VERSION_INFO = "Initial release of GCleaner.";
     public const string EXEC_NAME = "gcleaner";
     public const string APP_LAUNCHER = "gcleaner.desktop";
-
+    
     /*
      * About GCleaner
      */
@@ -54,6 +56,10 @@ namespace Resources {
     public const string[] LANGUAGES_SUPPORTED = {
         "english", "spanish"
     };
+
+    public const string PREFERENCES_LANGUAGE_KEY = "language";
+    public const string PREFERENCES_AUTOSTART_KEY = "start-with-system";
+    public const string PREFERENCES_STANDARD_SIZE_KEY = "standard-iec-size-bytes";
 
     public const string[] SUFIX_SIZE_IEC = {"KiB", "MiB", "GiB"};
     public const string[] SUFIX_SIZE_SI = {"kB", "MB", "GB"};

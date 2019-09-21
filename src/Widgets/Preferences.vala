@@ -55,11 +55,11 @@ namespace GCleaner.Widgets {
             content.pack_start (stack, true, true, 0);
 
             var autorun_btn = new Gtk.CheckButton.with_label ("Start " + Resources.PROGRAM_NAME + " with the System.");
-            autorun_btn.set_active (settings.get_boolean ("start-with-system"));
-            this.assign_check_pressed (autorun_btn, "start-with-system");
-            var norm_size_btn = new Gtk.CheckButton.with_label ("USE IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)");
-            norm_size_btn.set_active (settings.get_boolean ("standard-iec-size-bytes"));
-            this.assign_check_pressed (norm_size_btn, "standard-iec-size-bytes");
+            autorun_btn.set_active (settings.get_boolean (Resources.PREFERENCES_AUTOSTART_KEY));
+            this.assign_check_pressed (autorun_btn, Resources.PREFERENCES_AUTOSTART_KEY);
+            var norm_size_btn = new Gtk.CheckButton.with_label ("Use IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)");
+            norm_size_btn.set_active (settings.get_boolean (Resources.PREFERENCES_STANDARD_SIZE_KEY));
+            this.assign_check_pressed (norm_size_btn, Resources.PREFERENCES_STANDARD_SIZE_KEY);
             general_box.pack_start (autorun_btn, false, false, 3);
             general_box.pack_start (norm_size_btn, false, false, 0);
             
@@ -100,6 +100,18 @@ namespace GCleaner.Widgets {
 
         private void assign_check_pressed (Gtk.CheckButton check, string key_xml) {
             check.toggled.connect (() => {
+                if (key_xml == Resources.PREFERENCES_AUTOSTART_KEY) {
+                    string home_user = GLib.Environment.get_variable ("HOME");
+                    string src_file = Resources.APP_SOURCE_DIR + "/" + Resources.APP_LAUNCHER;
+                    string dst_file = home_user + Resources.CONFIG_AUTOSTART_DIR +
+                        "/" + Resources.APP_LAUNCHER;
+                    if (check.get_active ()) {
+                        FileUtilities.copy_file (src_file, dst_file);
+                    } else {
+                        string[] file_to_remove = {dst_file}; // This delete the autostart desktop file.
+                        FileUtilities.delete_files (file_to_remove);
+                    }
+                }
                 settings.set_boolean (key_xml, check.get_active ());
             });
         }

@@ -22,7 +22,7 @@ public class FileUtilities {
     public static string to_readable_format_size (int64 bytes) {
         float size;
         var settings = new GLib.Settings ("org.gcleaner");
-        bool use_standard_iec = settings.get_boolean ("standard-iec-size-bytes");
+        bool use_standard_iec = settings.get_boolean (Resources.PREFERENCES_STANDARD_SIZE_KEY);
         // It determines if IEC(1KiB = 1024 bytes) standard or SI(1kB = 1000 bytes) is used
         int base_size = (use_standard_iec) ? 1024 : 1000;
         string[] sufix = (use_standard_iec) ? Resources.SUFIX_SIZE_IEC : Resources.SUFIX_SIZE_SI;
@@ -95,6 +95,26 @@ public class FileUtilities {
         status = (file.query_exists ()) ? true: false;
         return status;
     }
+    
+    public static bool copy_file (string from_path, string to_path) {
+        MainLoop loop = new MainLoop ();
+        bool status = true;
+        File src_file = File.new_for_path (from_path);
+        File dst_file = File.new_for_path (to_path);
+        src_file.copy_async.begin (dst_file, 0, Priority.DEFAULT, null, (current_num_bytes, total_num_bytes) => {}, 
+        (obj, res) => {
+            try {
+                status = src_file.copy_async.end (res);
+                print ("Result: %s\n", status.to_string ());
+            } catch (Error e) {
+                print ("Error: %s\n", e.message);
+                status = false;
+            }
+            loop.quit ();
+        });
+        loop.run ();
+        return status;
+    }
 
     // It will return the amount and weight of the deleted files.
     public static int64[] delete_files (string[] paths) {
@@ -129,7 +149,7 @@ public class FileUtilities {
         information[1] = size_deleted_files;
         return information;
     }
-    
+
     private static void delete_directory_recursively (File file, Cancellable? cancellable = null) {
         FileEnumerator enumerator;
         try {
