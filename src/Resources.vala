@@ -50,11 +50,11 @@ namespace Resources {
     public const string DEFAULT_LANGUAGE = "en";
     public const string[] LANGUAGE_CODES = {
         "en", "es"
-    }
+    };
     public const string[] LANGUAGE_NAMES = {
         "english", "spanish"
-    }
-    
+    };
+
     /*
      * Constants that contain information about the options of each program
      */ 
@@ -84,8 +84,6 @@ namespace Resources {
     public const string TERMINAL_INFO = "Clean the Bash history.\n";
     public const string THUMBNAILS_INFO = "Clean the generated cache by the images.\n";
     public const string TRASH_INFO = "Files housed in the Trash bin.\n";
-    
-    public const string WARNING_LOW_INFO = "<b>Warning level: </b>" + "Low";
-    public const string WARNING_HIGH_INFO = "<b>Warning level: </b>" + "High";
-
+    public const string WARNING_LOW_INFO = "<b>Warning level: </b> Low";
+    public const string WARNING_HIGH_INFO = "<b>Warning level: </b> High";
 }
