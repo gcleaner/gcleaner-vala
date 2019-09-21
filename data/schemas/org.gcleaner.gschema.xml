@@ -21,6 +21,11 @@
             <summary>Posicion Y de la Ventana</summary>
             <description>Save the Y Position of the window to restore it later.</description>
         </key>
+        <key name="language" type="s">
+            <default>"en"</default>
+            <summary>Default application language</summary>
+            <description></description>
+        </key>
         <key name="amsn-main" type="b">
 			<default>false</default>
 			<summary>Analyze aMSN</summary>
