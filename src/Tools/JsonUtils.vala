@@ -25,7 +25,7 @@ namespace GCleaner.Tools {
         private string[] categories = { "applications", "system" };
 
         public JsonUtils () {
-            string path = Constants.PKGDATADIR + "/resources-gcleaner.json";
+            string path = Resources.PKGDATADIR + "/resources-gcleaner.json";
             load_parser (path);
         }
         

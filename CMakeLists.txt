@@ -65,8 +65,8 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Widgets/ResultsArea.vala
     src/Widgets/Sidebar.vala
     src/Widgets/Toolbar.vala
-    src/Constants.vala
     src/GCleaner.vala
+    src/Resources.vala
 #Tell what libraries to use when compiling
 PACKAGES
     gio-2.0

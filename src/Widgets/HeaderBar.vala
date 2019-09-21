@@ -44,7 +44,7 @@ namespace GCleaner.Widgets {
             // GCleaner icon
             Image icon = new Image ();
             try {
-                var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale (Constants.DATADIR + "/pixmaps/gcleanerhb.svg", 32, 32, false);
+                var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale (Resources.DATADIR + "/pixmaps/gcleanerhb.svg", 32, 32, false);
                 icon.set_from_pixbuf (icon_pixbuf);
             } catch (GLib.Error e) {
                 stderr.printf ("COM.GCLEANER.APP.HEADERBAR: [GLIB::ERROR CREATING PIXBUF ICON]\n");
@@ -58,7 +58,7 @@ namespace GCleaner.Widgets {
             title.set_markup ("<b>GCleaner</b>");
             
             Label version = new Label ("");
-            version.set_markup ("<small>v" + Constants.VERSION + "</small>");
+            version.set_markup ("<small>v" + Resources.VERSION + "</small>");
 
             Label os_information = new Label ("");
             os_information.set_markup ("<span>" + getOS () + "</span>"); // font_size='small' by default

@@ -207,7 +207,7 @@ namespace GCleaner.Widgets {
             if (app_id == "apt" || app_id == "system") {
                 text_icon = jload.get_item_from_app (app_id, "icon");
             } else {
-                text_icon = Constants.PKGDATADIR + "/media/apps/" + app_id + ".png";
+                text_icon = Resources.PKGDATADIR + "/media/apps/" + app_id + ".png";
             }
 
             return text_icon;
@@ -269,61 +269,61 @@ namespace GCleaner.Widgets {
             string tooltip_text = "";
             
             if (id_option == "backup") {
-                tooltip_text = Constants.BACKUP_INFO;
+                tooltip_text = Resources.BACKUP_INFO;
             } else if (id_option == "cache") {
-                tooltip_text = Constants.CACHE_PROG_INFO;
+                tooltip_text = Resources.CACHE_PROG_INFO;
             } else if (id_option == "cache-pkg") {
-                tooltip_text = Constants.CACHE_PKG_INFO;
+                tooltip_text = Resources.CACHE_PKG_INFO;
             } else if (id_option == "chat-logs") {
-                tooltip_text = Constants.CHAT_LOGS_INFO;
+                tooltip_text = Resources.CHAT_LOGS_INFO;
             } else if (id_option == "configuration-pkg") {
-                tooltip_text = Constants.CONF_PKG_INFO;
+                tooltip_text = Resources.CONF_PKG_INFO;
             } else if (id_option == "cookies") {
-                tooltip_text = Constants.COOKIES_INFO;
+                tooltip_text = Resources.COOKIES_INFO;
             } else if (id_option == "crash") {
-                tooltip_text = Constants.CRASH_INFO;
+                tooltip_text = Resources.CRASH_INFO;
             } else if (id_option == "docs" || id_option == "recent-docs") {
-                tooltip_text = Constants.DOCS_INFO;
+                tooltip_text = Resources.DOCS_INFO;
             } else if (id_option == "dom") {
-                tooltip_text = Constants.DOM_INFO;
+                tooltip_text = Resources.DOM_INFO;
             } else if (id_option == "download") {
-                tooltip_text = Constants.DOWNLOAD_INFO;
+                tooltip_text = Resources.DOWNLOAD_INFO;
             } else if (id_option == "form-history") {
-                tooltip_text = Constants.SAVED_FORMHISTORY_INFO;
+                tooltip_text = Resources.SAVED_FORMHISTORY_INFO;
             } else if (id_option == "history") {
-                tooltip_text = Constants.HISTORY_PROG_INFO;
+                tooltip_text = Resources.HISTORY_PROG_INFO;
             } else if (id_option == "internet-history") {
-                tooltip_text = Constants.HISTORY_NET_INFO;
+                tooltip_text = Resources.HISTORY_NET_INFO;
             } else if (id_option == "internet-cache") {
-                tooltip_text = Constants.CACHE_NET_INFO;
+                tooltip_text = Resources.CACHE_NET_INFO;
             } else if (id_option == "logs") {
-                tooltip_text = Constants.LOGS_INFO;
+                tooltip_text = Resources.LOGS_INFO;
             } else if (id_option == "old-kernels") {
-                tooltip_text = Constants.OLDKERNELS_INFO;
+                tooltip_text = Resources.OLDKERNELS_INFO;
             } else if (id_option == "pass") {
-                tooltip_text = Constants.PASS_INFO;
+                tooltip_text = Resources.PASS_INFO;
             } else if (id_option == "places") {
-                tooltip_text = Constants.PLACES_INFO;
+                tooltip_text = Resources.PLACES_INFO;
             } else if (id_option == "prefs") {
-                tooltip_text = Constants.PREFS_INFO;
+                tooltip_text = Resources.PREFS_INFO;
             } else if (id_option == "session") {
-                tooltip_text = Constants.SESSION_INFO;
+                tooltip_text = Resources.SESSION_INFO;
             } else if (id_option == "terminal-history") {
-                tooltip_text = Constants.TERMINAL_INFO;
+                tooltip_text = Resources.TERMINAL_INFO;
             } else if (id_option == "tmp") {
-                tooltip_text = Constants.TMP_INFO;
+                tooltip_text = Resources.TMP_INFO;
             } else if (id_option == "thumbnails") {
-                tooltip_text = Constants.THUMBNAILS_INFO;
+                tooltip_text = Resources.THUMBNAILS_INFO;
             } else if (id_option == "trash") {
-                tooltip_text = Constants.TRASH_INFO;
+                tooltip_text = Resources.TRASH_INFO;
             } else if (id_option == "used") {
-                tooltip_text = Constants.USED_INFO;
+                tooltip_text = Resources.USED_INFO;
             }
             
             if (warning_value == true) {
-                warning_text = Constants.WARNING_HIGH_INFO;
+                warning_text = Resources.WARNING_HIGH_INFO;
             } else {
-                warning_text = Constants.WARNING_LOW_INFO;
+                warning_text = Resources.WARNING_LOW_INFO;
             }
             
             return tooltip_text + warning_text;

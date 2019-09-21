@@ -38,14 +38,14 @@ public Pixbuf load_pixbuf_from_name (string app_name, string option_id, int size
         ext = (option_id == "old-kernels") ? ".png" : ".svg";
         name_icon = jload.get_icon_name_from_system_app (app_name, option_id);
     }
-    string path_icon = Constants.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ext;
+    string path_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ext;
     pix = load_pixbuf (path_icon, size);
     return pix;
 }
 
 public Image load_image (string type_icon, string name_icon, int size = 16) {
     Image image = new Image ();
-    string rsc_icon = Constants.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ".png";
+    string rsc_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ".png";
     try {
         var pix = load_pixbuf(rsc_icon, size);
         image.set_from_pixbuf (pix);

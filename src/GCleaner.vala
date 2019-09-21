@@ -51,7 +51,7 @@ namespace GCleaner {
             this.main_window = new Gtk.ApplicationWindow (this);
             this.main_window.move (settings.get_int ("opening-x"), settings.get_int ("opening-y"));
             this.main_window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
-            this.main_window.set_title (Constants.PROGRAM_NAME);
+            this.main_window.set_title (Resources.PROGRAM_NAME);
             this.main_window.set_application (this);
             this.main_window.icon_name = "gcleaner";//Application icon
             

@@ -52,7 +52,7 @@ namespace GCleaner.Widgets {
             title.set_markup ("<span font_size='large'><b>GCleaner</b></span>");//Big letters 'large'
 
             Label version = new Label ("");
-            version.set_markup ("<span font_size='small'> v" + Constants.VERSION + "</span>");//Take the version of GCleaner from the constant
+            version.set_markup ("<span font_size='small'> v" + Resources.VERSION + "</span>");//Take the version of GCleaner from the constant
 
             /*Information of Operating System, RAM and Video*/
             Label os_information = new Label ("");
@@ -64,11 +64,11 @@ namespace GCleaner.Widgets {
             system_specs.set_markup ("<span font_size='small'>" + complete_system_specs + "</span>");//Use the specifications in the established markup format
             
             /*Fillings*/
-            Label helpFill_1        = new Label ("");
-            Label helpFill_2        = new Label (" ");
-            Label iconFill          = new Label ("");
+            Label helpFill_1 = new Label ("");
+            Label helpFill_2 = new Label (" ");
+            Label iconFill = new Label ("");
             Label systemSpecs_fill  = new Label ("");
-            Label nameApp_fill      = new Label ("");//Generate a empty label to format with Pango Markup
+            Label nameApp_fill = new Label ("");//Generate a empty label to format with Pango Markup
             helpFill_1.set_markup ("<span font_size='large'>  </span>");
             iconFill.set_markup ("<span font_size='xx-small'>  </span>");
             nameApp_fill.set_markup ("<span font_size='large'>  </span>");//Small letter 'small'
@@ -110,16 +110,16 @@ namespace GCleaner.Widgets {
             Box subIcon_box = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
             /*Name and Version*/
-            Box nameApp_box     = new Box (Orientation.VERTICAL, 0);
-            Box title_box       = new Box (Orientation.HORIZONTAL, 0);
-            Box version_box     = new Box (Orientation.HORIZONTAL, 0);
+            Box nameApp_box = new Box (Orientation.VERTICAL, 0);
+            Box title_box = new Box (Orientation.HORIZONTAL, 0);
+            Box version_box = new Box (Orientation.HORIZONTAL, 0);
             Box subNameApp_box  = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
             /*Operating System and System specs*/
-            Box os_box            = new Box (Orientation.HORIZONTAL, 0);
+            Box os_box = new Box (Orientation.HORIZONTAL, 0);
             Box sysProperties_box = new Box (Orientation.HORIZONTAL, 0);
-            Box specs_box         = new Box (Orientation.VERTICAL, 0);
-            Box subSpecs_box      = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
+            Box specs_box = new Box (Orientation.VERTICAL, 0);
+            Box subSpecs_box = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
             /*Help*/
             Box help_box = new Box (Orientation.VERTICAL, 0);
