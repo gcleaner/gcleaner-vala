@@ -25,6 +25,11 @@ namespace GCleaner.Widgets {
         public GCleaner.App app;
 
         // ACTIONS CALLBACKS HERE
+        void preferences_cb (SimpleAction simple, Variant? parameter) {
+            var preferences = new Preferences (this.app.main_window);
+            preferences.run ();
+        }
+
         void about_cb (SimpleAction simple, Variant? parameter) {
             var about = new About ();
             about.run ();
@@ -77,12 +82,16 @@ namespace GCleaner.Widgets {
              * add it to appmenu Button.
              */
             var menumodel = new GLib.Menu ();
+            menumodel.append ("Preferences", "win.preferences");
             menumodel.append ("About...", "win.about");
             appmenu_button.set_menu_model (menumodel);
 
             /*
              * Here we define the Actions.
              */
+            var preferences_action = new SimpleAction ("preferences", null);
+            preferences_action.activate.connect (this.preferences_cb);
+            this.app.main_window.add_action (preferences_action);
             var about_action = new SimpleAction ("about", null);
             about_action.activate.connect (this.about_cb);
             this.app.main_window.add_action (about_action);

@@ -61,6 +61,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Widgets/About.vala
     src/Widgets/CleanerButtons.vala
     src/Widgets/HeaderBar.vala
+    src/Widgets/Preferences.vala
     src/Widgets/ResultsArea.vala
     src/Widgets/Sidebar.vala
     src/Widgets/Toolbar.vala
