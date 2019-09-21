@@ -20,16 +20,40 @@
  * Here are declared constants and others resources
  */
 namespace Resources {
-    public const string STORE_CONFIG_DIR  = "/.local/share/gcleaner";
+    public const string STORE_CONFIG_DIR = "/.local/share/gcleaner";
     public const string INSTALL_PREFIX = "/usr";
     public const string DATADIR = "/usr/share";
     public const string PKGDATADIR = "/usr/share/gcleaner";
-    public const string PROGRAM_NAME        = "GCleaner";
-    public const string RELEASE_NAME        = "Bosch Aerotwin";
-    public const string VERSION             = "0.01.134";
-    public const string VERSION_INFO        = "Initial release of GCleaner.";
-    public const string EXEC_NAME           = "gcleaner";
-    public const string APP_LAUNCHER        = "gcleaner.desktop";
+    public const string PROGRAM_NAME = "GCleaner";
+    public const string RELEASE_NAME = "Bosch Aerotwin";
+    public const string VERSION = "0.01.134";
+    public const string VERSION_INFO = "Initial release of GCleaner.";
+    public const string EXEC_NAME = "gcleaner";
+    public const string APP_LAUNCHER = "gcleaner.desktop";
+
+    /*
+     * About GCleaner
+     */
+    public const string[] AUTHORS = {
+        "Juan Pablo Lozano <lozanotux@gmail.com>",
+        "Andrés Segovia <andy.dev536@gmail.com>"
+    };
+    public const string[] ARTISTS = {
+        "Juan Pablo Lozano <lozanotux@gmail.com>", 
+        "Ivan Matias Suarez <ivan.msuar@gmail.com>"
+    };
+    public const string[] DOCUMENTERS = {
+        "Juan Pablo Lozano <lozanotux@gmail.com>",
+        "Andrés Segovia <andy.dev536@gmail.com>"
+    };
+
+    public const string DEFAULT_LANGUAGE = "en";
+    public const string[] LANGUAGE_CODES = {
+        "en", "es"
+    }
+    public const string[] LANGUAGE_NAMES = {
+        "english", "spanish"
+    }
     
     /*
      * Constants that contain information about the options of each program
@@ -63,20 +87,5 @@ namespace Resources {
     
     public const string WARNING_LOW_INFO = "<b>Warning level: </b>" + "Low";
     public const string WARNING_HIGH_INFO = "<b>Warning level: </b>" + "High";
-    
-    /*
-     * About GCleaner
-     */
-    public const string[] AUTHORS     = {
-        "Juan Pablo Lozano <lozanotux@gmail.com>",
-        "Andrés Segovia <andres.seg841@gmail.com>"
-    };
-    public const string[] ARTISTS     = {
-        "Juan Pablo Lozano <lozanotux@gmail.com>", 
-        "Ivan Matias Suarez <ivan.msuar@gmail.com>"
-    };
-    public const string[] DOCUMENTERS = {
-        "Juan Pablo Lozano <lozanotux@gmail.com>",
-        "Andrés Segovia <andres.seg841@gmail.com>"
-    };
+
 }
