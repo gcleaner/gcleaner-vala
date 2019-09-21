@@ -19,7 +19,7 @@
 /*
  * Here are declared the CONSTANTS
  */
-namespace Constants {
+namespace Resources {
 
     public const string STORE_CONFIG_DIR  = "/.local/share/gcleaner";
     public const string INSTALL_PREFIX      = "/usr";
