@@ -22,9 +22,19 @@
             <description>Save the Y Position of the window to restore it later.</description>
         </key>
         <key name="language" type="s">
-            <default>"en"</default>
+            <default>en</default>
             <summary>Default application language</summary>
-            <description></description>
+            <description>Indicate the main language</description>
+        </key>
+        <key name="start-with-system" type="b">
+            <default>false</default>
+            <summary>Start with the System.</summary>
+            <description>Enable or disable the start of the app with the System</description>
+        </key>
+        <key name="standard-size-bytes" type="b">
+            <default>false</default>
+            <summary>Indicates the standard for byte representation</summary>
+            <description>Indicates the standard for byte representation</description>
         </key>
         <key name="amsn-main" type="b">
 			<default>false</default>
