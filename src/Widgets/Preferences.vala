@@ -58,8 +58,8 @@ namespace GCleaner.Widgets {
             autorun_btn.set_active (settings.get_boolean ("start-with-system"));
             this.assign_check_pressed (autorun_btn, "start-with-system");
             var norm_size_btn = new Gtk.CheckButton.with_label ("USE IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)");
-            norm_size_btn.set_active (settings.get_boolean ("standard-size-bytes"));
-            this.assign_check_pressed (norm_size_btn, "standard-size-bytes");
+            norm_size_btn.set_active (settings.get_boolean ("standard-iec-size-bytes"));
+            this.assign_check_pressed (norm_size_btn, "standard-iec-size-bytes");
             general_box.pack_start (autorun_btn, false, false, 3);
             general_box.pack_start (norm_size_btn, false, false, 0);
             
