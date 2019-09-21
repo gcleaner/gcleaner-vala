@@ -45,7 +45,7 @@ namespace GCleaner {
             /*
             * Settings for save the GCleaner state
             */
-            settings = new GLib.Settings ("org.gcleaner");
+            settings = Resources.get_setting_schema ();
 
             //MAIN WINDOW PROPERTIES
             this.main_window = new Gtk.ApplicationWindow (this);
@@ -53,7 +53,7 @@ namespace GCleaner {
             this.main_window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
             this.main_window.set_title (Resources.PROGRAM_NAME);
             this.main_window.set_application (this);
-            this.main_window.icon_name = "gcleaner";//Application icon
+            this.main_window.icon_name = Resources.EXEC_NAME; // Application icon
             
             // BOXES
             Box main_window_box = new Box (Orientation.VERTICAL, 0);    // Box that will contain the rest of the boxes (this is adjusted to the window)

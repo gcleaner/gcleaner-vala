@@ -204,4 +204,8 @@ namespace Resources {
                 return QUESTION_PHRASE_UNKNOWN;
         }
     }
+
+    public GLib.Settings get_setting_schema () {
+        return new GLib.Settings ("org.gcleaner");
+    }
 }

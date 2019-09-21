@@ -23,7 +23,7 @@ namespace GCleaner.Widgets {
         GLib.Settings settings;
 
         public Preferences(Gtk.Window owner) {
-            settings = new GLib.Settings ("org.gcleaner");
+            settings = Resources.get_setting_schema ();
             set_title ("Preferences");
             set_type_hint (Gdk.WindowTypeHint.DIALOG);
             set_transient_for (owner);

@@ -38,7 +38,7 @@ namespace GCleaner.Widgets {
             this.app = app;
             this.app_id = app_id;
             check_root_is_clicked = false;
-            settings = new GLib.Settings ("org.gcleaner");
+            settings = Resources.get_setting_schema ();
             this.load_init ();
         }
         

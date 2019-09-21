@@ -21,7 +21,7 @@ using GLib;
 public class FileUtilities {
     public static string to_readable_format_size (int64 bytes) {
         float size;
-        var settings = new GLib.Settings ("org.gcleaner");
+        var settings = Resources.get_setting_schema ();
         bool use_standard_iec = settings.get_boolean (Resources.PREFERENCES_STANDARD_SIZE_KEY);
         // It determines if IEC(1KiB = 1024 bytes) standard or SI(1kB = 1000 bytes) is used
         int base_size = (use_standard_iec) ? 1024 : 1000;
