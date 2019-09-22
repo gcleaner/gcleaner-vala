@@ -84,10 +84,10 @@ namespace GCleaner.Tools {
                         string text_detail;
 
                         if (really_delete) {
-                            text_result = Resources.DESCRIPTION_COMPLETE_CLEANING;
+                            text_result = Resources.DESCRIPTION_COMPLETE_CLEANING.printf (total_file_size, total_file_number);
                             text_detail = Resources.DESCRIPTION_COMPLETE_CLEANING_DETAIL;
                         } else {
-                            text_result = Resources.DESCRIPTION_COMPLETE_ANALYSIS;
+                            text_result = Resources.DESCRIPTION_COMPLETE_ANALYSIS.printf (total_file_size, total_file_number);
                             text_detail = Resources.DESCRIPTION_COMPLETE_ANALYSIS_DETAIL;
                         }
                         app.results_area.set_labels_text (text_result, text_detail);
