@@ -62,10 +62,9 @@ namespace GCleaner.Widgets {
             
             // ALL CHECKBOXS - CHECK IF EXIST THEN ADD IT
             // **********************************************************************************
-            string[] categories = { "applications", "system" };
             var parser = new JsonUtils ();
 
-            foreach (string category in categories) {
+            foreach (string category in Resources.CATEGORIES) {
                 Json.Object obj_category = parser.get_node_per_category (category).get_object ();
                 
                 string type_icon = (category == "applications") ? "apps" : "info-system";

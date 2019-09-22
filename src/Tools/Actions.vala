@@ -114,7 +114,9 @@ namespace GCleaner.Tools {
                                         if (n_files_option != 0) {
                                             pix = load_pixbuf_from_name (app_id, option_id);
                                             string size_formated = null;
-                                            if (option_id == "configuration-pkg" || option_id == "old-kernels") {
+                                            Resources.CATEGORIES
+                                            if (option_id == Resources.DESCRIPTION_CONF_PKG_ID || 
+                                                option_id == DESCRIPTION_OLDKERNELS_ID) {
                                                 size_formated = "Unknown size";
                                             } else {
                                                 int64 size_option = info_clean.get_file_size_of (app_id, option_id);

@@ -30,7 +30,7 @@ namespace GCleaner.Widgets {
             //this.documenters = Resources.DOCUMENTERS;
             //this.translator_credits = "Juan Pablo Lozano <lozanotux@gmail.com>";
             
-            this.license  = "This program is released under the terms of the GPL (General Public License) as published by the Free Software Foundation, is an application that will be useful, but WITHOUT ANY WARRANTY; for details, visit: http://www.gnu.org/licenses/gpl.html";
+            this.license  = Resources.SHORT_VERSION_LICENSE;
             this.wrap_license = true;
             
             try {
@@ -45,7 +45,7 @@ namespace GCleaner.Widgets {
             this.version = Resources.VERSION;
             this.comments = "Clean your System GNU/Linux";
             this.copyright = "Copyright © 2015-" + new DateTime.now_local ().get_year ().to_string () + " Juan Pablo Lozano";
-            this.website = "https://launchpad.net/gcleaner";
+            this.website = "https://gcleaner.github.io/";
             
             this.response.connect((response) => {
                 this.destroy ();

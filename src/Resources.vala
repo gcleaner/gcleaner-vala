@@ -131,6 +131,11 @@ namespace Resources {
     public const string QUESTION_PHRASE_PASS = "Are you sure you want to remove %s passwords?";
     public const string QUESTION_PHRASE_UNKNOWN = DESCRIPTION_UNKNOWN_LABEL;
 
+    public const string[] CATEGORIES = {"applications", "system"};
+    public const string[] ADVANCED_OPTIONS = {DESCRIPTION_CACHE_PKG_ID, 
+                                              DESCRIPTION_CONF_PKG_ID, 
+                                              DESCRIPTION_OLDKERNELS_ID};
+
     public unowned string get_description_info (string id_option_type) {
         switch (id_option_type) {
             case DESCRIPTION_BACKUP_ID:
@@ -205,7 +210,35 @@ namespace Resources {
         }
     }
 
+    public const string ICON_NAME_APPLICATIONS_SYSTEM = "applications-system";
+    public const string ICON_NAME_DIALOG_INFORMATION = "dialog-information";
+    public const string ICON_NAME_DIALOG_WARNING = "dialog-warning";
+    public const string ICON_NAME_OPEN_MENU = "open-menu";
+    public const string ICON_NAME_PACKAGE_GENERIC = "package-x-generic";
+
     public GLib.Settings get_setting_schema () {
         return new GLib.Settings ("org.gcleaner");
     }
+
+    public const string SHORT_VERSION_LICENSE = """
+        This program is released under the terms of the GPL (General Public License) 
+        as published by the Free Software Foundation, is an application that 
+        will be useful, but WITHOUT ANY WARRANTY; for details, visit: 
+        http://www.gnu.org/licenses/gpl.html
+    """;
+    public const string LICENSE = """
+        GCleaner is free software; you can redistribute it and/or modify it under the 
+        terms of the GNU Lesser General Public License as published by the Free 
+        Software Foundation; either version 2.1 of the License, or (at your option) 
+        any later version.
+
+        GCleaner is distributed in the hope that it will be useful, but WITHOUT 
+        ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+        FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for 
+        more details.
+
+        You should have received a copy of the GNU Lesser General Public License 
+        along with GCleaner; if not, write to the Free Software Foundation, Inc., 
+        51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+    """;
 }

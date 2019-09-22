@@ -22,7 +22,6 @@ using Json;
 namespace GCleaner.Tools {
     public class JsonUtils {
         private Parser parser;
-        private string[] categories = { "applications", "system" };
 
         public JsonUtils () {
             string path = Resources.PKGDATADIR + "/resources-gcleaner.json";
@@ -47,7 +46,7 @@ namespace GCleaner.Tools {
         // Returns the type, icon name or application name.
         public string? get_item_from_app (string app_id, string item) {
             string result = null;
-            foreach (string category in categories) {
+            foreach (string category in Resources.CATEGORIES) {
                 Json.Object obj_category = get_node_per_category (category).get_object ();
                 foreach (unowned string current_app_id in obj_category.get_members ()) {
                     if (app_id == current_app_id) {
@@ -77,7 +76,7 @@ namespace GCleaner.Tools {
 
         public int64 get_n_options_from (string app_id) {
             int64 number = 0;
-            foreach (string category in categories) {
+            foreach (string category in Resources.CATEGORIES) {
                 Json.Object obj_category = get_node_per_category (category).get_object ();
                 foreach (unowned string current_app_id in obj_category.get_members ()) {
                     if (app_id == current_app_id) {
@@ -92,7 +91,7 @@ namespace GCleaner.Tools {
         
         public Json.Node get_all_options_of (string app_id) {
             Json.Node all_options = null;
-            foreach (string category in categories) {
+            foreach (string category in Resources.CATEGORIES) {
                 Json.Object obj_category = get_node_per_category (category).get_object ();
                 foreach (unowned string current_app_id in obj_category.get_members ()) {
                     if (app_id == current_app_id) {

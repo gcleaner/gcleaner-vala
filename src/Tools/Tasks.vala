@@ -76,8 +76,7 @@ namespace GCleaner.Tools {
                         app.update_progress (app_name, option_name, info_clean.n_scanned_items);
                         bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
                         if (option_is_active || item_option_id != null) {
-                            string[] advanced_options = {"cache-pkg", "configuration-pkg", "old-kernels"};
-                            if (option_id in advanced_options) { // The option contains commands
+                            if (option_id in Resources.ADVANCED_OPTIONS) { // The option contains commands
                                 Json.Node node_cmd = jload.get_all_commands_of (app_id, option_id);
                                 var object_cmd = node_cmd.get_object ();
                                 string cmd_size = (object_cmd.has_member ("get-size")) ? object_cmd.get_string_member ("get-size") : null;

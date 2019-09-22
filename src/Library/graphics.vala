@@ -33,7 +33,7 @@ public string get_graphics_from_string (string graphics) {
         }
     } else {
         warning ("Unknown LSPCI format: " + parts[0] + parts[1]);
-        result = "Unknown"; //set back to unkown
+        result = "Unknown"; // set back to unknown
     }
     
     if ("Intel" in processor) {

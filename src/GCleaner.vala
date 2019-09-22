@@ -205,7 +205,7 @@ namespace GCleaner {
              */
             scan_button.has_tooltip = true;
             scan_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
-                tooltip.set_icon_from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR); 
+                tooltip.set_icon_from_icon_name (Resources.ICON_NAME_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
                 tooltip.set_markup ("This option will scan <b>all selected options.</b>");
                 return true;
             });
@@ -220,7 +220,7 @@ namespace GCleaner {
              */
             clean_button.has_tooltip = true;
             clean_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
-                tooltip.set_icon_from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR); 
+                tooltip.set_icon_from_icon_name (Resources.ICON_NAME_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
                 tooltip.set_markup ("This option will remove the files from <b>all the selected options.</b>");
                 return true;
             });

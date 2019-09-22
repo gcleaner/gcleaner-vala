@@ -35,7 +35,7 @@ public Pixbuf load_pixbuf_from_name (string app_name, string option_id, int size
     string name_icon = app_name;
     if (category == "system") {
         var jload = new GCleaner.Tools.JsonUtils ();
-        ext = (option_id == "old-kernels") ? ".png" : ".svg";
+        ext = (option_id == Resources.DESCRIPTION_OLDKERNELS_ID) ? ".png" : ".svg";
         name_icon = jload.get_icon_name_from_system_app (app_name, option_id);
     }
     string path_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ext;
