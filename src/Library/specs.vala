@@ -105,9 +105,9 @@ public string getOS () {
 
         } catch (Error e) {
             stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::OS] could not read the '/etc/lsb-release' file: [ %s ]\n", e.message);
-            os = "Unknown";
+            os = _("Unknown");
             version = "X";
-            codename = "Not found";
+            codename = _("Not found");
         }
     }
 
@@ -142,7 +142,7 @@ public string getProcessor () {
         }
     } catch (Error e) {
         stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: No processor found: [ %s ]]\n", e.message);
-        processor = "Unknown Processor";
+        processor = _("Unknown Processor");
     }
 
     return processor;
@@ -167,7 +167,7 @@ public string getGraphics () {
         }
     } catch (Error e) {
         stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::Video card [ %s ]]\n", e.message);
-        graphics = "Unknown Video card";
+        graphics = _("Unknown video card");
     }
 
     return graphics;

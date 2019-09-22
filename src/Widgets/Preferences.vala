@@ -24,11 +24,11 @@ namespace GCleaner.Widgets {
 
         public Preferences(Gtk.Window owner) {
             settings = Resources.get_setting_schema ();
-            set_title ("Preferences");
+            set_title (_("Preferences"));
             set_type_hint (Gdk.WindowTypeHint.DIALOG);
             set_transient_for (owner);
             set_resizable (false);
-            Gtk.Widget ok_button = add_button ("Close", Gtk.ResponseType.CLOSE);
+            Gtk.Widget ok_button = add_button (_("Close"), Gtk.ResponseType.CLOSE);
             set_default_response (Gtk.ResponseType.CLOSE);
 
             Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
@@ -47,24 +47,24 @@ namespace GCleaner.Widgets {
             Stack stack = new Gtk.Stack ();
             stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
             stack.set_transition_duration (10);
-            stack.add_titled (general_box, "gral_tab", "General");
-            stack.add_titled (language_box, "lang_tab", "Language");
+            stack.add_titled (general_box, "gral_tab", _("General"));
+            stack.add_titled (language_box, "lang_tab", _("Language"));
             var stack_switcher = new Gtk.StackSwitcher ();
             stack_switcher.set_stack (stack);
             content.pack_start (stack_switcher, true, true, 0);
             content.pack_start (stack, true, true, 0);
-
-            var autorun_btn = new Gtk.CheckButton.with_label ("Start " + Resources.PROGRAM_NAME + " with the System.");
+            string desc_autorun = Resources.DESCRIPTION_AUTOSTART.printf (Resources.PROGRAM_NAME);
+            var autorun_btn = new Gtk.CheckButton.with_label (desc_autorun);
             autorun_btn.set_active (settings.get_boolean (Resources.PREFERENCES_AUTOSTART_KEY));
             this.assign_check_pressed (autorun_btn, Resources.PREFERENCES_AUTOSTART_KEY);
-            var norm_size_btn = new Gtk.CheckButton.with_label ("Use IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)");
+            var norm_size_btn = new Gtk.CheckButton.with_label (Resources.DESCRIPTION_STANDARD_SIZE);
             norm_size_btn.set_active (settings.get_boolean (Resources.PREFERENCES_STANDARD_SIZE_KEY));
             this.assign_check_pressed (norm_size_btn, Resources.PREFERENCES_STANDARD_SIZE_KEY);
             general_box.pack_start (autorun_btn, false, false, 3);
             general_box.pack_start (norm_size_btn, false, false, 0);
             
             var language_label = new Gtk.Label ("");
-            language_label.set_markup ("<b>Select your language:</b>");
+            language_label.set_markup (_("<b>Select your language:</b>"));
             language_label.set_margin_bottom (10);
             
             Gtk.ListStore liststore = new Gtk.ListStore (1, typeof (string));
@@ -94,7 +94,7 @@ namespace GCleaner.Widgets {
             });
 
             combobox.changed.connect ((combo) => {
-                // print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
+                print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
             });
         }
 

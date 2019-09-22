@@ -71,44 +71,55 @@ namespace Resources {
     public const string DESKTOP_PANTHEON = "PANTHEON";
     public const string DESKTOP_GNOME = "GNOME";
 
-    public const string BUTTON_SCAN = "Analyze";
-    public const string BUTTON_CLEAN = "Clean";
-    public const string FIELD_CONCEPT = "Concept";
-    public const string FIELD_SIZE = "Size";
-    public const string FIELD_N_FILES = "Number of files";
+    public const string BUTTON_SCAN = _("Analyze");
+    public const string BUTTON_CLEAN = _("Clean");
+    public const string FIELD_CONCEPT = _("Concept");
+    public const string FIELD_SIZE = _("Size");
+    public const string FIELD_N_FILES = _("Number of files");
+    public const string ABOUT_COMMENTS = _("Clean your System GNU/Linux");
     /*
      * Constants that contain information about the options of each program
      */ 
-    public const string DESCRIPTION_BACKUP_LABEL = "Backup files.\n";
-    public const string DESCRIPTION_CACHE_NET_LABEL = "Temporary files downloaded for later use and reduce the bandwidth.\n";
-    public const string DESCRIPTION_CACHE_PROG_LABEL = "Files temporarily created for later use.\n";
-    public const string DESCRIPTION_CHAT_LOGS_LABEL = "A chat log is an archive of transcripts from online chat and instant messaging conversations.\n";
-    public const string DESCRIPTION_COOKIES_LABEL = "Text file, which contain information such as web site preferences, authentication, and tracking identification.\n";
-    public const string DESCRIPTION_CRASH_LABEL = "File with reports of unexpected closures.\n";
-    public const string DESCRIPTION_DOCS_LABEL = "A list of recent documents.\n";
-    public const string DESCRIPTION_DOM_LABEL = "The DOM storage is designed to store persistent data similar to cookies but with greatly enhanced capacity.\n";
-    public const string DESCRIPTION_DOWNLOAD_LABEL = "Contains a list of files downloaded\n";
-    public const string DESCRIPTION_HISTORY_NET_LABEL = "List of visited web pages\n";
-    public const string DESCRIPTION_HISTORY_PROG_LABEL = "History of modifications\n";
-    public const string DESCRIPTION_LOGS_LABEL = "File that records either events that occur in an operating system or other software runs\n";
-    public const string DESCRIPTION_PASS_LABEL = "A database of usernames and passwords as well as a list of sites that should not store passwords.\n";
-    public const string DESCRIPTION_PLACES_LABEL = "A database of URLs including bookmarks, favicons, and a history of visited web sites.\n";
-    public const string DESCRIPTION_PREFS_LABEL = "Settings for individual sites\n";
-    public const string DESCRIPTION_SAVED_FORMHISTORY_LABEL = "A history of forms entered in web sites and in the Search bar\n";
-    public const string DESCRIPTION_SESSION_LABEL = "Delete the current session\n";
-    public const string DESCRIPTION_TMP_LABEL = "File generated in order to contain information transiently.\n";
-    public const string DESCRIPTION_USED_LABEL = "List of files most recent used.\n";
+    public const string DESCRIPTION_BACKUP_LABEL = _("Backup files.\n");
+    public const string DESCRIPTION_CACHE_NET_LABEL = _("Temporary files downloaded for later use and reduce the bandwidth.\n");
+    public const string DESCRIPTION_CACHE_PROG_LABEL = _("Files temporarily created for later use.\n");
+    public const string DESCRIPTION_CHAT_LOGS_LABEL = _("A chat log is an archive of transcripts from online chat and instant messaging conversations.\n");
+    public const string DESCRIPTION_COOKIES_LABEL = _("Text file, which contain information such as web site preferences, authentication, and tracking identification.\n");
+    public const string DESCRIPTION_CRASH_LABEL = _("File with reports of unexpected closures.\n");
+    public const string DESCRIPTION_DOCS_LABEL = _("A list of recent documents.\n");
+    public const string DESCRIPTION_DOM_LABEL = _("The DOM storage is designed to store persistent data similar to cookies but with greatly enhanced capacity.\n");
+    public const string DESCRIPTION_DOWNLOAD_LABEL = _("Contains a list of files downloaded\n");
+    public const string DESCRIPTION_HISTORY_NET_LABEL = _("List of visited web pages\n");
+    public const string DESCRIPTION_HISTORY_PROG_LABEL = _("History of modifications\n");
+    public const string DESCRIPTION_LOGS_LABEL = _("File that records either events that occur in an operating system or other software runs\n");
+    public const string DESCRIPTION_PASS_LABEL = _("A database of usernames and passwords as well as a list of sites that should not store passwords.\n");
+    public const string DESCRIPTION_PLACES_LABEL = _("A database of URLs including bookmarks, favicons, and a history of visited web sites.\n");
+    public const string DESCRIPTION_PREFS_LABEL = _("Settings for individual sites\n");
+    public const string DESCRIPTION_SAVED_FORMHISTORY_LABEL = _("A history of forms entered in web sites and in the Search bar\n");
+    public const string DESCRIPTION_SESSION_LABEL = _("Delete the current session\n");
+    public const string DESCRIPTION_TMP_LABEL = _("File generated in order to contain information transiently.\n");
+    public const string DESCRIPTION_USED_LABEL = _("List of files most recent used.\n");
     // Special
-    public const string DESCRIPTION_CACHE_PKG_LABEL = "List of temporary update and package files.\n";
-    public const string DESCRIPTION_CONF_PKG_LABEL = "List of packages that have been deleted, but whose configuration files still remain.\n";
-    public const string DESCRIPTION_OLDKERNELS_LABEL = "Purge old kernels. Please, be careful.\n";
-    public const string DESCRIPTION_TERMINAL_LABEL = "Clean the Bash history.\n";
-    public const string DESCRIPTION_THUMBNAILS_LABEL = "Clean the generated cache by the images.\n";
-    public const string DESCRIPTION_TRASH_LABEL = "Files housed in the Trash bin.\n";
-    public const string DESCRIPTION_UNKNOWN_LABEL = "Unknown information.\n";
+    public const string DESCRIPTION_CACHE_PKG_LABEL = _("List of temporary update and package files.\n");
+    public const string DESCRIPTION_CONF_PKG_LABEL = _("List of packages that have been deleted, but whose configuration files still remain.\n");
+    public const string DESCRIPTION_OLDKERNELS_LABEL = _("Purge old kernels. Please, be careful.\n");
+    public const string DESCRIPTION_TERMINAL_LABEL = _("Clean the Bash history.\n");
+    public const string DESCRIPTION_THUMBNAILS_LABEL = _("Clean the generated cache by the images.\n");
+    public const string DESCRIPTION_TRASH_LABEL = _("Files housed in the Trash bin.\n");
+    public const string DESCRIPTION_UNKNOWN_LABEL = _("Unknown information.\n");
     
-    public const string DESCRIPTION_WARNING_LOW_LABEL = "<b>Warning level: </b> Low";
-    public const string DESCRIPTION_WARNING_HIGH_LABEL = "<b>Warning level: </b> High";
+    public const string DESCRIPTION_WARNING_LOW_LABEL = _("<b>Warning level: </b> Low");
+    public const string DESCRIPTION_WARNING_HIGH_LABEL = _("<b>Warning level: </b> High");
+
+    public const string DESCRIPTION_SCAN_BUTTON = _("This option will scan <b>all selected options.</b>");
+    public const string DESCRIPTION_CLEAN_BUTTON = _("This option will remove the files from <b>all the selected options.</b>");
+    public const string DESCRIPTION_AUTOSTART = _("Start %s with the System.");
+    public const string DESCRIPTION_STANDARD_SIZE = _("Use IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)");
+    public const string DESCRIPTION_COMPLETE_CLEANING = _("<b>Complete cleaning</b>\n%s (%s files) were removed. (Aproximate size)");
+    public const string DESCRIPTION_COMPLETE_CLEANING_DETAIL = _("<b>Details of files deleted</b>");
+    public const string DESCRIPTION_COMPLETE_ANALYSIS = _("<b>Complete analysis</b>\n%s (%s files) will be removed. (Aproximate size)");
+    public const string DESCRIPTION_COMPLETE_ANALYSIS_DETAIL = _("<b>Details of files to be deleted (Note: No file have been deleted yet)</b>");
+    public const string DESCRIPTION_CLEAN_DONE = _("<b>Congratulations! The System is clean!</b>");
 
     public const string DESCRIPTION_BACKUP_ID = "backup";
     public const string DESCRIPTION_CACHE_NET_ID = "internet-cache";
@@ -137,11 +148,11 @@ namespace Resources {
     public const string DESCRIPTION_THUMBNAILS_ID = "thumbnails";
     public const string DESCRIPTION_TRASH_ID = "trash";
 
-    public const string QUESTION_PHRASE_CLEAN = "Are you sure you want to continue?";
-    public const string QUESTION_PHRASE_CACHE_PKG = "Are you sure you want to delete cache and obsolete Package System files?";
-    public const string QUESTION_PHRASE_CONF_PKG = "Are you sure you want to delete orphan Package System files?";
-    public const string QUESTION_PHRASE_OLDKERNELS = "Are you sure you want to delete the old kernels?";
-    public const string QUESTION_PHRASE_PASS = "Are you sure you want to remove %s passwords?";
+    public const string QUESTION_PHRASE_CLEAN = _("Are you sure you want to continue?");
+    public const string QUESTION_PHRASE_CACHE_PKG = _("Are you sure you want to delete cache and obsolete Package System files?");
+    public const string QUESTION_PHRASE_CONF_PKG = _("Are you sure you want to delete orphan Package System files?");
+    public const string QUESTION_PHRASE_OLDKERNELS = _("Are you sure you want to delete the old kernels?");
+    public const string QUESTION_PHRASE_PASS = _("Are you sure you want to remove %s passwords?");
     public const string QUESTION_PHRASE_UNKNOWN = DESCRIPTION_UNKNOWN_LABEL;
 
     public const string CATEGORY_APPLICATIONS = "applications";

@@ -155,7 +155,8 @@ namespace GCleaner.Widgets {
         public void set_msgdlg_warning (CheckButton check, string key_xml, string question) {
             check.toggled.connect (() => {
                 if (check.active == true) {
-                    Gtk.MessageDialog msg_dialog = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, question);
+                    Gtk.MessageDialog msg_dialog = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, 
+                        Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, question);
                     msg_dialog.response.connect ((response_id) => {
                         if (response_id == Gtk.ResponseType.OK) {
                             check.set_active (true);
@@ -206,7 +207,7 @@ namespace GCleaner.Widgets {
         private void set_context_menu (Gtk.CheckButton check, string app_id, string? option_id = null) {
             check.button_press_event.connect ((event) => {
                 if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
-                    string[] items = {"Analyze", "Clean"};
+                    string[] items = {Resources.BUTTON_SCAN, Resources.BUTTON_CLEAN}; // Labels
                     string text_name = (option_id == null)? app_name : check.label.down ();
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (check, null);
@@ -215,9 +216,10 @@ namespace GCleaner.Widgets {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, text_name));
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
-                            bool really_delete = (item == "Clean")? true : false;
+                            bool really_delete = (item == Resources.BUTTON_CLEAN)? true : false;
                             if (really_delete) {
-                                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
+                                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, 
+                                    Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, Resources.QUESTION_PHRASE_CLEAN);
                                 msg.response.connect ((response_id) => {
                                     if (response_id == Gtk.ResponseType.OK) {
                                         actions.run_selected_option (app_id, option_id, really_delete);
@@ -246,11 +248,11 @@ namespace GCleaner.Widgets {
             });
         }
 
-        private string determine_warning_icon (bool is_secure = true) {
-            if (is_secure)
-                return Resources.ICON_DIALOG_INFORMATION;
-            else
+        private string determine_warning_icon (bool is_warning) {
+            if (is_warning)
                 return Resources.ICON_DIALOG_WARNING;
+            else
+                return Resources.ICON_DIALOG_INFORMATION;
         }
         
         private string determine_tooltip_text (string id_option_type, bool high_warning = false) {

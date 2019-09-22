@@ -170,7 +170,7 @@ public class FileUtilities {
             }
         }
         if (cancellable.is_cancelled ())
-            throw new IOError.CANCELLED ("Operation was cancelled");
+            throw new IOError.CANCELLED (_("Operation was cancelled"));
     }
 
     public static string[] reinterpret_paths (string[] paths) {

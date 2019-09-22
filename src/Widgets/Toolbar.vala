@@ -90,8 +90,8 @@ namespace GCleaner.Widgets {
              * add it to appmenu Button.
              */
             var menumodel = new GLib.Menu ();
-            menumodel.append ("Preferences", "win.preferences");
-            menumodel.append ("About...", "win.about");
+            menumodel.append (_("Preferences"), "win.preferences");
+            menumodel.append (_("About..."), "win.about");
             appmenu_button.set_menu_model (menumodel);
 
             /*

@@ -32,7 +32,7 @@ public Pixbuf load_pixbuf_from_name (string app_name, string option_id, int size
     string type_icon = (category == Resources.CATEGORY_APPLICATIONS) ? "apps" : "info-system";
     string ext = ".png";
     string name_icon = app_name;
-    if (category == "system") {
+    if (category == Resources.CATEGORY_SYSTEM) {
         var jload = new GCleaner.Tools.JsonUtils ();
         ext = (option_id == Resources.DESCRIPTION_OLDKERNELS_ID) ? ".png" : ".svg";
         name_icon = jload.get_icon_name_from_system_app (app_name, option_id);

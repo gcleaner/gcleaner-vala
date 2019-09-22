@@ -17,6 +17,8 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 #What to call that directory where we install data too
 set (PKGDATADIR "${DATADIR}/gcleaner")
 set (GETTEXT_PACKAGE ${CMAKE_PROJECT_NAME})
+add_definitions("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
+project(${GETTEXT_PACKAGE} C)
 set (EXEC_NAME "gcleaner")
 set (RELEASE_NAME "GCleaner")
 set (VERSION "0.01.134")
@@ -76,6 +78,7 @@ PACKAGES
     posix
 #Compiler options
 OPTIONS
+    -X -DGETTEXT_PACKAGE="gcleaner"
     -g --save-temps
     --target-glib=2.36
     --thread
@@ -83,6 +86,7 @@ OPTIONS
 
 #Add another subdirectory for compile source (for example: gschemas)
 add_subdirectory (data)
+add_subdirectory (po)
 
 #Tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})

@@ -33,18 +33,18 @@ public string get_graphics_from_string (string graphics) {
         }
     } else {
         warning ("Unknown LSPCI format: " + parts[0] + parts[1]);
-        result = "Unknown"; // set back to unknown
+        result = _("Unknown"); // set back to unknown
     }
     
     if ("Intel" in processor) {
-            return "Video Intel";
+        return "Video Intel";
     } else if ("NVIDIA" in processor) {
         return "Video NVIDIA";
     } else if ("AMD" in processor) {
         return "Video AMD";
     } else if ("Radeon" in processor) {
         return "Video AMD Radeon";
-        } else {
-        return "Unknown video card";
+    } else {
+        return _("Unknown video card");
     }
 }

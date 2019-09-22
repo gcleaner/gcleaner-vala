@@ -19,11 +19,13 @@
 using Gdk;
 using Gtk;
 using GLib;
-using Json;
 using GCleaner.Widgets;
 using GCleaner.Tools;
-
+//const string GETTEXT_PACKAGE = "gcleaner";
+//[CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
 namespace GCleaner {
+    [CCode (cname = "GETTEXT_PACKAGE")]
+    public const string GETTEXT_PACKAGE = "gcleaner";
     public class App : Gtk.Application {
         public int n_installed_apps;
         public Gtk.ApplicationWindow main_window; // Main window
@@ -42,15 +44,15 @@ namespace GCleaner {
         }
         
         protected override void activate () {
-            /*
-            * Settings for save the GCleaner state
-            */
+            // Settings for save the GCleaner state
             settings = Resources.get_setting_schema ();
 
             //MAIN WINDOW PROPERTIES
             this.main_window = new Gtk.ApplicationWindow (this);
-            this.main_window.move (settings.get_int ("opening-x"), settings.get_int ("opening-y"));
-            this.main_window.set_default_size (settings.get_int ("window-width"), settings.get_int ("window-height"));
+            this.main_window.move (settings.get_int (Resources.SETTINGS_VALUE_OPENING_X), 
+                settings.get_int (Resources.SETTINGS_VALUE_OPENING_Y));
+            this.main_window.set_default_size (settings.get_int (Resources.SETTINGS_VALUE_WINDOW_WIDTH), 
+                settings.get_int (Resources.SETTINGS_VALUE_WINDOW_HEIGHT));
             this.main_window.set_title (Resources.PROGRAM_NAME);
             this.main_window.set_application (this);
             this.main_window.icon_name = Resources.EXEC_NAME; // Application icon
@@ -207,7 +209,7 @@ namespace GCleaner {
             scan_button.has_tooltip = true;
             scan_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
                 tooltip.set_icon_from_icon_name (Resources.ICON_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
-                tooltip.set_markup ("This option will scan <b>all selected options.</b>");
+                tooltip.set_markup (Resources.DESCRIPTION_SCAN_BUTTON);
                 return true;
             });
             scan_button.clicked.connect(()=> {
@@ -222,11 +224,12 @@ namespace GCleaner {
             clean_button.has_tooltip = true;
             clean_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
                 tooltip.set_icon_from_icon_name (Resources.ICON_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
-                tooltip.set_markup ("This option will remove the files from <b>all the selected options.</b>");
+                tooltip.set_markup (Resources.DESCRIPTION_CLEAN_BUTTON);
                 return true;
             });
             clean_button.clicked.connect(()=> {
-                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
+                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, 
+                    Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, Resources.QUESTION_PHRASE_CLEAN);
                 msg.response.connect ((response_id) => {
                     if (response_id == Gtk.ResponseType.OK) {
                         actions.run_clean_operation ();
@@ -292,6 +295,9 @@ namespace GCleaner {
         }
 
         public static int main (string[] args) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
+            Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+            Intl.textdomain(GETTEXT_PACKAGE);
             Gtk.init (ref args); // Starts GTK+
             string css_file = Resources.PKGDATADIR + "/gtk-widgets-gcleaner.css"; // Path where takes the CSS file
             var css_provider = new Gtk.CssProvider (); // Create a new CSS provider

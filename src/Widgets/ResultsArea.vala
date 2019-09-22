@@ -125,7 +125,7 @@ namespace GCleaner.Widgets {
                     menu.attach_to_widget (tree_view, null);
                     var actions = GCleaner.Tools.Actions.get_instance ();
                     foreach (string item in items) {
-                        Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s selected option".printf(item));
+                        Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label (_("%s selected option").printf(item));
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
                             var jload = new GCleaner.Tools.JsonUtils ();

@@ -43,7 +43,7 @@ namespace GCleaner.Widgets {
             
             this.program_name = Resources.PROGRAM_NAME;
             this.version = Resources.VERSION;
-            this.comments = "Clean your System GNU/Linux";
+            this.comments = Resources.ABOUT_COMMENTS;
             this.copyright = "Copyright © 2015-" + new DateTime.now_local ().get_year ().to_string () + " Juan Pablo Lozano";
             this.website = "https://gcleaner.github.io/";
             
