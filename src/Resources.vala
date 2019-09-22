@@ -179,6 +179,7 @@ namespace Resources {
             case DESCRIPTION_CRASH_ID:
                 return DESCRIPTION_CRASH_LABEL;
             case DESCRIPTION_DOCS_ID:
+            case DESCRIPTION_RECENT_DOCS_ID:
                 return DESCRIPTION_DOCS_LABEL;
             case DESCRIPTION_DOM_ID:
                 return DESCRIPTION_DOM_LABEL;
@@ -196,8 +197,6 @@ namespace Resources {
                 return DESCRIPTION_PLACES_LABEL;
             case DESCRIPTION_PREFS_ID:
                 return DESCRIPTION_PREFS_LABEL;
-            case DESCRIPTION_RECENT_DOCS_ID:
-                return DESCRIPTION_DOCS_LABEL;
             case DESCRIPTION_SAVED_FORMHISTORY_ID:
                 return DESCRIPTION_SAVED_FORMHISTORY_LABEL;
             case DESCRIPTION_SESSION_ID:
