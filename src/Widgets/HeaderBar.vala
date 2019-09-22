@@ -73,7 +73,7 @@ namespace GCleaner.Widgets {
              */
             var appmenu_button = new Gtk.MenuButton();
             Gtk.Image gear_icon = new Gtk.Image ();
-            gear_icon.set_from_icon_name (Resources.ICON_NAME_OPEN_MENU, Gtk.IconSize.LARGE_TOOLBAR);
+            gear_icon.set_from_icon_name (Resources.ICON_OPEN_MENU, Gtk.IconSize.LARGE_TOOLBAR);
             appmenu_button.set_image (gear_icon);
             appmenu_button.get_style_context ().add_class("about_btn");
 

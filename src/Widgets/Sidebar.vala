@@ -52,8 +52,8 @@ namespace GCleaner.Widgets {
             Gtk.Stack stack = new Gtk.Stack ();
             stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
             stack.set_transition_duration (500);
-            stack.add_titled (system_box, "system_tab", "System");
-            stack.add_titled (alignament, "apps_tab", "Applications");
+            stack.add_titled (system_box, "system_tab", capitalize (Resources.CATEGORY_SYSTEM));
+            stack.add_titled (alignament, "apps_tab", capitalize (Resources.CATEGORY_APPLICATIONS));
             
             Gtk.StackSwitcher stack_switcher = new Gtk.StackSwitcher ();
             stack_switcher.set_stack (stack);
@@ -67,7 +67,7 @@ namespace GCleaner.Widgets {
             foreach (string category in Resources.CATEGORIES) {
                 Json.Object obj_category = parser.get_node_per_category (category).get_object ();
                 
-                string type_icon = (category == "applications") ? "apps" : "info-system";
+                string type_icon = (category == Resources.CATEGORY_APPLICATIONS) ? "apps" : "info-system";
 
                 foreach (unowned string app_id in obj_category.get_members ()) {
                     var obj_app = obj_category.get_member (app_id).get_object ();
@@ -98,7 +98,7 @@ namespace GCleaner.Widgets {
                         main_box.pack_start (list_cleaners[count_apps].get_check_root (), false, false, 0);
                         
                         // We add the main button with its respective category.
-                        if (category == "applications")
+                        if (category == Resources.CATEGORY_APPLICATIONS)
                             apps_box.pack_start (main_box, false, false, 0);
                         else
                             system_box.pack_start (main_box, false, false, 0);
@@ -111,7 +111,7 @@ namespace GCleaner.Widgets {
                         container_box.pack_start(options_box, false, false, 20);
                         
                         // We add it back to the box that corresponds to it.
-                        if (category == "applications")
+                        if (category == Resources.CATEGORY_APPLICATIONS)
                             apps_box.pack_start (container_box, false, false, 4);
                         else
                             system_box.pack_start (container_box, false, false, 4);

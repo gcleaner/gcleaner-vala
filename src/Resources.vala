@@ -71,6 +71,11 @@ namespace Resources {
     public const string DESKTOP_PANTHEON = "PANTHEON";
     public const string DESKTOP_GNOME = "GNOME";
 
+    public const string BUTTON_SCAN = "Analyze";
+    public const string BUTTON_CLEAN = "Clean";
+    public const string FIELD_CONCEPT = "Concept";
+    public const string FIELD_SIZE = "Size";
+    public const string FIELD_N_FILES = "Number of files";
     /*
      * Constants that contain information about the options of each program
      */ 
@@ -132,16 +137,21 @@ namespace Resources {
     public const string DESCRIPTION_THUMBNAILS_ID = "thumbnails";
     public const string DESCRIPTION_TRASH_ID = "trash";
 
+    public const string QUESTION_PHRASE_CLEAN = "Are you sure you want to continue?";
     public const string QUESTION_PHRASE_CACHE_PKG = "Are you sure you want to delete cache and obsolete Package System files?";
     public const string QUESTION_PHRASE_CONF_PKG = "Are you sure you want to delete orphan Package System files?";
     public const string QUESTION_PHRASE_OLDKERNELS = "Are you sure you want to delete the old kernels?";
     public const string QUESTION_PHRASE_PASS = "Are you sure you want to remove %s passwords?";
     public const string QUESTION_PHRASE_UNKNOWN = DESCRIPTION_UNKNOWN_LABEL;
 
-    public const string[] CATEGORIES = {"applications", "system"};
+    public const string CATEGORY_APPLICATIONS = "applications";
+    public const string CATEGORY_SYSTEM = "system";
+    public const string[] CATEGORIES = {CATEGORY_APPLICATIONS, 
+                                        CATEGORY_SYSTEM};
     public const string[] ADVANCED_OPTIONS = {DESCRIPTION_CACHE_PKG_ID, 
                                               DESCRIPTION_CONF_PKG_ID, 
                                               DESCRIPTION_OLDKERNELS_ID};
+    public const string[] SYSTEM_APPS = {"APT", "System"};
 
     public unowned string get_description_info (string id_option_type) {
         switch (id_option_type) {
@@ -217,11 +227,11 @@ namespace Resources {
         }
     }
 
-    public const string ICON_NAME_APPLICATIONS_SYSTEM = "applications-system";
-    public const string ICON_NAME_DIALOG_INFORMATION = "dialog-information";
-    public const string ICON_NAME_DIALOG_WARNING = "dialog-warning";
-    public const string ICON_NAME_OPEN_MENU = "open-menu";
-    public const string ICON_NAME_PACKAGE_GENERIC = "package-x-generic";
+    public const string ICON_APPLICATIONS_SYSTEM = "applications-system";
+    public const string ICON_DIALOG_INFORMATION = "dialog-information";
+    public const string ICON_DIALOG_WARNING = "dialog-warning";
+    public const string ICON_OPEN_MENU = "open-menu";
+    public const string ICON_PACKAGE_GENERIC = "package-x-generic";
 
     public GLib.Settings get_setting_schema () {
         return new GLib.Settings ("org.gcleaner");

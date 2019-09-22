@@ -64,8 +64,8 @@ namespace GCleaner {
             Box infoAction_box  = new Box (Orientation.VERTICAL, 0);    // Box containing progress bar, actions and results
             
             //BUTTONS
-            scan_button  = new Button.with_label (" Scan ");
-            clean_button = new Button.with_label (" Clean up ");
+            scan_button  = new Button.with_label (Resources.BUTTON_SCAN);
+            clean_button = new Button.with_label (Resources.BUTTON_CLEAN);
             /*
              * Initial state of the buttons 
              * (Scan painted blue and clear disabled)
@@ -206,7 +206,7 @@ namespace GCleaner {
              */
             scan_button.has_tooltip = true;
             scan_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
-                tooltip.set_icon_from_icon_name (Resources.ICON_NAME_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
+                tooltip.set_icon_from_icon_name (Resources.ICON_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
                 tooltip.set_markup ("This option will scan <b>all selected options.</b>");
                 return true;
             });
@@ -221,7 +221,7 @@ namespace GCleaner {
              */
             clean_button.has_tooltip = true;
             clean_button.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
-                tooltip.set_icon_from_icon_name (Resources.ICON_NAME_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
+                tooltip.set_icon_from_icon_name (Resources.ICON_DIALOG_INFORMATION, Gtk.IconSize.LARGE_TOOLBAR); 
                 tooltip.set_markup ("This option will remove the files from <b>all the selected options.</b>");
                 return true;
             });

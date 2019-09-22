@@ -177,8 +177,8 @@ namespace GCleaner.Widgets {
             
             check_root.has_tooltip = true;
             check_root.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
-                if (text_icon.contains (Resources.ICON_NAME_PACKAGE_GENERIC) || 
-                    text_icon.contains (Resources.ICON_NAME_APPLICATIONS_SYSTEM)) {
+                if (text_icon.contains (Resources.ICON_PACKAGE_GENERIC) || 
+                    text_icon.contains (Resources.ICON_APPLICATIONS_SYSTEM)) {
                     tooltip.set_icon_from_icon_name (text_icon, Gtk.IconSize.DIALOG); 
                 } else {
                     Pixbuf icon = load_pixbuf (text_icon, 48);
@@ -248,9 +248,9 @@ namespace GCleaner.Widgets {
 
         private string determine_warning_icon (bool is_secure = true) {
             if (is_secure)
-                return Resources.ICON_NAME_DIALOG_INFORMATION;
+                return Resources.ICON_DIALOG_INFORMATION;
             else
-                return Resources.ICON_NAME_DIALOG_WARNING;
+                return Resources.ICON_DIALOG_WARNING;
         }
         
         private string determine_tooltip_text (string id_option_type, bool high_warning = false) {

@@ -28,9 +28,8 @@ public Pixbuf load_pixbuf (string rsc_icon, int size = 16) {
 
 public Pixbuf load_pixbuf_from_name (string app_name, string option_id, int size = 16) {
     Pixbuf pix;
-    string[] system_apps = {"apt", "system"};
-    string category = (app_name in system_apps) ? "system" : "applications";
-    string type_icon = (category == "applications") ? "apps" : "info-system";
+    string category = (app_name in Resources.SYSTEM_APPS)? Resources.CATEGORY_SYSTEM : Resources.CATEGORY_APPLICATIONS;
+    string type_icon = (category == Resources.CATEGORY_APPLICATIONS) ? "apps" : "info-system";
     string ext = ".png";
     string name_icon = app_name;
     if (category == "system") {

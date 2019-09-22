@@ -88,13 +88,13 @@ namespace GCleaner.Widgets {
             tree_view.append_column (column_pix);
             
             var renderer_text = new CellRendererText ();
-            column_concept = new Gtk.TreeViewColumn.with_attributes ("Concept", renderer_text, 
+            column_concept = new Gtk.TreeViewColumn.with_attributes (Resources.FIELD_CONCEPT, renderer_text, 
                                                                      "text", Columns.CONCEPT, null);
             tree_view.append_column (column_concept);
-            column_size = new Gtk.TreeViewColumn.with_attributes ("Size", renderer_text, 
+            column_size = new Gtk.TreeViewColumn.with_attributes (Resources.FIELD_SIZE, renderer_text, 
                                                                   "text", Columns.SIZE, null);
             tree_view.append_column (column_size);
-            column_number = new Gtk.TreeViewColumn.with_attributes ("Number of files", renderer_text, 
+            column_number = new Gtk.TreeViewColumn.with_attributes (Resources.FIELD_N_FILES, renderer_text, 
                                                                     "text", Columns.N_FILES, null);
             tree_view.append_column (column_number);
             this.set_headers_visible (false);
@@ -120,7 +120,7 @@ namespace GCleaner.Widgets {
 
             tree_view.button_press_event.connect ((event) => {
                 if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
-                    string[] items = {"Analyze", "Clean"};
+                    string[] items = {Resources.BUTTON_SCAN, Resources.BUTTON_CLEAN};
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (tree_view, null);
                     var actions = GCleaner.Tools.Actions.get_instance ();
@@ -129,7 +129,7 @@ namespace GCleaner.Widgets {
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
                             var jload = new GCleaner.Tools.JsonUtils ();
-                            bool really_delete = (item == "Clean")? true : false;
+                            bool really_delete = (item == Resources.BUTTON_CLEAN)? true : false;
                             string[] parts = rsc_content_row.split ("-"); // 1st we divide the app of the option
                             string app_name = parts[0].delimit ("•", ' ').strip ();; // We make sure of the blank spaces
                             string option_name = parts[1].strip ();
@@ -137,7 +137,8 @@ namespace GCleaner.Widgets {
                             string app_id = info_app[0];
                             string option_id = info_app[1];
                             if (really_delete) {
-                                Gtk.MessageDialog msg = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
+                                Gtk.MessageDialog msg = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL, 
+                                    Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, Resources.QUESTION_PHRASE_CLEAN);
                                 msg.response.connect ((response_id) => {
                                     if (response_id == Gtk.ResponseType.OK) {
                                         actions.run_selected_option (app_id, option_id, really_delete);

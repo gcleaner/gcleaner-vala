@@ -80,7 +80,7 @@ namespace GCleaner.Widgets {
              */
             var appmenu_button = new Gtk.MenuButton();
             Gtk.Image gear_icon = new Gtk.Image ();
-            gear_icon.set_from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
+            gear_icon.set_from_icon_name (Resources.ICON_OPEN_MENU, Gtk.IconSize.LARGE_TOOLBAR);
             appmenu_button.set_image (gear_icon);
             appmenu_button.set_size_request (32, 32);
             appmenu_button.get_style_context ().add_class("about_btn");
@@ -140,7 +140,7 @@ namespace GCleaner.Widgets {
             //GCleaner icon for Toolbar
             Image icon = new Image ();
             try {
-                var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale ("/usr/share/pixmaps/gcleanertb.svg", 56, 56, false);
+                var icon_pixbuf = load_pixbuf (Resources.DATADIR + "/pixmaps/gcleanertb.svg", 56);
                 icon.set_from_pixbuf (icon_pixbuf);
             } catch (GLib.Error e) {
                 stderr.printf ("COM.GCLEANER.APP.TOOLBAR: [GLIB::ERROR CREANDO ICONO PIXBUF]\n");
