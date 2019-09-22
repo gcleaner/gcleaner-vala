@@ -94,7 +94,7 @@ namespace GCleaner.Widgets {
             });
 
             combobox.changed.connect ((combo) => {
-                print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
+                // print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
             });
         }
 

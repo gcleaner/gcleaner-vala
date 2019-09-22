@@ -60,9 +60,16 @@ namespace Resources {
     public const string PREFERENCES_LANGUAGE_KEY = "language";
     public const string PREFERENCES_AUTOSTART_KEY = "start-with-system";
     public const string PREFERENCES_STANDARD_SIZE_KEY = "standard-iec-size-bytes";
+    public const string SETTINGS_VALUE_OPENING_X = "opening-x";
+    public const string SETTINGS_VALUE_OPENING_Y = "opening-y";
+    public const string SETTINGS_VALUE_WINDOW_WIDTH = "window-width";
+    public const string SETTINGS_VALUE_WINDOW_HEIGHT = "window-height";
 
     public const string[] SUFIX_SIZE_IEC = {"KiB", "MiB", "GiB"};
     public const string[] SUFIX_SIZE_SI = {"kB", "MB", "GB"};
+
+    public const string DESKTOP_PANTHEON = "PANTHEON";
+    public const string DESKTOP_GNOME = "GNOME";
 
     /*
      * Constants that contain information about the options of each program

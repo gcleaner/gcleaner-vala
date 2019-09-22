@@ -34,7 +34,7 @@ namespace GCleaner.Widgets {
             this.wrap_license = true;
             
             try {
-                var logo = new Gdk.Pixbuf.from_file_at_size ("/usr/share/icons/hicolor/128x128/apps/gcleaner.svg", 128, 128);
+                var logo = load_pixbuf (Resources.DATADIR + "/icons/hicolor/128x128/apps/gcleaner.svg", 128);
                 this.logo = logo;
             } catch (GLib.Error e) {
                 stderr.printf ("COM.GCLEANER.APP.ABOUT: [GLIB::ERROR CREATING Pixbuf ICON]\n");
@@ -55,7 +55,7 @@ namespace GCleaner.Widgets {
              * Application icon
              */
             try {
-                this.icon = new Gdk.Pixbuf.from_file ("/usr/share/icons/hicolor/128x128/apps/gcleaner.svg");
+                this.icon = load_pixbuf (Resources.DATADIR + "/icons/hicolor/128x128/apps/gcleaner.svg");
             } catch (Error e) {
                 stderr.printf ("COM.GCLEANER.APP: [GLIB::ERROR LOADING ICON [%s]]\n", e.message);
             }

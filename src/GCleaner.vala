@@ -131,7 +131,8 @@ namespace GCleaner {
              */
 
             bool use_headerbar;
-            if ((desktop_environment == "PANTHEON") || (desktop_environment == "GNOME")) {
+            if (desktop_environment == Resources.DESKTOP_PANTHEON || 
+                desktop_environment == Resources.DESKTOP_GNOME) {
                 use_headerbar = true;
             } else { // Any other Desktop like Unity, XFCE, Mate, etc... use ToolBar
                 use_headerbar = false;
@@ -242,11 +243,11 @@ namespace GCleaner {
                 this.main_window.get_size (out w, out h);
                 this.main_window.hide ();
                 
-                //Save values into GSCHEMA
-                settings.set_int ("opening-x", x);
-                settings.set_int ("opening-y", y);
-                settings.set_int ("window-width", w);
-                settings.set_int ("window-height", h);
+                // Save values into GSCHEMA
+                settings.set_int (Resources.SETTINGS_VALUE_OPENING_X, x);
+                settings.set_int (Resources.SETTINGS_VALUE_OPENING_Y, y);
+                settings.set_int (Resources.SETTINGS_VALUE_WINDOW_WIDTH, w);
+                settings.set_int (Resources.SETTINGS_VALUE_WINDOW_HEIGHT, h);
                 
                 Gtk.main_quit ();
                 return false;
@@ -292,7 +293,7 @@ namespace GCleaner {
 
         public static int main (string[] args) {
             Gtk.init (ref args); // Starts GTK+
-            string css_file = "/usr/share/gcleaner/gtk-widgets-gcleaner.css"; // Path where takes the CSS file
+            string css_file = Resources.PKGDATADIR + "/gtk-widgets-gcleaner.css"; // Path where takes the CSS file
             var css_provider = new Gtk.CssProvider (); // Create a new CSS provider
             
             try {
