@@ -78,7 +78,6 @@ PACKAGES
     posix
 #Compiler options
 OPTIONS
-    -X -DGETTEXT_PACKAGE="gcleaner"
     -g --save-temps
     --target-glib=2.36
     --thread
