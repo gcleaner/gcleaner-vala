@@ -129,7 +129,7 @@ namespace GCleaner.Widgets {
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
                             var jload = new GCleaner.Tools.JsonUtils ();
-                            bool really_delete = (item == Resources.BUTTON_CLEAN)? true : false;
+                            bool really_delete = (item == Resources.BUTTON_CLEAN) ? true : false;
                             string[] parts = rsc_content_row.split ("-"); // 1st we divide the app of the option
                             string app_name = parts[0].delimit ("•", ' ').strip ();; // We make sure of the blank spaces
                             string option_name = parts[1].strip ();

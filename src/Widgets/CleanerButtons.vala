@@ -208,7 +208,7 @@ namespace GCleaner.Widgets {
             check.button_press_event.connect ((event) => {
                 if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
                     string[] items = {Resources.BUTTON_SCAN, Resources.BUTTON_CLEAN}; // Labels
-                    string text_name = (option_id == null)? app_name : check.label.down ();
+                    string text_name = (option_id == null) ? app_name : check.label.down ();
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (check, null);
                     var actions = Actions.get_instance ();
@@ -216,7 +216,7 @@ namespace GCleaner.Widgets {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, text_name));
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
-                            bool really_delete = (item == Resources.BUTTON_CLEAN)? true : false;
+                            bool really_delete = (item == Resources.BUTTON_CLEAN) ? true : false;
                             if (really_delete) {
                                 Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, 
                                     Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, Resources.QUESTION_PHRASE_CLEAN);

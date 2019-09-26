@@ -143,7 +143,7 @@ namespace GCleaner.Tools {
         // This returns app id and option id from app name and option name
         public string[] get_app_and_option_id_from_info (string app_name, string option_name) {
             string[] info_app = new string[2]; // [0]-> app_id   [1]-> option_id
-            string category = (app_name in Resources.SYSTEM_APPS)? Resources.CATEGORY_SYSTEM : Resources.CATEGORY_APPLICATIONS;
+            string category = (app_name in Resources.SYSTEM_APPS) ? Resources.CATEGORY_SYSTEM : Resources.CATEGORY_APPLICATIONS;
             Json.Object obj_category = get_node_per_category (category).get_object ();
             foreach (unowned string current_app_id in obj_category.get_members ()) {
                 var obj_app = obj_category.get_member (current_app_id).get_object ();

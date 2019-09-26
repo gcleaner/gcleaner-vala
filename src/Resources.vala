@@ -162,7 +162,7 @@ namespace Resources {
     public const string[] ADVANCED_OPTIONS = {DESCRIPTION_CACHE_PKG_ID, 
                                               DESCRIPTION_CONF_PKG_ID, 
                                               DESCRIPTION_OLDKERNELS_ID};
-    public const string[] SYSTEM_APPS = {"APT", "System"};
+    public const string[] SYSTEM_APPS = {"apt", "system"};
 
     public unowned string get_description_info (string id_option_type) {
         switch (id_option_type) {
