@@ -67,17 +67,25 @@ namespace GCleaner.Widgets {
             language_label.set_markup (_("<b>Select your language:</b>"));
             language_label.set_margin_bottom (10);
             
+            string current_lang_code = settings.get_string (Resources.PREFERENCES_LANGUAGE_KEY);
             Gtk.ListStore liststore = new Gtk.ListStore (1, typeof (string));
             foreach (string lang in Resources.LANGUAGES_SUPPORTED) {
                 Gtk.TreeIter iter;
                 liststore.append (out iter);
                 liststore.set (iter, 0, capitalize (lang));
             }
+            // This is to obtain index for language code
+            int index_code = 0, count = 0;
+            foreach (string lang_code in Resources.LANGUAGE_CODES) {
+                if (lang_code == current_lang_code)
+                    index_code = count;
+                count++;
+            }
             Gtk.ComboBox combobox = new Gtk.ComboBox.with_model (liststore);
             Gtk.CellRendererText cell = new Gtk.CellRendererText ();
             combobox.pack_start (cell, false);
             combobox.set_attributes (cell, "text", 0);
-            combobox.set_active (0); // Set the first item in the list to be selected (active).
+            combobox.set_active (index_code); // Set the current language to be selected (active).
             combobox.margin_bottom = 5;
             
             var combo_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
@@ -94,7 +102,8 @@ namespace GCleaner.Widgets {
             });
 
             combobox.changed.connect ((combo) => {
-                print ("You chose " + Resources.LANGUAGES_SUPPORTED [combo.get_active ()] +"\n");
+                string lang = Resources.LANGUAGE_CODES [combo.get_active ()];
+                settings.set_string (Resources.PREFERENCES_LANGUAGE_KEY, lang);
             });
         }
 
