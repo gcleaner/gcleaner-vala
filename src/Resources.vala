@@ -65,6 +65,22 @@ namespace Resources {
     public const string SETTINGS_VALUE_WINDOW_WIDTH = "window-width";
     public const string SETTINGS_VALUE_WINDOW_HEIGHT = "window-height";
 
+    /*
+     * DEBUG Constants that contain the names of the properties of the Json's objects.
+     */ 
+    public const string PROPERTY_APP_NAME = "name";
+    public const string PROPERTY_APP_TYPE = "type";
+    public const string PROPERTY_APP_ICON = "icon";
+    public const string PROPERTY_KEY = "key-xml";
+    public const string PROPERTY_N_OPTIONS = "number-options";
+    public const string PROPERTY_OPTION_ID = "option-id";
+    public const string PROPERTY_OPTION_NAME = "option-name";
+    public const string PROPERTY_PATHS = "paths";
+    public const string PROPERTY_WARNING = "warning-msgdlg";
+    public const string PROPERTY_CMD_SIZE = "get-size";
+    public const string PROPERTY_CMD_QUANTITY = "get-quantity";
+    public const string PROPERTY_CMD_CLEAN = "clean";
+
     public const string[] SUFIX_SIZE_IEC = {"KiB", "MiB", "GiB"};
     public const string[] SUFIX_SIZE_SI = {"kB", "MB", "GB"};
 
@@ -167,6 +183,8 @@ namespace Resources {
                                               DESCRIPTION_CONF_PKG_ID, 
                                               DESCRIPTION_OLDKERNELS_ID};
     public const string[] SYSTEM_APPS = {"apt", "system"};
+    public const string TYPE_ICON_APPS = "apps";
+    public const string TYPE_ICON_SYSTEM = "info-system";
 
     public unowned string get_description_info (string id_option_type) {
         switch (id_option_type) {
@@ -248,7 +266,13 @@ namespace Resources {
     public const string ICON_PACKAGE_GENERIC = "package-x-generic";
 
     public const string STYLE_CLASS_ABOUT_BTN = "about_btn";
-    
+    public const string STYLE_CLASS_CSD = "csd";
+    public const string STYLE_CLASS_TOOLBAR = "Toolbar";
+    public const string STYLE_CLASS_SIDEBAR = "Sidebar";
+    public const string STYLE_CLASS_SIDEBAR_EV = "SidebarEv";
+    public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
+    public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
+
     public GLib.Settings get_setting_schema () {
         return new GLib.Settings ("org.gcleaner");
     }

@@ -44,7 +44,7 @@ namespace GCleaner.Widgets {
         
         private void load_init () {
             var jload = new JsonUtils ();
-            app_name = jload.get_item_from_app (app_id, "name");
+            app_name = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_NAME);
             n_options = jload.get_n_options_from (app_id);
             string key_xml = app_id + "-main";
             // Setting the main check
@@ -104,10 +104,10 @@ namespace GCleaner.Widgets {
             foreach (var option in all_options.get_array ().get_elements ()) {
                 var object_option = option.get_object ();
                 
-                string option_id = object_option.get_string_member ("option-id");
-                string option_label = object_option.get_string_member ("option-name");
-                string key_xml = object_option.get_string_member ("key-xml");
-                bool warning_value = object_option.get_boolean_member ("warning-msgdlg");
+                string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
+                string option_label = object_option.get_string_member (Resources.PROPERTY_OPTION_NAME);
+                string key_xml = object_option.get_string_member (Resources.PROPERTY_KEY);
+                bool warning_value = object_option.get_boolean_member (Resources.PROPERTY_WARNING);
 
                 string option_info = determine_tooltip_text (option_id, warning_value);
                 string icon_warning_name = determine_warning_icon (warning_value);
@@ -174,7 +174,7 @@ namespace GCleaner.Widgets {
         private void set_tooltip_root () {
             var jload = new JsonUtils ();
             string text_icon = determine_app_icon ();
-            string program_type = jload.get_item_from_app (app_id, "type");
+            string program_type = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_TYPE);
             
             check_root.has_tooltip = true;
             check_root.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
@@ -195,7 +195,7 @@ namespace GCleaner.Widgets {
             string text_icon = null;
             if (app_id in Resources.SYSTEM_APPS) {
                 var jload = new JsonUtils ();
-                text_icon = jload.get_item_from_app (app_id, "icon");
+                text_icon = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_ICON);
             } else {
                 text_icon = Resources.PKGDATADIR + "/media/apps/" + app_id + ".png";
             }

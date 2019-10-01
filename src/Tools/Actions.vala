@@ -106,8 +106,8 @@ namespace GCleaner.Tools {
                                 }
                                 foreach (var option in node_options.get_array ().get_elements ()) {
                                     var object_option = option.get_object ();
-                                    string option_id = object_option.get_string_member ("option-id");
-                                    string option_name = object_option.get_string_member ("option-name");
+                                    string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
+                                    string option_name = object_option.get_string_member (Resources.PROPERTY_OPTION_NAME);
                                     bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
                                     if (option_is_active || item_option_id != null) {
                                         int64 n_files_option = info_clean.get_file_number_of (app_id, option_id);

@@ -72,7 +72,7 @@ namespace GCleaner {
              * Initial state of the buttons 
              * (Scan painted blue and clear disabled)
              */
-            scan_button.get_style_context ().add_class ("suggested-action"); // Paint the button of blue
+            scan_button.get_style_context ().add_class (Resources.STYLE_CLASS_SUGGESTED_ACTION); // Paint the button of blue
             clean_button.set_sensitive (false); // Disable clean button
             
             // LABELS
@@ -91,7 +91,7 @@ namespace GCleaner {
             
             // OWN WIDGETS
             sidebar = new Sidebar (this);
-            sidebar.get_style_context ().add_class("Sidebar");
+            sidebar.get_style_context ().add_class (Resources.STYLE_CLASS_SIDEBAR);
             results_area = new ResultsArea ();
             
             /*
@@ -100,7 +100,7 @@ namespace GCleaner {
              */
             var eventSidebar = new EventBox ();
             eventSidebar.add (sidebar);
-            eventSidebar.get_style_context ().add_class("SidebarEv");
+            eventSidebar.get_style_context ().add_class (Resources.STYLE_CLASS_SIDEBAR_EV);
             var colour = Gdk.RGBA ();//the color is created in RGBA
             colour.red = 103.0;
             colour.green = 103.0;
@@ -149,7 +149,7 @@ namespace GCleaner {
                 * Create an instance of the HeaderBar (customized)
                 */
                 var header_bar = new Header (this);
-                header_bar.get_style_context ().add_class("csd");
+                header_bar.get_style_context ().add_class (Resources.STYLE_CLASS_CSD);
                 this.main_window.set_titlebar (header_bar);
                 header_bar.set_name ("header_bar");
             } else {
@@ -158,8 +158,8 @@ namespace GCleaner {
                 * Creates an instance of the Toolbar (customized)
                 */
                 var toolbar = new ToolBar (this);
-                toolbar.get_style_context ().add_class("Toolbar");
-                toolbar.set_name ("Toolbar");
+                toolbar.get_style_context ().add_class (Resources.STYLE_CLASS_TOOLBAR);
+                toolbar.set_name (Resources.STYLE_CLASS_TOOLBAR);
 
                 // Add the Toolbar to the main window box
                 main_window_box.pack_start (toolbar, false, true, 0);
@@ -276,22 +276,22 @@ namespace GCleaner {
 
         public void enable_scan_button () {
             this.scan_button.set_sensitive (true);
-            this.scan_button.get_style_context ().add_class ("suggested-action"); // Paint the button of blue
+            this.scan_button.get_style_context ().add_class (Resources.STYLE_CLASS_SUGGESTED_ACTION); // Paint the button of blue
         }
 
         public void disable_scan_button () {
             this.scan_button.set_sensitive (false);
-            this.scan_button.get_style_context ().remove_class ("suggested-action"); // Remove the blue color of button
+            this.scan_button.get_style_context ().remove_class (Resources.STYLE_CLASS_SUGGESTED_ACTION); // Remove the blue color of button
         }
 
         public void enable_clean_button () {
             this.clean_button.set_sensitive (true);
-            this.clean_button.get_style_context ().add_class ("destructive-action"); // Paint the button of red
+            this.clean_button.get_style_context ().add_class (Resources.STYLE_CLASS_DESTRUCTIVE_ACTION); // Paint the button of red
         }
 
         public void disable_clean_button () {
             this.clean_button.set_sensitive (false);
-            this.clean_button.get_style_context ().remove_class ("destructive-action"); // Remove the red color of button
+            this.clean_button.get_style_context ().remove_class (Resources.STYLE_CLASS_DESTRUCTIVE_ACTION); // Remove the red color of button
         }
 
         public static int main (string[] args) {

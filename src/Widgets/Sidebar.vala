@@ -67,18 +67,18 @@ namespace GCleaner.Widgets {
             foreach (string category in Resources.CATEGORIES) {
                 Json.Object obj_category = parser.get_node_per_category (category).get_object ();
                 
-                string type_icon = (category == Resources.CATEGORY_APPLICATIONS) ? "apps" : "info-system";
+                string type_icon = (category == Resources.CATEGORY_APPLICATIONS) ? Resources.TYPE_ICON_APPS : Resources.TYPE_ICON_SYSTEM;
 
                 foreach (unowned string app_id in obj_category.get_members ()) {
                     var obj_app = obj_category.get_member (app_id).get_object ();
                     
                     if (comprobe_if_exists_app (app_id)) {
                         string rsc_icon = "";
-                        int64 n_options = obj_app.get_int_member ("number-options");
+                        int64 n_options = obj_app.get_int_member (Resources.PROPERTY_N_OPTIONS);
                         Image program_icon;
 
-                        if (obj_app.has_member ("icon")) {
-                            rsc_icon = obj_app.get_string_member ("icon");
+                        if (obj_app.has_member (Resources.PROPERTY_APP_ICON)) {
+                            rsc_icon = obj_app.get_string_member (Resources.PROPERTY_APP_ICON);
                             program_icon = new Image.from_icon_name (rsc_icon, Gtk.IconSize.SMALL_TOOLBAR);
                         } else {
                             rsc_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + app_id + ".png";
