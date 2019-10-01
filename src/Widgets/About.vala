@@ -32,19 +32,19 @@ namespace GCleaner.Widgets {
             
             this.license  = Resources.SHORT_VERSION_LICENSE;
             this.wrap_license = true;
-            
+            unowned string path_icon = Resources.DATADIR + "/icons/hicolor/128x128/apps/gcleaner.svg";
             try {
-                var logo = load_pixbuf (Resources.DATADIR + "/icons/hicolor/128x128/apps/gcleaner.svg", 128);
+                var logo = load_pixbuf (path_icon, 128);
                 this.logo = logo;
             } catch (GLib.Error e) {
-                stderr.printf ("COM.GCLEANER.APP.ABOUT: [GLIB::ERROR CREATING Pixbuf ICON]\n");
-                stderr.printf (">>> Check path: /usr/share/icons/hicolor/128x128/apps/gcleaner.svg\n");
+                stderr.printf (">>> Logo image is not available.\nCheck path: " + path_icon + "\n");
             }
             
             this.program_name = Resources.PROGRAM_NAME;
             this.version = Resources.VERSION;
             this.comments = Resources.ABOUT_COMMENTS;
-            this.copyright = "Copyright © 2015-" + new DateTime.now_local ().get_year ().to_string () + " Juan Pablo Lozano";
+            this.copyright = "Copyright © 2015-" + new DateTime.now_local ().get_year ().to_string () + " " +
+                Resources.AUTHORS[0].split ("<")[0].strip ();
             this.website = "https://gcleaner.github.io/";
             
             this.response.connect((response) => {
@@ -55,9 +55,9 @@ namespace GCleaner.Widgets {
              * Application icon
              */
             try {
-                this.icon = load_pixbuf (Resources.DATADIR + "/icons/hicolor/128x128/apps/gcleaner.svg");
+                this.icon = load_pixbuf (path_icon);
             } catch (Error e) {
-                stderr.printf ("COM.GCLEANER.APP: [GLIB::ERROR LOADING ICON [%s]]\n", e.message);
+                stderr.printf ("Error loading icon: [%s]\n", e.message);
             }
         }
     }

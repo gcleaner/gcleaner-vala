@@ -192,10 +192,9 @@ namespace GCleaner.Widgets {
         }
 
         private string determine_app_icon () {
-            var jload = new JsonUtils ();
-            string text_icon = "";
-            
-            if (app_id == "apt" || app_id == "system") {
+            string text_icon = null;
+            if (app_id in Resources.SYSTEM_APPS) {
+                var jload = new JsonUtils ();
                 text_icon = jload.get_item_from_app (app_id, "icon");
             } else {
                 text_icon = Resources.PKGDATADIR + "/media/apps/" + app_id + ".png";

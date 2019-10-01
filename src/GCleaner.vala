@@ -21,8 +21,8 @@ using Gtk;
 using GLib;
 using GCleaner.Widgets;
 using GCleaner.Tools;
-//const string GETTEXT_PACKAGE = "gcleaner";
-//[CCode(cname="GETTEXT_PACKAGE")] extern const string GETTEXT_PACKAGE;
+
+
 namespace GCleaner {
     [CCode (cname = "GETTEXT_PACKAGE")]
     public const string GETTEXT_PACKAGE = "gcleaner";
@@ -306,8 +306,8 @@ namespace GCleaner {
                 css_provider.load_from_path (css_file); // Loads the CSS of the previous path (string)
                 Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default(), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
             } catch (Error e) { // Handling the Error
-                stderr.printf ("COM.GCLEANER.APP: [ERROR WHEN LOADING CSS STYLE [%s]]\n", e.message);
-                stderr.printf (">>> Check path: /usr/share/gcleaner/gtk-widgets-gcleaner.css\n");
+                stderr.printf ("Error when loading css style [%s]\n", e.message);
+                stderr.printf (">>> Check path: " + css_file + "\n");
             }
             
             var app = new GCleaner.App ();

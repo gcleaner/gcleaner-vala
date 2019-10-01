@@ -73,10 +73,14 @@ namespace Resources {
 
     public const string BUTTON_SCAN = _("Analyze");
     public const string BUTTON_CLEAN = _("Clean");
+    public const string BUTTON_CLOSE = _("Close");
     public const string FIELD_CONCEPT = _("Concept");
     public const string FIELD_SIZE = _("Size");
     public const string FIELD_N_FILES = _("Number of files");
     public const string ABOUT_COMMENTS = _("Clean your System GNU/Linux");
+    public const string ABOUT_FIELD = _("About...");
+    public const string GENERAL_FIELD = _("General");
+    public const string PREFERENCES_FIELD = _("Preferences");
     /*
      * Constants that contain information about the options of each program
      */ 
@@ -243,6 +247,8 @@ namespace Resources {
     public const string ICON_OPEN_MENU = "open-menu";
     public const string ICON_PACKAGE_GENERIC = "package-x-generic";
 
+    public const string STYLE_CLASS_ABOUT_BTN = "about_btn";
+    
     public GLib.Settings get_setting_schema () {
         return new GLib.Settings ("org.gcleaner");
     }

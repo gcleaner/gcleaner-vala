@@ -41,7 +41,7 @@ public string getArchitecture () {
             arch = "32-bit";
         }
     } catch (Error e) {//In case of not match any of the above is taken for unknown the architecture
-        stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: The architecture could not be established: [ %s ]]\n", e.message);
+        stderr.printf ("ERROR: The architecture could not be established: [ %s ]\n", e.message);
         arch = "NO ARCH";
     }
 
@@ -104,7 +104,7 @@ public string getOS () {
             }
 
         } catch (Error e) {
-            stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::OS] could not read the '/etc/lsb-release' file: [ %s ]\n", e.message);
+            stderr.printf ("ERROR: could not read the '/etc/lsb-release' file: [ %s ]\n", e.message);
             os = _("Unknown");
             version = "X";
             codename = _("Not found");
@@ -141,7 +141,7 @@ public string getProcessor () {
             processor = processor.replace ("(TM)", "™");
         }
     } catch (Error e) {
-        stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR:: No processor found: [ %s ]]\n", e.message);
+        stderr.printf ("ERROR: No processor found: [ %s ]\n", e.message);
         processor = _("Unknown Processor");
     }
 
@@ -154,7 +154,7 @@ public string getGraphics () {
         Process.spawn_command_line_sync ("lspci", out graphics);
         if ("VGA" in graphics) { // VGA-keyword indicates graphics-line
             string[] lines = graphics.split("\n");
-            graphics="";
+            graphics = "";
             foreach (var s in lines) {
                 if ("VGA" in s || "3D" in s) {
                     string model = get_graphics_from_string(s);//Proper function that deals the models of video cards
@@ -166,7 +166,7 @@ public string getGraphics () {
             }
         }
     } catch (Error e) {
-        stderr.printf ("COM.GCLEANER.APP.SPECS: [ERROR::Video card [ %s ]]\n", e.message);
+        stderr.printf ("ERROR: Video card [ %s ]\n", e.message);
         graphics = _("Unknown video card");
     }
 

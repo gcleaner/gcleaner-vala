@@ -24,11 +24,11 @@ namespace GCleaner.Widgets {
         private Notebook notebook;
 
         public Preferences(Gtk.Window owner) {
-            set_title (_("Preferences"));
+            set_title (Resources.PREFERENCES_FIELD);
             set_type_hint (Gdk.WindowTypeHint.DIALOG);
             set_transient_for (owner);
             set_resizable (false);
-            Gtk.Widget ok_button = add_button (_("Close"), Gtk.ResponseType.CLOSE);
+            Gtk.Widget ok_button = add_button (Resources.BUTTON_CLOSE, Gtk.ResponseType.CLOSE);
             set_default_response (Gtk.ResponseType.CLOSE);
             settings = Resources.get_setting_schema ();
             
@@ -43,7 +43,7 @@ namespace GCleaner.Widgets {
             content.margin_end = 5;
 
             notebook = new Notebook();
-            var text = "%s".printf(_("General"));
+            var text = "%s".printf(Resources.GENERAL_FIELD);
             var label = new Label(text);
             
             var general_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);

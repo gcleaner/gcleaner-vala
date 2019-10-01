@@ -71,14 +71,14 @@ public class FileUtilities {
         int64[] tmp_data = new int64[2];
 
         if (paths[0] == "null") {
-            stderr.printf ("COM.GCLEANER.FILEUTLITIES [INVALID DIRECTORY: %s]\n", paths[0]);
+            stderr.printf ("Error: %s]\n", paths[0]);
         } else {
             foreach (string dir in paths) {
                 File file = File.new_for_path (dir);
                 try {
                     tmp_data = list_content (dir);
                 } catch (Error e) {
-                    stdout.printf ("COM.GCLEANER.FILEUTLITIES [Error: %s]\n", e.message);
+                    stdout.printf ("Error: %s\n", e.message);
                     stdout.printf (">>> Comprobe path: %s", dir);
                 }
                 information[0] += tmp_data[0];
@@ -141,7 +141,7 @@ public class FileUtilities {
                     }
                 }
             } catch (Error e) {
-                stderr.printf ("COM.GCLEANER.FILEUTLITIES: [WARNING: Unable to delete the file '%s': %s]\n", str_path, e.message);
+                stderr.printf ("WARNING: Unable to delete the file '%s': %s]\n", str_path, e.message);
             }
         }
         
@@ -155,7 +155,7 @@ public class FileUtilities {
         try {
             enumerator = file.enumerate_children ("standard::*", FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
         } catch (IOError e) {
-            stderr.printf ("COM.GCLEANER.FILEUTLITIES: [WARNING: Unable to access the path '%s': %s\n", file.get_path (), e.message);
+            stderr.printf ("WARNING: Unable to access the path '%s': %s\n", file.get_path (), e.message);
             return;
         }
         

@@ -43,12 +43,12 @@ namespace GCleaner.Widgets {
 
             // GCleaner icon
             Image icon = new Image ();
+            unowned string path_icon = Resources.DATADIR + "/pixmaps/gcleanerhb.svg";
             try {
-                var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale (Resources.DATADIR + "/pixmaps/gcleanerhb.svg", 32, 32, false);
+                var icon_pixbuf = load_pixbuf (path_icon, 32);
                 icon.set_from_pixbuf (icon_pixbuf);
             } catch (GLib.Error e) {
-                stderr.printf ("COM.GCLEANER.APP.HEADERBAR: [GLIB::ERROR CREATING PIXBUF ICON]\n");
-                stderr.printf (">>> Check path: /usr/share/pixmaps/gcleanerhb.svg\n");
+                stderr.printf (">>> Check path: " + path_icon + "\n");
             }
             
             complete_system_specs = getProcessor () + "  •  " + getMemory () + " RAM  •  " + getGraphics ();
@@ -82,8 +82,8 @@ namespace GCleaner.Widgets {
              * add it to appmenu Button.
              */
             var menumodel = new GLib.Menu ();
-            menumodel.append (_("Preferences"), "win.preferences");
-            menumodel.append (_("About..."), "win.about");
+            menumodel.append (Resources.PREFERENCES_FIELD, "win.preferences");
+            menumodel.append (Resources.ABOUT_FIELD, "win.about");
             appmenu_button.set_menu_model (menumodel);
 
             /*

@@ -49,7 +49,6 @@ public Image load_image (string type_icon, string name_icon, int size = 16) {
         var pix = load_pixbuf(rsc_icon, size);
         image.set_from_pixbuf (pix);
     } catch (Error e) {
-        stderr.printf ("[GLIB::ERROR WHEN CREATING ICON]\n");
         stderr.printf (">>> Check path: " + rsc_icon + "\n");
     }
 
@@ -62,7 +61,6 @@ public Image load_image_from_path (string path_img, int size = 16) {
         var pix = load_pixbuf(path_img, size);
         image.set_from_pixbuf (pix);
     } catch (Error e) {
-        stderr.printf ("[GLIB::ERROR WHEN CREATING ICON]\n");
         stderr.printf (">>> Check path: " + path_img + "\n");
     }
 
@@ -135,7 +133,7 @@ public string run_basic_command (string cmd) {
         Process.spawn_command_line_sync ("bash -c \"" + cmd + "\"", out result, out error, out status);
         return result;
     } catch (GLib.SpawnError e) {
-        stdout.printf ("COM.GCLEANER: %s", e.message);
+        stdout.printf ("The command could not be executed: %s", e.message);
         return result;
     }
 }

@@ -42,14 +42,14 @@ namespace GCleaner.Widgets {
             //Variables
             string complete_system_specs;//string where we keep the chain with all the information of the system specifications
 
-            this.get_style_context ().add_class (STYLE_CLASS_PRIMARY_TOOLBAR);//Class property to give ToolBar aspect of Ubuntu (consecutive to the edge of the window)
+            this.get_style_context ().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);//Class property to give ToolBar aspect of Ubuntu (consecutive to the edge of the window)
 
             //LABELS
             /* NAME APP & VERSION */
             //PANGO MARKUP FONT SIZEs: xx-small - x-small - small - medium - large - x-large - xx-large //
             //More information in: https://developer.gnome.org/pango/stable/PangoMarkupFormat.html 
             Label title = new Label ("");
-            title.set_markup ("<span font_size='large'><b>GCleaner</b></span>");//Big letters 'large'
+            title.set_markup ("<span font_size='large'><b>" + Resources.PROGRAM_NAME + "</b></span>");//Big letters 'large'
 
             Label version = new Label ("");
             version.set_markup ("<span font_size='small'> v" + Resources.VERSION + "</span>");//Take the version of GCleaner from the constant
@@ -83,15 +83,15 @@ namespace GCleaner.Widgets {
             gear_icon.set_from_icon_name (Resources.ICON_OPEN_MENU, Gtk.IconSize.LARGE_TOOLBAR);
             appmenu_button.set_image (gear_icon);
             appmenu_button.set_size_request (32, 32);
-            appmenu_button.get_style_context ().add_class("about_btn");
+            appmenu_button.get_style_context ().add_class(Resources.STYLE_CLASS_ABOUT_BTN);
 
             /*
              * Here define an Menu Model and
              * add it to appmenu Button.
              */
             var menumodel = new GLib.Menu ();
-            menumodel.append (_("Preferences"), "win.preferences");
-            menumodel.append (_("About..."), "win.about");
+            menumodel.append (Resources.PREFERENCES_FIELD, "win.preferences");
+            menumodel.append (Resources.ABOUT_FIELD, "win.about");
             appmenu_button.set_menu_model (menumodel);
 
             /*
@@ -139,12 +139,12 @@ namespace GCleaner.Widgets {
 
             //GCleaner icon for Toolbar
             Image icon = new Image ();
+            string path_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR + "pixmaps" + "gcleanertb.svg");
             try {
-                var icon_pixbuf = load_pixbuf (Resources.DATADIR + "/pixmaps/gcleanertb.svg", 56);
+                var icon_pixbuf = load_pixbuf (path_icon, 56);
                 icon.set_from_pixbuf (icon_pixbuf);
             } catch (GLib.Error e) {
-                stderr.printf ("COM.GCLEANER.APP.TOOLBAR: [GLIB::ERROR CREANDO ICONO PIXBUF]\n");
-                stderr.printf (">>> Comprobar ruta: /usr/share/pixmaps/gcleanertb.svg\n");
+                stderr.printf (">>> Check path: " + path_icon + "\n");
             }
 
             //PACKAGING
