@@ -21,89 +21,51 @@ using Gtk;
 namespace GCleaner.Widgets {
     public class Preferences : Gtk.Dialog {
         GLib.Settings settings;
+        private Notebook notebook;
 
         public Preferences(Gtk.Window owner) {
-            settings = Resources.get_setting_schema ();
             set_title (_("Preferences"));
             set_type_hint (Gdk.WindowTypeHint.DIALOG);
             set_transient_for (owner);
             set_resizable (false);
             Gtk.Widget ok_button = add_button (_("Close"), Gtk.ResponseType.CLOSE);
             set_default_response (Gtk.ResponseType.CLOSE);
-
+            settings = Resources.get_setting_schema ();
+            
             Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
             content.halign = Gtk.Align.FILL;
             content.valign = Gtk.Align.FILL;
             content.hexpand = false;
             content.vexpand = false;
-            content.margin_top = 5;
-            content.margin_bottom = 20;
+            content.margin_top = 0;
+            content.margin_bottom = 40;
             content.margin_start = 5;
-            content.margin_end = 10;
+            content.margin_end = 5;
 
-            var general_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);            
-            var language_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
-
-            Stack stack = new Gtk.Stack ();
-            stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-            stack.set_transition_duration (10);
-            stack.add_titled (general_box, "gral_tab", _("General"));
-            stack.add_titled (language_box, "lang_tab", _("Language"));
-            var stack_switcher = new Gtk.StackSwitcher ();
-            stack_switcher.set_stack (stack);
-            content.pack_start (stack_switcher, true, true, 0);
-            content.pack_start (stack, true, true, 0);
+            notebook = new Notebook();
+            var text = "%s".printf(_("General"));
+            var label = new Label(text);
+            
+            var general_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
             string desc_autorun = Resources.DESCRIPTION_AUTOSTART.printf (Resources.PROGRAM_NAME);
             var autorun_btn = new Gtk.CheckButton.with_label (desc_autorun);
-            autorun_btn.set_active (settings.get_boolean (Resources.PREFERENCES_AUTOSTART_KEY));
-            this.assign_check_pressed (autorun_btn, Resources.PREFERENCES_AUTOSTART_KEY);
             var norm_size_btn = new Gtk.CheckButton.with_label (Resources.DESCRIPTION_STANDARD_SIZE);
+            autorun_btn.set_active (settings.get_boolean (Resources.PREFERENCES_AUTOSTART_KEY));
             norm_size_btn.set_active (settings.get_boolean (Resources.PREFERENCES_STANDARD_SIZE_KEY));
+            this.assign_check_pressed (autorun_btn, Resources.PREFERENCES_AUTOSTART_KEY);
             this.assign_check_pressed (norm_size_btn, Resources.PREFERENCES_STANDARD_SIZE_KEY);
             general_box.pack_start (autorun_btn, false, false, 3);
-            general_box.pack_start (norm_size_btn, false, false, 0);
+            general_box.pack_start (norm_size_btn, false, false, 5);
             
-            var language_label = new Gtk.Label ("");
-            language_label.set_markup (_("<b>Select your language:</b>"));
-            language_label.set_margin_bottom (10);
-            
-            string current_lang_code = settings.get_string (Resources.PREFERENCES_LANGUAGE_KEY);
-            Gtk.ListStore liststore = new Gtk.ListStore (1, typeof (string));
-            foreach (string lang in Resources.LANGUAGES_SUPPORTED) {
-                Gtk.TreeIter iter;
-                liststore.append (out iter);
-                liststore.set (iter, 0, capitalize (lang));
-            }
-            // This is to obtain index for language code
-            int index_code = 0, count = 0;
-            foreach (string lang_code in Resources.LANGUAGE_CODES) {
-                if (lang_code == current_lang_code)
-                    index_code = count;
-                count++;
-            }
-            Gtk.ComboBox combobox = new Gtk.ComboBox.with_model (liststore);
-            Gtk.CellRendererText cell = new Gtk.CellRendererText ();
-            combobox.pack_start (cell, false);
-            combobox.set_attributes (cell, "text", 0);
-            combobox.set_active (index_code); // Set the current language to be selected (active).
-            combobox.margin_bottom = 5;
-            
-            var combo_container = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
-            combo_container.pack_start (combobox, false, false, 10);
-            language_box.pack_start (language_label, false, false, 0);
-            language_box.pack_start (combo_container, false, false, 5);
-            
+            notebook.append_page (general_box, label);
+            content.pack_start (notebook, false, false, 0);
+
             ((Gtk.Box) get_content_area()).add (content);
             ok_button.grab_focus();
             content.show_all ();
 
             this.response.connect((response) => {
                 this.destroy ();
-            });
-
-            combobox.changed.connect ((combo) => {
-                string lang = Resources.LANGUAGE_CODES [combo.get_active ()];
-                settings.set_string (Resources.PREFERENCES_LANGUAGE_KEY, lang);
             });
         }
 
