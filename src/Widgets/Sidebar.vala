@@ -81,7 +81,7 @@ namespace GCleaner.Widgets {
                             rsc_icon = obj_app.get_string_member (Resources.PROPERTY_APP_ICON);
                             program_icon = new Image.from_icon_name (rsc_icon, Gtk.IconSize.SMALL_TOOLBAR);
                         } else {
-                            rsc_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + app_id + ".png";
+                            rsc_icon = GLib.Path.build_path (GLib.Path.DIR_SEPARATOR_S, Resources.PKGDATADIR, "media", type_icon, app_id + ".png");
                             program_icon = load_image_from_path (rsc_icon);
                         }
 

@@ -73,9 +73,9 @@ namespace GCleaner.Widgets {
             check.toggled.connect (() => {
                 if (key_xml == Resources.PREFERENCES_AUTOSTART_KEY) {
                     string home_user = GLib.Environment.get_variable ("HOME");
-                    string src_file = Resources.APP_SOURCE_DIR + "/" + Resources.APP_LAUNCHER;
-                    string dst_file = home_user + Resources.CONFIG_AUTOSTART_DIR +
-                        "/" + Resources.APP_LAUNCHER;
+                    string src_file = Path.build_path (Path.DIR_SEPARATOR_S, Resources.APP_SOURCE_DIR, Resources.APP_LAUNCHER);
+                    string dst_file = Path.build_path (Path.DIR_SEPARATOR_S, home_user, 
+                        Resources.CONFIG_AUTOSTART_DIR, Resources.APP_LAUNCHER);
                     if (check.get_active ()) {
                         FileUtilities.copy_file (src_file, dst_file);
                     } else {

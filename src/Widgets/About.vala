@@ -32,7 +32,7 @@ namespace GCleaner.Widgets {
             
             this.license  = Resources.SHORT_VERSION_LICENSE;
             this.wrap_license = true;
-            unowned string path_icon = Resources.DATADIR + "/icons/hicolor/128x128/apps/gcleaner.svg";
+            string path_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR, "icons", "hicolor", "128x128", "apps", "gcleaner.svg");
             try {
                 var logo = load_pixbuf (path_icon, 128);
                 this.logo = logo;

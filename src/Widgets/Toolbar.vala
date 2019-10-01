@@ -139,7 +139,7 @@ namespace GCleaner.Widgets {
 
             //GCleaner icon for Toolbar
             Image icon = new Image ();
-            string path_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR + "pixmaps" + "gcleanertb.svg");
+            string path_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR, "pixmaps", "gcleanertb.svg");
             try {
                 var icon_pixbuf = load_pixbuf (path_icon, 56);
                 icon.set_from_pixbuf (icon_pixbuf);

@@ -43,7 +43,7 @@ namespace GCleaner.Widgets {
 
             // GCleaner icon
             Image icon = new Image ();
-            unowned string path_icon = Resources.DATADIR + "/pixmaps/gcleanerhb.svg";
+            string path_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR, "pixmaps", "gcleanerhb.svg");
             try {
                 var icon_pixbuf = load_pixbuf (path_icon, 32);
                 icon.set_from_pixbuf (icon_pixbuf);

@@ -197,7 +197,7 @@ namespace GCleaner.Widgets {
                 var jload = new JsonUtils ();
                 text_icon = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_ICON);
             } else {
-                text_icon = Resources.PKGDATADIR + "/media/apps/" + app_id + ".png";
+                text_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.PKGDATADIR, "media", "apps", app_id + ".png");
             }
 
             return text_icon;

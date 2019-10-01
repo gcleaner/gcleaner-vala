@@ -20,18 +20,18 @@
  * Here are declared constants and others resources
  */
 namespace Resources {
-    public const string CONFIG_AUTOSTART_DIR = "/.config/autostart";
-    public const string STORE_CONFIG_DIR = "/.local/share/gcleaner";
-    public const string INSTALL_PREFIX = "/usr";
-    public const string DATADIR = "/usr/share";
-    public const string APP_SOURCE_DIR = "/usr/share/applications";
-    public const string PKGDATADIR = "/usr/share/gcleaner";
     public const string PROGRAM_NAME = "GCleaner";
     public const string RELEASE_NAME = "Bosch Aerotwin";
     public const string VERSION = "0.01.134";
     public const string VERSION_INFO = "Initial release of GCleaner.";
     public const string EXEC_NAME = "gcleaner";
     public const string APP_LAUNCHER = "gcleaner.desktop";
+    public const string CONFIG_AUTOSTART_DIR = "/.config/autostart";
+    public const string STORE_CONFIG_DIR = "/.local/share/gcleaner";
+    public const string INSTALL_PREFIX = "/usr";
+    public const string DATADIR = "/usr/share";
+    public const string APP_SOURCE_DIR = "/usr/share/applications";
+    public const string PKGDATADIR = "/usr/share/gcleaner";
     
     /*
      * About GCleaner
@@ -72,9 +72,12 @@ namespace Resources {
     public const string PROPERTY_APP_TYPE = "type";
     public const string PROPERTY_APP_ICON = "icon";
     public const string PROPERTY_KEY = "key-xml";
+    public const string PROPERTY_ALL_OPTIONS = "all-options";
     public const string PROPERTY_N_OPTIONS = "number-options";
     public const string PROPERTY_OPTION_ID = "option-id";
     public const string PROPERTY_OPTION_NAME = "option-name";
+    public const string PROPERTY_OPTION_ICON = "option-icon";
+    public const string PROPERTY_OPTION_COMMANDS = "option-icon";
     public const string PROPERTY_PATHS = "paths";
     public const string PROPERTY_WARNING = "warning-msgdlg";
     public const string PROPERTY_CMD_SIZE = "get-size";

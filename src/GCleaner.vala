@@ -295,11 +295,11 @@ namespace GCleaner {
         }
 
         public static int main (string[] args) {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR, "locale"));
             Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
             Intl.textdomain(GETTEXT_PACKAGE);
             Gtk.init (ref args); // Starts GTK+
-            string css_file = Resources.PKGDATADIR + "/gtk-widgets-gcleaner.css"; // Path where takes the CSS file
+            string css_file = Path.build_path (Path.DIR_SEPARATOR_S, Resources.PKGDATADIR, "gtk-widgets-gcleaner.css"); // Path where takes the CSS file
             var css_provider = new Gtk.CssProvider (); // Create a new CSS provider
             
             try {
