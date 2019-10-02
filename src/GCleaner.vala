@@ -25,7 +25,7 @@ using GCleaner.Tools;
 
 namespace GCleaner {
     [CCode (cname = "GETTEXT_PACKAGE")]
-    public const string GETTEXT_PACKAGE = "gcleaner";
+    public const string GETTEXT_PACKAGE = Resources.EXEC_NAME;
     public class App : Gtk.Application {
         public int n_installed_apps;
         public Gtk.ApplicationWindow main_window; // Main window

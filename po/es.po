@@ -8,15 +8,381 @@ msgstr ""
 "Project-Id-Version: GCleaner-0.1.34\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-22 00:10-0300\n"
-"PO-Revision-Date: 2019-09-22 00:50-0300\n"
+"PO-Revision-Date: 2019-10-01 23:45-0300\n"
 "Language-Team: Spanish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "Last-Translator: Andrés Segovia <andy.dev536@gmail.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es\n"
+
+#: src/Resources.vala:92
+msgid "Analyze"
+msgstr "Analizar"
+
+#: src/Resources.vala:93
+msgid "Clean"
+msgstr "Limpiar"
+
+#: src/Resources.vala:94
+msgid "Close"
+msgstr "Cerrar"
+
+#: src/Resources.vala:95
+msgid "Concept"
+msgstr "Concepto"
+
+#: src/Resources.vala:96
+msgid "Size"
+msgstr "Tamaño"
+
+#: src/Resources.vala:97
+msgid "Number of files"
+msgstr "Número de archivos"
+
+#: src/Resources.vala:98
+msgid "Clean your System GNU/Linux"
+msgstr "Limpia tu Sistema Linux"
+
+#: src/Resources.vala:99
+msgid "About..."
+msgstr "Acerca de..."
+
+#: src/Resources.vala:100
+msgid "General"
+msgstr "General"
+
+#: src/Resources.vala:101
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/Resources.vala:105
+msgid "Backup files"
+msgstr "Archivos de respaldo"
+
+#: src/Resources.vala:106
+msgid "Internet cache"
+msgstr "Caché"
+
+#: src/Resources.vala:107 src/Resources.vala:125
+msgid "Cache"
+msgstr "Caché"
+
+#: src/Resources.vala:108
+msgid "Chat logs"
+msgstr "Registro de chats"
+
+#: src/Resources.vala:109
+msgid "Cookies"
+msgstr "Cookies"
+
+#: src/Resources.vala:110
+msgid "Bug reports"
+msgstr "Reporte de errores"
+
+#: src/Resources.vala:111
+msgid "Recent documents"
+msgstr "Documentos recientes"
+
+#: src/Resources.vala:112
+msgid "DOM storage"
+msgstr "Almacenamiento DOM"
+
+#: src/Resources.vala:113
+msgid "Download history"
+msgstr "Historial de descargas"
+
+#: src/Resources.vala:114
+msgid "Podcasts downloaded"
+msgstr "Podcasts descargados"
+
+#: src/Resources.vala:115
+msgid "Internet history"
+msgstr "Historial de internet"
+
+#: src/Resources.vala:116
+msgid "History"
+msgstr "Historial"
+
+#: src/Resources.vala:117
+msgid "Logs files"
+msgstr "Archivos log"
+
+#: src/Resources.vala:118
+msgid "Passwords"
+msgstr "Contraseñas"
+
+#: src/Resources.vala:119
+msgid "Places"
+msgstr "Lugares almacenados"
+
+#: src/Resources.vala:120
+msgid "Site preferences"
+msgstr "Preferencias de sitios"
+
+#: src/Resources.vala:121
+msgid "Saved form history"
+msgstr "Datos de formularios guardados"
+
+#: src/Resources.vala:122
+msgid "Session restoration"
+msgstr "Restauraión de sesión"
+
+#: src/Resources.vala:123
+msgid "Temporary files"
+msgstr "Archivos temporales"
+
+#: src/Resources.vala:124
+msgid "Most recently used files"
+msgstr "Archivos recientemente usados"
+
+#: src/Resources.vala:126
+msgid "Orphan packages"
+msgstr "Archivos huérfanos"
+
+#: src/Resources.vala:127
+msgid "Old kernels"
+msgstr "Kernels viejos"
+
+#: src/Resources.vala:128
+msgid "Terminal history"
+msgstr "Historial de la terminal"
+
+#: src/Resources.vala:129
+msgid "Thumbnails"
+msgstr "Miniaturas de imágenes"
+
+#: src/Resources.vala:130
+msgid "Trash"
+msgstr "Papelera"
+
+#: src/Resources.vala:131 src/Resources.vala:159
+msgid "Unknown information.\n"
+msgstr "Información desconocida.\n"
+
+#: src/Resources.vala:133
+msgid "Backup files.\n"
+msgstr "Archivos de respaldo.\n"
+
+#: src/Resources.vala:134
+msgid "Temporary files downloaded for later use and reduce the bandwidth.\n"
+msgstr ""
+"Archivos temporales descargados para su uso posterior y reducir el ancho de "
+"banda.\n"
+
+#: src/Resources.vala:135
+msgid "Files temporarily created for later use.\n"
+msgstr "Archivos temporales creados para un uso posterior.\n"
+
+#: src/Resources.vala:136
+msgid ""
+"A chat log is an archive of transcripts from online chat and instant "
+"messaging conversations.\n"
+msgstr ""
+"Un registro de chat es un archivo de transcripciones de conversaciones de "
+"chat en línea y de mensajería instantánea.\n"
+
+#: src/Resources.vala:137
+msgid ""
+"Text file, which contain information such as web site preferences, "
+"authentication, and tracking identification.\n"
+msgstr ""
+"Archivo de texto, que contiene información como las preferencias del sitio "
+"web, la autenticación y la identificación de seguimiento.\n"
+
+#: src/Resources.vala:138
+msgid "File with reports of unexpected closures.\n"
+msgstr "Archivo con informes de cierres inesperados.\n"
+
+#: src/Resources.vala:139
+msgid "A list of recent documents.\n"
+msgstr "Una lista de documentos recientes.\n"
+
+#: src/Resources.vala:140
+msgid ""
+"The DOM storage is designed to store persistent data similar to cookies but "
+"with greatly enhanced capacity.\n"
+msgstr ""
+"El almacenamiento DOM está diseñado para almacenar datos persistentes "
+"similares a las cookies, pero con una capacidad mucho mayor.\n"
+
+#: src/Resources.vala:141
+msgid "Contains a list of files downloaded\n"
+msgstr "Contiene una lista de archivos descargados.\n"
+
+#: src/Resources.vala:142
+msgid "List of visited web pages\n"
+msgstr "Lista de páginas visitadas.\n"
+
+#: src/Resources.vala:143
+msgid "History of modifications\n"
+msgstr "Historial dem modificaciones\n"
+
+#: src/Resources.vala:144
+msgid ""
+"File that records either events that occur in an operating system or other "
+"software runs\n"
+msgstr ""
+"Archivo que registra los eventos que ocurren en un sistema operativo u otras "
+"ejecuciones de software.\n"
+
+#: src/Resources.vala:145
+msgid ""
+"A database of usernames and passwords as well as a list of sites that should "
+"not store passwords.\n"
+msgstr ""
+"Una base de datos de nombres de usuario y contraseñas, así como una lista de "
+"sitios que no deben almacenar contraseñas.\n"
+
+#: src/Resources.vala:146
+msgid ""
+"A database of URLs including bookmarks, favicons, and a history of visited "
+"web sites.\n"
+msgstr ""
+"Una base de datos de URLs que incluye marcadores, archivos favicon y un "
+"historial de sitios web visitados.\n"
+
+#: src/Resources.vala:147
+msgid "Settings for individual sites\n"
+msgstr "Opciones para sitios web individuales\n"
+
+#: src/Resources.vala:148
+msgid "A history of forms entered in web sites and in the Search bar\n"
+msgstr ""
+"Un historial de los formularios introducidos en los sitios web y en la barra "
+"de búsqueda\n"
+
+#: src/Resources.vala:149
+msgid "Delete the current session\n"
+msgstr "Borrar la sesión actual\n"
+
+#: src/Resources.vala:150
+msgid "File generated in order to contain information transiently.\n"
+msgstr "Fichero generado para contener información de forma transitoria.\n"
+
+#: src/Resources.vala:151
+msgid "List of files most recent used.\n"
+msgstr "Lista de archivos usados recientemente.\n"
+
+#: src/Resources.vala:153
+msgid "List of temporary update and package files.\n"
+msgstr "Lista de actualización temporal y de paquetes.\n"
+
+#: src/Resources.vala:154
+msgid ""
+"List of packages that have been deleted, but whose configuration files still "
+"remain.\n"
+msgstr ""
+"Lista de paquetes que han sido borrados, pero cuyos archivos de "
+"configuración aún permanecen.\n"
+
+#: src/Resources.vala:155
+msgid "Purge old kernels. Please, be careful.\n"
+msgstr "Purgar los kernels viejos. Por favor, sea cuidadoso.\n"
+
+#: src/Resources.vala:156
+msgid "Clean the Bash history.\n"
+msgstr "Eliminar el historial de Bash.\n"
+
+#: src/Resources.vala:157
+msgid "Clean the generated cache by the images.\n"
+msgstr "Limpiar la caché generada por las imágenes.\n"
+
+#: src/Resources.vala:158
+msgid "Files housed in the Trash bin.\n"
+msgstr "Archivos alojados en la Papelera.\n"
+
+#: src/Resources.vala:161
+msgid "<b>Warning level: </b> Low"
+msgstr "<b>Nivel de advertencia: </b> Baja"
+
+#: src/Resources.vala:162
+msgid "<b>Warning level: </b> High"
+msgstr "<b>Nivel de advertencia: </b> Alta"
+
+#: src/Resources.vala:164
+msgid "This option will scan <b>all selected options.</b>"
+msgstr "Esta opción escaneará <b>todas las opciones seleccionadas.</b>"
+
+#: src/Resources.vala:165
+msgid "This option will remove the files from <b>all the selected options.</b>"
+msgstr ""
+"Esta opción removerá los archivos de <b>todas las opciones seleccionadas.</b>"
+
+#: src/Resources.vala:166
+#, c-format
+msgid "Start %s with the System."
+msgstr "Iniciar %s con el Sistema."
+
+#: src/Resources.vala:167
+msgid "Use IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)"
+msgstr ""
+"Usar valores IEC (1KiB = 1024 bytes) en vez de los valores SI(1kB = 1000 "
+"bytes)"
+
+#: src/Resources.vala:168
+#, c-format
+msgid ""
+"<b>Complete cleaning</b>\n"
+"%s (%s files) were removed. (Aproximate size)"
+msgstr ""
+"<b>Limpieza completa</b>\n"
+"%s (%s archivos) fueron removidos. (Tamaño aproximado)"
+
+#: src/Resources.vala:169
+msgid "<b>Details of files deleted</b>"
+msgstr "<b>Detalles de archivos eliminados</b>"
+
+#: src/Resources.vala:170
+#, c-format
+msgid ""
+"<b>Complete analysis</b>\n"
+"%s (%s files) will be removed. (Aproximate size)"
+msgstr ""
+"<b>Análisis completo</b>\n"
+"%s (%s archivos) serán removidos. (Tamaño aproximado)"
+
+#: src/Resources.vala:171
+msgid ""
+"<b>Details of files to be deleted (Note: No file have been deleted yet)</b>"
+msgstr ""
+"<b>Detalles de los archivos a ser eliminados (Nota: Ningún archivo fue "
+"eliminado)</b>"
+
+#: src/Resources.vala:172
+msgid "<b>Congratulations! The System is clean!</b>"
+msgstr "<b>¡Felicitaciones! ¡El Sistema se encuentra limpio!</b>"
+
+#: src/Resources.vala:220
+msgid "Unknown type of application"
+msgstr "Tipo de aplicación desconocida"
+
+#: src/Resources.vala:241
+msgid "Are you sure you want to continue?"
+msgstr "¿Está seguro de querer continuar?"
+
+#: src/Resources.vala:242
+msgid ""
+"Are you sure you want to delete cache and obsolete Package System files?"
+msgstr ""
+"¿Está seguro de querer eliminar caché y archivos obsoletos del Gestor de "
+"paquetes?"
+
+#: src/Resources.vala:243
+msgid "Are you sure you want to delete orphan Package System files?"
+msgstr ""
+"¿Está seguro que desea eliminar archivos huérfanos del Gestor de paquetes?"
+
+#: src/Resources.vala:244
+msgid "Are you sure you want to delete the old kernels?"
+msgstr "¿Está seguro que desea eliminar los kernels antiguos?"
+
+#: src/Resources.vala:245
+#, c-format
+msgid "Are you sure you want to remove %s passwords?"
+msgstr "¿Está seguro que quiere remover las contraseñas de %s?"
 
 #: src/Library/graphics.vala:36 src/Library/specs.vala:108
 msgid "Unknown"
@@ -46,277 +412,7 @@ msgstr " archivos"
 msgid "Operation was cancelled"
 msgstr "La operación fue cancelada"
 
-#: src/Widgets/HeaderBar.vala:85 src/Widgets/Preferences.vala:27
-#: src/Widgets/Toolbar.vala:93
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: src/Widgets/HeaderBar.vala:86 src/Widgets/Toolbar.vala:94
-msgid "About..."
-msgstr "Acerca de..."
-
-#: src/Widgets/Preferences.vala:31
-msgid "Close"
-msgstr "Cerrar"
-
-#: src/Widgets/Preferences.vala:50
-msgid "General"
-msgstr "General"
-
-#: src/Widgets/Preferences.vala:51
-msgid "Language"
-msgstr "Idioma"
-
-#: src/Widgets/Preferences.vala:68
-msgid "<b>Select your language:</b>"
-msgstr "<b>Selecciona tu idioma:</b>"
-
 #: src/Widgets/ResultsArea.vala:128
 #, c-format
 msgid "%s selected option"
 msgstr "%s opción seleccionada"
-
-#: src/Resources.vala:74
-msgid "Analyze"
-msgstr "Analizar"
-
-#: src/Resources.vala:75
-msgid "Clean"
-msgstr "Limpiar"
-
-#: src/Resources.vala:76
-msgid "Concept"
-msgstr "Concepto"
-
-#: src/Resources.vala:77
-msgid "Size"
-msgstr "Tamaño"
-
-#: src/Resources.vala:78
-msgid "Number of files"
-msgstr "Número de archivos"
-
-#: src/Resources.vala:79
-msgid "Clean your System GNU/Linux"
-msgstr "Limpia tu Sistema Linux"
-
-#: src/Resources.vala:83
-msgid "Backup files.\n"
-msgstr "Archivos de respaldo\n"
-
-#: src/Resources.vala:84
-msgid "Temporary files downloaded for later use and reduce the bandwidth.\n"
-msgstr ""
-"Archivos descargados temporalmente para un uso posterior y así reducr el "
-"ancho de banda.\n"
-
-#: src/Resources.vala:85
-msgid "Files temporarily created for later use.\n"
-msgstr "Archivos creados temporalmente para un uso posterior.\n"
-
-#: src/Resources.vala:86
-msgid ""
-"A chat log is an archive of transcripts from online chat and instant "
-"messaging conversations.\n"
-msgstr ""
-"Un registro de chat es un archivo de transcripciones de conversaciones de "
-"chat en línea y de mensajería instantánea.\n"
-
-#: src/Resources.vala:87
-msgid ""
-"Text file, which contain information such as web site preferences, "
-"authentication, and tracking identification.\n"
-msgstr ""
-"Archivo de texto, que contiene información como las preferencias del sitio "
-"web, la autenticación y la identificación de seguimiento.\n"
-
-#: src/Resources.vala:88
-msgid "File with reports of unexpected closures.\n"
-msgstr "Archivo con reportes de cierres inesperados.\n"
-
-#: src/Resources.vala:89
-msgid "A list of recent documents.\n"
-msgstr "Una lista de documentos recientes.\n"
-
-#: src/Resources.vala:90
-msgid ""
-"The DOM storage is designed to store persistent data similar to cookies but "
-"with greatly enhanced capacity.\n"
-msgstr ""
-"El almacenamiento DOM está diseñado para almacenar datos persistentes "
-"similares a las cookies, pero con una capacidad mucho mayor.\n"
-
-#: src/Resources.vala:91
-msgid "Contains a list of files downloaded\n"
-msgstr "Contiene una lista de archivos descargados\n"
-
-#: src/Resources.vala:92
-msgid "List of visited web pages\n"
-msgstr "Lista de sitios web visitados\n"
-
-#: src/Resources.vala:93
-msgid "History of modifications\n"
-msgstr "Historial de modificaciones\n"
-
-#: src/Resources.vala:94
-msgid ""
-"File that records either events that occur in an operating system or other "
-"software runs\n"
-msgstr ""
-"Archivo que registra los eventos que ocurren en un sistema operativo u otras "
-"ejecuciones de software\n"
-
-#: src/Resources.vala:95
-msgid ""
-"A database of usernames and passwords as well as a list of sites that should "
-"not store passwords.\n"
-msgstr ""
-"Una base de datos de nombres de usuario y contraseñas, además de una lista "
-"de sitios que no deben almacenar contraseñas.\n"
-
-#: src/Resources.vala:96
-msgid ""
-"A database of URLs including bookmarks, favicons, and a history of visited "
-"web sites.\n"
-msgstr ""
-"Una base de datos de URLs que incluye marcadores, favicons y un historial de "
-"sitios web visitados.\n"
-
-#: src/Resources.vala:97
-msgid "Settings for individual sites\n"
-msgstr "Configuraciones para sitios individuales\n"
-
-#: src/Resources.vala:98
-msgid "A history of forms entered in web sites and in the Search bar\n"
-msgstr ""
-"Un historial de los datos introducidos en formularios en los sitios web y en "
-"la barra de búsqueda\n"
-
-#: src/Resources.vala:99
-msgid "Delete the current session\n"
-msgstr "Borrar la sesión actual\n"
-
-#: src/Resources.vala:100
-msgid "File generated in order to contain information transiently.\n"
-msgstr "Fichero generado para contener información de forma transitoria.\n"
-
-#: src/Resources.vala:101
-msgid "List of files most recent used.\n"
-msgstr "Lista de archivos más usados recientemente.\n"
-
-#: src/Resources.vala:103
-msgid "List of temporary update and package files.\n"
-msgstr "Lista de actualizaciones temporales y paquetes descargados.\n"
-
-#: src/Resources.vala:104
-msgid ""
-"List of packages that have been deleted, but whose configuration files still "
-"remain.\n"
-msgstr ""
-"Lista de paquetes que han sido borrados, pero cuyos archivos de "
-"configuración aún permanecen.\n"
-
-#: src/Resources.vala:105
-msgid "Purge old kernels. Please, be careful.\n"
-msgstr "Purgar viejos kernels. Por favor, ser cuidadoso.\n"
-
-#: src/Resources.vala:106
-msgid "Clean the Bash history.\n"
-msgstr "Limpiar el historial de la terminal.\n"
-
-#: src/Resources.vala:107
-msgid "Clean the generated cache by the images.\n"
-msgstr "Eliminar la cache generada por las imágenes.\n"
-
-#: src/Resources.vala:108
-msgid "Files housed in the Trash bin.\n"
-msgstr "Archivos alojados en la papelera de reciclaje.\n"
-
-#: src/Resources.vala:109
-msgid "Unknown information.\n"
-msgstr "Información desconocida.\n"
-
-#: src/Resources.vala:111
-msgid "<b>Warning level: </b> Low"
-msgstr "<b>Nivel de advertencia: </b> Bajo"
-
-#: src/Resources.vala:112
-msgid "<b>Warning level: </b> High"
-msgstr "<b>Nivel de advertencia: </b> Alto"
-
-#: src/Resources.vala:114
-msgid "This option will scan <b>all selected options.</b>"
-msgstr "Esta opción escaneará <b>todas las opciones seleccionadas.</b>"
-
-#: src/Resources.vala:115
-msgid "This option will remove the files from <b>all the selected options.</b>"
-msgstr ""
-"Esta opción removerá los archivos de <b>todas las opciones seleccionadas.</b>"
-
-#: src/Resources.vala:116
-msgid "Start %s with the System"
-msgstr "Iniciar %s con el Sistema"
-
-#: src/Resources.vala:117
-msgid "Use IEC sizes(1KiB = 1024 bytes) instead of SI(1kB = 1000 bytes)"
-msgstr ""
-"Usar valores IEC (1KiB = 1024 bytes) en vez de los valores SI(1kB = 1000 "
-"bytes)"
-
-#: src/Resources.vala:118
-#, c-format
-msgid ""
-"<b>Complete cleaning</b>\n"
-"%s (%s files) were removed. (Aproximate size)"
-msgstr ""
-"<b>Limpieza completa</b>\n"
-"%s (%s archivos) fueron removidos. (Tamaño aproximado)"
-
-#: src/Resources.vala:119
-msgid "<b>Details of files deleted</b>"
-msgstr "<b>Detalles de archivos eliminados</b>"
-
-#: src/Resources.vala:120
-#, c-format
-msgid ""
-"<b>Complete analysis</b>\n"
-"%s (%s files) will be removed. (Aproximate size)"
-msgstr ""
-"<b>Análisis completo</b>\n"
-"%s (%s archivos) serán removidos. (Tamaño aproximado)"
-
-#: src/Resources.vala:121
-msgid ""
-"<b>Details of files to be deleted (Note: No file have been deleted yet)</b>"
-msgstr ""
-"<b>Detalles de los archivos a ser eliminados (Nota: Ningún archivo fue "
-"eliminado, aún)</b>"
-
-#: src/Resources.vala:122
-msgid "<b>Congratulations! The System is clean!</b>"
-msgstr "<b>¡Felicitaciones! ¡El Sistema se encuentra limpio!</b>"
-
-#: src/Resources.vala:152
-msgid "Are you sure you want to continue?"
-msgstr "¿Está seguro de querer continuar?"
-
-#: src/Resources.vala:153
-msgid ""
-"Are you sure you want to delete cache and obsolete Package System files?"
-msgstr ""
-"¿Está seguro de querer eliminar caché y archivos obsoletos del Gestor de "
-"paquetes?"
-
-#: src/Resources.vala:154
-msgid "Are you sure you want to delete orphan Package System files?"
-msgstr ""
-"¿Está seguro que desea eliminar archivos huérfanos del Gestor de paquetes?"
-
-#: src/Resources.vala:155
-msgid "Are you sure you want to delete the old kernels?"
-msgstr "¿Está seguro que desea eliminar los kernels antiguos?"
-
-#: src/Resources.vala:156
-#, c-format
-msgid "Are you sure you want to remove %s passwords?"
-msgstr "¿Está seguro que quiere remover las contraseñas de %s?"
