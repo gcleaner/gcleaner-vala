@@ -105,7 +105,7 @@ namespace GCleaner.Widgets {
                 var object_option = option.get_object ();
                 
                 string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
-                string option_label = object_option.get_string_member (Resources.PROPERTY_OPTION_NAME);
+                string option_label = Resources.get_option_label (option_id);
                 string key_xml = object_option.get_string_member (Resources.PROPERTY_KEY);
                 bool warning_value = object_option.get_boolean_member (Resources.PROPERTY_WARNING);
 
@@ -174,8 +174,8 @@ namespace GCleaner.Widgets {
         private void set_tooltip_root () {
             var jload = new JsonUtils ();
             string text_icon = determine_app_icon ();
-            string program_type = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_TYPE);
-            
+            string id_app_type = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_TYPE);
+            string app_type = Resources.get_type_app (id_app_type);
             check_root.has_tooltip = true;
             check_root.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
                 if (text_icon.contains (Resources.ICON_PACKAGE_GENERIC) || 
@@ -186,7 +186,7 @@ namespace GCleaner.Widgets {
                     tooltip.set_icon (icon); 
                 }
                 
-                tooltip.set_markup ("<b>" + this.app_name + "</b>\n\n<i>" + program_type + "</i>");
+                tooltip.set_markup ("<b>" + this.app_name + "</b>\n\n<i>" + app_type + "</i>");
                 return true;
             });
         }

@@ -3,12 +3,11 @@
     "applications" : {
         "amsn" : {
             "name" : "aMSN",
-            "type" : "Chat client",
+            "type" : "chat-client",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "amsn-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -18,7 +17,6 @@
                 },
                 {
                     "option-id" : "chat-logs",
-                    "option-name" : "Chat logs",
                     "key-xml" : "amsn-chat-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -30,12 +28,11 @@
         },
         "amule" : {
             "name" : "aMule",
-            "type" : "File transfer client",
+            "type" : "file-transfer-client",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "logs",
-                    "option-name" : "Logs files",
                     "key-xml" : "amule-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -44,7 +41,6 @@
                 },
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "amule-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -56,12 +52,11 @@
         },
         "audacious" : {
             "name" : "Audacious",
-            "type" : "Audio player",
+            "type" : "audio-player",
             "number-options" : 3,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "audacious-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -70,7 +65,6 @@
                 },
                 {
                     "option-id" : "logs",
-                    "option-name" : "Logs files",
                     "key-xml" : "audacious-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -79,7 +73,6 @@
                 },
                 {
                     "option-id" : "used",
-                    "option-name" : "Most recently used files",
                     "key-xml" : "audacious-used",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -90,12 +83,11 @@
         },
         "chromium-browser" : {
             "name" : "Chromium Browser",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 7,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "chromium-browser-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -108,7 +100,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "chromium-browser-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -118,7 +109,6 @@
                 },
                 {
                     "option-id" : "dom",
-                    "option-name" : "DOM storage",
                     "key-xml" : "chromium-browser-dom",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -129,7 +119,6 @@
                 },
                 {
                     "option-id" : "internet-history",
-                    "option-name" : "Internet history",
                     "key-xml" : "chromium-browser-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -148,7 +137,6 @@
                 },
                 {
                     "option-id" : "pass",
-                    "option-name" : "Passwords",
                     "key-xml" : "chromium-browser-pass",
                     "warning-msgdlg" : true,
                     "paths" : [
@@ -157,7 +145,6 @@
                 },
                 {
                     "option-id" : "form-history",
-                    "option-name" : "Saved form history",
                     "key-xml" : "chromium-browser-savformhistory",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -166,7 +153,6 @@
                 },
                 {
                     "option-id" : "session",
-                    "option-name" : "Session restoration",
                     "key-xml" : "chromium-browser-session",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -179,12 +165,11 @@
         },
         "emesene" : {
             "name" : "emesene",
-            "type" : "Chat client",
+            "type" : "chat-client",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "emesene-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -193,7 +178,6 @@
                 },
                 {
                     "option-id" : "chat-logs",
-                    "option-name" : "Chat logs",
                     "key-xml" : "emesene-chat-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -206,12 +190,11 @@
         },
         "epiphany" : {
             "name" : "Epiphany",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 5,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "epiphany-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -223,7 +206,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "epiphany-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -233,7 +215,6 @@
                 },
                 {
                     "option-id" : "dom",
-                    "option-name" : "DOM storage",
                     "key-xml" : "epiphany-dom",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -242,7 +223,6 @@
                 },
                 {
                     "option-id" : "pass",
-                    "option-name" : "Passwords",
                     "key-xml" : "epiphany-pass",
                     "warning-msgdlg" : true,
                     "paths" : [
@@ -251,7 +231,6 @@
                 },
                 {
                     "option-id" : "places",
-                    "option-name" : "Places",
                     "key-xml" : "epiphany-places",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -267,12 +246,11 @@
         },
         "evolution" : {
             "name" : "Evolution",
-            "type" : "Email client",
+            "type" : "email-client",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "evolution-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -284,12 +262,11 @@
         },
         "exaile" : {
             "name" : "Exaile",
-            "type" : "Audio player",
+            "type" : "audio-player",
             "number-options" : 3,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "exaile-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -298,8 +275,7 @@
                     ]
                 },
                 {
-                    "option-id" : "download",
-                    "option-name" : "Podcasts downloaded",
+                    "option-id" : "download-podcasts",
                     "key-xml" : "exaile-download",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -308,7 +284,6 @@
                 },
                 {
                     "option-id" : "logs",
-                    "option-name" : "Logs files",
                     "key-xml" : "exaile-download",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -319,12 +294,11 @@
         },
         "firefox" : {
             "name" : "Mozilla Firefox",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 9,
             "all-options" : [
                 {
                     "option-id" : "backup",
-                    "option-name" : "Backup files",
                     "key-xml" : "firefox-backup",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -333,7 +307,6 @@
                 },
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "firefox-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -347,7 +320,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "firefox-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -356,7 +328,6 @@
                 },
                 {
                     "option-id" : "crash",
-                    "option-name" : "Bug reports",
                     "key-xml" : "firefox-crash",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -365,7 +336,6 @@
                 },
                 {
                     "option-id" : "dom",
-                    "option-name" : "DOM storage",
                     "key-xml" : "firefox-dom",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -374,7 +344,6 @@
                 },
                 {
                     "option-id" : "download",
-                    "option-name" : "Download history",
                     "key-xml" : "firefox-download",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -383,7 +352,6 @@
                 },
                 {
                     "option-id" : "prefs",
-                    "option-name" : "Site preferences",
                     "key-xml" : "firefox-prefs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -392,7 +360,6 @@
                 },
                 {
                     "option-id" : "form-history",
-                    "option-name" : "Saved form history",
                     "key-xml" : "firefox-savformhistory",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -401,7 +368,6 @@
                 },
                 {
                     "option-id" : "session",
-                    "option-name" : "Session restoration",
                     "key-xml" : "firefox-session",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -413,12 +379,11 @@
         },
         "flash" : {
             "name" : "Flash Player",
-            "type" : "Multimedia viewer",
+            "type" : "multimedia-viewer",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "flash-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -428,7 +393,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "flash-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -440,12 +404,11 @@
         },
         "gftp" : {
             "name" : "gFTP",
-            "type" : "File transfer client",
+            "type" : "file-transfer-client",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "gftp-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -454,7 +417,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "gftp-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -465,12 +427,11 @@
         },
         "gimp" : {
             "name" : "Gimp",
-            "type" : "Graphics editor",
+            "type" : "graphic-editor",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "gimp-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -481,12 +442,11 @@
         },
         "google-chrome" : {
             "name" : "Google Chrome",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 7,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "google-chrome-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -495,7 +455,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "google-chrome-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -504,7 +463,6 @@
                 },
                 {
                     "option-id" : "dom",
-                    "option-name" : "DOM storage",
                     "key-xml" : "google-chrome-dom",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -513,7 +471,6 @@
                 },
                 {
                     "option-id" : "internet-history",
-                    "option-name" : "Internet history",
                     "key-xml" : "google-chrome-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -531,7 +488,6 @@
                 },
                 {
                     "option-id" : "pass",
-                    "option-name" : "Passwords",
                     "key-xml" : "google-chrome-pass",
                     "warning-msgdlg" : true,
                     "paths" : [
@@ -540,7 +496,6 @@
                 },
                 {
                     "option-id" : "form-history",
-                    "option-name" : "Saved form history",
                     "key-xml" : "google-chrome-savformhistory",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -549,7 +504,6 @@
                 },
                 {
                     "option-id" : "session",
-                    "option-name" : "Session restoration",
                     "key-xml" : "google-chrome-session",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -561,12 +515,11 @@
         },
         "google-earth-pro" : {
             "name" : "Google Earth",
-            "type" : "3D map rendering program",
+            "type" : "rendering-map",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "google-earth-pro-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -578,12 +531,11 @@
         },
         "gpodder" : {
             "name" : "gPodder",
-            "type" : "Podcast manager",
+            "type" : "podcast-manager",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Cache",
                     "key-xml" : "gpodder-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -594,12 +546,11 @@
         },
         "java" : {
             "name" : "Java",
-            "type" : "Programming language",
+            "type" : "virtual-java",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "java-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -612,12 +563,11 @@
         },
         "kde" : {
             "name" : "KDE",
-            "type" : "Desktop environment",
+            "type" : "desktop-environment",
             "number-options" : 3,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "kde-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -626,7 +576,6 @@
                 },
                 {
                     "option-id" : "docs",
-                    "option-name" : "Recent documents",
                     "key-xml" : "kde-docs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -635,7 +584,6 @@
                 },
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "kde-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -646,12 +594,11 @@
         },
         "konqueror" : {
             "name" : "Konqueror",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 4,
             "all-options" : [
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "konqueror-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -660,7 +607,6 @@
                 },
                 {
                     "option-id" : "internet-history",
-                    "option-name" : "Internet history",
                     "key-xml" : "konqueror-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -671,7 +617,6 @@
                 },
                 {
                     "option-id" : "session",
-                    "option-name" : "Session restoration",
                     "key-xml" : "konqueror-session",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -680,7 +625,6 @@
                 },
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "konqueror-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -691,12 +635,11 @@
         },
         "libreoffice" : {
             "name" : "LibreOffice",
-            "type" : "Office suite",
+            "type" : "office-suite",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "libreoffice-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -706,7 +649,6 @@
                 },
                 {
                     "option-id" : "history",
-                    "option-name" : "History",
                     "key-xml" : "libreoffice-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -718,12 +660,11 @@
         },
         "liferea" : {
             "name" : "Liferea",
-            "type" : "News reader",
+            "type" : "feed-reader",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "liferea-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -732,7 +673,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "liferea-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -743,12 +683,11 @@
         },
         "midori" : {
             "name" : "Midori",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 3,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "midori-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -757,7 +696,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "midori-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -766,7 +704,6 @@
                 },
                 {
                     "option-id" : "internet-history",
-                    "option-name" : "Internet history",
                     "key-xml" : "midori-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -777,12 +714,11 @@
         },
         "miro" : {
             "name" : "Miro",
-            "type" : "Multimedia viewer",
+            "type" : "multimedia-viewer",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Cache",
                     "key-xml" : "miro-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -792,7 +728,6 @@
                 },
                 {
                     "option-id" : "logs",
-                    "option-name" : "Logs files",
                     "key-xml" : "miro-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -805,12 +740,11 @@
         },
         "nexuiz" : {
             "name" : "Nexuiz",
-            "type" : "Game",
+            "type" : "game",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "nexuiz-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -821,12 +755,11 @@
         },
         "opera" : {
             "name" : "Opera",
-            "type" : "Web browser",
+            "type" : "web-browser",
             "number-options" : 6,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "opera-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -835,7 +768,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "opera-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -844,7 +776,6 @@
                 },
                 {
                     "option-id" : "dom",
-                    "option-name" : "DOM storage",
                     "key-xml" : "opera-dom",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -853,7 +784,6 @@
                 },
                 {
                     "option-id" : "internet-history",
-                    "option-name" : "Internet history",
                     "key-xml" : "opera-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -867,7 +797,6 @@
                 },
                 {
                     "option-id" : "pass",
-                    "option-name" : "Passwords",
                     "key-xml" : "opera-pass",
                     "warning-msgdlg" : true,
                     "paths" : [
@@ -876,7 +805,6 @@
                 },
                 {
                     "option-id" : "session",
-                    "option-name" : "Session restoration",
                     "key-xml" : "opera-session",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -887,12 +815,11 @@
         },
         "pidgin" : {
             "name" : "Pidgin",
-            "type" : "Chat client",
+            "type" : "chat-client",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "pidgin-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -901,7 +828,6 @@
                 },
                 {
                     "option-id" : "chat-logs",
-                    "option-name" : "Chat logs",
                     "key-xml" : "pidgin-chat-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -912,12 +838,11 @@
         },
         "rhythmbox" : {
             "name" : "Rhythmbox",
-            "type" : "Audio player",
+            "type" : "audio-player",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "rhythmbox-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -927,7 +852,6 @@
                 },
                 {
                     "option-id" : "history",
-                    "option-name" : "History",
                     "key-xml" : "rhythmbox-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -938,12 +862,11 @@
         },
         "seamonkey" : {
             "name" : "SeaMonkey",
-            "type" : "Web browser and chat client",
+            "type" : "web-browser-chat",
             "number-options" : 5,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "seamonkey-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -953,7 +876,6 @@
                 },
                 {
                     "option-id" : "chat-logs",
-                    "option-name" : "Chat logs",
                     "key-xml" : "seamonkey-chat-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -962,7 +884,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "seamonkey-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -972,7 +893,6 @@
                 },
                 {
                     "option-id" : "download",
-                    "option-name" : "Download history",
                     "key-xml" : "seamonkey-download",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -981,7 +901,6 @@
                 },
                 {
                     "option-id" : "internet-history",
-                    "option-name" : "Internet history",
                     "key-xml" : "seamonkey-history",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -993,12 +912,11 @@
         },
         "skype" : {
             "name" : "Skype",
-            "type" : "Chat client",
+            "type" : "chat-client",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "chat-logs",
-                    "option-name" : "Chat logs",
                     "key-xml" : "skype-chat-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1010,12 +928,11 @@
         },
         "thunderbird" : {
             "name" : "Thunderbird",
-            "type" : "Email client",
+            "type" : "email-client",
             "number-options" : 3,
             "all-options" : [
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "thunderbird-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1026,7 +943,6 @@
                 },
                 {
                     "option-id" : "cookies",
-                    "option-name" : "Cookies",
                     "key-xml" : "thunderbird-cookies",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1037,7 +953,6 @@
                 },
                 {
                     "option-id" : "pass",
-                    "option-name" : "Passwords",
                     "key-xml" : "thunderbird-pass",
                     "warning-msgdlg" : true,
                     "paths" : [
@@ -1053,12 +968,11 @@
         },
         "tremulous" : {
             "name" : "Tremulous",
-            "type" : "Game",
+            "type" : "game",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "tremulous-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1069,12 +983,11 @@
         },
         "vuze" : {
             "name" : "Vuze",
-            "type" : "File transfer client",
+            "type" : "file-transfer-client",
             "number-options" : 4,
             "all-options" : [
                 {
                     "option-id" : "backup",
-                    "option-name" : "Backup files",
                     "key-xml" : "vuze-backup",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1083,7 +996,6 @@
                 },
                 {
                     "option-id" : "internet-cache",
-                    "option-name" : "Internet cache",
                     "key-xml" : "vuze-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1092,7 +1004,6 @@
                 },
                 {
                     "option-id" : "logs",
-                    "option-name" : "Logs files",
                     "key-xml" : "vuze-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1103,7 +1014,6 @@
                 },
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "vuze-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1114,12 +1024,11 @@
         },
         "warzone2100" : {
             "name" : "Warzone2100",
-            "type" : "Game",
+            "type" : "game",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "logs",
-                    "option-name" : "Logs files",
                     "key-xml" : "warzone-logs",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1130,12 +1039,11 @@
         },
         "wine" : {
             "name" : "Wine",
-            "type" : "Compatibility layer for Windows software",
+            "type" : "layer-software",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "tmp",
-                    "option-name" : "Temporary files",
                     "key-xml" : "wine-tmp",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1148,12 +1056,11 @@
         },
         "xine" : {
             "name" : "Xine",
-            "type" : "Multimedia viewer",
+            "type" : "multimedia-viewer",
             "number-options" : 1,
             "all-options" : [
                 {
                     "option-id" : "cache",
-                    "option-name" : "Cache",
                     "key-xml" : "xine-cache",
                     "warning-msgdlg" : false,
                     "paths" : [
@@ -1166,13 +1073,12 @@
     "system" : {
         "apt" : {
             "name" : "APT",
-            "type" : "Package manager",
+            "type" : "package-manager",
             "icon" : "package-x-generic",
             "number-options" : 2,
             "all-options" : [
                 {
                     "option-id" : "cache-pkg",
-                    "option-name" : "Cache",
                     "option-icon" : "package-x-generic",
                     "key-xml" : "apt-cache",
                     "warning-msgdlg" : true,
@@ -1186,7 +1092,6 @@
                 },
                 {
                     "option-id" : "configuration-pkg",
-                    "option-name" : "Orphan packages",
                     "option-icon" : "package-x-generic",
                     "key-xml" : "apt-configuration",
                     "warning-msgdlg" : true,
@@ -1201,13 +1106,12 @@
         },
         "system" : {
             "name" : "System",
-            "type" : "The system in general",
+            "type" : "system",
             "icon" : "applications-system",
             "number-options" : 5,
             "all-options" : [
                 {
                     "option-id" : "old-kernels",
-                    "option-name" : "Old kernels",
                     "option-icon" : "applications-system",
                     "key-xml" : "system-old-kernels",
                     "warning-msgdlg" : true,
@@ -1220,7 +1124,6 @@
                 },
                 {
                     "option-id" : "recent-docs",
-                    "option-name" : "Recent documents",
                     "option-icon" : "recent-documents",
                     "key-xml" : "system-recent-docs",
                     "warning-msgdlg" : false,
@@ -1230,7 +1133,6 @@
                 },
                 {
                     "option-id" : "terminal-history",
-                    "option-name" : "Terminal history",
                     "option-icon" : "utilities-terminal",
                     "key-xml" : "system-terminal-history",
                     "warning-msgdlg" : false,
@@ -1240,7 +1142,6 @@
                 },
                 {
                     "option-id" : "thumbnails",
-                    "option-name" : "Thumbnails",
                     "option-icon" : "image-x-generic",
                     "key-xml" : "system-thumbnails",
                     "warning-msgdlg" : false,
@@ -1251,7 +1152,6 @@
                 },
                 {
                     "option-id" : "trash",
-                    "option-name" : "Trash",
                     "option-icon" : "user-trash",
                     "key-xml" : "system-trash",
                     "warning-msgdlg" : false,

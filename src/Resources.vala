@@ -66,7 +66,7 @@ namespace Resources {
     public const string SETTINGS_VALUE_WINDOW_HEIGHT = "window-height";
 
     /*
-     * DEBUG Constants that contain the names of the properties of the Json's objects.
+     * Constants that contain the names of the properties of the Json's objects.
      */ 
     public const string PROPERTY_APP_NAME = "name";
     public const string PROPERTY_APP_TYPE = "type";
@@ -75,7 +75,6 @@ namespace Resources {
     public const string PROPERTY_ALL_OPTIONS = "all-options";
     public const string PROPERTY_N_OPTIONS = "number-options";
     public const string PROPERTY_OPTION_ID = "option-id";
-    public const string PROPERTY_OPTION_NAME = "option-name";
     public const string PROPERTY_OPTION_ICON = "option-icon";
     public const string PROPERTY_OPTION_COMMANDS = "option-icon";
     public const string PROPERTY_PATHS = "paths";
@@ -101,8 +100,36 @@ namespace Resources {
     public const string GENERAL_FIELD = _("General");
     public const string PREFERENCES_FIELD = _("Preferences");
     /*
-     * Constants that contain information about the options of each program
-     */ 
+     * Constants containing information about the options and type of each program
+     */
+    public const string BACKUP_LABEL = _("Backup files");
+    public const string CACHE_NET_LABEL = _("Internet cache");
+    public const string CACHE_PROG_LABEL = _("Cache");
+    public const string CHAT_LOGS_LABEL = _("Chat logs");
+    public const string COOKIES_LABEL = _("Cookies");
+    public const string CRASH_LABEL = _("Bug reports");
+    public const string DOCS_LABEL = _("Recent documents");
+    public const string DOM_LABEL = _("DOM storage");
+    public const string DOWNLOAD_LABEL = _("Download history");
+    public const string DOWNLOAD_PODCASTS_LABEL = _("Podcasts downloaded");
+    public const string HISTORY_NET_LABEL = _("Internet history");
+    public const string HISTORY_PROG_LABEL = _("History");
+    public const string LOGS_LABEL = _("Logs files");
+    public const string PASS_LABEL = _("Passwords");
+    public const string PLACES_LABEL = _("Places");
+    public const string PREFS_LABEL = _("Site preferences");
+    public const string SAVED_FORMHISTORY_LABEL = _("Saved form history");
+    public const string SESSION_LABEL = _("Session restoration");
+    public const string TMP_LABEL = _("Temporary files");
+    public const string USED_LABEL = _("Most recently used files");
+    public const string CACHE_PKG_LABEL = _("Cache");
+    public const string CONF_PKG_LABEL = _("Orphan packages");
+    public const string OLDKERNELS_LABEL = _("Old kernels");
+    public const string TERMINAL_LABEL = _("Terminal history");
+    public const string THUMBNAILS_LABEL = _("Thumbnails");
+    public const string TRASH_LABEL = _("Trash");
+    public const string UNKNOWN_LABEL = _("Unknown information.\n");
+
     public const string DESCRIPTION_BACKUP_LABEL = _("Backup files.\n");
     public const string DESCRIPTION_CACHE_NET_LABEL = _("Temporary files downloaded for later use and reduce the bandwidth.\n");
     public const string DESCRIPTION_CACHE_PROG_LABEL = _("Files temporarily created for later use.\n");
@@ -153,6 +180,7 @@ namespace Resources {
     public const string DESCRIPTION_DOCS_ID = "docs";
     public const string DESCRIPTION_DOM_ID = "dom";
     public const string DESCRIPTION_DOWNLOAD_ID = "download";
+    public const string DESCRIPTION_DOWNLOAD_PODCASTS_ID = "download-podcasts";
     public const string DESCRIPTION_HISTORY_NET_ID = "internet-history";
     public const string DESCRIPTION_HISTORY_PROG_ID = "history";
     public const string DESCRIPTION_LOGS_ID = "logs";
@@ -171,6 +199,45 @@ namespace Resources {
     public const string DESCRIPTION_THUMBNAILS_ID = "thumbnails";
     public const string DESCRIPTION_TRASH_ID = "trash";
 
+    public const string TYPE_APP_AUDIO_PLAYER_LABEL = "Audio player";
+    public const string TYPE_APP_BROWSER_LABEL = "Web browser";
+    public const string TYPE_APP_BROWSER_CHAT_LABEL = "Web browser and chat client";
+    public const string TYPE_APP_CHAT_CLIENT_LABEL = "Chat client";
+    public const string TYPE_APP_DESKTOP_LABEL = "Desktop environment";
+    public const string TYPE_APP_EMAIL_CLIENT_LABEL = "Email client";
+    public const string TYPE_APP_FEED_READER_LABEL = "Feeds reader";
+    public const string TYPE_APP_FILE_TRANSFER_LABEL = "File transfer client";
+    public const string TYPE_APP_GAME_LABEL = "Game";
+    public const string TYPE_APP_GRAPHIC_EDITOR_LABEL = "Graphics editor";
+    public const string TYPE_APP_LAYER_SOFTWARE_LABEL = "Compatibility layer for Windows software";
+    public const string TYPE_APP_MULTIMEDIA_VIEWER_LABEL = "Multimedia viewer";
+    public const string TYPE_APP_OFFICE_SUITE_LABEL = "Office suite";
+    public const string TYPE_APP_PACKAGE_MANAGER_LABEL = "Package manager";
+    public const string TYPE_APP_PODCAST_MANAGER_LABEL = "Podcast manager";
+    public const string TYPE_APP_RENDERING_MAP_LABEL = "3D map rendering program";
+    public const string TYPE_APP_SYSTEM_LABEL = "The system in general";
+    public const string TYPE_APP_VIRTUAL_MACHINE_LABEL = "Residual files from Java";
+    public const string TYPE_APP_UNKNOWN_LABEL = _("Unknown type of application");
+
+    public const string TYPE_APP_AUDIO_PLAYER_ID = "audio-player";
+    public const string TYPE_APP_BROWSER_ID = "web-browser";
+    public const string TYPE_APP_BROWSER_CHAT_ID = "web-browser-chat";
+    public const string TYPE_APP_CHAT_CLIENT_ID = "chat-client";
+    public const string TYPE_APP_DESKTOP_ID = "desktop-environment";
+    public const string TYPE_APP_EMAIL_CLIENT_ID = "email-client";
+    public const string TYPE_APP_FEED_READER_ID = "feed-reader";
+    public const string TYPE_APP_FILE_TRANSFER_ID = "file-transfer-client";
+    public const string TYPE_APP_GAME_ID = "game";
+    public const string TYPE_APP_GRAPHIC_EDITOR_ID = "graphic-editor";
+    public const string TYPE_APP_LAYER_SOFTWARE_ID = "layer-software";
+    public const string TYPE_APP_MULTIMEDIA_VIEWER_ID = "multimedia-viewer";
+    public const string TYPE_APP_OFFICE_SUITE_ID = "office-suite";
+    public const string TYPE_APP_PACKAGE_MANAGER_ID = "package-manager";
+    public const string TYPE_APP_PODCAST_MANAGER_ID = "podcast-manager";
+    public const string TYPE_APP_RENDERING_MAP_ID = "rendering-map";
+    public const string TYPE_APP_VIRTUAL_MACHINE_ID = "virtual-java";
+    public const string TYPE_APP_SYSTEM_ID = "system";
+
     public const string QUESTION_PHRASE_CLEAN = _("Are you sure you want to continue?");
     public const string QUESTION_PHRASE_CACHE_PKG = _("Are you sure you want to delete cache and obsolete Package System files?");
     public const string QUESTION_PHRASE_CONF_PKG = _("Are you sure you want to delete orphan Package System files?");
@@ -188,6 +255,108 @@ namespace Resources {
     public const string[] SYSTEM_APPS = {"apt", "system"};
     public const string TYPE_ICON_APPS = "apps";
     public const string TYPE_ICON_SYSTEM = "info-system";
+
+    public unowned string get_type_app (string id_app_type) {
+        switch (id_app_type) {
+            case TYPE_APP_AUDIO_PLAYER_ID:
+                return TYPE_APP_AUDIO_PLAYER_LABEL;
+            case TYPE_APP_BROWSER_ID:
+                return TYPE_APP_BROWSER_LABEL;
+            case TYPE_APP_BROWSER_CHAT_ID:
+                return TYPE_APP_BROWSER_CHAT_LABEL;
+            case TYPE_APP_CHAT_CLIENT_ID:
+                return TYPE_APP_CHAT_CLIENT_LABEL;
+            case TYPE_APP_DESKTOP_ID:
+                return TYPE_APP_DESKTOP_LABEL;
+            case TYPE_APP_EMAIL_CLIENT_ID:
+                return TYPE_APP_EMAIL_CLIENT_LABEL;
+            case TYPE_APP_FEED_READER_ID:
+                return TYPE_APP_FEED_READER_LABEL;
+            case TYPE_APP_FILE_TRANSFER_ID:
+                return TYPE_APP_FILE_TRANSFER_LABEL;
+            case TYPE_APP_GAME_ID:
+                return TYPE_APP_GAME_LABEL;
+            case TYPE_APP_GRAPHIC_EDITOR_ID:
+                return TYPE_APP_GRAPHIC_EDITOR_LABEL;
+            case TYPE_APP_LAYER_SOFTWARE_ID:
+                return TYPE_APP_LAYER_SOFTWARE_LABEL;
+            case TYPE_APP_MULTIMEDIA_VIEWER_ID:
+                return TYPE_APP_MULTIMEDIA_VIEWER_LABEL;
+            case TYPE_APP_OFFICE_SUITE_ID:
+                return TYPE_APP_OFFICE_SUITE_LABEL;
+            case TYPE_APP_PACKAGE_MANAGER_ID:
+                return TYPE_APP_PACKAGE_MANAGER_LABEL;
+            case TYPE_APP_PODCAST_MANAGER_ID:
+                return TYPE_APP_PODCAST_MANAGER_LABEL;
+            case TYPE_APP_RENDERING_MAP_ID:
+                return TYPE_APP_RENDERING_MAP_LABEL;
+            case TYPE_APP_VIRTUAL_MACHINE_ID:
+                return TYPE_APP_VIRTUAL_MACHINE_LABEL;
+            case TYPE_APP_SYSTEM_ID:
+                return TYPE_APP_SYSTEM_LABEL;
+            default:
+                return TYPE_APP_UNKNOWN_LABEL;
+        }
+    }
+
+    public unowned string get_option_label (string id_option_type) {
+        switch (id_option_type) {
+            case DESCRIPTION_BACKUP_ID:
+                return BACKUP_LABEL;
+            case DESCRIPTION_CACHE_NET_ID:
+                return CACHE_NET_LABEL;
+            case DESCRIPTION_CACHE_PROG_ID:
+                return CACHE_PROG_LABEL;
+            case DESCRIPTION_CHAT_LOGS_ID:
+                return CHAT_LOGS_LABEL;
+            case DESCRIPTION_COOKIES_ID:
+                return COOKIES_LABEL;
+            case DESCRIPTION_CRASH_ID:
+                return CRASH_LABEL;
+            case DESCRIPTION_DOCS_ID:
+            case DESCRIPTION_RECENT_DOCS_ID:
+                return DOCS_LABEL;
+            case DESCRIPTION_DOM_ID:
+                return DOM_LABEL;
+            case DESCRIPTION_DOWNLOAD_PODCASTS_ID:
+            case DESCRIPTION_DOWNLOAD_ID:
+                return DOWNLOAD_LABEL;
+            case DESCRIPTION_HISTORY_NET_ID:
+                return HISTORY_NET_LABEL;
+            case DESCRIPTION_HISTORY_PROG_ID:
+                return HISTORY_PROG_LABEL;
+            case DESCRIPTION_LOGS_ID:
+                return LOGS_LABEL;
+            case DESCRIPTION_PASS_ID:
+                return PASS_LABEL;
+            case DESCRIPTION_PLACES_ID:
+                return PLACES_LABEL;
+            case DESCRIPTION_PREFS_ID:
+                return PREFS_LABEL;
+            case DESCRIPTION_SAVED_FORMHISTORY_ID:
+                return SAVED_FORMHISTORY_LABEL;
+            case DESCRIPTION_SESSION_ID:
+                return SESSION_LABEL;
+            case DESCRIPTION_TMP_ID:
+                return TMP_LABEL;
+            case DESCRIPTION_USED_ID:
+                return USED_LABEL;
+            case DESCRIPTION_CACHE_PKG_ID:
+                return CACHE_PKG_LABEL;
+            case DESCRIPTION_CONF_PKG_ID:
+                return CONF_PKG_LABEL;
+            case DESCRIPTION_OLDKERNELS_ID:
+                return OLDKERNELS_LABEL;
+            case DESCRIPTION_TERMINAL_ID:
+                return TERMINAL_LABEL;
+            case DESCRIPTION_THUMBNAILS_ID:
+                return THUMBNAILS_LABEL;
+            case DESCRIPTION_TRASH_ID:
+                return TRASH_LABEL;
+            default:
+                return UNKNOWN_LABEL;
+        }
+    }
 
     public unowned string get_description_info (string id_option_type) {
         switch (id_option_type) {
@@ -208,6 +377,7 @@ namespace Resources {
                 return DESCRIPTION_DOCS_LABEL;
             case DESCRIPTION_DOM_ID:
                 return DESCRIPTION_DOM_LABEL;
+            case DESCRIPTION_DOWNLOAD_PODCASTS_ID:
             case DESCRIPTION_DOWNLOAD_ID:
                 return DESCRIPTION_DOWNLOAD_LABEL;
             case DESCRIPTION_HISTORY_NET_ID:

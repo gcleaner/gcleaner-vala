@@ -151,7 +151,8 @@ namespace GCleaner.Tools {
                     info_app[0] = current_app_id;
                     Json.Array all_options = get_all_options_of (current_app_id).get_array ();
                     foreach (var option in all_options.get_elements ()) {
-                        string tmp_opt_name = option.get_object ().get_string_member (Resources.PROPERTY_OPTION_NAME);
+                        string tmp_opt_id = option.get_object ().get_string_member (Resources.PROPERTY_OPTION_ID);
+                        string tmp_opt_name = Resources.get_option_label (tmp_opt_id);
                         if (tmp_opt_name == option_name) {
                             info_app[1] = option.get_object ().get_string_member (Resources.PROPERTY_OPTION_ID);
                             return info_app;

@@ -69,7 +69,7 @@ namespace GCleaner.Tools {
                     foreach (var option in node_options.get_array ().get_elements ()) {
                         var object_option = option.get_object ();
                         string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
-                        string option_name = object_option.get_string_member (Resources.PROPERTY_OPTION_NAME);
+                        string option_name = Resources.get_option_label (option_id);
                         /* Update the progress bar
                          * ++++++-----------------------------
                          */
