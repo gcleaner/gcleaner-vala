@@ -105,7 +105,6 @@ public class FileUtilities {
         (obj, res) => {
             try {
                 status = src_file.copy_async.end (res);
-                print ("Result: %s\n", status.to_string ());
             } catch (Error e) {
                 print ("Error: %s\n", e.message);
                 status = false;

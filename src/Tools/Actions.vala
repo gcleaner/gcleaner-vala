@@ -121,7 +121,9 @@ namespace GCleaner.Tools {
                                                 int64 size_option = info_clean.get_file_size_of (app_id, option_id);
                                                 size_formated = FileUtilities.to_readable_format_size (size_option);
                                             }
-                                            app.results_area.append_data_to_list_store (pix, "• " + app_name + " - " + option_name, size_formated, n_files_option.to_string () + _(" files"));
+                                            string info_app = "• " + app_name + " - " + option_name;
+                                            string info_files = n_files_option.to_string () + _(" files");
+                                            app.results_area.append_data_to_list_store (pix, info_app, size_formated, info_files);
                                         }
                                     }
                                     count++;
