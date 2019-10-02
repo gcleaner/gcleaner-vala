@@ -102,15 +102,15 @@ public class FileUtilities {
         File src_file = File.new_for_path (from_path);
         File dst_file = File.new_for_path (to_path);
         src_file.copy_async.begin (dst_file, 0, Priority.DEFAULT, null, (current_num_bytes, total_num_bytes) => {}, 
-        (obj, res) => {
-            try {
-                status = src_file.copy_async.end (res);
-            } catch (Error e) {
-                print ("Error: %s\n", e.message);
-                status = false;
-            }
-            loop.quit ();
-        });
+            (obj, res) => {
+                try {
+                    status = src_file.copy_async.end (res);
+                } catch (Error e) {
+                    print ("Error: %s\n", e.message);
+                    status = false;
+                }
+                loop.quit ();
+            });
         loop.run ();
         return status;
     }
