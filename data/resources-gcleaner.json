@@ -9,7 +9,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "amsn-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.amsn/*/displaypic/cache/*.dat",
                         "~/.amsn/*/displaypic/cache/*.png"
@@ -18,7 +17,6 @@
                 {
                     "option-id" : "chat-logs",
                     "key-xml" : "amsn-chat-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.amsn/*/logs/date",
                         "~/.amsn/*/logs/*.log"
@@ -34,7 +32,6 @@
                 {
                     "option-id" : "logs",
                     "key-xml" : "amule-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.aMule/logfile*"
                     ]
@@ -42,7 +39,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "amule-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.amsn/*/logs/date",
                         "~/.amsn/*/logs/*.log"
@@ -58,7 +54,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "audacious-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/audacious/thumbs/*"
                     ]
@@ -66,7 +61,6 @@
                 {
                     "option-id" : "logs",
                     "key-xml" : "audacious-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/audacious/log"
                     ]
@@ -74,7 +68,6 @@
                 {
                     "option-id" : "used",
                     "key-xml" : "audacious-used",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/audacious/playlist.xspf"
                     ]
@@ -89,7 +82,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "chromium-browser-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/chromium/Default/Cache",
                         "~/.config/chromium/Local State",
@@ -101,7 +93,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "chromium-browser-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/chromium/Default/Cookie*",
                         "~/.cxchromium/chromium/drive_c/windows/profiles/crossover/Local Settings/Application Data/Google/Chrome/User Data/Default/Cookies"
@@ -110,7 +101,6 @@
                 {
                     "option-id" : "dom",
                     "key-xml" : "chromium-browser-dom",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/chromium/Default/databases/http*/",
                         "~/.config/chromium/Default/databases/Databases.db",
@@ -120,7 +110,6 @@
                 {
                     "option-id" : "internet-history",
                     "key-xml" : "chromium-browser-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/chromium/Default/Histor*",
                         "~/.config/chromium/Default/Favicons",
@@ -138,7 +127,7 @@
                 {
                     "option-id" : "pass",
                     "key-xml" : "chromium-browser-pass",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "paths" : [
                         "~/.config/chromium/Default/Login Dat*"
                     ]
@@ -146,7 +135,6 @@
                 {
                     "option-id" : "form-history",
                     "key-xml" : "chromium-browser-savformhistory",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/chromium/Default/Web Data"
                     ]
@@ -154,7 +142,6 @@
                 {
                     "option-id" : "session",
                     "key-xml" : "chromium-browser-session",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/chromium/Default/Current*",
                         "~/.config/chromium/Default/Last*",
@@ -171,7 +158,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "emesene-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/emesene*/*/cache/*"
                     ]
@@ -179,7 +165,6 @@
                 {
                     "option-id" : "chat-logs",
                     "key-xml" : "emesene-chat-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/emesene*/*/logs/*",
                         "~/.config/emesene*/*/log",
@@ -196,7 +181,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "epiphany-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.gnome2/epiphany/ephy-favicon-cache.xml",
                         "~/.gnome2/epiphany/favicon_cache",
@@ -207,7 +191,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "epiphany-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.gnome2/epiphany/mozilla/epiphany/cookies*",
                         "~/.gnome2/epiphany/cookies.sqlite"
@@ -216,7 +199,6 @@
                 {
                     "option-id" : "dom",
                     "key-xml" : "epiphany-dom",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.local/share/webkitgtk/localstorage"
                     ]
@@ -224,7 +206,7 @@
                 {
                     "option-id" : "pass",
                     "key-xml" : "epiphany-pass",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "paths" : [
                         "~/.gnome2/epiphany/mozilla/epiphany/signons3.txt"
                     ]
@@ -232,7 +214,6 @@
                 {
                     "option-id" : "places",
                     "key-xml" : "epiphany-places",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/epiphany/bookmarks.rdf",
                         "~/.config/epiphany/ephy-bookmarks.xml",
@@ -252,7 +233,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "evolution-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.evolution/cache",
                         "~/.cache/evolution"
@@ -268,7 +248,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "exaile-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.exaile/cache",
                         "~/.exaile/covers"
@@ -277,7 +256,6 @@
                 {
                     "option-id" : "download-podcasts",
                     "key-xml" : "exaile-download",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.exaile/podcasts/*"
                     ]
@@ -285,7 +263,6 @@
                 {
                     "option-id" : "logs",
                     "key-xml" : "exaile-download",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.exaile/exaile.log"
                     ]
@@ -300,7 +277,6 @@
                 {
                     "option-id" : "backup",
                     "key-xml" : "firefox-backup",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/bookmarkbackups/bookmarks-*.jsonlz4"
                     ]
@@ -308,7 +284,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "firefox-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/mozilla/firefox/*/Cache",
                         "~/.cache/mozilla/firefox/*/cache2",
@@ -321,7 +296,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "firefox-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/cookies.sqlite"
                     ]
@@ -329,7 +303,6 @@
                 {
                     "option-id" : "crash",
                     "key-xml" : "firefox-crash",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/Crash Reports/InstallTime"
                     ]
@@ -337,7 +310,6 @@
                 {
                     "option-id" : "dom",
                     "key-xml" : "firefox-dom",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/webappsstore.sqlite"
                     ]
@@ -345,7 +317,6 @@
                 {
                     "option-id" : "download",
                     "key-xml" : "firefox-download",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/downloads*"
                     ]
@@ -353,7 +324,6 @@
                 {
                     "option-id" : "prefs",
                     "key-xml" : "firefox-prefs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/content-prefs.sqlite"
                     ]
@@ -361,7 +331,6 @@
                 {
                     "option-id" : "form-history",
                     "key-xml" : "firefox-savformhistory",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/formhistory.sqlite"
                     ]
@@ -369,7 +338,6 @@
                 {
                     "option-id" : "session",
                     "key-xml" : "firefox-session",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/firefox/*/sessionstore-backupssqlite",
                         "~/.mozilla/firefox/*/sessionstore.js"
@@ -385,7 +353,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "flash-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.adobe/Flash_Player/AssetCache",
                         "~/.adobe/Flash_Player/NativeCache"
@@ -394,7 +361,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "flash-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.macromedia/Flash_Player/#SharedObjects/*",
                         "~/.macromedia/Flash_Player/macromedia.com/support/flashplayer/sys/*"
@@ -410,7 +376,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "gftp-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.gftp/cache"
                     ]
@@ -418,7 +383,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "gftp-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.gftp/gftp.log"
                     ]
@@ -433,7 +397,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "gimp-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.gimp-*/tmp"
                     ]
@@ -448,7 +411,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "google-chrome-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/google-chrome/Default/Cache"
                     ]
@@ -456,7 +418,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "google-chrome-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/google-chrome/Default/Cookie*"
                     ]
@@ -464,7 +425,6 @@
                 {
                     "option-id" : "dom",
                     "key-xml" : "google-chrome-dom",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/google-chrome/Default/databases/Databases.db"
                     ]
@@ -472,7 +432,6 @@
                 {
                     "option-id" : "internet-history",
                     "key-xml" : "google-chrome-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/google-chrome/Default/Histor*",
                         "~/.config/google-chrome/Default/Favicons",
@@ -489,7 +448,7 @@
                 {
                     "option-id" : "pass",
                     "key-xml" : "google-chrome-pass",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "paths" : [
                         "~/.config/google-chrome/Default/Login Dat*"
                     ]
@@ -497,7 +456,6 @@
                 {
                     "option-id" : "form-history",
                     "key-xml" : "google-chrome-savformhistory",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/google-chrome/Default/Web Data"
                     ]
@@ -505,7 +463,6 @@
                 {
                     "option-id" : "session",
                     "key-xml" : "google-chrome-session",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/google-chrome/Default/Current*",
                         "~/.config/google-chrome/Default/Last*"
@@ -521,7 +478,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "google-earth-pro-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.googleearth/Cache/dbCache.dat*",
                         "~/.googleearth/Temp"
@@ -537,7 +493,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "gpodder-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/gpodder/cache/*xml"
                     ]
@@ -552,7 +507,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "java-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.java/deployment/cache",
                         "~/.icedteaplugin/cache",
@@ -569,7 +523,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "kde-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "/var/tmp/kdecache-$USER/*"
                     ]
@@ -577,7 +530,6 @@
                 {
                     "option-id" : "docs",
                     "key-xml" : "kde-docs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.kde*/share/apps/RecentDocuments/*.desktop"
                     ]
@@ -585,7 +537,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "kde-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "/tmp/kde-$USER/*"
                     ]
@@ -600,7 +551,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "konqueror-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.kde*/share/apps/kcookiejar/cookies"
                     ]
@@ -608,7 +558,6 @@
                 {
                     "option-id" : "internet-history",
                     "key-xml" : "konqueror-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.kde*/share/apps/konqueror/closeditems_saved",
                         "~/.kde*/share/apps/konqueror/konq_history",
@@ -618,7 +567,6 @@
                 {
                     "option-id" : "session",
                     "key-xml" : "konqueror-session",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.kde*/share/apps/konqueror/autosave"
                     ]
@@ -626,7 +574,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "konqueror-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "/var/tmp/kdecache-$USER/http"
                     ]
@@ -641,7 +588,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "libreoffice-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/libreoffice/*/user/uno_packages/cache",
                         "~/.libreoffice/*/user/uno_packages/cache"
@@ -650,7 +596,6 @@
                 {
                     "option-id" : "history",
                     "key-xml" : "libreoffice-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/libreoffice/*/user/registrymodifications.xcu",
                         "~/.libreoffice/*/user/registrymodifications.xcu"
@@ -666,7 +611,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "liferea-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/liferea/*"
                     ]
@@ -674,7 +618,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "liferea-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/liferea/cookies.txt"
                     ]
@@ -689,7 +632,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "midori-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/midori/*"
                     ]
@@ -697,7 +639,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "midori-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/midori/cookies.db"
                     ]
@@ -705,7 +646,6 @@
                 {
                     "option-id" : "internet-history",
                     "key-xml" : "midori-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/midori/history.db"
                     ]
@@ -720,7 +660,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "miro-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.miro/icon-cache/*",
                         "~/.miro/mozilla/Cache/*"
@@ -729,7 +668,6 @@
                 {
                     "option-id" : "logs",
                     "key-xml" : "miro-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.miro/miro-downloader-log",
                         "~/.miro/miro-log",
@@ -746,7 +684,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "nexuiz-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.nexuiz/data/dlcache"
                     ]
@@ -761,7 +698,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "opera-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.cache/opera/Cache"
                     ]
@@ -769,7 +705,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "opera-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/opera/Cookies*"
                     ]
@@ -777,7 +712,6 @@
                 {
                     "option-id" : "dom",
                     "key-xml" : "opera-dom",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/opera/Local Storage/http*localstorage"
                     ]
@@ -785,7 +719,6 @@
                 {
                     "option-id" : "internet-history",
                     "key-xml" : "opera-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/opera/Histor*",
                         "~/.config/opera/Favicons",
@@ -798,7 +731,7 @@
                 {
                     "option-id" : "pass",
                     "key-xml" : "opera-pass",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "paths" : [
                         "~/.config/opera/Login Data"
                     ]
@@ -806,7 +739,6 @@
                 {
                     "option-id" : "session",
                     "key-xml" : "opera-session",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.config/opera/* Session"
                     ]
@@ -821,7 +753,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "pidgin-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.purple/icons/*"
                     ]
@@ -829,7 +760,6 @@
                 {
                     "option-id" : "chat-logs",
                     "key-xml" : "pidgin-chat-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.purple/logs/*"
                     ]
@@ -844,7 +774,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "rhythmbox-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.gnome2/rhythmbox/jamendo",
                         "~/.gnome2/rhythmbox/magnatune"
@@ -853,7 +782,6 @@
                 {
                     "option-id" : "history",
                     "key-xml" : "rhythmbox-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.local/share/rhythmbox/rhythmdb.xml"
                     ]
@@ -868,7 +796,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "seamonkey-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/default/Cache",
                         "~/.mozilla/seamonkey/*/Cache"
@@ -877,7 +804,6 @@
                 {
                     "option-id" : "chat-logs",
                     "key-xml" : "seamonkey-chat-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/*/????????.slt/chatzilla/logs/*log"
                     ]
@@ -885,7 +811,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "seamonkey-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/*/????????.slt/cookies.txt",
                         "~/.mozilla/seamonkey/*.default/cookies.sqlite"
@@ -894,7 +819,6 @@
                 {
                     "option-id" : "download",
                     "key-xml" : "seamonkey-download",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/seamonkey/*.default/downloads.sqlite"
                     ]
@@ -902,7 +826,6 @@
                 {
                     "option-id" : "internet-history",
                     "key-xml" : "seamonkey-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.mozilla/*/????????.slt/history.dat",
                         "~/.mozilla/seamonkey/*.default/urlbarhistory.sqlite"
@@ -918,7 +841,6 @@
                 {
                     "option-id" : "chat-logs",
                     "key-xml" : "skype-chat-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.Skype/*/chatmsg*.dbb",
                         "~/.Skype/*/chatsync/*/*.dat"
@@ -934,7 +856,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "thunderbird-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.thunderbird/????????.default/Cache/*",
                         "~/.thunderbird/default/????????.slt/Cache",
@@ -944,7 +865,6 @@
                 {
                     "option-id" : "cookies",
                     "key-xml" : "thunderbird-cookies",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.thunderbird/????????.default/cookies.sqlite",
                         "~/.thunderbird/default/????????.slt/cookies.sqlite",
@@ -954,7 +874,7 @@
                 {
                     "option-id" : "pass",
                     "key-xml" : "thunderbird-pass",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "paths" : [
                         "~/.thunderbird/default/????????.slt/signons.sqlite",
                         "~/.thunderbird/default/????????.slt/signons.txt",
@@ -974,7 +894,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "tremulous-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.tremulous/servercache.dat"
                     ]
@@ -989,7 +908,6 @@
                 {
                     "option-id" : "backup",
                     "key-xml" : "vuze-backup",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.azureus/active/*.bak"
                     ]
@@ -997,7 +915,6 @@
                 {
                     "option-id" : "internet-cache",
                     "key-xml" : "vuze-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.azureus/ipfilter.cache"
                     ]
@@ -1005,7 +922,6 @@
                 {
                     "option-id" : "logs",
                     "key-xml" : "vuze-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.azureus/logs/*",
                         "~/.azureus/update.log",
@@ -1015,7 +931,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "vuze-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "/azureus/tmp"
                     ]
@@ -1030,7 +945,6 @@
                 {
                     "option-id" : "logs",
                     "key-xml" : "warzone-logs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.warzone2100*/logs"
                     ]
@@ -1045,7 +959,6 @@
                 {
                     "option-id" : "tmp",
                     "key-xml" : "wine-tmp",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.wine/drive_c/winetrickstmp",
                         "~/.wine/drive_c/windows/temp",
@@ -1062,7 +975,6 @@
                 {
                     "option-id" : "cache",
                     "key-xml" : "xine-cache",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.xine/catalog.cache"
                     ]
@@ -1081,7 +993,7 @@
                     "option-id" : "cache-pkg",
                     "option-icon" : "package-x-generic",
                     "key-xml" : "apt-cache",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "commands" : [
                         {
                             "get-size" : "du -sb /var/cache/apt/archives/ | grep '^[1-9]' | awk '{print $1}'",
@@ -1094,7 +1006,7 @@
                     "option-id" : "configuration-pkg",
                     "option-icon" : "package-x-generic",
                     "key-xml" : "apt-configuration",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "commands" : [
                         {
                             "get-quantity" : "dpkg -l | grep -v 'linux-image' | grep '^rc  ' | awk '{print $2}' | wc -l",
@@ -1114,7 +1026,7 @@
                     "option-id" : "old-kernels",
                     "option-icon" : "applications-system",
                     "key-xml" : "system-old-kernels",
-                    "warning-msgdlg" : true,
+                    "warning" : true,
                     "commands" : [
                         {
                             "get-quantity" : "dpkg -l | grep -i 'linux-image' | grep '^rc  ' | awk '{print $2}' | wc -l",
@@ -1126,7 +1038,6 @@
                     "option-id" : "recent-docs",
                     "option-icon" : "recent-documents",
                     "key-xml" : "system-recent-docs",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.local/share/recently-used.xbel*"
                     ]
@@ -1135,7 +1046,6 @@
                     "option-id" : "terminal-history",
                     "option-icon" : "utilities-terminal",
                     "key-xml" : "system-terminal-history",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.bash_history"
                     ]
@@ -1144,7 +1054,6 @@
                     "option-id" : "thumbnails",
                     "option-icon" : "image-x-generic",
                     "key-xml" : "system-thumbnails",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.thumbnails/*",
                         "~/.cache/thumbnails/*"
@@ -1154,7 +1063,6 @@
                     "option-id" : "trash",
                     "option-icon" : "user-trash",
                     "key-xml" : "system-trash",
-                    "warning-msgdlg" : false,
                     "paths" : [
                         "~/.local/share/Trash"
                     ]

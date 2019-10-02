@@ -109,7 +109,7 @@ namespace GCleaner.Widgets {
                 string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
                 string option_label = Resources.get_option_label (option_id);
                 string key_xml = object_option.get_string_member (Resources.PROPERTY_KEY);
-                bool warning_value = object_option.get_boolean_member (Resources.PROPERTY_WARNING);
+                bool warning_value = object_option.has_member (Resources.PROPERTY_WARNING);
 
                 string option_info = determine_tooltip_text (option_id, warning_value);
                 string icon_warning_name = determine_warning_icon (warning_value);
