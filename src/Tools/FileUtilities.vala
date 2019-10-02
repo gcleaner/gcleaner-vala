@@ -21,9 +21,12 @@ using GLib;
 public class FileUtilities {
     public static string to_readable_format_size (int64 bytes) {
         float size;
-        int base_size = 1024;
+        var settings = Resources.get_setting_schema ();
+        bool use_standard_iec = settings.get_boolean (Resources.PREFERENCES_STANDARD_SIZE_KEY);
+        // It determines if IEC(1KiB = 1024 bytes) standard or SI(1kB = 1000 bytes) is used
+        int base_size = (use_standard_iec) ? 1024 : 1000;
+        string[] sufix = (use_standard_iec) ? Resources.SUFIX_SIZE_IEC : Resources.SUFIX_SIZE_SI;
         string format = "";
-        string[] sufix = {"kB", "MB", "GB"};
         
         size = bytes / base_size;
         for (int i = 0; i < sufix.length; i++) {
@@ -68,14 +71,14 @@ public class FileUtilities {
         int64[] tmp_data = new int64[2];
 
         if (paths[0] == "null") {
-            stderr.printf ("COM.GCLEANER.FILEUTLITIES [INVALID DIRECTORY: %s]\n", paths[0]);
+            stderr.printf ("Error: %s]\n", paths[0]);
         } else {
             foreach (string dir in paths) {
                 File file = File.new_for_path (dir);
                 try {
                     tmp_data = list_content (dir);
                 } catch (Error e) {
-                    stdout.printf ("COM.GCLEANER.FILEUTLITIES [Error: %s]\n", e.message);
+                    stdout.printf ("Error: %s\n", e.message);
                     stdout.printf (">>> Comprobe path: %s", dir);
                 }
                 information[0] += tmp_data[0];
@@ -90,6 +93,25 @@ public class FileUtilities {
         bool status = false;
         File file = File.new_for_path (path);
         status = (file.query_exists ()) ? true: false;
+        return status;
+    }
+    
+    public static bool copy_file (string from_path, string to_path) {
+        MainLoop loop = new MainLoop ();
+        bool status = true;
+        File src_file = File.new_for_path (from_path);
+        File dst_file = File.new_for_path (to_path);
+        src_file.copy_async.begin (dst_file, 0, Priority.DEFAULT, null, (current_num_bytes, total_num_bytes) => {}, 
+            (obj, res) => {
+                try {
+                    status = src_file.copy_async.end (res);
+                } catch (Error e) {
+                    print ("Error: %s\n", e.message);
+                    status = false;
+                }
+                loop.quit ();
+            });
+        loop.run ();
         return status;
     }
 
@@ -118,7 +140,7 @@ public class FileUtilities {
                     }
                 }
             } catch (Error e) {
-                stderr.printf ("COM.GCLEANER.FILEUTLITIES: [WARNING: Unable to delete the file '%s': %s]\n", str_path, e.message);
+                stderr.printf ("WARNING: Unable to delete the file '%s': %s]\n", str_path, e.message);
             }
         }
         
@@ -126,13 +148,13 @@ public class FileUtilities {
         information[1] = size_deleted_files;
         return information;
     }
-    
+
     private static void delete_directory_recursively (File file, Cancellable? cancellable = null) {
         FileEnumerator enumerator;
         try {
             enumerator = file.enumerate_children ("standard::*", FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
         } catch (IOError e) {
-            stderr.printf ("COM.GCLEANER.FILEUTLITIES: [WARNING: Unable to access the path '%s': %s\n", file.get_path (), e.message);
+            stderr.printf ("WARNING: Unable to access the path '%s': %s\n", file.get_path (), e.message);
             return;
         }
         
@@ -147,7 +169,7 @@ public class FileUtilities {
             }
         }
         if (cancellable.is_cancelled ())
-            throw new IOError.CANCELLED ("Operation was cancelled");
+            throw new IOError.CANCELLED (_("Operation was cancelled"));
     }
 
     public static string[] reinterpret_paths (string[] paths) {

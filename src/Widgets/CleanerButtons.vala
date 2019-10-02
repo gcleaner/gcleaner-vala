@@ -23,28 +23,28 @@ using GCleaner.Tools;
 
 namespace GCleaner.Widgets {
     public class CleanerButtons {
-        public GCleaner.App app;
+        private GCleaner.App app;
+        private Gtk.CheckButton check_root;
+        private Gtk.CheckButton[] check_options = {};
+        private GLib.Settings settings;
         private bool _check_root_is_clicked;
         private string app_id;
         private string app_name;
         private int64 n_options;
-        private GLib.Settings settings;
-        
-        
-        private Gtk.CheckButton check_root;
-        private Gtk.CheckButton[] check_options = {};
         
         public CleanerButtons (GCleaner.App app, string app_id) {
             this.app = app;
             this.app_id = app_id;
             check_root_is_clicked = false;
-            settings = new GLib.Settings ("org.gcleaner");
+            settings = Resources.get_setting_schema ();
             this.load_init ();
         }
         
         private void load_init () {
             var jload = new JsonUtils ();
-            app_name = jload.get_item_from_app (app_id, "name");
+            app_name = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_NAME);
+            if (app_name == capitalize (Resources.CATEGORY_SYSTEM))
+                app_name = Resources.CATEGORY_SYSTEM_LABEL;
             n_options = jload.get_n_options_from (app_id);
             string key_xml = app_id + "-main";
             // Setting the main check
@@ -55,8 +55,10 @@ namespace GCleaner.Widgets {
             configure_checks_options ();
         }
 
-        public string get_name ()       { return app_name; }
-        public string get_id ()         { return app_id; }
+        public string get_name () { return app_name; }
+
+        public string get_id () { return app_id; }
+        
         public bool check_root_is_clicked {
             get { return _check_root_is_clicked; }
             set { _check_root_is_clicked = value; }
@@ -104,10 +106,10 @@ namespace GCleaner.Widgets {
             foreach (var option in all_options.get_array ().get_elements ()) {
                 var object_option = option.get_object ();
                 
-                string option_id = object_option.get_string_member ("option-id");
-                string option_label = object_option.get_string_member ("option-name");
-                string key_xml = object_option.get_string_member ("key-xml");
-                bool warning_value = object_option.get_boolean_member ("warning-msgdlg");
+                string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
+                string option_label = Resources.get_option_label (option_id);
+                string key_xml = object_option.get_string_member (Resources.PROPERTY_KEY);
+                bool warning_value = object_option.get_boolean_member (Resources.PROPERTY_WARNING);
 
                 string option_info = determine_tooltip_text (option_id, warning_value);
                 string icon_warning_name = determine_warning_icon (warning_value);
@@ -148,25 +150,15 @@ namespace GCleaner.Widgets {
             });
         }
         
-        private string build_question_for_msgdlg (string option_id) {
-            string question = "";
-            if (option_id == "pass") {
-                question = "Are you sure you want to delete the saved passwords from " + app_name + "?";
-            } else if (option_id == "cache-pkg") {
-                question = "Are you sure you want to delete the cache and obsolete files from Package System?";
-            } else if (option_id == "configuration-pkg") {
-                question = "Are you sure you want to delete the orphan packages from Package System?";
-            } else if (option_id == "old-kernels") {
-                question = "Are you sure you want to delete the old kernels?";
-            }
-            
-            return question;
+        private string build_question_for_msgdlg (string option_id_type) {
+            return Resources.get_question_phrase (option_id_type, app_name);
         }
 
         public void set_msgdlg_warning (CheckButton check, string key_xml, string question) {
             check.toggled.connect (() => {
                 if (check.active == true) {
-                    Gtk.MessageDialog msg_dialog = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, question);
+                    Gtk.MessageDialog msg_dialog = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, 
+                        Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, question);
                     msg_dialog.response.connect ((response_id) => {
                         if (response_id == Gtk.ResponseType.OK) {
                             check.set_active (true);
@@ -184,30 +176,30 @@ namespace GCleaner.Widgets {
         private void set_tooltip_root () {
             var jload = new JsonUtils ();
             string text_icon = determine_app_icon ();
-            string program_type = jload.get_item_from_app (app_id, "type");
-            
+            string id_app_type = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_TYPE);
+            string app_type = Resources.get_type_app (id_app_type);
             check_root.has_tooltip = true;
             check_root.query_tooltip.connect ((x, y, keyboard_tooltip, tooltip) => {
-                if (text_icon.contains ("package") || text_icon.contains ("system")) {
+                if (text_icon.contains (Resources.ICON_PACKAGE_GENERIC) || 
+                    text_icon.contains (Resources.ICON_APPLICATIONS_SYSTEM)) {
                     tooltip.set_icon_from_icon_name (text_icon, Gtk.IconSize.DIALOG); 
                 } else {
                     Pixbuf icon = load_pixbuf (text_icon, 48);
                     tooltip.set_icon (icon); 
                 }
                 
-                tooltip.set_markup ("<b>" + this.app_name + "</b>\n\n<i>" + program_type + "</i>");
+                tooltip.set_markup ("<b>" + this.app_name + "</b>\n\n<i>" + app_type + "</i>");
                 return true;
             });
         }
 
         private string determine_app_icon () {
-            var jload = new JsonUtils ();
-            string text_icon = "";
-            
-            if (app_id == "apt" || app_id == "system") {
-                text_icon = jload.get_item_from_app (app_id, "icon");
+            string text_icon = null;
+            if (app_id in Resources.SYSTEM_APPS) {
+                var jload = new JsonUtils ();
+                text_icon = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_ICON);
             } else {
-                text_icon = Constants.PKGDATADIR + "/media/apps/" + app_id + ".png";
+                text_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.PKGDATADIR, "media", "apps", app_id + ".png");
             }
 
             return text_icon;
@@ -216,8 +208,8 @@ namespace GCleaner.Widgets {
         private void set_context_menu (Gtk.CheckButton check, string app_id, string? option_id = null) {
             check.button_press_event.connect ((event) => {
                 if (event.type == EventType.BUTTON_PRESS && event.button == 3) {
-                    string[] items = {"Analyze", "Clean"};
-                    string text_name = (option_id == null)? app_name : check.label.down ();
+                    string[] items = {Resources.BUTTON_SCAN, Resources.BUTTON_CLEAN}; // Labels
+                    string text_name = (option_id == null) ? app_name : check.label.down ();
                     Gtk.Menu menu = new Gtk.Menu ();
                     menu.attach_to_widget (check, null);
                     var actions = Actions.get_instance ();
@@ -225,9 +217,10 @@ namespace GCleaner.Widgets {
                         Gtk.MenuItem menu_item = new Gtk.MenuItem.with_label ("%s %s".printf(item, text_name));
                         menu.add (menu_item);
                         menu_item.activate.connect ((event) => {
-                            bool really_delete = (item == "Clean")? true : false;
+                            bool really_delete = (item == Resources.BUTTON_CLEAN) ? true : false;
                             if (really_delete) {
-                                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Are you sure you want to continue?");
+                                Gtk.MessageDialog msg = new Gtk.MessageDialog (this.app.main_window, Gtk.DialogFlags.MODAL, 
+                                    Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, Resources.QUESTION_PHRASE_CLEAN);
                                 msg.response.connect ((response_id) => {
                                     if (response_id == Gtk.ResponseType.OK) {
                                         actions.run_selected_option (app_id, option_id, really_delete);
@@ -256,77 +249,22 @@ namespace GCleaner.Widgets {
             });
         }
 
-        private string determine_warning_icon (bool warning_value) {
-            if (warning_value == true) {
-                return "dialog-warning";
-            } else {
-                return "dialog-information";
-            }
+        private string determine_warning_icon (bool is_warning) {
+            if (is_warning)
+                return Resources.ICON_DIALOG_WARNING;
+            else
+                return Resources.ICON_DIALOG_INFORMATION;
         }
         
-        private string determine_tooltip_text (string id_option, bool warning_value) {
+        private string determine_tooltip_text (string id_option_type, bool high_warning = false) {
+            string description_text = Resources.get_description_info (id_option_type);
             string warning_text = "";
-            string tooltip_text = "";
+            if (high_warning)
+                warning_text = Resources.DESCRIPTION_WARNING_HIGH_LABEL;
+            else
+                warning_text = Resources.DESCRIPTION_WARNING_LOW_LABEL;
             
-            if (id_option == "backup") {
-                tooltip_text = Constants.BACKUP_INFO;
-            } else if (id_option == "cache") {
-                tooltip_text = Constants.CACHE_PROG_INFO;
-            } else if (id_option == "cache-pkg") {
-                tooltip_text = Constants.CACHE_PKG_INFO;
-            } else if (id_option == "chat-logs") {
-                tooltip_text = Constants.CHAT_LOGS_INFO;
-            } else if (id_option == "configuration-pkg") {
-                tooltip_text = Constants.CONF_PKG_INFO;
-            } else if (id_option == "cookies") {
-                tooltip_text = Constants.COOKIES_INFO;
-            } else if (id_option == "crash") {
-                tooltip_text = Constants.CRASH_INFO;
-            } else if (id_option == "docs" || id_option == "recent-docs") {
-                tooltip_text = Constants.DOCS_INFO;
-            } else if (id_option == "dom") {
-                tooltip_text = Constants.DOM_INFO;
-            } else if (id_option == "download") {
-                tooltip_text = Constants.DOWNLOAD_INFO;
-            } else if (id_option == "form-history") {
-                tooltip_text = Constants.SAVED_FORMHISTORY_INFO;
-            } else if (id_option == "history") {
-                tooltip_text = Constants.HISTORY_PROG_INFO;
-            } else if (id_option == "internet-history") {
-                tooltip_text = Constants.HISTORY_NET_INFO;
-            } else if (id_option == "internet-cache") {
-                tooltip_text = Constants.CACHE_NET_INFO;
-            } else if (id_option == "logs") {
-                tooltip_text = Constants.LOGS_INFO;
-            } else if (id_option == "old-kernels") {
-                tooltip_text = Constants.OLDKERNELS_INFO;
-            } else if (id_option == "pass") {
-                tooltip_text = Constants.PASS_INFO;
-            } else if (id_option == "places") {
-                tooltip_text = Constants.PLACES_INFO;
-            } else if (id_option == "prefs") {
-                tooltip_text = Constants.PREFS_INFO;
-            } else if (id_option == "session") {
-                tooltip_text = Constants.SESSION_INFO;
-            } else if (id_option == "terminal-history") {
-                tooltip_text = Constants.TERMINAL_INFO;
-            } else if (id_option == "tmp") {
-                tooltip_text = Constants.TMP_INFO;
-            } else if (id_option == "thumbnails") {
-                tooltip_text = Constants.THUMBNAILS_INFO;
-            } else if (id_option == "trash") {
-                tooltip_text = Constants.TRASH_INFO;
-            } else if (id_option == "used") {
-                tooltip_text = Constants.USED_INFO;
-            }
-            
-            if (warning_value == true) {
-                warning_text = Constants.WARNING_HIGH_INFO;
-            } else {
-                warning_text = Constants.WARNING_LOW_INFO;
-            }
-            
-            return tooltip_text + warning_text;
+            return description_text + warning_text;
         }
     }
 }

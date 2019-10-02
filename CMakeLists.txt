@@ -17,6 +17,8 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 #What to call that directory where we install data too
 set (PKGDATADIR "${DATADIR}/gcleaner")
 set (GETTEXT_PACKAGE ${CMAKE_PROJECT_NAME})
+add_definitions("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
+project(${GETTEXT_PACKAGE} C)
 set (EXEC_NAME "gcleaner")
 set (RELEASE_NAME "GCleaner")
 set (VERSION "0.01.134")
@@ -61,11 +63,12 @@ vala_precompile(VALA_C ${EXEC_NAME}
     src/Widgets/About.vala
     src/Widgets/CleanerButtons.vala
     src/Widgets/HeaderBar.vala
+    src/Widgets/Preferences.vala
     src/Widgets/ResultsArea.vala
     src/Widgets/Sidebar.vala
     src/Widgets/Toolbar.vala
-    src/Constants.vala
     src/GCleaner.vala
+    src/Resources.vala
 #Tell what libraries to use when compiling
 PACKAGES
     gio-2.0
@@ -82,6 +85,7 @@ OPTIONS
 
 #Add another subdirectory for compile source (for example: gschemas)
 add_subdirectory (data)
+add_subdirectory (po)
 
 #Tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})

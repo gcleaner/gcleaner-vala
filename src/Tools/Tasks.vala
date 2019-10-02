@@ -68,21 +68,20 @@ namespace GCleaner.Tools {
                     }
                     foreach (var option in node_options.get_array ().get_elements ()) {
                         var object_option = option.get_object ();
-                        string option_id = object_option.get_string_member ("option-id");
-                        string option_name = object_option.get_string_member ("option-name");
+                        string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
+                        string option_name = Resources.get_option_label (option_id);
                         /* Update the progress bar
                          * ++++++-----------------------------
                          */
                         app.update_progress (app_name, option_name, info_clean.n_scanned_items);
                         bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
                         if (option_is_active || item_option_id != null) {
-                            string[] advanced_options = {"cache-pkg", "configuration-pkg", "old-kernels"};
-                            if (option_id in advanced_options) { // The option contains commands
+                            if (option_id in Resources.ADVANCED_OPTIONS) { // The option contains commands
                                 Json.Node node_cmd = jload.get_all_commands_of (app_id, option_id);
                                 var object_cmd = node_cmd.get_object ();
-                                string cmd_size = (object_cmd.has_member ("get-size")) ? object_cmd.get_string_member ("get-size") : null;
-                                string cmd_quantity = object_cmd.get_string_member ("get-quantity");
-                                string cmd_clean = object_cmd.get_string_member ("clean");
+                                string cmd_size = (object_cmd.has_member (Resources.PROPERTY_CMD_SIZE)) ? object_cmd.get_string_member (Resources.PROPERTY_CMD_SIZE) : null;
+                                string cmd_quantity = object_cmd.get_string_member (Resources.PROPERTY_CMD_QUANTITY);
+                                string cmd_clean = object_cmd.get_string_member (Resources.PROPERTY_CMD_CLEAN);
 
                                 if (really_delete) {
                                     status = info_clean.clean_operation (app_id, option_id, null, cmd_clean, cmd_quantity, cmd_size);
@@ -93,7 +92,7 @@ namespace GCleaner.Tools {
                                 string[] paths_to_scan = {}; // It will contain the reinterpreted paths
                                 string[] current_option_paths = {};
                                 // Get all the paths to scan of the option
-                                foreach (var dir in object_option.get_array_member ("paths").get_elements ()) {
+                                foreach (var dir in object_option.get_array_member (Resources.PROPERTY_PATHS).get_elements ()) {
                                     current_option_paths += dir.get_string ();
                                 }
                                 // We save in an array the paths that were reinterpreted.

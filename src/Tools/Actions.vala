@@ -84,11 +84,11 @@ namespace GCleaner.Tools {
                         string text_detail;
 
                         if (really_delete) {
-                            text_result = "<b>Cleaning complete</b>\n" + total_file_size + " (" + total_file_number + " files) were removed. (Aproximate size)";
-                            text_detail = "<b>Details of files deleted</b>";
+                            text_result = Resources.DESCRIPTION_COMPLETE_CLEANING.printf (total_file_size, total_file_number);
+                            text_detail = Resources.DESCRIPTION_COMPLETE_CLEANING_DETAIL;
                         } else {
-                            text_result = "<b>Analysis complete</b>\n" + total_file_size + " (" + total_file_number + " files) will be removed. (Aproximate size)";
-                            text_detail = "<b>Details of files to be deleted (Note: No file have been deleted yet)</b>";
+                            text_result = Resources.DESCRIPTION_COMPLETE_ANALYSIS.printf (total_file_size, total_file_number);
+                            text_detail = Resources.DESCRIPTION_COMPLETE_ANALYSIS_DETAIL;
                         }
                         app.results_area.set_labels_text (text_result, text_detail);
                         foreach (var cleaner in list_cleaners) {
@@ -106,21 +106,24 @@ namespace GCleaner.Tools {
                                 }
                                 foreach (var option in node_options.get_array ().get_elements ()) {
                                     var object_option = option.get_object ();
-                                    string option_id = object_option.get_string_member ("option-id");
-                                    string option_name = object_option.get_string_member ("option-name");
+                                    string option_id = object_option.get_string_member (Resources.PROPERTY_OPTION_ID);
+                                    string option_name = Resources.get_option_label (option_id);
                                     bool option_is_active = cleaner.get_option_label (count) == option_name && cleaner.is_option_active (count);
                                     if (option_is_active || item_option_id != null) {
                                         int64 n_files_option = info_clean.get_file_number_of (app_id, option_id);
                                         if (n_files_option != 0) {
                                             pix = load_pixbuf_from_name (app_id, option_id);
                                             string size_formated = null;
-                                            if (option_id == "configuration-pkg" || option_id == "old-kernels") {
-                                                size_formated = "Unknown size";
+                                            if (option_id == Resources.DESCRIPTION_CONF_PKG_ID || 
+                                                option_id == Resources.DESCRIPTION_OLDKERNELS_ID) {
+                                                size_formated = _("Unknown size");
                                             } else {
                                                 int64 size_option = info_clean.get_file_size_of (app_id, option_id);
                                                 size_formated = FileUtilities.to_readable_format_size (size_option);
                                             }
-                                            app.results_area.append_data_to_list_store (pix, "• " + app_name + " - " + option_name, size_formated, n_files_option.to_string () + " files");
+                                            string info_app = "• " + app_name + " - " + option_name;
+                                            string info_files = n_files_option.to_string () + _(" files");
+                                            app.results_area.append_data_to_list_store (pix, info_app, size_formated, info_files);
                                         }
                                     }
                                     count++;
@@ -131,7 +134,7 @@ namespace GCleaner.Tools {
                         app.enable_clean_button ();
                     } else {
                         app.results_area.set_headers_visible (false);
-                        app.results_area.set_labels_text ("<b>Congratulations! The System is clean!</b>");
+                        app.results_area.set_labels_text (Resources.DESCRIPTION_CLEAN_DONE);
                         app.disable_clean_button ();
                     }
                     app.sidebar.apps_box.set_sensitive (true);

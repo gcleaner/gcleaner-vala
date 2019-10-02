@@ -26,6 +26,11 @@ namespace GCleaner.Widgets {
         public GCleaner.App app;
 
         //ACTIONS CALLBACKS HERE
+        void preferences_cb (SimpleAction simple, Variant? parameter) {
+            var preferences = new Preferences (this.app.main_window);
+            preferences.run ();
+        }
+        
         void about_cb (SimpleAction simple, Variant? parameter) {
             var about = new GCleaner.Widgets.About ();
             about.run ();
@@ -37,17 +42,17 @@ namespace GCleaner.Widgets {
             //Variables
             string complete_system_specs;//string where we keep the chain with all the information of the system specifications
 
-            this.get_style_context ().add_class (STYLE_CLASS_PRIMARY_TOOLBAR);//Class property to give ToolBar aspect of Ubuntu (consecutive to the edge of the window)
+            this.get_style_context ().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);//Class property to give ToolBar aspect of Ubuntu (consecutive to the edge of the window)
 
             //LABELS
             /* NAME APP & VERSION */
             //PANGO MARKUP FONT SIZEs: xx-small - x-small - small - medium - large - x-large - xx-large //
             //More information in: https://developer.gnome.org/pango/stable/PangoMarkupFormat.html 
             Label title = new Label ("");
-            title.set_markup ("<span font_size='large'><b>GCleaner</b></span>");//Big letters 'large'
+            title.set_markup ("<span font_size='large'><b>" + Resources.PROGRAM_NAME + "</b></span>");//Big letters 'large'
 
             Label version = new Label ("");
-            version.set_markup ("<span font_size='small'> v" + Constants.VERSION + "</span>");//Take the version of GCleaner from the constant
+            version.set_markup ("<span font_size='small'> v" + Resources.VERSION + "</span>");//Take the version of GCleaner from the constant
 
             /*Information of Operating System, RAM and Video*/
             Label os_information = new Label ("");
@@ -59,11 +64,11 @@ namespace GCleaner.Widgets {
             system_specs.set_markup ("<span font_size='small'>" + complete_system_specs + "</span>");//Use the specifications in the established markup format
             
             /*Fillings*/
-            Label helpFill_1        = new Label ("");
-            Label helpFill_2        = new Label (" ");
-            Label iconFill          = new Label ("");
+            Label helpFill_1 = new Label ("");
+            Label helpFill_2 = new Label (" ");
+            Label iconFill = new Label ("");
             Label systemSpecs_fill  = new Label ("");
-            Label nameApp_fill      = new Label ("");//Generate a empty label to format with Pango Markup
+            Label nameApp_fill = new Label ("");//Generate a empty label to format with Pango Markup
             helpFill_1.set_markup ("<span font_size='large'>  </span>");
             iconFill.set_markup ("<span font_size='xx-small'>  </span>");
             nameApp_fill.set_markup ("<span font_size='large'>  </span>");//Small letter 'small'
@@ -75,22 +80,26 @@ namespace GCleaner.Widgets {
              */
             var appmenu_button = new Gtk.MenuButton();
             Gtk.Image gear_icon = new Gtk.Image ();
-            gear_icon.set_from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
+            gear_icon.set_from_icon_name (Resources.ICON_OPEN_MENU, Gtk.IconSize.LARGE_TOOLBAR);
             appmenu_button.set_image (gear_icon);
             appmenu_button.set_size_request (32, 32);
-            appmenu_button.get_style_context ().add_class("about_btn");
+            appmenu_button.get_style_context ().add_class(Resources.STYLE_CLASS_ABOUT_BTN);
 
             /*
              * Here define an Menu Model and
              * add it to appmenu Button.
              */
             var menumodel = new GLib.Menu ();
-            menumodel.append ("About...", "win.about");
+            menumodel.append (Resources.PREFERENCES_FIELD, "win.preferences");
+            menumodel.append (Resources.ABOUT_FIELD, "win.about");
             appmenu_button.set_menu_model (menumodel);
 
             /*
              * Here we define the Actions.
              */
+            var preferences_action = new SimpleAction ("preferences", null);
+            preferences_action.activate.connect (this.preferences_cb);
+            this.app.main_window.add_action (preferences_action);
             var about_action = new SimpleAction ("about", null);
             about_action.activate.connect (this.about_cb);
             this.app.main_window.add_action (about_action);
@@ -101,16 +110,16 @@ namespace GCleaner.Widgets {
             Box subIcon_box = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
             /*Name and Version*/
-            Box nameApp_box     = new Box (Orientation.VERTICAL, 0);
-            Box title_box       = new Box (Orientation.HORIZONTAL, 0);
-            Box version_box     = new Box (Orientation.HORIZONTAL, 0);
+            Box nameApp_box = new Box (Orientation.VERTICAL, 0);
+            Box title_box = new Box (Orientation.HORIZONTAL, 0);
+            Box version_box = new Box (Orientation.HORIZONTAL, 0);
             Box subNameApp_box  = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
             /*Operating System and System specs*/
-            Box os_box            = new Box (Orientation.HORIZONTAL, 0);
+            Box os_box = new Box (Orientation.HORIZONTAL, 0);
             Box sysProperties_box = new Box (Orientation.HORIZONTAL, 0);
-            Box specs_box         = new Box (Orientation.VERTICAL, 0);
-            Box subSpecs_box      = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
+            Box specs_box = new Box (Orientation.VERTICAL, 0);
+            Box subSpecs_box = new Box (Orientation.HORIZONTAL, 0);//It groups to separate with pixels the ToolItem
 
             /*Help*/
             Box help_box = new Box (Orientation.VERTICAL, 0);
@@ -130,12 +139,12 @@ namespace GCleaner.Widgets {
 
             //GCleaner icon for Toolbar
             Image icon = new Image ();
+            string path_icon = Path.build_path (Path.DIR_SEPARATOR_S, Resources.DATADIR, "pixmaps", "gcleanertb.svg");
             try {
-                var icon_pixbuf = new Gdk.Pixbuf.from_file_at_scale ("/usr/share/pixmaps/gcleanertb.svg", 56, 56, false);
+                var icon_pixbuf = load_pixbuf (path_icon, 56);
                 icon.set_from_pixbuf (icon_pixbuf);
             } catch (GLib.Error e) {
-                stderr.printf ("COM.GCLEANER.APP.TOOLBAR: [GLIB::ERROR CREANDO ICONO PIXBUF]\n");
-                stderr.printf (">>> Comprobar ruta: /usr/share/pixmaps/gcleanertb.svg\n");
+                stderr.printf (">>> Check path: " + path_icon + "\n");
             }
 
             //PACKAGING

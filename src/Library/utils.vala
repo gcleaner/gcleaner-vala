@@ -28,29 +28,27 @@ public Pixbuf load_pixbuf (string rsc_icon, int size = 16) {
 
 public Pixbuf load_pixbuf_from_name (string app_name, string option_id, int size = 16) {
     Pixbuf pix;
-    string[] system_apps = {"apt", "system"};
-    string category = (app_name in system_apps) ? "system" : "applications";
-    string type_icon = (category == "applications") ? "apps" : "info-system";
+    string category = (app_name in Resources.SYSTEM_APPS) ? Resources.CATEGORY_SYSTEM : Resources.CATEGORY_APPLICATIONS;
+    string type_icon = (category == Resources.CATEGORY_APPLICATIONS) ? Resources.TYPE_ICON_APPS : Resources.TYPE_ICON_SYSTEM;
     string ext = ".png";
     string name_icon = app_name;
-    if (category == "system") {
+    if (category == Resources.CATEGORY_SYSTEM) {
         var jload = new GCleaner.Tools.JsonUtils ();
-        ext = (option_id == "old-kernels") ? ".png" : ".svg";
+        ext = (option_id == Resources.DESCRIPTION_OLDKERNELS_ID) ? ".png" : ".svg";
         name_icon = jload.get_icon_name_from_system_app (app_name, option_id);
     }
-    string path_icon = Constants.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ext;
+    string path_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ext;
     pix = load_pixbuf (path_icon, size);
     return pix;
 }
 
 public Image load_image (string type_icon, string name_icon, int size = 16) {
     Image image = new Image ();
-    string rsc_icon = Constants.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ".png";
+    string rsc_icon = Resources.PKGDATADIR + "/media/" + type_icon + "/" + name_icon + ".png";
     try {
         var pix = load_pixbuf(rsc_icon, size);
         image.set_from_pixbuf (pix);
     } catch (Error e) {
-        stderr.printf ("[GLIB::ERROR WHEN CREATING ICON]\n");
         stderr.printf (">>> Check path: " + rsc_icon + "\n");
     }
 
@@ -63,7 +61,6 @@ public Image load_image_from_path (string path_img, int size = 16) {
         var pix = load_pixbuf(path_img, size);
         image.set_from_pixbuf (pix);
     } catch (Error e) {
-        stderr.printf ("[GLIB::ERROR WHEN CREATING ICON]\n");
         stderr.printf (">>> Check path: " + path_img + "\n");
     }
 
@@ -136,7 +133,7 @@ public string run_basic_command (string cmd) {
         Process.spawn_command_line_sync ("bash -c \"" + cmd + "\"", out result, out error, out status);
         return result;
     } catch (GLib.SpawnError e) {
-        stdout.printf ("COM.GCLEANER: %s", e.message);
+        stdout.printf ("The command could not be executed: %s", e.message);
         return result;
     }
 }

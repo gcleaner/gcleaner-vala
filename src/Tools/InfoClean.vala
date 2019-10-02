@@ -120,8 +120,7 @@ namespace GCleaner.Tools {
                 total_accumulator += information[1];
                 status = true;
             } catch (GLib.SpawnError e) {
-                stdout.printf ("COM.GCLEANER: %s", e.message);
-                stdout.printf ("[ERROR: %s]\n", error);
+                stdout.printf ("Error: %s\n", error);
                 status = false;
             }
             insert_info_data (app_id, option_id, information);
