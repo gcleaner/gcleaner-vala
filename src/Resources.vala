@@ -78,7 +78,7 @@ namespace Resources {
     public const string PROPERTY_OPTION_ICON = "option-icon";
     public const string PROPERTY_OPTION_COMMANDS = "commands";
     public const string PROPERTY_PATHS = "paths";
-    public const string PROPERTY_WARNING = "warning-msgdlg";
+    public const string PROPERTY_WARNING = "warning";
     public const string PROPERTY_CMD_SIZE = "get-size";
     public const string PROPERTY_CMD_QUANTITY = "get-quantity";
     public const string PROPERTY_CMD_CLEAN = "clean";
