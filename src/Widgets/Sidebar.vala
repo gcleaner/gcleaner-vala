@@ -52,8 +52,8 @@ namespace GCleaner.Widgets {
             Gtk.Stack stack = new Gtk.Stack ();
             stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
             stack.set_transition_duration (500);
-            stack.add_titled (system_box, "system_tab", capitalize (Resources.CATEGORY_SYSTEM));
-            stack.add_titled (alignament, "apps_tab", capitalize (Resources.CATEGORY_APPLICATIONS));
+            stack.add_titled (system_box, "system_tab", Resources.CATEGORY_SYSTEM_LABEL);
+            stack.add_titled (alignament, "apps_tab", Resources.CATEGORY_APPLICATIONS_LABEL);
             
             Gtk.StackSwitcher stack_switcher = new Gtk.StackSwitcher ();
             stack_switcher.set_stack (stack);

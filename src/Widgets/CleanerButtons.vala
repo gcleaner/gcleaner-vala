@@ -23,16 +23,14 @@ using GCleaner.Tools;
 
 namespace GCleaner.Widgets {
     public class CleanerButtons {
-        public GCleaner.App app;
+        private GCleaner.App app;
+        private Gtk.CheckButton check_root;
+        private Gtk.CheckButton[] check_options = {};
+        private GLib.Settings settings;
         private bool _check_root_is_clicked;
         private string app_id;
         private string app_name;
         private int64 n_options;
-        private GLib.Settings settings;
-        
-        
-        private Gtk.CheckButton check_root;
-        private Gtk.CheckButton[] check_options = {};
         
         public CleanerButtons (GCleaner.App app, string app_id) {
             this.app = app;
@@ -45,6 +43,8 @@ namespace GCleaner.Widgets {
         private void load_init () {
             var jload = new JsonUtils ();
             app_name = jload.get_item_from_app (app_id, Resources.PROPERTY_APP_NAME);
+            if (app_name == capitalize (Resources.CATEGORY_SYSTEM))
+                app_name = Resources.CATEGORY_SYSTEM_LABEL;
             n_options = jload.get_n_options_from (app_id);
             string key_xml = app_id + "-main";
             // Setting the main check
@@ -55,8 +55,10 @@ namespace GCleaner.Widgets {
             configure_checks_options ();
         }
 
-        public string get_name ()       { return app_name; }
-        public string get_id ()         { return app_id; }
+        public string get_name () { return app_name; }
+
+        public string get_id () { return app_id; }
+        
         public bool check_root_is_clicked {
             get { return _check_root_is_clicked; }
             set { _check_root_is_clicked = value; }

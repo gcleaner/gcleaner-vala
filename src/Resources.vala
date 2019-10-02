@@ -235,8 +235,8 @@ namespace Resources {
     public const string TYPE_APP_PACKAGE_MANAGER_ID = "package-manager";
     public const string TYPE_APP_PODCAST_MANAGER_ID = "podcast-manager";
     public const string TYPE_APP_RENDERING_MAP_ID = "rendering-map";
-    public const string TYPE_APP_VIRTUAL_MACHINE_ID = "virtual-java";
     public const string TYPE_APP_SYSTEM_ID = "system";
+    public const string TYPE_APP_VIRTUAL_MACHINE_ID = "virtual-java";
 
     public const string QUESTION_PHRASE_CLEAN = _("Are you sure you want to continue?");
     public const string QUESTION_PHRASE_CACHE_PKG = _("Are you sure you want to delete cache and obsolete Package System files?");
@@ -247,6 +247,8 @@ namespace Resources {
 
     public const string CATEGORY_APPLICATIONS = "applications";
     public const string CATEGORY_SYSTEM = "system";
+    public const string CATEGORY_APPLICATIONS_LABEL = _("Applications");
+    public const string CATEGORY_SYSTEM_LABEL = _("System");
     public const string[] CATEGORIES = {CATEGORY_APPLICATIONS, 
                                         CATEGORY_SYSTEM};
     public const string[] ADVANCED_OPTIONS = {DESCRIPTION_CACHE_PKG_ID, 
