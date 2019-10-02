@@ -252,7 +252,6 @@ namespace GCleaner {
                 settings.set_int (Resources.SETTINGS_VALUE_WINDOW_WIDTH, w);
                 settings.set_int (Resources.SETTINGS_VALUE_WINDOW_HEIGHT, h);
                 
-                Gtk.main_quit ();
                 return false;
             });
             
